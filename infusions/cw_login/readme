@@ -1,0 +1,8 @@
+Diese Codezeile einfach als einen Banner einfügen.
+Adminbereich -> System Admin -> Banners
+
+Banner1:
+
+<?php
+include INFUSIONS."cw_login/login.php";
+?>
