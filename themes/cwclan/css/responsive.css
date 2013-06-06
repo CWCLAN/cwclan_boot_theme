@@ -2,40 +2,41 @@
    Media Queries - Angaben ohne Gewähr
    ========================================================================== */
 
-   
+
 /*** Normale PCs, Laptops etc. ***/
 @media only screen and (min-width: 950px) {
-	.wrapper {
-		min-width:900px;                
-		width: 900px;
-	}
-	.content {
-		width: 65%;
-		margin-left: 2%;
-		float: left;
-		border-left: solid thin #555;
-		border-right: solid thin #555;
-		box-shadow: 0 0 5px #555;
-	}
-	.sidebar {
-		width: 27%;
-		float: right;
-		margin-right: 2%;
-	}
-	.nav-collapse ul {
-		padding-left: -1px;
-		padding-right:0;
-		padding-top:0;
-		padding-bottom:0;
-	}
-	.nav li ul li:first-child a {
-		border-top-left-radius: 5px;
-		border-top-right-radius: 5px;
-	}
-	.nav li ul li:last-child a {
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-	}
+    .wrapper {
+        min-width:900px;
+        max-width:1200px;
+        width:75%;
+    }
+    .content {
+        width: 70%;
+        margin-left: 2%;
+        float: left;
+        border-left: solid thin #555;
+        border-right: solid thin #555;
+        box-shadow: 0 0 5px #555;
+    }
+    .sidebar {
+        width: 22%;
+        float: right;
+        margin-right: 2%;
+    }
+    .nav-collapse ul {
+        padding-left: -1px;
+        padding-right:0;
+        padding-top:0;
+        padding-bottom:0;
+    }
+    .nav li ul li:first-child a {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .nav li ul li:last-child a {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
     .topbar .login {
         float: right;
         margin-right: 10%;
@@ -47,18 +48,18 @@
     .logged_in_box {
         margin-top: 5px;   
     }
-	
-	/** To not show an element on a certain device/resolution **/
-	.no-mobile {
-		visibility:visible;
-	}
-	.no-tabletbook {
-		visibility:visible;
-	}
-	.no-pc {
-		visibility:hidden;
-		display: none;
-	}
+
+    /** To not show an element on a certain device/resolution **/
+    .no-mobile {
+        visibility:visible;
+    }
+    .no-tabletbook {
+        visibility:visible;
+    }
+    .no-pc {
+        visibility:hidden;
+        display: none;
+    }
     .show-mobile {
         visibility:hidden;
     }
@@ -73,35 +74,35 @@
 
 /***  Netbooks ***/
 @media only screen and (min-width: 480px) and 
-  (max-width: 950px) {
-	.wrapper {
-		min-width: 75%;
-		width: 75%;
-	}
-	.content {
-		width: 95%;
-		margin-left:auto;
-		margin-right:auto;
-		float: none;
-		border-left: solid thin #555;
-		border-right: solid thin #555;
-		box-shadow: 0 0 5px #555;
-	}
-	.sidebar {
-		width: 96%;
-		float: none;
-		margin-left:auto;
-		margin-right:auto;
-	}
-	.nav-collapse ul {
-		padding:5px 0;
-	}
-	.nav li ul li:first-child a {
-		border-radius: 3px;
-	}
-	.nav li ul li:last-child a {
-		border-radius: 3px;
-	}
+(max-width: 950px) {
+    .wrapper {
+        min-width: 75%;
+        width: 75%;
+    }
+    .content {
+        width: 95%;
+        margin-left:auto;
+        margin-right:auto;
+        float: none;
+        border-left: solid thin #555;
+        border-right: solid thin #555;
+        box-shadow: 0 0 5px #555;
+    }
+    .sidebar {
+        width: 96%;
+        float: none;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .nav-collapse ul {
+        padding:5px 0;
+    }
+    .nav li ul li:first-child a {
+        border-radius: 3px;
+    }
+    .nav li ul li:last-child a {
+        border-radius: 3px;
+    }
     .topbar .login {
     }
     .topbar .login input[type=text], input[type=password] {
@@ -111,18 +112,18 @@
         margin-top: 0;  
         margin-bottom: 10px; 
     }
-	
-	/** To not show an element on a certain device/resolution **/
-	.no-mobile {
-		visibility:visible;
-	}
-	.no-tabletbook {
-		visibility:hidden;
-		display: none;
-	}
-	.no-pc {
-		visibility:visible;
-	}
+
+    /** To not show an element on a certain device/resolution **/
+    .no-mobile {
+        visibility:visible;
+    }
+    .no-tabletbook {
+        visibility:hidden;
+        display: none;
+    }
+    .no-pc {
+        visibility:visible;
+    }
     .show-mobile {
         visibility:hidden;
     }
@@ -136,34 +137,34 @@
 
 /*** Smartphones ***/
 @media only screen and (max-width: 480px) {
-	.wrapper {
-		min-width: 98%;
-		width: 98%;
-	}
-	.content {
-		box-shadow: 0 0 0 #fff;
-		width: 95%;
-		margin-left:auto;
-		margin-right:auto;
-		float: none;
-		border-left: none;
-		border-right: none;
-	}
-	.sidebar {
-		width: 96%;
-		float: none;
-		margin-left:auto;
-		margin-right:auto;
-	}
-	.nav-collapse ul {
-		padding:5px 0;
-	}
-	.nav li ul li:first-child a {
-		border-radius: 3px;
-	}
-	.nav li ul li:last-child a {
-		border-radius: 3px;
-	}
+    .wrapper {
+        min-width: 98%;
+        width: 98%;
+    }
+    .content {
+        box-shadow: 0 0 0 #fff;
+        width: 95%;
+        margin-left:auto;
+        margin-right:auto;
+        float: none;
+        border-left: none;
+        border-right: none;
+    }
+    .sidebar {
+        width: 96%;
+        float: none;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .nav-collapse ul {
+        padding:5px 0;
+    }
+    .nav li ul li:first-child a {
+        border-radius: 3px;
+    }
+    .nav li ul li:last-child a {
+        border-radius: 3px;
+    }
     .topbar .login {
     }
     .topbar .login input[type=text], input[type=password] {
@@ -173,18 +174,18 @@
         margin-top: 0;
         margin-bottom: 10px;
     }
-	
-	/** To not show an element on a certain device/resolution **/
-	.no-mobile {
-		visibility:hidden;
-		display: none;
-	}
-	.no-tabletbook {
-		visibility:visible;
-	}
-	.no-pc {
-		visibility:visible;
-	}
+
+    /** To not show an element on a certain device/resolution **/
+    .no-mobile {
+        visibility:hidden;
+        display: none;
+    }
+    .no-tabletbook {
+        visibility:visible;
+    }
+    .no-pc {
+        visibility:visible;
+    }
     .show-mobile {
         visibility:visible;
     }
@@ -202,8 +203,8 @@
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
 
 }
