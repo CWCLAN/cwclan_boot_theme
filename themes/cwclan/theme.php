@@ -139,8 +139,14 @@ function render_page($license = false) {
                 PHP-Fusion Version:<b> '.$settings['version'].'</b><br>'.showrendertime().'
                 </div>
             </div>
-        </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        </div>';
+    // Scripts and co.
+    echo '
+		<!-- Scripts -->        
+        <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
+        <script src="' . THEME . 'js/plugins.js"></script>
+        <script src="' . THEME . 'js/main.js"></script>       
+        </script>
         <script> 
             $(".tp").tooltip({
             placement : "bottom"
@@ -151,15 +157,7 @@ function render_page($license = false) {
             $(".tp2").tooltip({
             placement : "right"
             });
-        </script>';
-
-    // Scripts and co.
-    echo '
-		<!-- Scripts -->        
-        <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
-        <script src="' . THEME . 'js/plugins.js"></script>
-        <script src="' . THEME . 'js/main.js"></script>       
-        </script>';
+        </script>';    
 }
 
 /* New in v7.02 - render comments */
