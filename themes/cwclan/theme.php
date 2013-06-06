@@ -48,15 +48,15 @@ function render_page($license = false) {
                             </a>
                             <div class="nav-toggle nav-collapse collapse">
                                 <ul class="nav">
-                                    <li><a href="index.php">Startseite</a></li>
-                                    <li><a href="#">Forum</a></li>                                    
+                                    <li><a href="'.BASEDIR.'index.php">Startseite</a></li>
+                                    <li><a href="'.BASEDIR.'forum/index.php">Forum</a></li>                                    
                                     <li class="dropdown">
-                                        <a href="photogallery.php" class="dropdown-toggle" data-toggle="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             Fotogalerie
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Neue Bilder</a></li>
+                                            <li><a href="'.BASEDIR.'photogallery.php">Galerie</a></li>
                                             <li><a href="#">Meist angesehene Bilder</a></li>
                                         </ul>
                                     </li> <!-- Dropdown End -->
