@@ -149,7 +149,7 @@ function render_page($license = false) {
         </script>
         <script> 
             $(".tp").tooltip({
-            placement : "bottom"
+            placement : "right"
             });
         </script>
         

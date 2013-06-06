@@ -182,7 +182,7 @@ p {
 .sidebar_left {}
 .sidebar_right {}
 .sidebar ul {
-	list-style:none;
+    list-style:none;
 }
 .sidebar .box {
     margin-top: 20px;
@@ -274,6 +274,10 @@ footer {
 }
 .links-section ul {	
     margin: 0;   	
+}
+.links-s-content {
+    margin: 5px;
+    color:#ababab;
 }
 .breadcrumb {
     font-family: 'Roboto Condensed', sans-serif;
@@ -472,7 +476,8 @@ article .article_submenu .author {
 /* Admin Message */
 .admin-message {
     text-align:center;
-    margin: 10px;
+    position:relative;
+    margin: 150px 0px 0px 0px;
     background: rgba(239, 152, 73,0.3);
     border: solid thin rgb(239, 152, 73);
     color: #666;

@@ -6,7 +6,7 @@
 /*** Normale PCs, Laptops etc. ***/
 @media only screen and (min-width: 950px) {
 	.wrapper {
-		min-width:900px;
+		min-width:900px;                
 		width: 900px;
 	}
 	.content {

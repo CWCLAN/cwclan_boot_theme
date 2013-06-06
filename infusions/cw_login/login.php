@@ -33,9 +33,9 @@ if (iMEMBER) {
                     <div class="logged_in_box">'; 
     
     echo'<div class = "user_avatar">';
-    if ($data['user_avatar']) {
+    if ($userdata['user_avatar']) {
         
-			echo "<img src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
+			echo "<img src='".IMAGES."avatars/".$userdata['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
         
 		} else {
         
@@ -67,9 +67,9 @@ echo'</div>
                         <div class="logged_in_box">
                             <div style="width: 75%;margin:0 auto;">
                                 <div class="user_avatar">';
-                                    if ($data['user_avatar']) {
+                                    if ($userdata['user_avatar']) {
         
-			echo "<img src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
+			echo "<img src='".IMAGES."avatars/".$userdata['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
         
 		} else {
         
