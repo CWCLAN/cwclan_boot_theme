@@ -54,10 +54,10 @@ function render_page($license = false) {
                             </a>
                             <div class="nav-toggle nav-collapse collapse">
                                 <ul class="nav">
-                                    <li><a href="http://temp.cwclan.de/test/index.php">Startseite</a></li>
-                                    <li><a href="http://temp.cwclan.de/test/forum/index.php">Forum</a></li>                                    
+                                    <li><a href="index.php">Startseite</a></li>
+                                    <li><a href="#">Forum</a></li>                                    
                                     <li class="dropdown">
-                                        <a href="http://temp.cwclan.de/test/photogallery.php" class="dropdown-toggle" data-toggle="dropdown">
+                                        <a href="photogallery.php" class="dropdown-toggle" data-toggle="dropdown">
                                             Fotogalerie
                                             <b class="caret"></b>
                                         </a>
@@ -104,12 +104,13 @@ function render_page($license = false) {
             </div>';
 // Footer
     echo'
-            <footer>(c) 2013 <span class="c_orange">cwclan</span> - clan & community</footer>
+            <footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
+            <span style="float:right">'.showcopyright().'</span></footer>
         </div>  
         <div class="footernav flleft visible-desktop">
             <div class="links-section flleft">
                 <h4>Server</h4>                    
-                <ul>
+                <ul class="links-s-content">
                     <li>
                         <a href="#" title="" target="_blank">TF2</a>
                     </li>
@@ -123,7 +124,7 @@ function render_page($license = false) {
             </div>
             <div class="links-section flleft">
                 <h4>Heißer Stuff</h4>                    
-                <ul>
+                <ul class="links-s-content">
                     <li>
                         <a href="http://timkopplow.com/dev/cwish/" target="_blank" title="Nevos Responsive Design">Nevos Responsive Design</a>
                     </li>
@@ -133,9 +134,24 @@ function render_page($license = false) {
                 </ul>
             </div>
             <div class="links-section flleft">
-                ' . $settings['version'] . '<br/>' . showcopyright() . '<br/>' . showrendertime() . '
+                <h4>Info</h4>
+                <div class="links-s-content">
+                PHP-Fusion Version:<b> '.$settings['version'].'</b><br>'.showrendertime().'
+                </div>
             </div>
-        </div>';
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script> 
+            $(".tp").tooltip({
+            placement : "bottom"
+            });
+        </script>
+        
+        <script> 
+            $(".tp2").tooltip({
+            placement : "right"
+            });
+        </script>';
 
     // Scripts and co.
     echo '
