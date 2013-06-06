@@ -30,41 +30,66 @@ if (iMEMBER) {
             </a>
             <div class="nav-collapse login collapse">
                 <div class="no-tabletbook no-mobile"> <!-- PC Resolution Login -->
-                    <div class="logged_in_box">';
-    if($userdata['user_avatar']){
-    echo'<div class = "user_avatar">
-    <a href = "'. BASEDIR .'profile.php?lookup='.$userdata['user_id'].'"><img src = "'.BASEDIR.'images/avatars/'.$userdata['user_avatar'].'" class = "tp" data-toggle = "tooltip" title = "'.$locale['log101'].'" height = "40"></a>
-    </div>';    
-    }     
-    echo'<div class="user_login_content">
-                             <div><a href="'. BASEDIR .'profile.php?lookup='.$userdata['user_id'].'">'.$userdata['user_name'].'</a></div>
-                             <div class="user_login_icons">
-                                 <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a> 
-                                 | 
-                                 <a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span></a>
-                                 | 
-                                 <a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+                    <div class="logged_in_box">'; 
+    
+    echo'<div class = "user_avatar">';
+    if ($data['user_avatar']) {
+        
+			echo "<img src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
+        
+		} else {
+        
+			echo "<img src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' width='40'><br><br>";
+        
+		}
+    echo '</div>';
+echo'
+<div class="user_login_content">
+    <div><a href="'. BASEDIR .'profile.php?lookup='.$userdata['user_id'].'">'.$userdata['user_name'].'</a>
+    </div>
+    <div class="user_login_icons">
+        <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a> 
+| 
+        <a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span></a>
+| 
+        <a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
 
-    if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
+        if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
         echo ' |<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
-    }
+        }
 
-    echo'</div>
-                         </div>
-                    </div>                    
+echo'</div>
+        </div>
+            </div>                    
                 </div>
                 <div class="no-pc"> <!-- Mobile / Tabletbook Resolution Login -->
                     <div class="responsive-login">
                         <div class="logged_in_box">
                             <div style="width: 75%;margin:0 auto;">
-                                <div class="user_avatar">
-                                    <a href="#"><img src="img/content/useravatar_small_nevo.png" class="tp2" data-toggle="tooltip" title="Zu deinem Profil" width="40"></a>
-                                </div>
+                                <div class="user_avatar">';
+                                    if ($data['user_avatar']) {
+        
+			echo "<img src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' width='40'><br><br>";
+        
+		} else {
+        
+			echo "<img src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' width='40'><br><br>";
+        
+		}
+                                echo'</div>
                                 <div class="user_login_content">
-                                    <div><a href="#">nevo</a></div>
+                                    <div><a href="'. BASEDIR .'profile.php?lookup='.$userdata['user_id'].'">'.$userdata['user_name'].'</a></div>
                                     <div class="user_login_icons">
-                                        <a href="#" class="tp2" data-toggle="tooltip" title="Einstellungen"><span class="icon-cog"></span></a>&nbsp;|&nbsp;<a href="#" class="tp2" data-toggle="tooltip" title="Nachrichten"><span class="icon-envelop"></span></a>&nbsp;|&nbsp;<a href="#" class="tp2" data-toggle="tooltip" title="Logout"><span class="icon-switch"></span></a>
-                                    </div>
+                                        <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a> 
+| 
+                                        <a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span></a>
+| 
+                                        <a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+
+                                            if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
+                                            echo ' |<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
+                                            }
+                                    echo'</div>
                                 </div>
                             </div>
                         </div>
@@ -91,10 +116,10 @@ if (iMEMBER) {
                     </form>
                     <div class="login-info">';
     if ($settings['enable_registration']) {
-        echo $locale['global_105'];
+    echo "<a href='register.php'>Registrieren</a>";
     }
     echo '&nbsp;&nbsp;&nbsp;';
-    echo $locale['global_106'];
+    echo "<a href='lostpassword.php'>Passwort vergessen</a>";
     echo '</div>
               </div>
                 <div class="no-pc"> <!-- Mobile / Tabletbook Resolution Login -->
@@ -113,14 +138,13 @@ if (iMEMBER) {
                                     <td>
                                         <div align="center">
                                             <input type="password" name="user_pass" placeholder="' . $locale['global_102'] . '">
-                                            <label style="display:inline;"><input type="checkbox" name="remember_me" value="y" title="' . $locale['global_103'] . '" style="vertical-align:middle;" /></label>
+                                            
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div align="center">
-                                            <input type="submit" class="cw-btn" name="login" value="' . $locale['global_104'] . '">
+                                        <div align="center"><label style="display:inline;"><input type="checkbox" name="remember_me" value="y" title="' . $locale['global_103'] . '" style="vertical-align:middle;" /></label><br><br><input type="submit" class="cw-btn" name="login" value="' . $locale['global_104'] . '">
                                         </div>
                                     </td>
                                 </tr>
@@ -128,10 +152,10 @@ if (iMEMBER) {
                                     <td>
                                         <div align="center">';
     if ($settings['enable_registration']) {
-        echo $locale['global_105'];
+        echo "<a href='register.php'>Registrieren</a>";
     }
     echo '&nbsp;&nbsp;&nbsp;';
-    echo $locale['global_106'];
+    echo "<a href='lostpassword.php'>Passwort vergessen</a>";
     echo'</div>
                                     </td>
                                 </tr>
