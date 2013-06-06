@@ -1,10 +1,5 @@
 <?php
-
-/* .aer Theme for PHP-Fusion v7.......*|
-  |*.Author: Max "Matonor" Toball......*|
-  |*.Released under the Affero GPLv3... */
 //Theme Settings
-define("THEME_WIDTH", "95%"); //theme width. Make sure to adapt the margin-left in the first div (-width/2).
 define("THEME_BULLET", "<span class='bullet'>&middot;</span>"); //bullet image
 //Theme Settings /
 
@@ -12,7 +7,6 @@ if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
 require_once INCLUDES . "theme_functions_include.php";
-require_once THEMES . "templates/switcher.php";
 
 function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
@@ -25,7 +19,7 @@ function get_head_tags() {
 }
 
 function render_page($license = false) {
-    global $aidlink, $locale, $settings, $colour_switcher, $fontsize_switcher, $column_switcher, $main_style;
+    global $aidlink, $locale, $settings, $main_style;
 
     // Topbar Content
     echo '<div class="topbar navbar">
