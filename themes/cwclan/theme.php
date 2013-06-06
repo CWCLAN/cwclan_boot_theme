@@ -133,15 +133,7 @@ function render_page($license = false) {
                 </ul>
             </div>
             <div class="links-section flleft">
-                <h4>Öhm naja halt so</h4>                    
-                <ul>
-                    <li>
-                        <a href="#" title="">Bla Bla Blubb</a>
-                    </li>
-                    <li>
-                        <a href="#" title="">Blubb Bla Blääää</a>
-                    </li>
-                </ul>
+                ' . $settings['version'] . '<br/>' . showcopyright() . '<br/>' . showrendertime() . '
             </div>
         </div>';
 
