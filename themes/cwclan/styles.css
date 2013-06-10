@@ -329,24 +329,14 @@ article p {
 article .article_submenu {
     font-size: 14px;
     color: #333;
-    padding: 0 7px;
-    margin: 0 5px;
-    padding-bottom:10px;
+    padding: 0 0 5px 7px;
+    margin: 0 5px;    
     border-bottom: solid thin #ccc;
-}
-article .article_submenu_left {
-    width: 90px;
-    float: left;
-}
-article .article_submenu_right {
-    width: 450px;
-    float: right;
 }
 article .article_submenu .comments {
     float: right;
 }
-article .article_submenu .author {
-    margin:0 10px;
+article .article_submenu .author {    
     float: left;
 }
 .pagination .menu, ol, ul {

@@ -1,4 +1,5 @@
 <?php
+
 //Theme Settings
 define("THEME_BULLET", "<span class='bullet'>&middot;</span>"); //bullet image
 //Theme Settings /
@@ -49,15 +50,15 @@ function render_page($license = false) {
                             </a>
                             <div class="nav-toggle nav-collapse collapse">
                                 <ul class="nav">
-                                    <li><a href="'.BASEDIR.'index.php">Startseite</a></li>
-                                    <li><a href="'.BASEDIR.'forum/index.php">Forum</a></li>                                    
+                                    <li><a href="' . BASEDIR . 'index.php">Startseite</a></li>
+                                    <li><a href="' . BASEDIR . 'forum/index.php">Forum</a></li>                                    
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             Fotogalerie
                                             <b class="caret"></b>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="'.BASEDIR.'photogallery.php">Galerie</a></li>
+                                            <li><a href="' . BASEDIR . 'photogallery.php">Galerie</a></li>
                                             <li><a href="#">Meist angesehene Bilder</a></li>
                                         </ul>
                                     </li> <!-- Dropdown End -->
@@ -100,7 +101,7 @@ function render_page($license = false) {
 // Footer
     echo'
             <footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
-            <span style="float:right">'.showcopyright().'</span></footer>
+            <span style="float:right">' . showcopyright() . '</span></footer>
         </div>  
         <div class="footernav flleft visible-desktop">
             <div class="links-section flleft">
@@ -131,7 +132,7 @@ function render_page($license = false) {
             <div class="links-section flleft">
                 <h4>Info</h4>
                 <div class="links-s-content">
-                PHP-Fusion Version:<b> '.$settings['version'].'</b><br>'.showrendertime().'
+                PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                 </div>
             </div>
         </div>';
@@ -152,7 +153,7 @@ function render_page($license = false) {
             $(".tp2").tooltip({
             placement : "right"
             });
-        </script>';    
+        </script>';
 }
 
 /* New in v7.02 - render comments */
@@ -191,33 +192,55 @@ function render_comments($c_data, $c_info) {
     closetable();
 }
 
+function newsposter2($info, $sep = "", $class = "") {
+    global $locale;
+    $res = "";
+    $link_class = $class ? " class='$class' " : "";
+    $res = "<span " . $link_class . ">" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
+    $res .= showdate("newsdate", $info['news_date']);
+    $res .= $info['news_ext'] == "y" || $info['news_allow_comments'] ? $sep . "\n" : "\n";
+    return "<!--news_poster-->" . $res;
+}
+
+function newsopts2($info, $sep, $class = "") {
+    global $locale, $settings;
+    $res = "";
+    $link_class = $class ? " class='$class' " : "";
+    if ($info['news_allow_comments'] && $settings['comments_enabled'] == "1") {
+        $res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icons icon-bubbles'></span></a> " . $sep . " ";
+    }
+    if ($info['news_ext'] == "y" || ($info['news_allow_comments'] && $settings['comments_enabled'] == "1")) {
+        $res .= $info['news_reads'] . $locale['global_074'] . "\n" . $sep;
+    }
+    $res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "'><img src='" . get_image("printer") . "' alt='" . $locale['global_075'] . "' style='vertical-align:middle;border:0;' /></a>\n";
+    return "<!--news_opts-->" . $res;
+}
+
 function render_news($subject, $news, $info) {
 
     global $locale;
 
-
+    if (!isset($_GET['readmore']) && $info['news_ext'] == 'y') {
+        $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" name="news_' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+    } else {
+        $linked_subject = '<h3> ' . $info['news_subject'] . '</h3>';
+    }
 
     echo "\n
-	<article>
-	" . (!empty($title) ? "<h3>$title</h3>" : "") . "\n";
+	<article>        
+	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
     echo '
                         <div class="article_submenu clearfix">
-                            <div class="article_submenu_left">
-                                ' . $info['cat_image'] . '
-                            </div>
-                            <div class="article_submenu_right">
-						      <h3>' . $subject . '</h3>
-                                <span class="author">
-                                Published by ' . newsposter($info, '') . itemoptions('N', $info['news_id']) . '
-                                </span>
-                            </div>
+                            <span class="author">
+                                Veröffentlicht von: ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
+                            </span>
+                            <span class="comments">
+                                <a href="#">' . newsopts2($info, ' &middot; ') . '</a>                                
+                            </span>                                                        
                         </div>
                         <p class="article">
 						' . $news . '
-                        </p>
-                        <span class="comments">
-                        <a href="#">' . newsopts($info, ' &middot; ') . '</a>
-                        </span>
+                        </p>                        
                     </article>';
 }
 
