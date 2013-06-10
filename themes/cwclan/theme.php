@@ -9,6 +9,7 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
+    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
