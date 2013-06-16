@@ -102,10 +102,11 @@ function render_page($license = false) {
     echo'
             <footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
-        </div>  
-        <div class="footernav flleft visible-desktop">
-            <div class="links-section flleft">
-                <h4>Server</h4>                    
+        </div>';
+
+    echo '<div class="footernav visible-desktop">
+	<div class="links-section">
+	<h4>Server</h4>                    
                 <ul class="links-s-content">
                     <li>
                         <a href="#" title="" target="_blank">TF2</a>
@@ -117,9 +118,10 @@ function render_page($license = false) {
                         <a href="#" title="" target="_blank">Mumble - Voice Server</a>
                     </li>
                 </ul>
-            </div>
-            <div class="links-section flleft">
-                <h4>Heißer Stuff</h4>                    
+	</div>
+
+	<div class="links-section">
+	<h4>Heißer Stuff</h4>                    
                 <ul class="links-s-content">
                     <li>
                         <a href="http://timkopplow.com/dev/cwish/" target="_blank" title="Nevos Responsive Design">Nevos Responsive Design</a>
@@ -128,13 +130,14 @@ function render_page($license = false) {
                         <a href="#" title="">Test</a>
                     </li>
                 </ul>
-            </div>
-            <div class="links-section flleft">
-                <h4>Info</h4>
+	</div>
+
+	<div class="child links-section">
+	<h4>Info</h4>
                 <div class="links-s-content">
                 PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
-                </div>
-            </div>
+                </div>	
+	</div>
         </div>';
     // Scripts and co.
     echo '

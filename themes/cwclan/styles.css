@@ -233,20 +233,31 @@ footer {
 }
 .flleft {float: left !important;}
 .footernav {    
-    position: relative;
-    left: 50%;	
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1em;
+    letter-spacing: 2.5em;
+    line-height: .6em;
+    overflow: hidden;   	
 }
-.footernav .links-section {    
-    position: relative;
-    right: 50%;
+.links-section {    
     width: 250px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom:20px;    
+    margin: 10px 0;
     background: #efebdf;		
     border-radius: 3px;	
-    box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;             
+    display: inline-block;
+    letter-spacing: normal;
+    font-size: normal;
+    white-space: normal;
+    text-align: normal;
+    vertical-align: top;
 }
+.links-section {
+    *display: inline;
+    *margin: 0 20px;
+}
+
 .links-section h4 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: normal;
@@ -278,6 +289,7 @@ footer {
 .links-s-content {
     margin: 5px;
     color:#ababab;
+    line-height: 18px;
 }
 .breadcrumb {
     font-family: 'Roboto Condensed', sans-serif;
