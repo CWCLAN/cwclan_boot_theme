@@ -485,3 +485,30 @@ article .article_submenu .author {
     color: #666;
     padding: 6px 8px;
 }
+
+/***/
+/***PHP Fusion pagination***/
+/***/
+
+.pagenav {
+    padding-bottom: 0.6em;	
+}
+.pagenav span {
+    border: 1px solid #CCC;
+    color: #CCC;
+    border-radius: 3px;	
+    padding: 0 4px;
+    margin: 2px;
+}
+.pagenav a {	
+    background: #444;
+    border-radius: 3px;	
+    padding: 2px 5px;
+    margin: 2px;
+    text-decoration: none; 
+    color: #fff;
+}
+.pagenav a:hover {
+    color:#ef9849;
+    font-weight: bold;        
+}
