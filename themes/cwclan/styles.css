@@ -50,6 +50,9 @@ p {
     color: #333;
     line-height: 1.4;
 }
+img {
+    max-width: none;
+}
 .c_orange {
     color: #ef9849;
 }
@@ -485,11 +488,9 @@ article .article_submenu .author {
     color: #666;
     padding: 6px 8px;
 }
-
 /***/
 /***PHP Fusion pagination***/
 /***/
-
 .pagenav {
     padding-bottom: 0.6em;	
 }
@@ -511,4 +512,23 @@ article .article_submenu .author {
 .pagenav a:hover {
     color:#ef9849;
     font-weight: bold;        
+}
+/***/
+/***PHP Fusion table***/
+/***/
+.tbl-border {    
+}
+table {
+    border: solid thin #ddd;
+}
+tbody > tr:nth-child(odd) > td,
+tbody > tr:nth-child(odd) > th {
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
+}
+
+tbody tr:hover > td,
+tbody tr:hover > th {
+    background-color: rgb(204, 204, 204);
+    background-color: rgba(204, 204, 204, 0.5);
 }
