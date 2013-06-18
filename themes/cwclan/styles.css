@@ -516,19 +516,44 @@ article .article_submenu .author {
 /***/
 /***PHP Fusion table***/
 /***/
-.tbl-border {    
+table th, table td {
+    border: none;
 }
-table {
+.tbl-border {
     border: solid thin #ddd;
 }
-tbody > tr:nth-child(odd) > td,
-tbody > tr:nth-child(odd) > th {
+.tbl1{
+
+}
+.tbl2{
+
+}
+#box_forum_2 tbody > tr:nth-child(odd) > td,
+#box_forum_2 tbody > tr:nth-child(odd) > th {  
     background-color: rgb(224, 224, 224);
     background-color: rgba(224, 224, 224, 0.5);
 }
-
-tbody tr:hover > td,
-tbody tr:hover > th {
+#box_forum_2 tbody tr:hover > td,
+#box_forum_2 tbody tr:hover > th {
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
+}
+tbody td:hover {
+    background-color: rgb(204, 204, 204);
+    background-color: rgba(204, 204, 204, 0.5);
+}
+/***/
+/***PHP Fusion***/
+/***/
+.comments>div:nth-child(4n+1),
+.comments>div:nth-child(4n+2) {
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);    
+}
+.comments>div:nth-child(2n+3){
+    padding-top: 5px;    
+}
+.comment_message {
+    padding-bottom: 5px;    
+    border-bottom: solid thin #ddd;
 }
