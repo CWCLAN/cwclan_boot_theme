@@ -481,8 +481,7 @@ article .article_submenu .author {
 /* Admin Message */
 .admin-message {
     text-align:center;
-    position:relative;
-    margin: 150px 0px 0px 0px;
+    position:relative;    
     background: rgba(239, 152, 73,0.3);
     border: solid thin rgb(239, 152, 73);
     color: #666;

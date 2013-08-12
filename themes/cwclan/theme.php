@@ -28,16 +28,12 @@ function render_page($license = false) {
             <div class="title">CWClan <span class="subtitle">Clan & Community</span></div>
             ' . showbanners() . '</div>'; // Topbar End
     // Content Begin
-    echo '
-        <div class="wrapper clearfix">
-
-            <div class="breadcrumb">Du bist hier: <span class="c_orange">Home</span></div>
-
-            <div class="hero"></div>';
+    echo '<div class="wrapper clearfix">
+          <div class="breadcrumb">Du bist hier: <span class="c_orange">Home</span></div>
+          <div class="hero"></div>';
 
     // Navbar Begin
-    echo '
-            <div class="navbar navbar-inverse">
+    echo '<div class="navbar navbar-inverse">
                 <div class="container">
                     <div class="navbar-inner">
                         <div class="container">
@@ -80,27 +76,21 @@ function render_page($license = false) {
                 </div>
             </div>'; //Navbar End
     // Main / Content Begin
-    echo '
-            <div class="main clearfix">
+    echo '<div class="main clearfix">
                 <div class="content">
-
                     ' . U_CENTER . CONTENT . L_CENTER . '
-
-                </div>';
+          </div>';
 // Sidebar		
-    echo '
-                <div class="sidebar">';
+    echo '<div class="sidebar">';
     if (RIGHT) {
         echo RIGHT;
     }
     if (LEFT) {
         echo LEFT;
     }
-    echo '			</div>
-            </div>';
+    echo '</div></div>';
 // Footer
-    echo'
-            <footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
+    echo'<footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
         </div>';
 
@@ -119,7 +109,6 @@ function render_page($license = false) {
                     </li>
                 </ul>
 	</div>
-
 	<div class="links-section">
 	<h4>Heißer Stuff</h4>                    
                 <ul class="links-s-content">
@@ -140,8 +129,7 @@ function render_page($license = false) {
 	</div>
         </div>';
     // Scripts and co.
-    echo '
-		<!-- Scripts -->        
+    echo '<!-- Scripts -->        
         <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>       
@@ -165,32 +153,32 @@ function render_comments($c_data, $c_info) {
     global $locale, $settings;
     opentable($locale['c100']);
     if (!empty($c_data)) {
-        echo "<div class='comments floatfix'>\n";
+        echo "<div class='comments floatfix'>";
         $c_makepagenav = '';
         if ($c_info['c_makepagenav'] !== FALSE) {
-            echo $c_makepagenav = "<div style='text-align:center;margin-bottom:5px;'>" . $c_info['c_makepagenav'] . "</div>\n";
+            echo $c_makepagenav = "<div style='text-align:center;margin-bottom:5px;'>" . $c_info['c_makepagenav'] . "</div>";
         }
         foreach ($c_data as $data) {
             $comm_count = "<a href='" . FUSION_REQUEST . "#c" . $data['comment_id'] . "' id='c" . $data['comment_id'] . "' name='c" . $data['comment_id'] . "'>#" . $data['i'] . "</a>";
-            echo "<div class='tbl2 clearfix floatfix'>\n";
+            echo "<div class='tbl2 clearfix floatfix'>";
             if ($settings['comments_avatar'] == "1") {
-                echo "<span class='comment-avatar'>" . $data['user_avatar'] . "</span>\n";
+                echo "<span class='comment-avatar'>" . $data['user_avatar'] . "</span>";
             }
-            echo "<span style='float:right' class='comment_actions'>" . $comm_count . "\n</span>\n";
-            echo "<span class='comment-name'>" . $data['comment_name'] . "</span>\n<br />\n";
-            echo "<span class='small'>" . $data['comment_datestamp'] . "</span>\n";
+            echo "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>";
+            echo "<span class='comment-name'>" . $data['comment_name'] . "</span>\n<br />";
+            echo "<span class='small'>" . $data['comment_datestamp'] . "</span>";
             if ($data['edit_dell'] !== false) {
-                echo "<br />\n<span class='comment_actions'>" . $data['edit_dell'] . "\n</span>\n";
+                echo "<br />\n<span class='comment_actions'>" . $data['edit_dell'] . "\n</span>";
             }
-            echo "</div>\n<div class='tbl1 comment_message'>" . $data['comment_message'] . "</div>\n";
+            echo "</div>\n<div class='tbl1 comment_message'>" . $data['comment_message'] . "</div>";
         }
         echo $c_makepagenav;
         if ($c_info['admin_link'] !== FALSE) {
-            echo "<div style='float:right' class='comment_admin'>" . $c_info['admin_link'] . "</div>\n";
+            echo "<div style='float:right' class='comment_admin'>" . $c_info['admin_link'] . "</div>";
         }
         echo "</div>\n";
     } else {
-        echo $locale['c101'] . "\n";
+        echo $locale['c101'];
     }
     closetable();
 }
@@ -229,11 +217,9 @@ function render_news($subject, $news, $info) {
         $linked_subject = '<h3> ' . $info['news_subject'] . '</h3>';
     }
 
-    echo "\n
-	<article>        
+    echo "<article>        
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
-    echo '
-                        <div class="article_submenu clearfix">
+    echo '<div class="article_submenu clearfix">
                             <span class="author">
                                 Veröffentlicht von: ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
                             </span>
@@ -250,11 +236,9 @@ function render_news($subject, $news, $info) {
 function render_article($subject, $article, $info) {
     global $locale;
 
-    echo "\n
-	<article>
+    echo "<article>
 	" . (!empty($title) ? "<h3>$title</h3>" : "") . "\n";
-    echo '
-                        <div class="article_submenu clearfix">
+    echo '<div class="article_submenu clearfix">
                             <div class="article_submenu_left">
                                 ' . $info['cat_image'] . '
                             </div>
@@ -276,26 +260,35 @@ function render_article($subject, $article, $info) {
 
 function opentable($title) {
 
-    echo "\n
-	<article>
-	" . (!empty($title) ? "<h3>$title</h3>" : "") . "\n";
+    echo "<article>
+	" . (!empty($title) ? "<h3>$title</h3>" : "");
 }
 
 function closetable() {
 
-    echo "
-                    </article>\n";
+    echo "</article>";
+}
+
+function openside($title) {
+
+    echo "<div class='box'>";
+    echo "<h3>" . $title . "</h3>";
+    echo "<div class='sidebar_div'>";
+}
+
+function closeside() {
+    echo "</div></div>";
 }
 
 $panel_collapse = true;
 
-function openside($title, $collapse = false, $state = "on") {
+function openside1($title, $collapse = false, $state = "on") {
 
     global $panel_collapse;
     $panel_collapse = $collapse;
 
     echo "<div class='box'>";
-    echo "<h3>" . $title . "</h3>\n";
+    echo "<h3>" . $title . "</h3>";
     echo "<div class='sidebar_div'>";
 
     // Collapse?
@@ -311,7 +304,7 @@ function openside($title, $collapse = false, $state = "on") {
     }
 }
 
-function closeside() {
+function closeside1() {
 
     global $panel_collapse;
 
