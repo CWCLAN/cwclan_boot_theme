@@ -530,19 +530,26 @@ table th, table td {
 .tbl2{
 
 }
-#box_forum_2 tbody > tr:nth-child(odd) > td,
-#box_forum_2 tbody > tr:nth-child(odd) > th {  
+.forum_idx_table tbody > tr:nth-child(odd) > td,
+.forum_idx_table tbody > tr:nth-child(odd) > th,
+.forum_table tbody > tr:nth-child(odd) > td,
+.forum_table tbody > tr:nth-child(odd) > th{  
     background-color: rgb(224, 224, 224);
     background-color: rgba(224, 224, 224, 0.5);
 }
-#box_forum_2 tbody tr:hover > td,
-#box_forum_2 tbody tr:hover > th {
+.forum_idx_table tbody tr:hover > td,
+.forum_idx_table tbody tr:hover > th,
+.forum_table tbody tr:hover > td,
+.forum_table tbody tr:hover > th{
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
 }
 tbody td:hover {
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
+}
+.forum-caption{
+    font-weight:bold;
 }
 /***/
 /***PHP Fusion***/
@@ -580,7 +587,7 @@ span .panelbutton {
 .small2{    
 }
 .side-small{
-    
+
 }    
 .side-label{
     color:#97660a;
@@ -688,3 +695,14 @@ ul.tabs a.xl.current{
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
 }
+/***/
+/***Navigation***/
+/***/
+ul.next_days{-moz-padding-start:15px;}
+ul#menu2, ul#menu2 ul{list-style-type:none;margin:0;padding:0;width:100%;text-align:left;}
+ul#menu2 a{display:block;text-decoration:none;}
+ul#menu2 li{margin-top:0px;display:inline;}
+ul#menu2 li a{background:#424242;color:#fff;padding:0.5em;margin-bottom:1px;}
+ul#menu2 li a:hover{background:#3B3B3B;color:#CA880C;}
+ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
+ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
