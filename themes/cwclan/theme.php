@@ -29,7 +29,7 @@ function render_page($license = false) {
             ' . showbanners() . '</div>'; // Topbar End
     // Content Begin
     echo '<div class="wrapper clearfix">
-          <div class="breadcrumb">Du bist hier: <span class="c_orange">Home</span></div>
+          <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
     // Navbar Begin

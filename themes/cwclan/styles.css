@@ -309,7 +309,7 @@ footer {
 .hero {
     height: 200px;
     width: 100%;
-    background:url('../cwclan/img/specials/hero_01.png') center no-repeat #444;
+    background:url('../cwclan/img/specials/hero_01.jpg') no-repeat #444;
 }
 .icons {
     color: #aaa;
