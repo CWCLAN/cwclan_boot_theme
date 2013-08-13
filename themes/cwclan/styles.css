@@ -321,7 +321,7 @@ footer {
     color: #888;
 }
 article {
-    padding: 10px 5px;
+    padding: 0 5px 10px 5px;
     border-radius: 2px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -521,6 +521,9 @@ table th, table td {
 .tbl-border {
     border: solid thin #ddd;
 }
+.tbl-border2 {
+    border: solid thin #ddd;
+}
 .tbl1{
 
 }
@@ -561,4 +564,106 @@ span .panelbutton {
     float: right;
     top: -21px;
     right: 10px;
+}
+/***/
+/***Forums Panel***/
+/***/
+div.wrap{
+    width:100%;padding-top:4px;
+}
+.wrap .pane{
+    border-top:0;
+}
+div.wrap_forumpanel{
+    width:100%;padding-top:4px;
+}
+.wrap_forumpanel .pane{
+    display:none;border-top:0;
+}
+ul.tabs{
+    list-style:none;
+    margin:0 !important;
+    padding:0;height:36px;
+}
+ul.tabs li{
+    float:left;
+    padding:0;
+    text-indent:0;
+    margin:0 4px 0 0;
+    list-style-image:none !important;
+    border-top: solid thin #ddd;
+    border-left: solid thin #ddd;
+    border-right: solid thin #ddd;
+}
+ul.tabs li a{    
+}
+.wrap_forumpanel .tabs li a{    
+}
+ul.tabs a{
+    display:block;
+    text-decoration:none;
+    padding:2px;
+    margin:0px;
+    position:relative;
+}
+ul.tabs a:active{
+    outline:none;
+}
+ul.tabs a:hover{
+    background-position:-420px -31px;
+}
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a{
+    background-position:-420px -62px;
+    cursor:default !important; 
+    color: #000;
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
+}
+ul.tabs a.s{
+    background-position:-553px 0;
+    width:81px;
+}
+ul.tabs a.s:hover{
+    background-position:-553px -31px;
+}
+ul.tabs a.s.current{
+    background-position:-553px -62px;
+}
+ul.tabs a.l{
+    background-position:-248px -0px;
+    width:174px;
+}
+ul.tabs a.l:hover{
+    background-position:-248px -31px;
+}
+ul.tabs a.l.current{
+    background-position:-248px -62px;
+}
+ul.tabs a.xl{
+    background-position:0 -0px;
+    width:248px;
+}
+ul.tabs a.xl:hover{
+    background-position:0 -31px;
+}
+ul.tabs a.xl.current{
+    background-position:0 -62px;
+}
+.panes .pane{
+    display:none;
+}
+.forum_table {
+    margin-bottom: 0;
+}
+.wrap_forumpanel .pane tbody > tr:nth-child(odd) > td,
+.wrap_forumpanel .pane tbody > tr:nth-child(odd) > th {  
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
+    border-top: solid thin #ddd;
+    border-bottom: solid thin #ddd;
+}
+.wrap_forumpanel .pane tbody tr:hover > td,
+.wrap_forumpanel .pane tbody tr:hover > th {
+    background-color: rgb(204, 204, 204);
+    background-color: rgba(204, 204, 204, 0.5);
 }
