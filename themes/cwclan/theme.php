@@ -269,47 +269,25 @@ function closetable() {
     echo "</article>";
 }
 
-function openside($title) {
-
-    echo "<div class='box'>";
-    echo "<h3>" . $title . "</h3>";
-    echo "<div class='sidebar_div'>";
-}
-
-function closeside() {
-    echo "</div></div>";
-}
-
-$panel_collapse = true;
-
-function openside1($title, $collapse = false, $state = "on") {
-
+function openside($title, $collapse = false, $state = "on") {
     global $panel_collapse;
     $panel_collapse = $collapse;
-
     echo "<div class='box'>";
     echo "<h3>" . $title . "</h3>";
-    echo "<div class='sidebar_div'>";
-
-    // Collapse?
     if ($collapse == true) {
         $boxname = str_replace(" ", "", $title);
-        echo "" . panelbutton($state, $boxname) . "";
+        echo "<span>" . panelbutton($state, $boxname) . "</span>";
     }
-    echo '';
-
-    // Collapse?
+    echo "<div class='sidebar_div'>";
     if ($collapse == true) {
         echo panelstate($state, $boxname);
     }
 }
 
-function closeside1() {
-
+function closeside() {
     global $panel_collapse;
-
     if ($panel_collapse == true) {
-        echo "";
+        echo "</div>";
     }
     echo "</div></div>";
 }
