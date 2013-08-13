@@ -565,6 +565,27 @@ span .panelbutton {
     top: -21px;
     right: 10px;
 }
+.shoutboxname{
+    font-weight:bold;
+    float: left;
+}
+.shoutbox{    
+}
+.shoutboxdate{
+    text-align: right;
+    border-bottom: solid thin #ddd;
+}
+.small{    
+}
+.small2{    
+}
+.side-small{
+    
+}    
+.side-label{
+    color:#97660a;
+    padding:2px 2px 3px 2px;
+}
 /***/
 /***Forums Panel***/
 /***/
