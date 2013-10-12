@@ -22,13 +22,16 @@ include LOCALE . LOCALESET . "global.php";
 global $userdata, $aidlink;
 
 if (iMEMBER) {
-    echo '<div class="navi_hint no-pc"><a data-toggle="collapse" data-target=".login"></a></div>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".login">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse login collapse">
+    echo '<nav role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".login">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>                
+            </div>
+            <div class="collapse nav-collapse login">
                 <div class="no-tabletbook no-mobile"> <!-- PC Resolution Login -->
                     <div class="logged_in_box">'; 
     
@@ -95,75 +98,38 @@ echo'</div>
                         </div>
                     </div>
                 </div>
-            </div>';
+            </div><!-- /.navbar-collapse -->
+        </nav>';
 } else {
     if (isset($_POST['Regh'])) {
         redirect('register.php');
     }
-    echo '<div class="navi_hint no-pc"><a data-toggle="collapse" data-target=".login"></a></div>
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".login">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <div class="nav-collapse login collapse">
-                <div class="no-tabletbook no-mobile"> <!-- PC Resolution Login -->
-                    <form style="margin-top:-7px" name="loginform" method="post" action="' . $action_url . '">
-                        <input type="text" name="user_name" placeholder="' . $locale['global_101'] . '"> 
-                        <input type="password" name="user_pass" placeholder="' . $locale['global_102'] . '">
+    echo '<nav class="navbar navbar-default" role="navigation">  
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".login">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>                
+            </div>
+            
+            <div class="collapse navbar-collapse login">
+                <form class="navbar-form navbar-left" role="login">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="user_name" placeholder="' . $locale['global_101'] . '"> 
+                        <input type="password" class="form-control" name="user_pass" placeholder="' . $locale['global_102'] . '">
                         <label style="display:inline;"><input type="checkbox" name="remember_me" value="y" title="' . $locale['global_103'] . '" style="vertical-align:middle;" /></label>
-                        <input type="submit" class="cw-btn" name="login" value="' . $locale['global_104'] . '">
-                    </form>
-                    <div class="login-info">';
-    if ($settings['enable_registration']) {
-    echo "<a href='register.php'>Registrieren</a>";
-    }
-    echo '&nbsp;&nbsp;&nbsp;';
-    echo "<a href='lostpassword.php'>Passwort vergessen</a>";
-    echo '</div>
-              </div>
-                <div class="no-pc"> <!-- Mobile / Tabletbook Resolution Login -->
-                    <div class="responsive-login">
-                        <div class="login-box-r">
-                        <form name="loginform" method="post" action="' . $action_url . '">
-                            <table class="table table-condensed">
-                                <tr>
-                                    <td>
-                                        <div align="center">
-                                            <input type="text" name="user_name" placeholder="' . $locale['global_101'] . '">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div align="center">
-                                            <input type="password" name="user_pass" placeholder="' . $locale['global_102'] . '">
-                                            
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div align="center"><label style="display:inline;"><input type="checkbox" name="remember_me" value="y" title="' . $locale['global_103'] . '" style="vertical-align:middle;" /></label><br><br><input type="submit" class="cw-btn" name="login" value="' . $locale['global_104'] . '">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div align="center">';
-    if ($settings['enable_registration']) {
-        echo "<a href='register.php'>Registrieren</a>";
-    }
-    echo '&nbsp;&nbsp;&nbsp;';
-    echo "<a href='lostpassword.php'>Passwort vergessen</a>";
-    echo'</div>
-                                    </td>
-                                </tr>
-                            </table>
-                            </form>
-                        </div>
                     </div>
-                </div>
-            </div>';
+                    <button type="submit" class="btn btn-default cw-btn" name="login">' . $locale['global_104'] . '</button>
+                </form>
+                <ul class="nav navbar-nav">';
+                if ($settings['enable_registration']) {
+                echo "<li ><a href='register.php'>Registrieren</a></li>";
+    }
+                echo'<li ><a href="lostpassword.php">Passwort vergessen</a></li>
+                </ul>      
+            </div><!-- /.navbar-collapse -->
+        </nav>';
 }
 ?>	

@@ -309,7 +309,7 @@ footer {
 .hero {
     height: 200px;
     width: 100%;
-    background:url('../cwclan/img/specials/hero_01.jpg') no-repeat #444;
+    background:url('../cwclan/img/specials/hero_01.png') no-repeat #444;
 }
 .icons {
     color: #aaa;
@@ -370,10 +370,14 @@ article .article_submenu .author {
     margin-bottom:0;
     font-size: 18px;
 }
+.navbar-default {
+background-color: transparent;
+border-color: transparent;
+}
 .navbar-inverse .navbar-inner {
     background: #444;
-    font-weight:300;
-    font-size:15px;
+    font-weight:    300;
+    font-size:  15px;
 }
 .navbar-inner {
     min-height: 35px;

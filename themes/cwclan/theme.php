@@ -33,54 +33,51 @@ function render_page($license = false) {
           <div class="hero"></div>';
 
     // Navbar Begin
-    echo '<div class="navbar navbar-inverse">
-                <div class="container">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                            <div class="navi_hint no-pc"><a data-toggle="collapse" data-target=".nav-toggle">Navigation</a></div>
-                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-toggle">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </a>
-                            <div class="nav-toggle nav-collapse collapse">
-                                <ul class="nav">
-                                    <li><a href="' . BASEDIR . 'index.php">Startseite</a></li>
-                                    <li><a href="' . BASEDIR . 'forum/index.php">Forum</a></li>                                    
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            Fotogalerie
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="' . BASEDIR . 'photogallery.php">Galerie</a></li>
-                                            <li><a href="#">Meist angesehene Bilder</a></li>
-                                        </ul>
-                                    </li> <!-- Dropdown End -->
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            Server
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">HLStats</a></li>
-                                            <li><a href="#">Map Bewertungen</a></li>
-                                            <li><a href="#">Reserved Slots</a></li>
-                                        </ul>
-                                    </li> <!-- Dropdown End -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>'; //Navbar End
+    echo'<nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>                
+            </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="' . BASEDIR . 'index.php">Startseite</a></li>
+                    <li><a href="' . BASEDIR . 'forum/index.php">Forum</a></li>                                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Fotogalerie
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="' . BASEDIR . 'photogallery.php">Galerie</a></li>
+                            <li><a href="#">Meist angesehene Bilder</a></li>
+                        </ul>
+                    </li> <!-- Dropdown End -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Server
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HLStats</a></li>
+                            <li><a href="#">Map Bewertungen</a></li>
+                            <li><a href="#">Reserved Slots</a></li>
+                        </ul>
+                    </li> <!-- Dropdown End -->
+                </ul>   
+            </div><!-- /.navbar-collapse -->
+        </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
                 <div class="content">
                     ' . U_CENTER . CONTENT . L_CENTER . '
           </div>';
-// Sidebar		
+    // Sidebar		
     echo '<div class="sidebar">';
     if (RIGHT) {
         echo RIGHT;
@@ -89,7 +86,7 @@ function render_page($license = false) {
         echo LEFT;
     }
     echo '</div></div>';
-// Footer
+    // Footer
     echo'<footer class="clearfix"><span style="float:left;padding-top:7px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
         </div>';
