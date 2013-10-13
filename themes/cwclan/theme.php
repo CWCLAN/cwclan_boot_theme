@@ -10,7 +10,7 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";    
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
@@ -23,12 +23,22 @@ function get_head_tags() {
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
-    // Topbar Content
-    echo '<div class="topbar navbar">
-            <div class="title">CWClan <span class="subtitle">Clan & Community</span></div>
-            ' . showbanners() . '</div>'; // Topbar End
+    // SWIPE-MENU Content
+    echo '<div class="swipe-container">
+            <div id="swipe-sidebar">
+                <ul>
+                    '.showsublinks("<li>","</li>").'
+                </ul>
+            </div>
+            <div class="swipe-main-content">
+                <div class="swipe-area"></div>
+                <a href="#" data-toggle=".swipe-container" id="sidebar-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>';
     // Content Begin
-    echo '<div class="wrapper clearfix">
+    echo '<div class="wrapper clearfix swipe-content">          
           <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
@@ -124,23 +134,44 @@ function render_page($license = false) {
                 PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                 </div>	
 	</div>
+        </div>
+        </div>
         </div>';
     // Scripts and co.
     echo '<!-- Scripts -->        
         <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
+        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>       
         </script>
-        <script> 
-            $(".tp").tooltip({
-            placement : "right"
+        <script>
+        $(document).ready(function() {
+            $("[data-toggle]").click(function() {
+                var toggle_el = $(this).data("toggle");
+                $(toggle_el).toggleClass("open-sidebar");
             });
-        </script>
-        
-        <script> 
-            $(".tp2").tooltip({
+     
+        });
+ 
+        $(".swipe-area").swipe({
+            swipeStatus:function(event, phase, direction, distance, duration, fingers)
+            {
+                if (phase=="move" && direction =="right") {
+                    $(".swipe-container").addClass("open-sidebar");
+                    return false;
+                }
+                if (phase=="move" && direction =="left") {
+                    $(".swipe-container").removeClass("open-sidebar");
+                    return false;
+                }
+            }
+        });
+        $(".tp").tooltip({
             placement : "right"
-            });
+        });
+        $(".tp2").tooltip({
+            placement : "right"
+        });
         </script>';
 }
 

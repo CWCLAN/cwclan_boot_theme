@@ -79,7 +79,7 @@ img {
 /***/
 /*** Layout ***/
 /***/
-.topbar {
+/*.topbar {
     left:0;
     top:0;
     position: fixed;
@@ -113,7 +113,7 @@ img {
 }
 .topbar .btn-navbar:hover {
     background:#efebdf;
-}
+}*/
 .login-info {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -162,9 +162,8 @@ img {
     color: #444;
 }
 .wrapper {
-    margin-top:100px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top:50px;
+    margin-left: 60px;
     margin-bottom: 20px;
     box-shadow: 0 0 10px #777;
     background:url('../cwclan/img/design/bg_content.png');
@@ -405,13 +404,13 @@ border-color: transparent;
 .navbar-inverse .btn-navbar:hover {
     background: #222;
 }
-.nav-collapse, .nav-collapse.collapse {
+.navbar-collapse, .navbar-collapse.collapse {
 }
-.navbar-inverse .nav-collapse .nav>li>a:hover, .navbar-inverse .nav-collapse .nav>li>a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+.navbar-inverse .navbar-collapse .nav>li>a:hover, .navbar-inverse .navbar-collapse .nav>li>a:focus, .navbar-inverse .navbar-collapse .dropdown-menu a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:focus {
     background: #ef9849;
     color: #fff;
 }
-.nav-collapse .nav>li>a, .nav-collapse .dropdown-menu a {
+.navbar-collapse .nav>li>a, .navbar-collapse .dropdown-menu a {
 }
 .nav li ul li a:hover {
     color: #fff;
@@ -710,3 +709,109 @@ ul#menu2 li a{background:#424242;color:#fff;padding:0.5em;margin-bottom:1px;}
 ul#menu2 li a:hover{background:#3B3B3B;color:#CA880C;}
 ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
 ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
+
+
+/***/
+/***SWIPE MENU***/
+/***/
+.swipe-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    -webkit-transition:  left 0.4s ease-in-out;
+    -moz-transition:  left 0.4s ease-in-out;
+    -ms-transition:  left 0.4s ease-in-out;
+    -o-transition:  left 0.4s ease-in-out;
+    transition:  left 0.4s ease-in-out;
+}
+.swipe-container.open-sidebar {
+    left: 240px;
+}
+ 
+.swipe-area {
+    position: absolute;
+    width: 50px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #f3f3f3;
+    z-index: 0;
+}
+#swipe-sidebar {    
+    background: #efebdf;
+    font-family: 'Oswald', sans-serif;
+    border-right: solid thin #ccc;
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    left: -240px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+#swipe-sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#swipe-sidebar ul li {
+    margin: 0;
+}
+#swipe-sidebar ul li a {
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 100;
+    color: #ababab;
+    text-decoration: none;
+    display: block;
+    border-bottom: solid thin #ccc;
+    -webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+#swipe-sidebar ul li:hover a {
+    background: #444;
+    color: white;
+}
+.swipe-main-content {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
+}
+.swipe-main-content .swipe-content{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /*padding-left: 60px;*/
+    width: 100%;
+}
+.swipe-main-content .swipe-content h1{
+    font-weight: 100;
+}
+.swipe-main-content .swipe-content p{
+    width: 100%;
+    line-height: 160%;
+}
+.swipe-main-content #sidebar-toggle {
+    background: #e5deca;
+    border-radius: 3px;
+    display: block;
+    position: relative;
+    padding: 10px 7px;
+    float: left;
+}
+.swipe-main-content #sidebar-toggle .bar{
+     display: block;
+    width: 18px;
+    margin-bottom: 3px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;   
+}
+.swipe-main-content #sidebar-toggle .bar:last-child{
+     margin-bottom: 0;   
+}
