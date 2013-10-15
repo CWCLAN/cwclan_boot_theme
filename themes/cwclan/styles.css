@@ -16,7 +16,7 @@
 /***/
 body {
     background:url('../cwclan/img/design/bgr.jpg');
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     font-weight:300;
     font-size: 14px;
 }
@@ -194,7 +194,8 @@ img {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 18px;
     color: #efefef;
-    font-weight: 500;
+    text-shadow: 1px 1px 1px #333;
+    font-weight: 300;
     padding: 0px 10px;
     line-height:1.7;
     background: #444;
@@ -364,21 +365,19 @@ article .article_submenu .author {
 }
 .navbar {
     font-family: 'Roboto Condensed', sans-serif;
+    font-size:  21px;
     position: relative;
     z-index: 98;
     margin-bottom:0;
-    font-size: 18px;
 }
 .navbar-default {
 background-color: transparent;
 border-color: transparent;
 }
-.navbar-inverse .navbar-inner {
+.navbar-inverse {
     background: #444;
-    font-weight:    300;
+    font-weight: 300;
     font-size:  15px;
-}
-.navbar-inner {
     min-height: 35px;
     color: #efefef;
     border: none;
@@ -412,6 +411,14 @@ border-color: transparent;
 }
 .navbar-collapse .nav>li>a, .navbar-collapse .dropdown-menu a {
 }
+.nav li ul li:first-child a {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.nav li ul li:last-child a {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
 .nav li ul li a:hover {
     color: #fff;
 }
@@ -432,6 +439,13 @@ border-color: transparent;
     padding: 7px 20px;
     font-weight: 300;
 }
+
+@media (min-width: 768px) {
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 /***/
 /*** Potential Infusion Styles ***/
 /***/
