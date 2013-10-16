@@ -42,7 +42,7 @@
         margin-right: 10%;
     }
     .topbar .login input[type=text], input[type=password] {
-        margin-top: 10px;
+        margin-top: 0px;
         width: 100px;
     }
     .logged_in_box {
@@ -106,7 +106,7 @@
     .topbar .login {
     }
     .topbar .login input[type=text], input[type=password] {
-        margin-top: 10px;
+        margin-top: 0px;
     }
     .logged_in_box {
         margin-top: 0;  
@@ -168,7 +168,7 @@
     .topbar .login {
     }
     .topbar .login input[type=text], input[type=password] {
-        margin-top: 10px;
+        margin-top: 0px;
     }
     .logged_in_box {
         margin-top: 0;

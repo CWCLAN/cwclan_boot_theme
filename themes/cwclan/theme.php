@@ -38,7 +38,8 @@ function render_page($license = false) {
                     <span class="bar"></span>
                 </a>';
     // Content Begin
-    echo '<div class="wrapper clearfix swipe-content">          
+    echo '<div class="meta_wrap clearfix">
+        <div class="wrapper clearfix swipe-content">          
           <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
@@ -134,6 +135,7 @@ function render_page($license = false) {
                 PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                 </div>	
 	</div>
+        </div>
         </div>
         </div>
         </div>';
