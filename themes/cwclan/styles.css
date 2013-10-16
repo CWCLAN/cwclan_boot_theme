@@ -169,7 +169,7 @@ input[type=text],input[type=password] {
     color: #444;
 }
 .meta_wrap {
-    margin-left: 50px;
+/*    margin-left: 50px;*/
 }
 .wrapper {
     margin-top:50px;
@@ -759,13 +759,13 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 }
  
 .swipe-area {
-    position: absolute;
+/*    position: absolute;
     width: 50px;
     left: 0;
     top: 0;
     height: 100%;
     background: #f3f3f3;
-    z-index: 0;
+    z-index: 0;*/
 }
 #swipe-sidebar {    
     background: #efebdf;
@@ -777,6 +777,7 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
     left: -240px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
+    overflow-y:auto;
 }
 #swipe-sidebar ul {
     margin: 0;
@@ -816,7 +817,7 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     /*padding-left: 60px;*/
-    width: 98%;
+    width: 100%;
 }
 .swipe-main-content .swipe-content h1{
     font-weight: 100;
@@ -826,7 +827,7 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
     line-height: 160%;
 }
 .swipe-main-content #sidebar-toggle {
-    background: #e5deca;
+    background: #444;
     border-radius: 3px;
     display: block;
     position: relative;

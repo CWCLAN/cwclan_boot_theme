@@ -31,15 +31,15 @@ function render_page($license = false) {
                 </ul>
             </div>
             <div class="swipe-main-content">
-                <div class="swipe-area"></div>
+                <div></div>
                 <a href="#" data-toggle=".swipe-container" id="sidebar-toggle">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </a>';
     // Content Begin
-    echo '<div class="meta_wrap clearfix">
-        <div class="wrapper clearfix swipe-content">          
+    echo '<div class="meta_wrap clearfix swipe-area"">
+          <div class="wrapper clearfix swipe-content">          
           <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
@@ -166,7 +166,8 @@ function render_page($license = false) {
                     $(".swipe-container").removeClass("open-sidebar");
                     return false;
                 }
-            }
+            },
+            allowPageScroll:"vertical"
         });
         $(".tp").tooltip({
             placement : "right"
