@@ -54,7 +54,7 @@ function render_page($license = false) {
     
     echo '<div data-role="content">
           <div class="wrapper clearfix" data-enhance="false">          
-          <div class="breadcrumb"><span class="c_orange"></span></div>
+          <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
     // Navbar Begin
