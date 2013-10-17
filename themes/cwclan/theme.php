@@ -14,6 +14,7 @@ function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
 add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.cw.css'>");
@@ -159,10 +160,10 @@ function render_page($license = false) {
             <div data-role="navbar">
                 <ul>
                     <li><a href="#left-panel">
-                        <span class="glyphicon glyphicon-align-left"></span></a>
+                        <span class="icon-indent-increase"></span></a>
                     </li>                    
                     <li><a href="#right-panel">
-                        <span class="glyphicon glyphicon-star"></span></a>
+                        <span class="icon-indent-decrease"></span></a>
                     </li>
                 </ul>
                 
