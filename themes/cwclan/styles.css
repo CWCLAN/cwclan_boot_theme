@@ -703,13 +703,13 @@ ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
 ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 
 /* Swipe works with mouse as well but often causes text selection. */
-#cw-page * {
+/*#cw-page * {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-}
+}*/
 /**** jQuery Mobile ****/
 .ui-content {
     background:url('../cwclan/img/design/bgr.jpg');

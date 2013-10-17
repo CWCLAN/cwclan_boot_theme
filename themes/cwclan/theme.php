@@ -17,8 +17,9 @@ function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
+//add_to_head('<script src="' . THEME . 'js/jquery.cookies.js"></script>');
 add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.cw.css'>");
-add_to_head('<script type="text/javascript">
+add_to_head('<script type="text/javascript">        
         $(document).bind("mobileinit", function() {
             $.mobile.ignoreContentEnabled = true;
         });
@@ -29,9 +30,9 @@ add_to_head('<script type="text/javascript">
             // We do this by checking the data that the framework stores on the page element (panel: open).
             if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
                 if ( e.type === "swipeleft"  ) {
-                    $( "#right-panel" ).panel( "open" );
+                    $( "#right-panel" ).panel( "open" );                    
                 } else if ( e.type === "swiperight" ) {
-                    $( "#left-panel" ).panel( "open" );
+                    $( "#left-panel" ).panel( "open" );                    
                 }
             }
             });
