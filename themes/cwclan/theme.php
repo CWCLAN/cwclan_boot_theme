@@ -22,8 +22,8 @@ add_to_head('<script type="text/javascript">
         $(document).bind("mobileinit", function() {
             $.mobile.ignoreContentEnabled = true;
         });
-        $( document ).on( "pageinit", "#page", function() {
-            $( document ).on( "swipeleft swiperight", "#page", function( e ) {
+        $( document ).on( "pageinit", "#cw-page", function() {
+            $( document ).on( "swipeleft swiperight", "#cw-page", function( e ) {
             // We check if there is no open panel on the page because otherwise
             // a swipe to close the left panel would also open the right panel (and v.v.).
             // We do this by checking the data that the framework stores on the page element (panel: open).
@@ -44,7 +44,7 @@ function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
     // SWIPE-MENU Content
-    echo '<div data-role="page" id="page">';            
+    echo '<div data-role="page" id="cw-page">';            
     // Content Begin
     
     echo '<div data-role="content">
@@ -98,14 +98,15 @@ function render_page($license = false) {
                     ' . U_CENTER . CONTENT . L_CENTER . '
           </div>';
     // Sidebar		
-    echo '<div class="sidebar visible-md visible-lg">';
+    /*echo '<div class="sidebar visible-md visible-lg">';
     if (RIGHT) {
         echo RIGHT;
     }
     if (LEFT) {
         echo LEFT;
     }
-    echo '</div></div>';
+    echo '</div></div>';*/
+    echo "</div>";
     // Footer
     echo'<footer class="clearfix" data-enhance="false"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
@@ -145,20 +146,21 @@ function render_page($license = false) {
             </div>
         </div>
         </div><!-- /swipe content -->
-        <div data-role="panel" id="left-panel" data-position-fixed="true">            
-            '.showsublinks("","").'            
-        </div><!-- /swipe panel left -->
-        <div data-role="panel" id="right-panel" data-position="right" data-position-fixed="true">';
-            echo '<div class="sidebar">';
+        <div data-role="panel" id="left-panel" data-display="overlay" data-position-fixed="true">';            
+            echo '<div class="sidepanel">';
             if (RIGHT) {
                 echo RIGHT;
-            }
+            }            
+            echo '</div>';           
+   echo'</div><!-- /swipe panel left -->
+        <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-position-fixed="true">';
+            echo '<div class="sidepanel">';            
             if (LEFT) {
                 echo LEFT;
             }
             echo '</div>';           
    echo'</div><!-- /swipe panel right -->
-        <div data-role="footer" data-position="fixed">
+        <div data-role="footer" data-id="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
                     <li><a href="#left-panel">

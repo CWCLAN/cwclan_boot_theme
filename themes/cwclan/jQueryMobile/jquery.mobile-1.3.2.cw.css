@@ -3139,7 +3139,7 @@ div.ui-slider-switch.ui-mini {
 	padding-bottom: 1px;
 }
 .ui-panel-display-overlay {
-	z-index: 1001; /* fixed toolbars have z-index 1000 */
+	z-index: 999; /* fixed toolbars have z-index 1000 */
 }
 .ui-panel-display-reveal {
 	z-index: 0;

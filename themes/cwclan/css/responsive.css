@@ -11,8 +11,9 @@
         width:75%;
     }
     .content {
-        width: 70%;
+/*        width: 70%;*/
         margin-left: 2%;
+        margin-right: 2%;
         float: left;
         border-left: solid thin #555;
         border-right: solid thin #555;
@@ -80,7 +81,7 @@
         width: 75%;
     }
     .content {
-        width: 95%;
+/*        width: 95%;*/
         margin-left:auto;
         margin-right:auto;
         float: none;
@@ -143,7 +144,7 @@
     }
     .content {
         box-shadow: 0 0 0 #fff;
-        width: 95%;
+/*        width: 95%;*/
         margin-left:auto;
         margin-right:auto;
         float: none;
