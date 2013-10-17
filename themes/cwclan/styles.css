@@ -131,7 +131,7 @@ input[type=text],input[type=password] {
 .logged_in_box .user_login_content .user_login_icons a:visited {
     color: #444;
 }
-.wrapper {
+.wrapper{
     margin-top:50px;
     margin-left: auto;
     margin-right: auto;
@@ -707,8 +707,10 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
     -o-user-select: none;
     user-select: none;
 }
-
 /**** jQuery Mobile ****/
 .ui-content {
     background:url('../cwclan/img/design/bgr.jpg');
+}
+#left-panel, #right-panel {    
+    background:url('../cwclan/img/design/bg_content.png');
 }

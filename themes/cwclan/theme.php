@@ -44,12 +44,7 @@ function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
     // SWIPE-MENU Content
-    echo '<div data-role="page" id="page">
-            <div data-role="header">
-                <h1>Swipe left or right</h1>
-                <a href="#left-panel">Open left panel</a>
-                <a href="#right-panel">Open right panel</a>
-            </div><!-- /header -->';
+    echo '<div data-role="page" id="page">';            
     // Content Begin
     
     echo '<div data-role="content">
@@ -103,7 +98,7 @@ function render_page($license = false) {
                     ' . U_CENTER . CONTENT . L_CENTER . '
           </div>';
     // Sidebar		
-    echo '<div class="sidebar">';
+    echo '<div class="sidebar visible-md visible-lg">';
     if (RIGHT) {
         echo RIGHT;
     }
@@ -116,7 +111,7 @@ function render_page($license = false) {
             <span style="float:right">' . showcopyright() . '</span></footer>
         </div>';
 
-    echo '<div class="footernav visible-desktop" data-enhance="false">
+    echo '<div class="footernav visible-md visible-lg" data-enhance="false">
             <div class="links-section">
                 <h4>Server</h4>                    
                 <ul class="links-s-content">
@@ -153,9 +148,16 @@ function render_page($license = false) {
         <div data-role="panel" id="left-panel" data-position-fixed="true">            
             '.showsublinks("","").'            
         </div><!-- /swipe panel left -->
-        <div data-role="panel" id="right-panel" data-position="right" data-position-fixed="true">
-            <p>Right push panel.</p>            
-        </div><!-- /swipe panel right -->
+        <div data-role="panel" id="right-panel" data-position="right" data-position-fixed="true">';
+            echo '<div class="sidebar">';
+            if (RIGHT) {
+                echo RIGHT;
+            }
+            if (LEFT) {
+                echo LEFT;
+            }
+            echo '</div>';           
+   echo'</div><!-- /swipe panel right -->
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
