@@ -19,10 +19,13 @@ function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
-add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.min.css'>");
+add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.cw.css'>");
 add_to_head('<script type="text/javascript">
-        $( document ).on( "pageinit", "#demo-page", function() {
-            $( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
+        $(document).bind("mobileinit", function() {
+            $.mobile.ignoreContentEnabled = true;
+        });
+        $( document ).on( "pageinit", "#page", function() {
+            $( document ).on( "swipeleft swiperight", "#page", function( e ) {
             // We check if there is no open panel on the page because otherwise
             // a swipe to close the left panel would also open the right panel (and v.v.).
             // We do this by checking the data that the framework stores on the page element (panel: open).
@@ -43,7 +46,7 @@ function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
     // SWIPE-MENU Content
-    echo '<div data-role="page" id="demo-page" data-url="demo-page">
+    echo '<div data-role="page" id="page">
             <div data-role="header">
                 <h1>Swipe left or right</h1>
                 <a href="#left-panel">Open left panel</a>
@@ -52,7 +55,7 @@ function render_page($license = false) {
     // Content Begin
     
     echo '<div data-role="content">
-          <div class="wrapper clearfix">          
+          <div class="wrapper clearfix" data-enhance="false">          
           <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
@@ -111,11 +114,11 @@ function render_page($license = false) {
     }
     echo '</div></div>';
     // Footer
-    echo'<footer class="clearfix"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
+    echo'<footer class="clearfix" data-enhance="false"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
         </div>';
 
-    echo '<div class="footernav visible-desktop">
+    echo '<div class="footernav visible-desktop" data-enhance="false">
             <div class="links-section">
                 <h4>Server</h4>                    
                 <ul class="links-s-content">
@@ -149,10 +152,10 @@ function render_page($license = false) {
             </div>
         </div>
         </div><!-- /swipe content -->
-        <div data-role="panel" id="left-panel">
-            <ul>'.showsublinks("<li>","</li>").'</ul>
+        <div data-role="panel" id="left-panel">            
+            '.showsublinks("","").'            
         </div><!-- /swipe panel left -->
-        <div data-role="panel" id="right-panel" data-display="push" data-position="right">
+        <div data-role="panel" id="right-panel" data-position="right">
             <p>Right push panel.</p>            
         </div><!-- /swipe panel right -->
         </div>';
