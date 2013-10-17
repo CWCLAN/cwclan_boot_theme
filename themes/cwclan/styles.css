@@ -14,8 +14,7 @@
 /***/
 /*** Globals & Helpers ***/
 /***/
-body {    
-    /* font-family: 'Roboto', sans-serif; */
+body {        
     font-weight:300;
     font-size: 14px;
 }
@@ -85,41 +84,6 @@ input[type=text],input[type=password] {
 /***/
 /*** Layout ***/
 /***/
-/*.topbar {
-    left:0;
-    top:0;
-    position: fixed;
-    z-index:99;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 20px;
-    background: #efebdf;
-    box-shadow: 0 0 8px #888;
-    font-family: 'Oswald', sans-serif;
-    border-bottom: solid thin #ccc;
-}
-.topbar .title {
-    margin-left: 10%;
-    color: #ababab;
-    line-height: 48px;
-    font-size: 28px;
-    float:left;
-    font-weight:400;
-    text-shadow: 0 0 2px #ccc;
-}
-.topbar .subtitle {
-    color: #ef9849;
-    line-height: 38px;
-    font-size: 18px;
-    font-weight:400;
-    text-shadow: 0 0 2px #ccc;
-}
-.topbar .btn-navbar {
-    background:#e5deca;
-}
-.topbar .btn-navbar:hover {
-    background:#efebdf;
-}*/
 .login-info {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -736,7 +700,7 @@ ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
 ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 
 /* Swipe works with mouse as well but often causes text selection. */
-#demo-page * {
+#page * {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;

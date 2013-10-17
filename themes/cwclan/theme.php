@@ -12,10 +12,7 @@ require_once INCLUDES . "theme_functions_include.php";
 function get_head_tags() {
     echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-responsive.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/main.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/normalize.min.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
@@ -51,7 +48,7 @@ function render_page($license = false) {
                 <h1>Swipe left or right</h1>
                 <a href="#left-panel">Open left panel</a>
                 <a href="#right-panel">Open right panel</a>
-            </div><!-- /header -->';                        
+            </div><!-- /header -->';
     // Content Begin
     
     echo '<div data-role="content">
@@ -152,12 +149,25 @@ function render_page($license = false) {
             </div>
         </div>
         </div><!-- /swipe content -->
-        <div data-role="panel" id="left-panel">            
+        <div data-role="panel" id="left-panel" data-position-fixed="true">            
             '.showsublinks("","").'            
         </div><!-- /swipe panel left -->
-        <div data-role="panel" id="right-panel" data-position="right">
+        <div data-role="panel" id="right-panel" data-position="right" data-position-fixed="true">
             <p>Right push panel.</p>            
         </div><!-- /swipe panel right -->
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#left-panel">
+                        <span class="glyphicon glyphicon-align-left"></span></a>
+                    </li>                    
+                    <li><a href="#right-panel">
+                        <span class="glyphicon glyphicon-star"></span></a>
+                    </li>
+                </ul>
+                
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
         </div>';
     // Scripts and co.
     add_to_footer('<!-- Scripts -->        
