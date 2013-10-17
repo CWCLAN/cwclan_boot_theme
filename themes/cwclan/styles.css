@@ -168,9 +168,6 @@ input[type=text],input[type=password] {
 .logged_in_box .user_login_content .user_login_icons a:visited {
     color: #444;
 }
-.meta_wrap {
-/*    margin-left: 50px;*/
-}
 .wrapper {
     margin-top:50px;
     margin-left: auto;
@@ -846,4 +843,13 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 }
 .swipe-main-content #sidebar-toggle .bar:last-child{
      margin-bottom: 0;   
+}
+
+/* Swipe works with mouse as well but often causes text selection. */
+#demo-page * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }

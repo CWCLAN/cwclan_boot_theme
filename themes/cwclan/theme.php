@@ -10,36 +10,49 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";    
+    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/main.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/normalize.min.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
-    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
+    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
+add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.min.css'>");
+add_to_head('<script type="text/javascript">
+        $( document ).on( "pageinit", "#demo-page", function() {
+            $( document ).on( "swipeleft swiperight", "#demo-page", function( e ) {
+            // We check if there is no open panel on the page because otherwise
+            // a swipe to close the left panel would also open the right panel (and v.v.).
+            // We do this by checking the data that the framework stores on the page element (panel: open).
+            if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
+                if ( e.type === "swipeleft"  ) {
+                    $( "#right-panel" ).panel( "open" );
+                } else if ( e.type === "swiperight" ) {
+                    $( "#left-panel" ).panel( "open" );
+                }
+            }
+            });
+        });
+        </script>');
+add_to_head('<script src="' . THEME . 'jQueryMobile/jquery.mobile-1.3.2.min.js"></script>');
+
 
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
     // SWIPE-MENU Content
-    echo '<div class="swipe-container">
-            <div id="swipe-sidebar">
-                <ul>
-                    '.showsublinks("<li>","</li>").'
-                </ul>
-            </div>
-            <div class="swipe-main-content">
-                <div></div>
-                <a href="#" data-toggle=".swipe-container" id="sidebar-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </a>';
+    echo '<div data-role="page" id="demo-page" data-url="demo-page">
+            <div data-role="header">
+                <h1>Swipe left or right</h1>
+                <a href="#left-panel">Open left panel</a>
+                <a href="#right-panel">Open right panel</a>
+            </div><!-- /header -->';                        
     // Content Begin
-    echo '<div class="meta_wrap clearfix swipe-area"">
-          <div class="wrapper clearfix swipe-content">          
+    
+    echo '<div data-role="content">
+          <div class="wrapper clearfix">          
           <div class="breadcrumb"><span class="c_orange"></span></div>
           <div class="hero"></div>';
 
@@ -103,8 +116,8 @@ function render_page($license = false) {
         </div>';
 
     echo '<div class="footernav visible-desktop">
-	<div class="links-section">
-	<h4>Server</h4>                    
+            <div class="links-section">
+                <h4>Server</h4>                    
                 <ul class="links-s-content">
                     <li>
                         <a href="#" title="" target="_blank">TF2</a>
@@ -116,9 +129,9 @@ function render_page($license = false) {
                         <a href="#" title="" target="_blank">Mumble - Voice Server</a>
                     </li>
                 </ul>
-	</div>
-	<div class="links-section">
-	<h4>Heißer Stuff</h4>                    
+            </div>
+            <div class="links-section">
+                <h4>Heißer Stuff</h4>                    
                 <ul class="links-s-content">
                     <li>
                         <a href="http://timkopplow.com/dev/cwish/" target="_blank" title="Nevos Responsive Design">Nevos Responsive Design</a>
@@ -127,55 +140,35 @@ function render_page($license = false) {
                         <a href="#" title="">Test</a>
                     </li>
                 </ul>
-	</div>
-
-	<div class="child links-section">
-	<h4>Info</h4>
-                <div class="links-s-content">
-                PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
-                </div>	
-	</div>
+            </div>
+            <div class="child links-section">
+                <h4>Info</h4>
+                    <div class="links-s-content">
+                    PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
+                    </div>	
+            </div>
         </div>
-        </div>
-        </div>
+        </div><!-- /swipe content -->
+        <div data-role="panel" id="left-panel">
+            <ul>'.showsublinks("<li>","</li>").'</ul>
+        </div><!-- /swipe panel left -->
+        <div data-role="panel" id="right-panel" data-display="push" data-position="right">
+            <p>Right push panel.</p>            
+        </div><!-- /swipe panel right -->
         </div>';
     // Scripts and co.
-    echo '<!-- Scripts -->        
-        <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
-        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
+    add_to_footer('<!-- Scripts -->        
+        <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>        
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>       
-        </script>
         <script>
-        $(document).ready(function() {
-            $("[data-toggle]").click(function() {
-                var toggle_el = $(this).data("toggle");
-                $(toggle_el).toggleClass("open-sidebar");
-            });
-     
-        });
- 
-        $(".swipe-area").swipe({
-            swipeStatus:function(event, phase, direction, distance, duration, fingers)
-            {
-                if (phase=="move" && direction =="right") {
-                    $(".swipe-container").addClass("open-sidebar");
-                    return false;
-                }
-                if (phase=="move" && direction =="left") {
-                    $(".swipe-container").removeClass("open-sidebar");
-                    return false;
-                }
-            },
-            allowPageScroll:"vertical"
-        });
         $(".tp").tooltip({
             placement : "right"
         });
         $(".tp2").tooltip({
             placement : "right"
         });
-        </script>';
+        </script>');
 }
 
 /* New in v7.02 - render comments */
