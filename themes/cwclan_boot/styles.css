@@ -737,17 +737,6 @@ ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
 ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 
 /* Bootstrap 3 Custom Button */
-.navbar-fixed-bottom .btn-group-justified .btn-group{
-display: table-cell;
-float: none;
-width: 50%;
-padding: 0 5px 0 5px;
-}
-
-.navbar-fixed-bottom .btn-group-justified .btn-group button{
-width: 100%;
-box-shadow: 0 0 5px #777;
-}
 .btn-dark {
   color: #fff;
   background-color: #444;
@@ -758,8 +747,8 @@ box-shadow: 0 0 5px #777;
 .btn-dark:active,
 .btn-dark.active,
 .open .dropdown-toggle.btn-dark {
-  color: #fff;
-  background-color: #ef9849;
+  color: #ef9849;
+  background-color: #444;
   border-color: #777;
 }
 .btn-dark:active,
@@ -785,4 +774,29 @@ fieldset[disabled] .btn-dark.active {
   background-color: #444;
   border-color: #777;
 }
-
+/***/
+/***SWIPE MENU***/
+/***/
+.swipe-sidebar.open-sidebar {
+    left: 0px;
+}
+.swipe-sidebar {    
+    background: #999;
+    box-shadow: 0 0 5px #777;
+    font-family: 'Oswald', sans-serif;
+    border-right: solid thin #ccc;
+    position: absolute;
+    z-index: 97;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    left: -240px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 5px;    
+    webkit-transition:  left 0.4s ease-in-out;
+    -moz-transition:  left 0.4s ease-in-out;
+    -ms-transition:  left 0.4s ease-in-out;
+    -o-transition:  left 0.4s ease-in-out;
+    transition:  left 0.4s ease-in-out;
+}

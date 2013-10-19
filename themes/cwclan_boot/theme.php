@@ -24,12 +24,10 @@ function get_head_tags() {
 
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
-
-    // SWIPE-MENU Content
-              
+      
     // Content Begin
-    
-    echo '<div class="wrapper clearfix" data-enhance="false">          
+    echo '<div class="meta_wrap clearfix swipe-area">
+          <div class="wrapper clearfix" data-enhance="false">          
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
@@ -79,7 +77,7 @@ function render_page($license = false) {
                     ' . U_CENTER . CONTENT . L_CENTER . '
           </div>';
     // Sidebar		
-    echo '<div class="sidebar visible-md visible-lg">';
+    echo '<div class="sidebar">';
     if (RIGHT) {
         echo RIGHT;
     }
@@ -125,43 +123,29 @@ function render_page($license = false) {
                     </div>	
             </div>
         </div>';
-        echo'<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer" role="navigation">
-                <div class="btn-toolbar btn-group-justified">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-dark flip_left"><span class="icon-indent-increase"></span></button>                        
-                    </div>                    
-                    <div class="btn-group">                        
-                        <button type="button" class="btn btn-dark flip_right"><span class="icon-indent-decrease"></span></button>
-                    </div>
-                </div>    
-             </nav>';        
-   echo'<div id="left-panel">';            
-            echo '<div class="sidepanel">';
-            if (RIGHT) {
-                echo RIGHT;
-            }            
-            echo '</div>';           
-   echo'</div><!-- /swipe panel left -->
-        <div id="right-panel">';
-            echo '<div class="sidepanel">';            
-            if (LEFT) {
-                echo LEFT;
-            }
-            echo '</div>';  
-   echo'</div>';         
+        echo'<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer" role="navigation">                
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
+                </div>   
+             </nav>';  
+   echo'</div><!--meta_wrap-->';
+   // SWIPE-MENU Content
+    echo '<div class="swipe-sidebar">
+            <div class="sidepanel">';
+    if (RIGHT) {
+        echo RIGHT;
+    }
+    if (LEFT) {
+        echo LEFT;
+    }
+        echo '</div>
+          </div>';  
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
+        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
-        <script src="' . THEME . 'js/main.js"></script>       
-        <script>
-        $(".tp").tooltip({
-            placement : "right"
-        });
-        $(".tp2").tooltip({
-            placement : "right"
-        });
-        </script>');
+        <script src="' . THEME . 'js/main.js"></script>');
 }
 
 /* New in v7.02 - render comments */
