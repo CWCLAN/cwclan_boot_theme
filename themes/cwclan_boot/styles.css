@@ -15,7 +15,7 @@
 /*** Globals & Helpers ***/
 /***/
 body {
-    background:url('../cwclan/img/design/bgr.jpg');
+    background:url('../cwclan_boot/img/design/bgr.jpg');
     font-weight:300;
     font-size: 14px;
     padding-bottom: 70px;
@@ -142,7 +142,7 @@ input[type=text],input[type=password] {
     margin-right: auto;
     margin-bottom: 20px;
     box-shadow: 0 0 10px #777;
-    background:url('../cwclan/img/design/bg_content.png');
+    background:url('../cwclan_boot/img/design/bg_content.png');
     border-radius: 3px;
 }
 .welcome {}
@@ -183,7 +183,7 @@ input[type=text],input[type=password] {
     border-top: solid thin #444;
 }
 .sidebar .box p,.sidebar .sidebar_div, .sidepanel .box p, .sidepanel .sidebar_div {
-    background: url('../cwclan/img/design/agsquare.png');	
+    background: url('../cwclan_boot/img/design/agsquare.png');	
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     padding: 5px 10px;
@@ -195,7 +195,7 @@ input[type=text],input[type=password] {
     margin-bottom: 16px;
 }
 .content {
-    background: url('../cwclan/img/design/agsquare.png');	
+    background: url('../cwclan_boot/img/design/agsquare.png');	
     position: relative;
     z-index:0;
     min-height: 200px;
@@ -285,7 +285,7 @@ footer {
 .hero {
     height: 200px;
     width: 100%;
-    background:url('../cwclan/img/specials/hero_01.png') no-repeat #444;
+    background:url('../cwclan_boot/img/specials/hero_01.jpg') no-repeat #444;
 }
 .icons {
     color: #aaa;
