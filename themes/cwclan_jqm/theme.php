@@ -10,14 +10,11 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
+    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";   
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
-//add_to_head('<script src="' . THEME . 'js/jquery.cookies.js"></script>');
 add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.cw.css'>");
 add_to_head('<script type="text/javascript">        
         $(document).bind("mobileinit", function() {
@@ -36,6 +33,11 @@ add_to_head('<script type="text/javascript">
                 }
             }
             });
+        }); 
+        // for Anchor links
+        $(\'.container a[href^=#]\').bind(\'click vclick\', function (ev) {
+            location.hash = $(this).attr(\'href\');
+            return false;
         });
         </script>');
 add_to_head('<script src="' . THEME . 'jQueryMobile/jquery.mobile-1.3.2.min.js"></script>');
@@ -161,7 +163,7 @@ function render_page($license = false) {
             }
             echo '</div>';           
    echo'</div><!-- /swipe panel right -->
-        <div data-role="footer" data-id="footer" data-position="fixed">
+        <div data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
                     <li><a href="#left-panel">
@@ -177,7 +179,7 @@ function render_page($license = false) {
         </div>';
     // Scripts and co.
     add_to_footer('<!-- Scripts -->        
-        <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>        
+               
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>       
         <script>
