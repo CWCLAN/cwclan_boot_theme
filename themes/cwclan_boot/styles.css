@@ -14,9 +14,11 @@
 /***/
 /*** Globals & Helpers ***/
 /***/
-body {        
+body {
+    background:url('../cwclan/img/design/bgr.jpg');
     font-weight:300;
     font-size: 14px;
+    padding-bottom: 70px;
 }
 ::selection {
     background: #ef9849; 
@@ -331,6 +333,28 @@ article .article_submenu .author {
 .pagination .menu, ol, ul {
     padding: 0;
 }
+#left-panel, #right-panel{
+    background: #555;
+    padding: 0 5px 0 5px;
+    width: 13%;
+    min-width: 200px;
+}
+#left-panel {    
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    z-index:97; /*navbars haben 98*/    
+    border-right: thin solid #777;
+}
+#right-panel {
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    z-index:97;    
+    border-left: thin solid #777;
+}
 /***/
 /*** Bootstrap Custom Navbar & Topbar ***/
 /***/
@@ -341,12 +365,19 @@ article .article_submenu .author {
     font-family: 'Roboto Condensed', sans-serif;
     font-size:  21px;
     position: relative;
-    z-index: 98;
+    z-index: 96;
     margin-bottom:0;
 }
+.navbar-footer  {
+    z-index: 98;
+}
 .navbar-default {
-background-color: transparent;
-border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    border-color: transparent;
+    border: none;
+    min-height: 35px;
+    box-shadow: none;
 }
 .navbar-inverse {
     background: #444;
@@ -356,6 +387,9 @@ border-color: transparent;
     color: #efefef;
     border: none;
     border-radius: 0px;
+}
+.navbar-fixed-bottom {
+    position: fixed;
 }
 .navbar .nav>li>a {
     text-shadow: none;
@@ -702,19 +736,53 @@ ul#menu2 li a:hover{background:#3B3B3B;color:#CA880C;}
 ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
 ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 
-/* Swipe works with mouse as well but often causes text selection. */
-/*#cw-page * {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}*/
-/**** jQuery Mobile ****/
-.ui-content {
-    background:url('../cwclan/img/design/bgr.jpg');
-    box-shadow: 0px 0px 15px #333;
+/* Bootstrap 3 Custom Button */
+.navbar-fixed-bottom .btn-group-justified .btn-group{
+display: table-cell;
+float: none;
+width: 50%;
+padding: 0 5px 0 5px;
 }
-#left-panel, #right-panel {    
-    background:url('../cwclan/img/design/bg_content.png');
+
+.navbar-fixed-bottom .btn-group-justified .btn-group button{
+width: 100%;
+box-shadow: 0 0 5px #777;
 }
+.btn-dark {
+  color: #fff;
+  background-color: #444;
+  border-color: #777;  
+}
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active,
+.btn-dark.active,
+.open .dropdown-toggle.btn-dark {
+  color: #fff;
+  background-color: #ef9849;
+  border-color: #777;
+}
+.btn-dark:active,
+.btn-dark.active,
+.open .dropdown-toggle.btn-dark {
+  background-image: none;
+}
+.btn-dark.disabled,
+.btn-dark[disabled],
+fieldset[disabled] .btn-dark,
+.btn-dark.disabled:hover,
+.btn-dark[disabled]:hover,
+fieldset[disabled] .btn-dark:hover,
+.btn-dark.disabled:focus,
+.btn-dark[disabled]:focus,
+fieldset[disabled] .btn-dark:focus,
+.btn-dark.disabled:active,
+.btn-dark[disabled]:active,
+fieldset[disabled] .btn-dark:active,
+.btn-dark.disabled.active,
+.btn-dark[disabled].active,
+fieldset[disabled] .btn-dark.active {
+  background-color: #444;
+  border-color: #777;
+}
+

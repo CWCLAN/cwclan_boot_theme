@@ -26,11 +26,10 @@ function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
 
     // SWIPE-MENU Content
-    echo '<div data-role="page" id="cw-page">';            
+              
     // Content Begin
     
-    echo '<div data-role="content">
-          <div class="wrapper clearfix" data-enhance="false">          
+    echo '<div class="wrapper clearfix" data-enhance="false">          
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
@@ -80,15 +79,14 @@ function render_page($license = false) {
                     ' . U_CENTER . CONTENT . L_CENTER . '
           </div>';
     // Sidebar		
-    /*echo '<div class="sidebar visible-md visible-lg">';
+    echo '<div class="sidebar visible-md visible-lg">';
     if (RIGHT) {
         echo RIGHT;
     }
     if (LEFT) {
         echo LEFT;
     }
-    echo '</div></div>';*/
-    echo "</div>";
+    echo '</div></div>';    
     // Footer
     echo'<footer class="clearfix" data-enhance="false"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
@@ -126,39 +124,34 @@ function render_page($license = false) {
                     PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                     </div>	
             </div>
-        </div>
-        </div><!-- /swipe content -->
-        <div data-role="panel" id="left-panel" data-display="overlay" data-position-fixed="true">';            
+        </div>';
+        echo'<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer" role="navigation">
+                <div class="btn-toolbar btn-group-justified">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-dark flip_left"><span class="icon-indent-increase"></span></button>                        
+                    </div>                    
+                    <div class="btn-group">                        
+                        <button type="button" class="btn btn-dark flip_right"><span class="icon-indent-decrease"></span></button>
+                    </div>
+                </div>    
+             </nav>';        
+   echo'<div id="left-panel">';            
             echo '<div class="sidepanel">';
             if (RIGHT) {
                 echo RIGHT;
             }            
             echo '</div>';           
    echo'</div><!-- /swipe panel left -->
-        <div data-role="panel" id="right-panel" data-display="overlay" data-position="right" data-position-fixed="true">';
+        <div id="right-panel">';
             echo '<div class="sidepanel">';            
             if (LEFT) {
                 echo LEFT;
             }
-            echo '</div>';           
-   echo'</div><!-- /swipe panel right -->
-        <div data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false">
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#left-panel">
-                        <span class="icon-indent-increase"></span></a>
-                    </li>                    
-                    <li><a href="#right-panel">
-                        <span class="icon-indent-decrease"></span></a>
-                    </li>
-                </ul>
-                
-            </div><!-- /navbar -->
-        </div><!-- /footer -->
-        </div>';
+            echo '</div>';  
+   echo'</div>';         
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
-        <script src="' . THEME . 'js/bootstrap.js"></script>
+        <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>       
         <script>

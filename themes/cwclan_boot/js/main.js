@@ -1,44 +1,20 @@
-// jQuery div toggle
-(function($) {
-	$.fn.showHide = function(options) {
+$(document).ready(function() {
+        var Wheight = $('body').prop('scrollHeight');        
+        $('#left-panel').css( "height" , Wheight + "px");        
+        $('#right-panel').css( "height" , Wheight + "px");
+        
+	var panel = $("#left-panel"), flip = $(".flip_left");
 
-		//default vars for the plugin
-		var defaults = {
-			speed : 800,
-			easing : '',
-			changeText : 0,
-			showText : 'Show',
-			hideText : 'Hide'
-
-		};
-		var options = $.extend(defaults, options);
-
-		$(this).click(function() {
-			// optionally add the class .toggleDiv to each div you want to automatically close
-			//$('.toggleDiv').fadeOut(options.speed, options.easing);
-			$('.toggleDiv').animate({
-				width : '10',
-				opacity : .5
-			}, 'slow');
-			// this var stores which button you've clicked
-			var toggleClick = $(this);
-			// this reads the rel attribute of the button to determine which div id to toggle
-			var toggleDiv = $(this).attr('title');
-			// here we toggle show/hide the correct div at the right speed and using which easing effect
-			//$(toggleDiv).fadeToggle(options.speed, options.easing, function() {
-			$(toggleDiv).animate({
-				height : 'toggle',
-				opacity : 'toggle'
-			}, 'slow', function() {
-				// this only fires once the animation is completed
-				if (options.changeText == 1) {
-					$(toggleDiv).is(":visible") ? toggleClick.text(options.hideText) : toggleClick.text(options.showText);
-				}
-			});
-
-			return false;
-
+	flip.click(function() {
+		panel.fadeToggle("slow", function() {			
 		});
+	});	
 
-	};
-})(jQuery);
+	// Rechtes Panel	
+	var panelr = $("#right-panel"), flipr = $(".flip_right");
+
+	flipr.click(function() {
+		panelr.fadeToggle("slow", function() {			
+		});
+	});
+});
