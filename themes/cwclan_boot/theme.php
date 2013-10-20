@@ -125,7 +125,7 @@ function render_page($license = false) {
         </div>';
         echo'<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer" role="navigation">                
                 <div class="btn-group">
-                    <button type="button" class="btn btn-dark" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
+                    <button type="button" class="btn btn-dark swipe-toggle" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
                 </div>   
              </nav>';  
    echo'</div><!--meta_wrap-->';
