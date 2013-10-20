@@ -120,11 +120,11 @@ function render_page($license = false) {
                     </div>	
             </div>
         </div>';
-        echo'<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer" role="navigation">                
-                <div class="btn-group">
-                    <button type="button" class="btn btn-dark swipe-toggle" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
-                </div>   
-             </nav>';  
+        echo'                
+                
+                    <button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
+                
+             ';  
    echo'</div><!--meta_wrap-->';
    // SWIPE-MENU Content
     echo '<div class="swipe-sidebar">

@@ -370,6 +370,15 @@ article .article_submenu .author {
 .navbar-footer  {
     z-index: 98;
 }
+
+.navbar-fixed-bottom {
+    right:auto;
+    border-radius: 4px;
+    margin:0 0 2px 5px;
+}
+
+
+
 .navbar-default {
     background-color: transparent;
     background-image: none;
