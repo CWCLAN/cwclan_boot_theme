@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    var Wheight = $('body').prop('scrollHeight');
-    $('.swipe-sidebar').css("height", Wheight + "px");
+    var Wheight = $('body').prop('scrollHeight'), Wwidth = $('body').prop('scrollWidth');
+    if (Wwidth > '950') { 
+        $('.swipe-sidebar').css("height", Wheight + "px");
+    }
 
     if (!$.cookie_ftw("CW_ToggleStatus")) {
         $.cookie_ftw("CW_ToggleStatus", 0, {
@@ -18,12 +20,9 @@ $(document).ready(function() {
     });
     var toggle_el = $(".swipe-toggle").data("toggle");
     if (($.cookie_ftw("CW_ToggleStatus") == 0 && $(toggle_el).hasClass("open-sidebar"))) {
-        $(toggle_el).removeClass("open-sidebar");
-        console.log("cookie nicht gesetzt remove class:" +toggle_el);
-    };
-    if (($.cookie_ftw("CW_ToggleStatus") == 1 && !$(toggle_el).hasClass("open-sidebar"))) {
-        $(toggle_el).addClass("open-sidebar");
-        console.log("cookie gesetzt - add class:" +toggle_el);
+        $(toggle_el).removeClass("open-sidebar");        
+    } else {    
+        $(toggle_el).addClass("open-sidebar");        
     };
 });
 // Swipe deaktiviert

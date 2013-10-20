@@ -143,7 +143,7 @@ function render_page($license = false) {
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
-        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
+        <script src="' . THEME . 'js/modernizr-2.6.2.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
