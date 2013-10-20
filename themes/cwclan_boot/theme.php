@@ -31,8 +31,7 @@ function render_page($license = false) {
           </div>'; // Topbar End
     
     // Content Begin
-    echo '<div class="meta_wrap clearfix swipe-area">
-          <div class="wrapper clearfix" data-enhance="false">          
+    echo '<div class="wrapper clearfix">          
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
@@ -125,12 +124,8 @@ function render_page($license = false) {
                     </div>	
             </div>
         </div>';
-        echo'                
-                
-                    <button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>                        
-                
-             ';  
-   echo'</div><!--meta_wrap-->';
+    echo'<button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>';  
+   
    // SWIPE-MENU Content
     echo '<div class="swipe-sidebar">
             <div class="sidepanel">';
@@ -138,7 +133,7 @@ function render_page($license = false) {
         echo LEFT;
     }    
         echo '</div>
-          </div>';  
+              </div>';  
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
