@@ -26,18 +26,18 @@ $(document).ready(function() {
     };
 });
 // Swipe deaktiviert
-$(".area").swipe({
-    swipeStatus: function(event, phase, direction, distance, duration, fingers) {
-        if (phase == "move" && direction == "right") {
-            $(".swipe-sidebar").addClass("open-sidebar");
-            return false;
-        }
-        if (phase == "move" && direction == "left") {
-            $(".swipe-sidebar").removeClass("open-sidebar");
-            return false;
-        }
-    }
-});
+//$(".area").swipe({
+//    swipeStatus: function(event, phase, direction, distance, duration, fingers) {
+//        if (phase == "move" && direction == "right") {
+//            $(".swipe-sidebar").addClass("open-sidebar");
+//            return false;
+//        }
+//        if (phase == "move" && direction == "left") {
+//            $(".swipe-sidebar").removeClass("open-sidebar");
+//            return false;
+//        }
+//    }
+//});
 
 $(".tp").tooltip({
     placement: "right"

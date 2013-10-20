@@ -80,10 +80,7 @@ function render_page($license = false) {
     echo '<div class="sidebar">';
     if (RIGHT) {
         echo RIGHT;
-    }
-    if (LEFT) {
-        echo LEFT;
-    }
+    }    
     echo '</div></div>';    
     // Footer
     echo'<footer class="clearfix" data-enhance="false"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
@@ -132,18 +129,15 @@ function render_page($license = false) {
    // SWIPE-MENU Content
     echo '<div class="swipe-sidebar">
             <div class="sidepanel">';
-    if (RIGHT) {
-        echo RIGHT;
-    }
     if (LEFT) {
         echo LEFT;
-    }
+    }    
         echo '</div>
           </div>';  
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
-        <script src="' . THEME . 'js/modernizr-2.6.2.min.js"></script>
+        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
