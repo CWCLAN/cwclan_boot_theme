@@ -24,7 +24,12 @@ function get_head_tags() {
 
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
-      
+    
+    // Topbar Content
+    echo '<div class="topbar navbar">
+            <div class="title">CWClan <span class="subtitle">Clan & Community</span></div>
+          </div>'; // Topbar End
+    
     // Content Begin
     echo '<div class="meta_wrap clearfix swipe-area">
           <div class="wrapper clearfix" data-enhance="false">          

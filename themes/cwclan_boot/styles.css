@@ -88,6 +88,35 @@ input[type=text],input[type=password] {
 /***/
 /*** Layout ***/
 /***/
+.topbar {
+    left:0;
+    top:0;
+    position: fixed;
+    z-index:99;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    background: #efebdf;
+    box-shadow: 0 0 8px #888;
+    font-family: 'Oswald', sans-serif;
+    border-bottom: solid thin #ccc;
+}
+.topbar .title {
+    margin-left: 13%;
+    color: #ababab;
+    line-height: 48px;
+    font-size: 28px;
+    float:left;
+    font-weight:400;
+    text-shadow: 0 0 2px #ccc;
+}
+.topbar .subtitle {
+    color: #ef9849;
+    line-height: 38px;
+    font-size: 18px;
+    font-weight:400;
+    text-shadow: 0 0 2px #ccc;
+}
 .login-info {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
