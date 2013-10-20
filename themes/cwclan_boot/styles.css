@@ -20,7 +20,8 @@ body {
     font-size: 14px;
 }
 ::selection {
-    background: #ef9849; 
+    background: #ef9849;
+    color: #fff;
 }
 .tp {
     font-family: 'Roboto', sans-serif;
@@ -59,9 +60,62 @@ img {
 .overflow-scroll {
     overflow: auto;
 }
+.button, button, input[type=submit], input[type=button] {
+    
+    text-decoration: none;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    border-bottom: solid 3px #c67d55;
+    box-shadow: none;
+    cursor: pointer;
+    text-shadow: 0px 1px 1px #fff;
+    vertical-align: middle;
+    color: #eee;
+    background: #ef9849;
+    text-shadow: 0px 1px 1px #eee;
+    
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    
+    outline-style: none; -moz-outline-style:none;
+    
+}
+
+.button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover {
+    
+    border-color: #c47850;  
+    
+}
+
+.huge {
+    font-size: 60px;
+    padding: 45px 70px;
+    border-bottom: 5px solid #d9d9d9;
+}
+
+.button:active:after, button:active, input[type=submit]:active, input[type=button]:active {
+
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.ccw {
+    color: #eee;
+    background: #ef9849;
+    border-color: #c67d55;
+    text-shadow: 0px 1px 1px #eee;
+}
+.ccw:hover {
+    border-color: #c47850;   
+}
 /***/
 /*** CWClan Forms ***/
 /***/
+/* OLD
 input[type=button], input[type=submit],.cw-btn {
     box-shadow: 0 1px 1px #999;
     color: #fbfbfb;
@@ -80,7 +134,7 @@ input[type=button]:hover, input[type=submit]:hover,.cw-btn:hover {
 input[type=button]:active, input[type=submit]:active,.cw-btn:active {
     box-shadow: inset 0 1px 1px #555;
 }
-
+*/
 input[type=text],input[type=password] {
     border: solid thin #999;
     padding: 3px 5px;
@@ -831,7 +885,7 @@ fieldset[disabled] .btn-dark.active {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: 5px;    
-    webkit-transition:  left 0.4s ease-in-out;
+    -webkit-transition:  left 0.4s ease-in-out;
     -moz-transition:  left 0.4s ease-in-out;
     -ms-transition:  left 0.4s ease-in-out;
     -o-transition:  left 0.4s ease-in-out;
