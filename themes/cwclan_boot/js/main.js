@@ -1,8 +1,9 @@
-$(document).ready(function() {
-    var cookie_enable = ($('body').prop('scrollWidth') > 950 ? true : false );
+$(document).ready(function() {    
+    //set Height so .swipe-area div on Desktops    
     resizer();
     $(window).resize(resizer);
-
+    //Left Panel Toggle
+    var cookie_enable = ($('body').prop('scrollWidth') > 950 ? true : false );
     if (cookie_enable == true) {
         if (!$.cookie_ftw("CW_ToggleStatus")) {
             $.cookie_ftw("CW_ToggleStatus", 0, {

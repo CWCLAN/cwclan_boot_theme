@@ -53,6 +53,10 @@ p {
 img {
     max-width: none;
 }
+hr {
+    margin-top: auto;
+    margin-bottom: auto;
+}
 .c_orange {
     color: #ef9849;
 }
@@ -61,7 +65,7 @@ img {
     overflow: auto;
 }
 .button, button, input[type=submit], input[type=button] {
-    
+
     text-decoration: none;
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -76,19 +80,19 @@ img {
     color: #eee;
     background: #ef9849;
     text-shadow: 0px 1px 1px #eee;
-    
+
     display: inline-block;
     padding: 5px 10px;
     margin: 5px;
-    
+
     outline-style: none; -moz-outline-style:none;
-    
+
 }
 
 .button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover {
-    
+
     border-color: #c47850;  
-    
+
 }
 
 .huge {
@@ -662,6 +666,14 @@ table th, table td {
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
 }
+@media only screen and (max-width: 950px) {
+    .wrap_forumpanel div .forum_table tr td:nth-child(3), 
+    .wrap_forumpanel div .forum_table tr td:nth-child(4),
+    .wrap_forumpanel div .forum_table tr td:nth-child(5) {
+        display: none;
+        visibility: hidden;
+    }
+}
 /*
 tbody td:hover {
     background-color: rgb(204, 204, 204);
@@ -829,23 +841,23 @@ ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
 
 /* Bootstrap 3 Custom Button */
 .btn-dark {
-  color: #fff;
-  background-color: #444;
-  border-color: #777;  
+    color: #fff;
+    background-color: #444;
+    border-color: #777;  
 }
 .btn-dark:hover,
 .btn-dark:focus,
 .btn-dark:active,
 .btn-dark.active,
 .open .dropdown-toggle.btn-dark {
-  color: #ef9849;
-  background-color: #444;
-  border-color: #777;
+    color: #ef9849;
+    background-color: #444;
+    border-color: #777;
 }
 .btn-dark:active,
 .btn-dark.active,
 .open .dropdown-toggle.btn-dark {
-  background-image: none;
+    background-image: none;
 }
 .btn-dark.disabled,
 .btn-dark[disabled],
@@ -862,8 +874,8 @@ fieldset[disabled] .btn-dark:active,
 .btn-dark.disabled.active,
 .btn-dark[disabled].active,
 fieldset[disabled] .btn-dark.active {
-  background-color: #444;
-  border-color: #777;
+    background-color: #444;
+    border-color: #777;
 }
 /***/
 /***SWIPE MENU***/
