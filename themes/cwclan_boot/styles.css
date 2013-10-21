@@ -895,8 +895,7 @@ fieldset[disabled] .btn-dark.active {
 }
 .swipe-sidebar {    
     background: #999;
-    box-shadow: 0 0 5px #777;
-    font-family: 'Oswald', sans-serif;
+    box-shadow: 0 0 5px #777;    
     border-right: solid thin #ccc;
     position: absolute;
     z-index: 97;

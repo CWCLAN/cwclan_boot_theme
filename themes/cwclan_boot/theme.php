@@ -47,33 +47,9 @@ function render_page($license = false) {
                 </button>                
             </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="' . BASEDIR . 'index.php">Startseite</a></li>
-                    <li><a href="' . BASEDIR . 'forum/index.php">Forum</a></li>                                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Fotogalerie
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="' . BASEDIR . 'photogallery.php">Galerie</a></li>
-                            <li><a href="#">Meist angesehene Bilder</a></li>
-                        </ul>
-                    </li> <!-- Dropdown End -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Server
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">HLStats</a></li>
-                            <li><a href="#">Map Bewertungen</a></li>
-                            <li><a href="#">Reserved Slots</a></li>
-                        </ul>
-                    </li> <!-- Dropdown End -->
-                </ul>   
-            </div><!-- /.navbar-collapse -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">';
+                include INFUSIONS . "css_dropdown_menu/menu_boot.php";
+      echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
