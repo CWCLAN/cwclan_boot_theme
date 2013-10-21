@@ -138,6 +138,8 @@ function render_page($license = false) {
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
         <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="' . THEME . 'js/responsiveImg.js"></script>
+        <script>var basedir = "'.BASEDIR.'";</script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }

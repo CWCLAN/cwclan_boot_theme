@@ -51,7 +51,8 @@ p {
     line-height: 1.4;
 }
 img {
-    max-width: none;
+    height: auto;  
+    max-width: 100%; 
 }
 hr {
     margin-top: auto;
@@ -667,6 +668,15 @@ table th, table td {
     background-color: rgba(204, 204, 204, 0.5);
 }
 @media only screen and (max-width: 950px) {
+    .forum_idx_table tr .forum-caption:nth-child(2), 
+    .forum_idx_table tr .forum-caption:nth-child(3),
+    .forum_idx_table tr .tbl1:nth-child(3), 
+    .forum_idx_table tr .tbl1:nth-child(4),
+    .forum_idx_table tr .tbl2:nth-child(3), 
+    .forum_idx_table tr .tbl2:nth-child(4){
+        display: none;
+        visibility: hidden;
+    }
     .wrap_forumpanel div .forum_table tr td:nth-child(3), 
     .wrap_forumpanel div .forum_table tr td:nth-child(4),
     .wrap_forumpanel div .forum_table tr td:nth-child(5) {
