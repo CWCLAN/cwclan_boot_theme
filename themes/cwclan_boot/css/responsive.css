@@ -46,10 +46,6 @@
         margin-top: 0px;
         width: 100px;
     }
-    .logged_in_box {
-        margin-top: 5px;   
-    }
-
     /** To not show an element on a certain device/resolution **/
     .no-mobile {
         visibility:visible;

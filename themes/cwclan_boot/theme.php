@@ -17,11 +17,6 @@ function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
-
-//add_to_head("<link rel='stylesheet' href='" . THEME . "jQueryMobile/jquery.mobile-1.3.2.cw.css'>");
-//add_to_head('<script src="' . THEME . 'jQueryMobile/jquery.mobile-1.3.2.min.js"></script>');
-
-
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
     
@@ -49,6 +44,7 @@ function render_page($license = false) {
         <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">';
                 include INFUSIONS . "css_dropdown_menu/menu_boot.php";
+                include INFUSIONS . "cw_login/login.php";
       echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin

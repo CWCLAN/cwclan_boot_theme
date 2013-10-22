@@ -199,29 +199,36 @@ input[type=text],input[type=password] {
     width: 75%;
     margin:0 auto;
 }
-.logged_in_box {
-    height: 40px;   
-}
 .logged_in_box .user_avatar {
-    float: left;
-    margin-right: 10px;
+    float: left;    
     font-family: 'Roboto', sans-serif;
+    margin: 4px 4px 4px 10px;
+}
+.user_avatar img {
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #888;
+    border:solid thin #666;
 }
 .logged_in_box .user_login_content {
     float: left;
-    font-size: 16px;
-    width: 150px;
+    font-size: 16px;    
 }
 .logged_in_box .user_login_content .user_login_icons {
     font-size: 13px;
-    color: #444;
+    color: #fff;
     font-family: 'Roboto', sans-serif;
 }
 .logged_in_box .user_login_content .user_login_icons a:link {
-    color: #444;
+    color: #fff;
 }
 .logged_in_box .user_login_content .user_login_icons a:visited {
-    color: #444;
+    color: #fff;
+}
+.user_login_name, .user_login_icons{
+    text-align: right;    
+}
+.user_login_icons a {
+    margin: 0 2px 0 2px;
 }
 .wrapper{
     margin-top:50px;
