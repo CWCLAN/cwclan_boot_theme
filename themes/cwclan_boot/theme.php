@@ -15,6 +15,7 @@ function get_head_tags() {
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
 }
 function render_page($license = false) {

@@ -42,7 +42,8 @@ $(".tp2").tooltip({
     placement: "right"
 });
 $('#login').popover({
-        html: true
+        html: true,
+        placement: "left"
 });
 
 

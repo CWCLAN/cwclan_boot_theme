@@ -1,0 +1,51 @@
+/*!
+ *      PHP-Fusion Fuck you file
+ *      
+ *      This file contains overwritings 
+ *      
+ */
+
+/*!
+ *      Table Stüff
+ */
+
+.tbl-border {
+    width: 100%; /*  */   
+}
+
+/* Thanks Bootstrap */
+.cwclear .navbar-form button:hover, .navbar-form a:hover {
+}
+.btn {
+     text-decoration: none;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    border-bottom: solid 3px #c67d55;
+    box-shadow: none;
+    cursor: pointer;
+    text-shadow: 0px 1px 1px #fff;
+    vertical-align: middle;
+    color: #eee;
+    background: #ef9849;
+    text-shadow: 0px 1px 1px #eee;
+
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+
+    outline-style: none; -moz-outline-style:none;
+}
+.btn:hover {
+    color: inherit;
+}
+
+.navbar .cw-form-control {
+    width: 49%;   
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -1px;
+    margin-left: -1px;   
+}
