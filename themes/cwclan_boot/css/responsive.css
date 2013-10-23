@@ -43,8 +43,7 @@
         margin-right: 10%;
     }
     .topbar .login input[type=text], input[type=password] {
-        margin-top: 0px;
-        width: 100px;
+        margin-top: 0px;        
     }
     /** To not show an element on a certain device/resolution **/
     .no-mobile {

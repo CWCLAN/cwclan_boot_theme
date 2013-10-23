@@ -30,8 +30,8 @@ if (iMEMBER) {
     </div>
     <div class="user_login_icons">
         <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
-        echo '|<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
-        echo '|<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+    echo '|<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
+    echo '|<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
     if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
         echo '|<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
     }
@@ -61,8 +61,8 @@ if (iMEMBER) {
                          <div><a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '">' . $userdata['user_name'] . '</a></div>
                          <div class="user_login_icons">
                          <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
-                         echo '|<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
-                         echo '|<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+    echo '|<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
+    echo '|<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
     if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
         echo '|<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
     }
@@ -76,19 +76,19 @@ if (iMEMBER) {
     if (isset($_POST['Regh'])) {
         redirect('register.php');
     }
-    echo '<form class = "navbar-form navbar-right" role = "login" method="post" action="'.FUSION_SELF.'">
-    <div class = "form-group">
-    <input type = "text" class = "form-control" name = "user_name" placeholder = "' . $locale['global_101'] . '">
-    <input type = "password" class = "form-control" name = "user_pass" placeholder = "' . $locale['global_102'] . '">
-    <label style = "display:inline;"><input type = "checkbox" name = "remember_me" value = "y" title = "' . $locale['global_103'] . '" style = "vertical-align:middle;" /></label>
-    </div>
-    <button type = "submit" class = "btn btn-default cw-btn" name = "login">' . $locale['global_104'] . '</button>
-    </form>
-    <ul class = "nav navbar-nav">';
-    if ($settings['enable_registration']) {
-        echo "<li ><a href='register.php'>Registrieren</a></li>";
-    }
-    echo'<li ><a href = "lostpassword.php">Passwort vergessen</a></li>
-    </ul>';
+    echo "<a href='#' id='login' class='btn btn-lg cw-btn' data-toggle='popover' data-content='";
+        echo '<form class = "navbar-form navbar-right" role = "login" method="post" action="' . FUSION_SELF . '">
+                <div class = "form-group">
+                    <input type = "text" class = "form-control" name = "user_name" placeholder = "' . $locale['global_101'] . '">
+                    <input type = "password" class = "form-control" name = "user_pass" placeholder = "' . $locale['global_102'] . '">
+                    <label style = "display:inline;"><input type = "checkbox" name = "remember_me" value = "y" title = "' . $locale['global_103'] . '" style = "vertical-align:middle;" /></label>
+                </div>
+                <button type = "submit" class = "btn btn-default cw-btn" name = "login">' . $locale['global_104'] . '</button>'; #
+             if ($settings['enable_registration']) {
+                echo '<a href="register.php" class="btn btn-default cw-btn">Registrieren</a>';
+            }
+            echo'<a href="lostpassword.php" class="btn btn-default cw-btn">Passwort vergessen</a>
+            </form>';    
+    echo "' >Click to toggle popover</a>";
 }
 ?>	

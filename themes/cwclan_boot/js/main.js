@@ -41,6 +41,9 @@ $(".tp").tooltip({
 $(".tp2").tooltip({
     placement: "right"
 });
+$('#login').popover({
+        html: true
+});
 
 
 

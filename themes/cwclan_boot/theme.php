@@ -31,18 +31,16 @@ function render_page($license = false) {
           <div class="hero"></div>';
 
     // Navbar Begin
-    echo'<nav class="navbar navbar-inverse" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
+    echo'<nav class="navbar navbar-inverse" role="navigation">        
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-navi-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>                
-            </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">';
+            </div>        
+            <div class="collapse navbar-collapse navbar-navi-collapse">';
                 include INFUSIONS . "css_dropdown_menu/menu_boot.php";
                 include INFUSIONS . "cw_login/login.php";
       echo '</div><!-- /.navbar-collapse -->
@@ -97,8 +95,7 @@ function render_page($license = false) {
             </div>
         </div>';
     echo'<button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>';  
-   
-   // SWIPE-MENU Content
+    // SWIPE-MENU Content
     echo '<div class="swipe-sidebar">
             <div class="sidepanel">';
     if (LEFT) {
@@ -109,15 +106,11 @@ function render_page($license = false) {
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
-        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="' . THEME . 'js/responsiveImg.js"></script>
-        <script>var basedir = "'.BASEDIR.'";</script>
+        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>        
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
-
 /* New in v7.02 - render comments */
-
 function render_comments($c_data, $c_info) {
     global $locale, $settings;
     opentable($locale['c100']);
@@ -260,5 +253,4 @@ function closeside() {
     }
     echo "</div></div>";
 }
-
 ?>
