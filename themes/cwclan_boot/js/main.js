@@ -41,7 +41,6 @@ $(".tp").tooltip({
 $(".tp2").tooltip({
     placement: "right"
 });
-//Responsive IMG Plugin
-$("article").responsiveImg({
-    pathToPHP : basedir+"themes/cwclan_boot/js"
-});
+
+
+

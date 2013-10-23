@@ -49,9 +49,9 @@ function render_page($license = false) {
         </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
-                <div class="content">
-                    ' . U_CENTER . CONTENT . L_CENTER . '
-          </div>';
+                <div class="content">';
+    echo U_CENTER . CONTENT . L_CENTER;
+    echo'</div>';
     // Sidebar		
     echo '<div class="sidebar">';
     if (RIGHT) {
