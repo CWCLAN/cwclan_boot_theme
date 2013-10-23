@@ -514,7 +514,8 @@ article .article_submenu .author {
 .navbar-inverse .btn-navbar:hover {
     background: #222;
 }
-.navbar-collapse, .navbar-collapse.collapse {
+.navbar-collapse{
+    max-height: 450px;
 }
 .navbar-inverse .navbar-collapse .nav>li>a:hover, .navbar-inverse .navbar-collapse .nav>li>a:focus, .navbar-inverse .navbar-collapse .dropdown-menu a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:focus {
     background: #ef9849;
