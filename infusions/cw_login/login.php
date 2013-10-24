@@ -76,7 +76,7 @@ if (iMEMBER) {
     if (isset($_POST['Regh'])) {
         redirect('register.php');
     }
-    echo "<a href='#' id='login' style='float:right' class='btn cwclear' data-toggle='popover' data-content='";
+    echo "<a href='#' id='login' style='float:right;padding-top:3px;padding-bottom:3px;' class='btn cwclear' data-toggle='popover' data-content='";
         echo '<form class = "navbar-form navbar-right" role = "login" method="post" action="' . FUSION_SELF . '">
                 <div class = "form-group">
                 

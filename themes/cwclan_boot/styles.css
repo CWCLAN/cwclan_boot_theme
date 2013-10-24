@@ -51,7 +51,7 @@ p {
     line-height: 1.4;
 }
 img {
-    height: auto;  
+    /* height: auto;  */
     max-width: 100%; 
 }
 hr {
@@ -656,7 +656,7 @@ article .article_submenu .author {
 /***/
 table th, table td {
     border: none;
-    padding: 5px;
+    padding: 10px;
 }
 .tbl-border {
     border: solid thin #ddd;
@@ -723,6 +723,12 @@ tbody td:hover {
 #selectedMapColorshout_message {
     padding: auto
 }
+.comments .tbl2, .tbl1 {
+    padding: 10px;
+}
+.comments .small {
+    font-size:12px;
+}
 .comments>div:nth-child(4n+1),
 .comments>div:nth-child(4n+2) {
     background-color: rgb(224, 224, 224);
@@ -759,7 +765,7 @@ span .panelbutton {
 
 }    
 .side-label{
-    color:#97660a;
+    color:#444;
     padding:2px 2px 3px 2px;
 }
 /***/
