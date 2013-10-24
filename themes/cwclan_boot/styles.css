@@ -713,6 +713,10 @@ tbody td:hover {
 /***/
 /***PHP Fusion***/
 /***/
+.profile_category_name {
+    font-size: 18px;
+    text-decoration:underline;
+}
 .bbcode-popup{
     background:#444;
     border-radius: 3px;
