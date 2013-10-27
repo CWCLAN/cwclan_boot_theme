@@ -39,9 +39,9 @@ if (iMEMBER) {
         </div>';
     echo'<div class = "user_avatar">';
     if ($userdata['user_avatar']) {
-        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/' . $userdata['user_avatar'] . '" alt="' . $locale['567'] . '" width="32"></a>';
+        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/' . $userdata['user_avatar'] . '" class="tp" data-toggle="tooltip" alt="'.$userdata['user_name'].'\' Avatar" title="'.$userdata['user_name'].'\'s Avatar" width="32"></a>';
     } else {
-        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/noavatar100.png" alt="' . $locale['567'] . '" width="32"></a';
+        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/noavatar100.png" alt="no Avatar" width="32"></a';
     }
     echo '</div>';
     echo'</div>                             
@@ -52,9 +52,9 @@ if (iMEMBER) {
                     <div style="width: 75%;margin:0 auto;">';
     echo'<div class="user_avatar">';
     if ($userdata['user_avatar']) {
-        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/' . $userdata['user_avatar'] . '" alt="' . $locale['567'] . '" width="32"></a>';
+        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/' . $userdata['user_avatar'] . '" class="tp" data-toggle="tooltip" alt="'.$userdata['user_name'].'\' Avatar" title="'.$userdata['user_name'].'\'s Avatar" width="32"></a>';
     } else {
-        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/noavatar100.png" alt="' . $locale['567'] . '" width="32"></a';
+        echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/noavatar100.png" alt="no Avatar" width="32"></a';
     }
     echo'</div>';
     echo'<div class="user_login_content">
