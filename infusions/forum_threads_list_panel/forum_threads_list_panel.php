@@ -98,11 +98,11 @@ echo "<div class='wrap_forumpanel'>\n";
 echo "<!-- the tabs -->\n";
 echo "<ul class='tabs' style='height:25px;'>\n";
 // 1.Tab Link
-echo "<li ><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;neueste Beitr&auml;ge&nbsp;</a></b></li>\n";
+echo "<li ><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;neueste&nbsp;</a></b></li>\n";
 
 // 2.Tab Link
 if (iUSER){
-echo "<li ><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;gepinnte Threads&nbsp;</a></b></li>\n";
+echo "<li ><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;gepinnte&nbsp;</a></b></li>\n";
 }
 // 3.Tab Link
 if (iUSER){
