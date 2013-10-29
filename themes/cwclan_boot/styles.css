@@ -939,19 +939,26 @@ fieldset[disabled] .btn-dark.active {
     position: absolute;
     z-index: 97;
     top: 0;
-    width: 205px;
+    width: 210px;
     height: 100%;
     left: -200px;    
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    padding: 10px;    
+    padding: 5px 15px 5px 10px;    
     -webkit-transition:  left 0.4s ease-in-out;
     -moz-transition:  left 0.4s ease-in-out;
     -ms-transition:  left 0.4s ease-in-out;
     -o-transition:  left 0.4s ease-in-out;
     transition:  left 0.4s ease-in-out;
 }
-
+.swipe-area {
+    position: absolute;
+    width: 15px;
+    right: 0;
+    top: 0;
+    height: 100%;    
+    z-index: 0;
+}
 @media only screen and (max-width: 950px) {
     .swipe-sidebar {
         overflow-x: hidden;

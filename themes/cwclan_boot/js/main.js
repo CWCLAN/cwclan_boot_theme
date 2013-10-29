@@ -26,6 +26,27 @@ $(document).ready(function() {
             expires: 14, path: '/'
         });
     });
+    
+    $(".swipe-area").swipe({
+    swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            var toggle_el = $(".swipe-toggle").data("toggle");
+            if (phase=="move" && direction =="right") {
+                 $(toggle_el).addClass("open-sidebar");
+                 $.cookie_ftw("CW_ToggleStatus", "1", {
+                    expires: 14, path: '/'
+                 });
+                 return false;
+            }
+            if (phase=="move" && direction =="left") {
+                 $(toggle_el).removeClass("open-sidebar");
+                 $.cookie_ftw("CW_ToggleStatus", "0", {
+                    expires: 14, path: '/'
+                 });
+                 return false;
+            }
+        }
+});
 })
 function resizer() {
     var Wheight = $('body').prop('scrollHeight'), Wwidth = $('body').prop('scrollWidth');

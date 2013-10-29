@@ -103,11 +103,13 @@ function render_page($license = false) {
         echo LEFT;
     }    
         echo '</div>
+              <div class="swipe-area"></div>
               </div>';  
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
-        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>        
+        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
