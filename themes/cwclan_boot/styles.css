@@ -941,7 +941,7 @@ fieldset[disabled] .btn-dark.active {
     top: 0;
     width: 210px;
     height: 100%;
-    left: -200px;    
+    left: -210px;    
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: 5px 15px 5px 10px;    
@@ -953,11 +953,21 @@ fieldset[disabled] .btn-dark.active {
 }
 .swipe-area {
     position: absolute;
-    width: 15px;
-    right: 0;
+    width: 25px;
+    left: 0;
     top: 0;
     height: 100%;    
-    z-index: 0;
+    z-index: 97;
+    background:url('../cwclan_boot/img/design/absperr.png') repeat-y 0px 0px;    
+}
+.swipe-area2 {
+    position: absolute;
+    width: 25px;
+    right: 0px;
+    top: 0;
+    height: 100%;
+    z-index: 97;
+    background: url('../cwclan_boot/img/design/absperr.png') repeat-y 15px 0px;
 }
 @media only screen and (max-width: 950px) {
     .swipe-sidebar {

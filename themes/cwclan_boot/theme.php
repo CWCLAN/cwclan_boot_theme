@@ -27,7 +27,8 @@ function render_page($license = false) {
           </div>'; // Topbar End
     
     // Content Begin
-    echo '<div class="wrapper clearfix">          
+    echo '<div class="wrapper clearfix">
+          <div class="swipe-area"></div>
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
@@ -58,7 +59,7 @@ function render_page($license = false) {
     }    
     echo '</div></div>';    
     // Footer
-    echo'<footer class="clearfix" data-enhance="false"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
+    echo'<footer class="clearfix"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer>
         </div>';
 
@@ -97,14 +98,14 @@ function render_page($license = false) {
         </div>';
     echo'<button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>';  
     // SWIPE-MENU Content
-    echo '<div class="swipe-sidebar">
+    echo '<div class="swipe-sidebar">            
             <div class="sidepanel">';
     if (LEFT) {
         echo LEFT;
     }    
-        echo '</div>
-              <div class="swipe-area"></div>
-              </div>';  
+        echo '</div>';
+        echo '<div class="swipe-area2"></div>';
+        echo '</div>';        
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
