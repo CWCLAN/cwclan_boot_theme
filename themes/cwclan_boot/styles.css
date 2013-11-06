@@ -683,19 +683,28 @@ table th, table td {
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
 }
+.forum_table tr .tbl2:nth-child(1){
+    padding: 2px;
+}
+.forum_table tr .tbl2:nth-child(1) img{
+    max-width: none;
+}
 @media only screen and (max-width: 950px) {
+    .wrap_forumpanel div .forum_table tr td:nth-child(3), 
+    .wrap_forumpanel div .forum_table tr td:nth-child(4),
+    .wrap_forumpanel div .forum_table tr td:nth-child(5),
     .forum_idx_table tr .forum-caption:nth-child(2), 
     .forum_idx_table tr .forum-caption:nth-child(3),
     .forum_idx_table tr .tbl1:nth-child(3), 
     .forum_idx_table tr .tbl1:nth-child(4),
     .forum_idx_table tr .tbl2:nth-child(3), 
-    .forum_idx_table tr .tbl2:nth-child(4){
-        display: none;
-        visibility: hidden;
-    }
-    .wrap_forumpanel div .forum_table tr td:nth-child(3), 
-    .wrap_forumpanel div .forum_table tr td:nth-child(4),
-    .wrap_forumpanel div .forum_table tr td:nth-child(5) {
+    .forum_idx_table tr .tbl2:nth-child(4),
+    .forum_table tr .tbl1:nth-child(3), 
+    .forum_table tr .tbl1:nth-child(4),
+    .forum_table tr .tbl1:nth-child(5),
+    .forum_table tr .tbl2:nth-child(3), 
+    .forum_table tr .tbl2:nth-child(4),
+    .forum_table tr .tbl2:nth-child(5){
         display: none;
         visibility: hidden;
     }
