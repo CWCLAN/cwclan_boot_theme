@@ -1,8 +1,5 @@
 <?php
-
-//Theme Settings
-define("THEME_BULLET", "<span class='bullet'>&middot;</span>"); //bullet image
-//Theme Settings /
+define("THEME_BULLET", "<span class='bullet'>&middot;</span>");
 
 if (!defined("IN_FUSION")) {
     die("Access Denied");
@@ -11,6 +8,9 @@ require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
     echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+    echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
+    echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
+    echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
