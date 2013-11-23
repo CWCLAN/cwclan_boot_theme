@@ -27,8 +27,7 @@ function render_page($license = false) {
           </div>'; // Topbar End
     
     // Content Begin
-    echo '<div class="wrapper clearfix">
-          <div class="swipe-area"></div>
+    echo '<div class="wrapper clearfix">          
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
           <div class="hero"></div>';
 
