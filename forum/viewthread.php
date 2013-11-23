@@ -346,24 +346,7 @@ if ($rows != 0) {
         if ($current_row > 1) {
             echo "<tr>\n<td colspan='2' class='tbl1 forum_thread_post_space' style='height:10px'></td>\n</tr>\n";
         }
-        echo "<tr>\n<td class='tbl2 forum_thread_user_name' style='width:140px'><!--forum_thread_user_name-->" . profile_link($data['user_id'], $data['user_name'], $data['user_status']);
-        //---ONLINE STATUS START---//
-        $lseen = time() - $data['user_lastvisit'];
-        if ($lseen < 200) {
-            echo "<img src='" . BASEDIR . "images/online.gif' alt='" . $data['user_name'] . " ist Online' title='" . $data['user_name'] . " ist Online' align='right' /> \n";
-        } else {
-            echo "<img src='" . BASEDIR . "images/offline.gif' alt='" . $data['user_name'] . " ist Offline' title='" . $data['user_name'] . " ist Offline' align='right'/> \n";
-        }
-        //---ONLINE STATUS END--//
-        echo "</td>\n";
-        echo "<td class='tbl2 forum_thread_post_date'>\n";
-        echo "<div style='float:right' class='small'>";
-        echo "<a href='#top'><img src='" . get_image("up") . "' alt='" . $locale['541'] . "' title='" . $locale['542'] . "' style='border:0;vertical-align:middle' /></a>\n";
-        echo "&nbsp;<a href='#post_" . $data['post_id'] . "' name='post_" . $data['post_id'] . "' id='post_" . $data['post_id'] . "'>#" . ($current_row + $_GET['rowstart']) . "</a>";
-        echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;post=" . $data['post_id'] . "&amp;nr=" . ($current_row + $_GET['rowstart']) . "'><img src='" . get_image("printer") . "' alt='" . $locale['519a'] . "' title='" . $locale['519a'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
-        echo "<div class='small'>" . $locale['505'] . showdate("forumdate", $data['post_datestamp']) . "</div>\n";
-        echo "</td>\n";
-        echo "</tr>\n<tr>\n<td valign='top' class='tbl2 forum_thread_user_info' style='width:140px'>\n";
+        echo "<tr>\n<td valign='top'  rowspan='2' class='tbl2 forum_thread_user_info mobilehid' style='width:140px'>\n";
         if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
             echo "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /><br /><br />\n";
         } else {
@@ -388,7 +371,26 @@ if ($rows != 0) {
         echo "</span><br /><br />\n";
         echo "<!--forum_thread_user_info--><span class='small'><strong>" . $locale['502'] . "</strong> " . $data['user_posts'] . "</span><br />\n";
         echo "<span class='small'><strong>" . $locale['504'] . "</strong> " . showdate("shortdate", $data['user_joined']) . "</span><br />\n";
-        echo "<br /></td>\n<td valign='top' class='tbl1 forum_thread_user_post'>\n";
+        echo "<br /></td>\n";
+        echo "<td class='tbl2 forum_thread_post_date'>\n";
+        echo "<div style='float:right' class='small'>";
+        echo "<a href='#top'><img src='" . get_image("up") . "' alt='" . $locale['541'] . "' title='" . $locale['542'] . "' style='border:0;vertical-align:middle' /></a>\n";
+        echo "&nbsp;<a href='#post_" . $data['post_id'] . "' name='post_" . $data['post_id'] . "' id='post_" . $data['post_id'] . "'>#" . ($current_row + $_GET['rowstart']) . "</a>";
+        echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;post=" . $data['post_id'] . "&amp;nr=" . ($current_row + $_GET['rowstart']) . "'><img src='" . get_image("printer") . "' alt='" . $locale['519a'] . "' title='" . $locale['519a'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
+        
+        echo "<div><!--forum_thread_user_name-->" . profile_link($data['user_id'], $data['user_name'], $data['user_status']);
+        //---ONLINE STATUS START---//
+        $lseen = time() - $data['user_lastvisit'];
+        if ($lseen < 200) {
+            echo "&nbsp;<img src='" . BASEDIR . "images/online.gif' alt='" . $data['user_name'] . " ist Online' title='" . $data['user_name'] . " ist Online'/> \n";
+        } else {
+            echo "&nbsp;<img src='" . BASEDIR . "images/offline.gif' alt='" . $data['user_name'] . " ist Offline' title='" . $data['user_name'] . " ist Offline'/> \n";
+        }
+        //---ONLINE STATUS END--//
+        echo "<span class='small'>" . $locale['505'] . showdate("forumdate", $data['post_datestamp']) . "</span>\n</div>\n";        
+        
+        echo "</td>\n";
+        echo "</tr>\n<tr>\n<td valign='top' class='tbl1 forum_thread_user_post'>\n";
         if (iMOD) {
             echo "<div style='float:right'><input type='checkbox' name='delete_post[]' value='" . $data['post_id'] . "' /></div>\n";
         }
@@ -454,7 +456,7 @@ if ($rows != 0) {
         /* MOD POST BEWERTUNG von fangree.co.uk */
         if ($loa_rates['show_ratings']) {
             //if ($userdata['user_id'] !== $data['user_id']){
-            echo "<tr>\n<td class='tbl2'>\n</td>\n<td class='tbl2'>";
+            echo "<tr>\n<td class='tbl2 mobilehid'>\n</td>\n<td class='tbl2'>";
             echo "<div align='left'>\n";
             postRatings($data['post_id']);
             echo "<div/>\n";
@@ -471,7 +473,7 @@ if ($rows != 0) {
         /* MOD */
         ////
 
-        echo "<tr>\n<td class='tbl2 forum_thread_ip' style='width:140px;white-space:nowrap'>";
+        echo "<tr>\n<td class='tbl2 forum_thread_ip mobilehid' style='width:140px;white-space:nowrap'>";
         if (($settings['forum_ips'] && iMEMBER) || iMOD) {
             echo "<strong>" . $locale['571'] . "</strong>: " . $data['post_ip'];
         } else {

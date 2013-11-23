@@ -58,6 +58,9 @@ hr {
     margin-top: auto;
     margin-bottom: auto;
 }
+.small{
+    font-size: 12px;
+}
 .c_orange {
     color: #ef9849;
 }
@@ -697,6 +700,7 @@ table th, table td {
     max-width: none;
 }
 @media only screen and (max-width: 950px) {
+    .mobilehid,
     .wrap_forumpanel div .forum_table tr td:nth-child(3), 
     .wrap_forumpanel div .forum_table tr td:nth-child(4),
     .wrap_forumpanel div .forum_table tr td:nth-child(5),
