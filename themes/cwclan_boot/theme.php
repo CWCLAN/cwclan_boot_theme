@@ -54,6 +54,9 @@ function render_page($license = false) {
     echo'</div>';
     // Sidebar		
     echo '<div class="sidebar">';
+    if (LEFT) {
+        echo LEFT;
+    }    
     if (RIGHT) {
         echo RIGHT;
     }    
@@ -96,21 +99,11 @@ function render_page($license = false) {
                     </div>	
             </div>
         </div>';
-    echo'<button type="button" class="navbar-fixed-bottom btn btn-dark btn-group swipe-toggle navbar-footer" data-toggle=".swipe-sidebar"><span class="icon-indent-increase"></span></button>';  
-    // SWIPE-MENU Content
-    echo '<div class="swipe-sidebar">            
-            <div class="sidepanel">';
-    if (LEFT) {
-        echo LEFT;
-    }    
-        echo '</div>';
-        echo '<div class="swipe-area2"></div>';
-        echo '</div>';        
+     
     // Scripts and co.
 add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
-        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="' . THEME . 'js/jquery.touchSwipe.min.js"></script>
+        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>        
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
