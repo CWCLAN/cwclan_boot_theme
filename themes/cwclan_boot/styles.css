@@ -662,12 +662,19 @@ table th, table td {
 }
 .tbl-border2 {
     border: solid thin #ddd;
-}
-.tbl1{
-
+}.tbl1 {
+    
 }
 .tbl2{
 
+}
+.forum_thread_table tbody .tbl1{
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
+}
+.forum_thread_table tbody .tbl1:hover{
+    background-color: rgb(204, 204, 204);
+    background-color: rgba(204, 204, 204, 0.5);
 }
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,
