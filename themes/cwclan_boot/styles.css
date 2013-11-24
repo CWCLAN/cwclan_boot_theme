@@ -323,7 +323,12 @@ footer {
     -webkit-transition: all 0.5s ease-in-out;
     text-shadow: 0 0 2px #ccc;
 }
-.upperfooter div .vertical li {    
+.upperfooter div .horizontal li a:hover {    
+    text-decoration: none;    
+}
+.upperfooter div .vertical li {
+    width: 25%;
+    text-align: center;
     padding: 5px;    
     -webkit-transition: all 0.5s ease-in-out;
     float: left;
@@ -344,10 +349,6 @@ footer {
     color: #ccc;
     text-decoration: none;
     -webkit-transition: all 0.5s ease-in-out;
-}
-
-.upperfooter div .horizontal li a:hover {    
-    text-decoration: none;    
 }
 .upperfooter div ul {	
     margin: 0;   	

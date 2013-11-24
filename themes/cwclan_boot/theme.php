@@ -77,7 +77,7 @@ function render_page($license = false) {
                         </li>
                     </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 clearfix">
                 <h4>Social</h4>                    
                 <ul class="vertical">
                     <li>
@@ -162,7 +162,7 @@ function newsposter2($info, $sep = "", $class = "") {
     global $locale;
     $res = "";
     $link_class = $class ? " class='$class' " : "";
-    $res = "<span " . $link_class . ">" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
+    $res = "<span " . $link_class . "><span class='icon-user'></span>&nbsp;" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
     $res .= showdate("newsdate", $info['news_date']);
     $res .= $info['news_ext'] == "y" || $info['news_allow_comments'] ? $sep . "\n" : "\n";
     return "<!--news_poster-->" . $res;
@@ -173,12 +173,12 @@ function newsopts2($info, $sep, $class = "") {
     $res = "";
     $link_class = $class ? " class='$class' " : "";
     if ($info['news_allow_comments'] && $settings['comments_enabled'] == "1") {
-        $res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icons icon-bubbles'></span></a> " . $sep . " ";
+        $res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icon-bubbles'></span></a> " . $sep . " ";
     }
     if ($info['news_ext'] == "y" || ($info['news_allow_comments'] && $settings['comments_enabled'] == "1")) {
         $res .= $info['news_reads'] . $locale['global_074'] . "\n" . $sep;
     }
-    $res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "'><img src='" . get_image("printer") . "' alt='" . $locale['global_075'] . "' style='vertical-align:middle;border:0;' /></a>\n";
+    $res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "' title='" . $locale['global_075'] . "'><span class='icon-file2'></span>\n";
     return "<!--news_opts-->" . $res;
 }
 
