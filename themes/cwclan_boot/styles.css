@@ -121,29 +121,6 @@ hr {
 .ccw:hover {
     border-color: #c47850;   
 }
-/***/
-/*** CWClan Forms ***/
-/***/
-/* OLD
-input[type=button], input[type=submit],.cw-btn {
-    box-shadow: 0 1px 1px #999;
-    color: #fbfbfb;
-    border: solid thin rgba(255,175,75,1);
-    border-radius: 3px;
-    background: rgba(255,175,75,1);
-    background: linear-gradient(to bottom, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
-    font-size: 15px;
-    font-weight:300;
-    padding: 5px 8px;
-    margin: 4px 0;
-    vertical-align: middle;
-}
-input[type=button]:hover, input[type=submit]:hover,.cw-btn:hover {
-}
-input[type=button]:active, input[type=submit]:active,.cw-btn:active {
-    box-shadow: inset 0 1px 1px #555;
-}
-*/
 .form-control {
     width: 60px;
     height: auto;
@@ -312,65 +289,45 @@ footer {
     border-bottom-right-radius: 4px;
 }
 .flleft {float: left !important;}
-.footernav {    
-    text-align: center;
-    white-space: nowrap;
-    font-size: 1em;
-    letter-spacing: 2.5em;
-    line-height: .6em;
-    overflow: hidden;   	
+.upperfooter {     
+    background: rgb(68, 68, 68);
+    background: rgba(68, 68, 68, 0.8);
+    border-top: solid thin #444;
 }
-.links-section {    
-    width: 250px;
-    margin: 10px 0;
-    background: #efebdf;		
-    border-radius: 3px;	
-    box-shadow: 0 0 10px #999;             
-    display: inline-block;
-    letter-spacing: normal;
-    font-size: normal;
-    white-space: normal;
-    text-align: normal;
-    vertical-align: top;
-}
-.links-section {
+.upperfooter div {
     *display: inline;
     *margin: 0 20px;
+    color: #efefef;
 }
 
-.links-section h4 {
+.upperfooter div h4 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: normal;
     font-size: 20px;
-    color: #ababab;    
+    color: #efefef;    
     text-align:center;
     padding: 5px;    
-    margin: 0 10px;
-    border-bottom: solid thin #ccc;
+    margin: 0 10px;    
 }
-.links-section li, .links-section ul {	
+.upperfooter div li, .upperfooter div ul {	
     line-height: 26px;
     list-style-type: none;
     padding: 0;	
     text-align:left;		
 }
-.links-section li {    
+.upperfooter div li {    
     padding-left: 5px;
     -webkit-transition: all 0.5s ease-in-out;
 }
-.links-section li:hover {    
+.upperfooter div li:hover {    
     padding-left: 10px;
     -webkit-transition: all 0.5s ease-in-out;
     text-shadow: 0 0 2px #ccc;
 }
-.links-section ul {	
+.upperfooter div ul {	
     margin: 0;   	
 }
-.links-s-content {
-    margin: 5px;
-    color:#ababab;
-    line-height: 18px;
-}
+
 .breadcrumb {
     font-family: 'Roboto Condensed', sans-serif;
     color: #efefef;
@@ -998,3 +955,10 @@ fieldset[disabled] .btn-dark.active {
     }
 }
 
+/***/
+/***Bootstrap Grid***/
+/***/
+.row {
+    margin-left: auto;
+    margin-right: auto;
+}

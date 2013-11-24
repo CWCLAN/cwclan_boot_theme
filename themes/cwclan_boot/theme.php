@@ -1,4 +1,5 @@
 <?php
+
 define("THEME_BULLET", "<span class='bullet'>&middot;</span>");
 
 if (!defined("IN_FUSION")) {
@@ -12,20 +13,20 @@ function get_head_tags() {
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";    
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
-    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";    
+    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
 }
+
 function render_page($license = false) {
     global $aidlink, $locale, $settings, $main_style;
-    
+
     // Topbar Content
     echo '<div class="topbar navbar">
             <div class="title">CWClan <span class="subtitle">Clan & Community</span></div>
           </div>'; // Topbar End
-    
     // Content Begin
     echo '<div class="wrapper clearfix">          
           <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
@@ -42,9 +43,9 @@ function render_page($license = false) {
                 </button>                
             </div>        
             <div class="collapse navbar-collapse navbar-navi-collapse">';
-                include INFUSIONS . "css_dropdown_menu/menu_boot.php";
-                include INFUSIONS . "cw_login/login.php";
-      echo '</div><!-- /.navbar-collapse -->
+    include INFUSIONS . "css_dropdown_menu/menu_boot.php";
+    include INFUSIONS . "cw_login/login.php";
+    echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
@@ -55,58 +56,62 @@ function render_page($license = false) {
     echo '<div class="sidebar">';
     if (LEFT) {
         echo LEFT;
-    }    
+    }
     if (RIGHT) {
         echo RIGHT;
-    }    
-    echo '</div></div>';    
+    }
+    echo '</div></div>';
+    // Upper Footer
+    echo '<div class="row upperfooter">
+            <div class="col-md-4">
+                <h4>Server</h4>                    
+                    <ul>
+                        <li>
+                            <a href="#" title="" target="_blank">TF2</a>
+                        </li>
+                        <li>
+                            <a href="#" title="" target="_blank">Minecraft</a>
+                        </li>
+                        <li>
+                            <a href="#" title="" target="_blank">Mumble - Voice Server</a>
+                        </li>
+                    </ul>
+            </div>
+            <div class="col-md-4">
+                <h4>Social</h4>                    
+                <ul>
+                    <li>
+                        <a href="#" target="_blank" title="Google+">Google+</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" title="Facebook">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" title="Twitter">Twitter</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4>Info</h4>
+                <div>
+                PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
+                </div></div>
+          </div>';
+
     // Footer
     echo'<footer class="clearfix"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
-            <span style="float:right">' . showcopyright() . '</span></footer>
-        </div>';
+            <span style="float:right">' . showcopyright() . '</span></footer></div>';  
 
-    echo '<div class="footernav visible-md visible-lg" data-enhance="false">
-            <div class="links-section">
-                <h4>Server</h4>                    
-                <ul class="links-s-content">
-                    <li>
-                        <a href="#" title="" target="_blank">TF2</a>
-                    </li>
-                    <li>
-                        <a href="#" title="" target="_blank">Minecraft</a>
-                    </li>
-                    <li>
-                        <a href="#" title="" target="_blank">Mumble - Voice Server</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="links-section">
-                <h4>Heißer Stuff</h4>                    
-                <ul class="links-s-content">
-                    <li>
-                        <a href="http://timkopplow.com/dev/cwish/" target="_blank" title="Nevos Responsive Design">Nevos Responsive Design</a>
-                    </li>
-                    <li>
-                        <a href="#" title="">Test</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="child links-section">
-                <h4>Info</h4>
-                    <div class="links-s-content">
-                    PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
-                    </div>	
-            </div>
-        </div>';
-     
     // Scripts and co.
-add_to_footer('<!-- Scripts -->
+    add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.js"></script>
         <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>        
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
+
 /* New in v7.02 - render comments */
+
 function render_comments($c_data, $c_info) {
     global $locale, $settings;
     opentable($locale['c100']);
@@ -249,4 +254,5 @@ function closeside() {
     }
     echo "</div></div>";
 }
+
 ?>
