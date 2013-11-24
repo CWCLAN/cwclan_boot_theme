@@ -299,7 +299,6 @@ footer {
     *margin: 0 20px;
     color: #efefef;
 }
-
 .upperfooter div h4 {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: normal;
@@ -315,19 +314,44 @@ footer {
     padding: 0;	
     text-align:left;		
 }
-.upperfooter div li {    
+.upperfooter div .horizontal li {    
     padding-left: 5px;
     -webkit-transition: all 0.5s ease-in-out;
 }
-.upperfooter div li:hover {    
+.upperfooter div .horizontal li:hover {    
     padding-left: 10px;
     -webkit-transition: all 0.5s ease-in-out;
     text-shadow: 0 0 2px #ccc;
 }
+.upperfooter div .vertical li {    
+    padding: 5px;    
+    -webkit-transition: all 0.5s ease-in-out;
+    float: left;
+}
+.upperfooter div .vertical li:hover {    
+    padding: 5px;
+    -webkit-transition: all 0.5s ease-in-out;
+    text-shadow: 0 0 2px #ccc;
+    color: #CA880C;
+}
+.upperfooter div .vertical li a {    
+    font-size: 40pt;
+    color: #ef9849;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.upperfooter div .vertical li a:hover {
+    font-size: 45pt;    
+    color: #ccc;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
+.upperfooter div .horizontal li a:hover {    
+    text-decoration: none;    
+}
 .upperfooter div ul {	
     margin: 0;   	
 }
-
 .breadcrumb {
     font-family: 'Roboto Condensed', sans-serif;
     color: #efefef;

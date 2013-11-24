@@ -65,7 +65,7 @@ function render_page($license = false) {
     echo '<div class="row upperfooter">
             <div class="col-md-4">
                 <h4>Server</h4>                    
-                    <ul>
+                    <ul class="horizontal">
                         <li>
                             <a href="#" title="" target="_blank">TF2</a>
                         </li>
@@ -79,15 +79,27 @@ function render_page($license = false) {
             </div>
             <div class="col-md-4">
                 <h4>Social</h4>                    
-                <ul>
+                <ul class="vertical">
                     <li>
-                        <a href="#" target="_blank" title="Google+">Google+</a>
+                        <a href="https://plus.google.com/share?url=www.cwclan.de" 
+                        onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
+                        <span class="icon-google-plus"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#" target="_blank" title="Facebook">Facebook</a>
+                        <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=cwclan.de&p[title]=CWCLAN%20%5BCW%5D%20-%20clan%20&%20community" target="_blank" title="Teile uns bei Facebook">
+                        <span class="icon-facebook2"></span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#" target="_blank" title="Twitter">Twitter</a>
+                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button" data-url="http://www.cwclan.de" data-text="CWCLAN [CW] - clan & community" data-lang="de" data-count="none">
+                        <span class="icon-twitter2"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://steamcommunity.com/groups/CW-CLAN" target="_blank" title="Trete unserer Steam Community bei!">
+                        <span class="icon-steam2"></span>
+                        </a>
                     </li>
                 </ul>
             </div>
