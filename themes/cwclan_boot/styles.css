@@ -50,13 +50,15 @@ p {
     color: #333;
     line-height: 1.4;
 }
-img {
-    /* height: auto;  */
+img {    
     max-width: 100%; 
 }
 hr {
     margin-top: auto;
     margin-bottom: auto;
+}
+textarea {
+    width: 100%;
 }
 .small{
     font-size: 12px;
@@ -64,12 +66,10 @@ hr {
 .c_orange {
     color: #ef9849;
 }
-
 .overflow-scroll {
     overflow: auto;
 }
-.button, button, input[type=submit], input[type=button] {
-
+.button, button, input[type=submit], input[type=button], .pagenav a {
     text-decoration: none;
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -84,27 +84,19 @@ hr {
     color: #eee;
     background: #ef9849;
     text-shadow: 0px 1px 1px #eee;
-
     display: inline-block;
     padding: 5px 10px;
     margin: 5px;
-
     outline-style: none; -moz-outline-style:none;
-
 }
-
-.button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover {
-
-    border-color: #c47850;  
-
+.button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover, .pagenav a:hover {
+    border-color: #c47850; 
 }
-
 .huge {
     font-size: 60px;
     padding: 45px 70px;
     border-bottom: 5px solid #d9d9d9;
 }
-
 .button:active:after, button:active, input[type=submit]:active, input[type=button]:active {
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -327,7 +319,7 @@ footer {
     text-decoration: none;    
 }
 .upperfooter div .vertical li {
-    width: 25%;
+    width: 20%;
     text-align: center;
     padding: 5px;    
     -webkit-transition: all 0.5s ease-in-out;
@@ -614,33 +606,37 @@ article .article_submenu .author {
 /***PHP Fusion pagination***/
 /***/
 .pagenav {
-    padding-bottom: 0.6em;	
+    padding-bottom: 0.6em;
+    color: #444;
 }
 .pagenav span {
-    border: 1px solid #CCC;
-    color: #CCC;
-    border-radius: 3px;	
-    padding: 0 4px;
-    margin: 2px;
-}
-.pagenav a {	
-    background: #444;
-    border-radius: 3px;	
-    padding: 2px 5px;
-    margin: 2px;
-    text-decoration: none; 
-    color: #fff;
-}
-.pagenav a:hover {
-    color:#ef9849;
-    font-weight: bold;        
+    text-decoration: none;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    border: #ccc thin solid;
+    border-radius: 3px;    
+    border-bottom: solid 3px #ccc;
+    box-shadow: none;
+    cursor: pointer;
+    text-shadow: 0px 1px 1px #fff;
+    vertical-align: middle;
+    color: #ef9849;
+    text-shadow: 0px 1px 1px #ccc;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    outline-style: none; -moz-outline-style:none;
 }
 /***/
 /***PHP Fusion table***/
 /***/
+table {
+    border-collapse:separate;
+}
 table th, table td {
     border: none;
-    padding: 10px;
+    padding: 5px;
 }
 .tbl-border {
     border: solid thin #ddd;
@@ -702,6 +698,9 @@ table th, table td {
         visibility: hidden;
     }
 }
+td img {
+    max-width: none;
+}
 /*
 tbody td:hover {
     background-color: rgb(204, 204, 204);
@@ -729,7 +728,7 @@ tbody td:hover {
     padding: auto
 }
 .comments .tbl2, .tbl1 {
-    padding: 10px;
+    padding: 5px;
 }
 .comments .small {
     font-size:12px;

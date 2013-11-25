@@ -101,6 +101,11 @@ function render_page($license = false) {
                         <span class="icon-steam2"></span>
                         </a>
                     </li>
+                    <li>
+                        <a href="' . BASEDIR . 'infusions/comy_rss_panel/rss.php?type=1" target="_blank" title="Trete unserer Steam Community bei!">
+                        <span class="icon-feed"></span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -112,7 +117,7 @@ function render_page($license = false) {
 
     // Footer
     echo'<footer class="clearfix"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
-            <span style="float:right">' . showcopyright() . '</span></footer></div>';  
+            <span style="float:right">' . showcopyright() . '</span></footer></div>';
 
     // Scripts and co.
     add_to_footer('<!-- Scripts -->
@@ -124,8 +129,7 @@ function render_page($license = false) {
 
 /* New in v7.02 - render comments */
 
-function render_comments($c_data, $c_info) {
-    global $locale, $settings;
+function render_comments($c_data, $c_info) {    global $locale, $settings;
     opentable($locale['c100']);
     if (!empty($c_data)) {
         echo "<div class='comments floatfix'>";
@@ -140,10 +144,10 @@ function render_comments($c_data, $c_info) {
                 echo "<span class='comment-avatar'>" . $data['user_avatar'] . "</span>";
             }
             echo "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>";
-            echo "<span class='comment-name'>" . $data['comment_name'] . "</span>\n<br />";
+            echo "<span class='comment-name'>" . $data['comment_name'] . "</span>";
             echo "<span class='small'>" . $data['comment_datestamp'] . "</span>";
             if ($data['edit_dell'] !== false) {
-                echo "<br />\n<span class='comment_actions'>" . $data['edit_dell'] . "\n</span>";
+                echo "<br />\n<span class='comment_actions'>" . $data['edit_dell'] . "</span>";
             }
             echo "</div>\n<div class='tbl1 comment_message'>" . $data['comment_message'] . "</div>";
         }
@@ -164,7 +168,7 @@ function newsposter2($info, $sep = "", $class = "") {
     $link_class = $class ? " class='$class' " : "";
     $res = "<span " . $link_class . "><span class='icon-user'></span>&nbsp;" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
     $res .= showdate("newsdate", $info['news_date']);
-    $res .= $info['news_ext'] == "y" || $info['news_allow_comments'] ? $sep . "\n" : "\n";
+    $res .= $info['news_ext'] == "y" || $info['news_allow_comments'] ? $sep : "";
     return "<!--news_poster-->" . $res;
 }
 
@@ -176,9 +180,10 @@ function newsopts2($info, $sep, $class = "") {
         $res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icon-bubbles'></span></a> " . $sep . " ";
     }
     if ($info['news_ext'] == "y" || ($info['news_allow_comments'] && $settings['comments_enabled'] == "1")) {
-        $res .= $info['news_reads'] . $locale['global_074'] . "\n" . $sep;
+        $res .= $info['news_reads'] . $locale['global_074'];
+        //$res .= $info['news_reads'] . $locale['global_074'] . $sep;
     }
-    $res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "' title='" . $locale['global_075'] . "'><span class='icon-file2'></span>\n";
+    //$res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "' title='" . $locale['global_075'] . "'><span class='icon-file2'></span></a>\n";
     return "<!--news_opts-->" . $res;
 }
 

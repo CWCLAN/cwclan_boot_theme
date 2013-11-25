@@ -338,7 +338,8 @@ if ($rows != 0) {
                     echo "<a href='postify.php?post=on&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>" . $locale['516'] . "</a>";
                 }
             }
-            echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;rowstart=" . $_GET['rowstart'] . "'><img src='" . get_image("printer") . "' alt='" . $locale['519'] . "' title='" . $locale['519'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
+            //echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;rowstart=" . $_GET['rowstart'] . "'><img src='" . get_image("printer") . "' alt='" . $locale['519'] . "' title='" . $locale['519'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
+            echo "</div>\n";
             add_to_title($locale['global_201'] . $fdata['thread_subject']);
             echo "<div style='position:absolute' class='forum_thread_title'><!--forum_thread_title--><strong>" . $fdata['thread_subject'] . "</strong></div>\n</td>\n</tr>\n";
         }
@@ -374,9 +375,10 @@ if ($rows != 0) {
         echo "<br /></td>\n";
         echo "<td class='tbl2 forum_thread_post_date'>\n";
         echo "<div style='float:right' class='small'>";
-        echo "<a href='#top'><img src='" . get_image("up") . "' alt='" . $locale['541'] . "' title='" . $locale['542'] . "' style='border:0;vertical-align:middle' /></a>\n";
+        echo "<a href='#top' alt='" . $locale['541'] . "' title='" . $locale['542'] . "'><span class='icon-arrow-up'></span></a>\n";
         echo "&nbsp;<a href='#post_" . $data['post_id'] . "' name='post_" . $data['post_id'] . "' id='post_" . $data['post_id'] . "'>#" . ($current_row + $_GET['rowstart']) . "</a>";
-        echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;post=" . $data['post_id'] . "&amp;nr=" . ($current_row + $_GET['rowstart']) . "'><img src='" . get_image("printer") . "' alt='" . $locale['519a'] . "' title='" . $locale['519a'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
+        //echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;post=" . $data['post_id'] . "&amp;nr=" . ($current_row + $_GET['rowstart']) . "'><img src='" . get_image("printer") . "' alt='" . $locale['519a'] . "' title='" . $locale['519a'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
+        echo "</div>\n";
         
         echo "<div><!--forum_thread_user_name-->" . profile_link($data['user_id'], $data['user_name'], $data['user_status']);
         //---ONLINE STATUS START---//
@@ -600,12 +602,12 @@ if (iMOD) {
     echo "<form name='modopts' method='post' action='options.php?forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>\n";
 }
 echo "<table cellpadding='0' cellspacing='0' width='100%'>\n<tr>\n";
-echo "<td style='padding-top:5px'>" . $locale['540'] . "<br />\n";
+echo "<td colspan='2' style='padding-top:5px'>" . $locale['540'] . "<br />\n";
 echo "<select name='jump_id' class='textbox' onchange=\"jumpforum(this.options[this.selectedIndex].value);\">\n";
-echo $forum_list . "</select></td>\n";
+echo $forum_list . "</select></td>\n</tr><tr>\n";
 
 if (iMOD) {
-    echo "<td align='right' style='padding-top:5px'>\n";
+    echo "<td colspan='2' align='right' style='padding-top:5px'>\n";
     echo $locale['520'] . "<br />\n<select name='step' class='textbox'>\n";
     echo "<option value='none'>&nbsp;</option>\n";
     echo "<option value='renew'>" . $locale['527'] . "</option>\n";
@@ -641,8 +643,8 @@ if ($can_reply && !$fdata['thread_locked']) {
     opentable($locale['512']);
     echo "<form name='inputform' method='post' action='" . FORUM . "post.php?action=reply&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>\n";
     echo "<table cellpadding='0' cellspacing='1' class='tbl-border center'>\n<tr>\n";
-    echo "<td align='center' class='tbl1'><textarea name='message' cols='70' rows='7' class='textbox' style='width:98%'></textarea><br />\n";
-    echo display_bbcodes("360px", "message") . "</td>\n";
+    echo "<td align='center' class='tbl1'><textarea name='message' rows='7' class='textbox'></textarea><br />\n";
+    echo display_bbcodes("100%", "message") . "</td>\n";
     echo "</tr>\n<tr>\n";
     echo "<td align='center' class='tbl2'><label><input type='checkbox' name='disable_smileys' value='1' /> " . $locale['513'] . "</label>";
     if (array_key_exists("user_sig", $userdata) && $userdata['user_sig']) {
