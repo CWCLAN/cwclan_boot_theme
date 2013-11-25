@@ -193,7 +193,7 @@ if (isset($_POST['delete_threads']) && iMOD) {
 }
 
 opentable($locale['450']);
-echo "<!--pre_forum--><div class='tbl2 forum_breadcrumbs'><a href='index.php'>".$settings['sitename']."</a> &raquo; ".$caption."</div>\n";
+echo "<div class='tbl2 forum_breadcrumbs'><a href='index.php'>".$settings['sitename']."</a> &raquo; ".$caption."</div>\n";
 echo "<br />";
 subcats($_GET['forum_id']); //subcategories
 echo"<!--pre_forum-->";

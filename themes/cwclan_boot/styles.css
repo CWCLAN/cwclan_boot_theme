@@ -320,6 +320,7 @@ footer {
 }
 .upperfooter div .vertical li {
     width: 20%;
+    height: 45pt;
     text-align: center;
     padding: 5px;    
     -webkit-transition: all 0.5s ease-in-out;

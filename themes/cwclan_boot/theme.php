@@ -35,17 +35,17 @@ function render_page($license = false) {
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-navi-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-navi-collapse">                    
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>    
                 </button>                
             </div>        
-            <div class="collapse navbar-collapse navbar-navi-collapse">';
-    include INFUSIONS . "css_dropdown_menu/menu_boot.php";
-    include INFUSIONS . "cw_login/login.php";
-    echo '</div><!-- /.navbar-collapse -->
+            <div class="collapse navbar-collapse" id="navbar-navi-collapse">';
+                include INFUSIONS . "css_dropdown_menu/menu_boot.php";
+                include INFUSIONS . "cw_login/login.php";
+      echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
@@ -166,7 +166,7 @@ function newsposter2($info, $sep = "", $class = "") {
     global $locale;
     $res = "";
     $link_class = $class ? " class='$class' " : "";
-    $res = "<span " . $link_class . "><span class='icon-user'></span>&nbsp;" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
+    $res = "<span " . $link_class . ">" . profile_link($info['user_id'], $info['user_name'], $info['user_status']) . "</span>&nbsp;";
     $res .= showdate("newsdate", $info['news_date']);
     $res .= $info['news_ext'] == "y" || $info['news_allow_comments'] ? $sep : "";
     return "<!--news_poster-->" . $res;
@@ -201,7 +201,7 @@ function render_news($subject, $news, $info) {
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
     echo '<div class="article_submenu clearfix">
                             <span class="author">
-                                Veröffentlicht von: ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
+                                ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
                             </span>
                             <span class="comments">
                                 <a href="#">' . newsopts2($info, ' &middot; ') . '</a>                                
@@ -225,7 +225,7 @@ function render_article($subject, $article, $info) {
                             <div class="article_submenu_right">
 						      <h3>' . $subject . '</h3>
                                 <span class="author">
-                                Published by ' . articleposter($info, '') . itemoptions('N', $info['news_id']) . '
+                                ' . articleposter($info, '') . itemoptions('N', $info['news_id']) . '
                                 </span>
                             </div>
                         </div>

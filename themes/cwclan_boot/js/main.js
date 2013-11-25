@@ -29,7 +29,7 @@ $(document).ready(function() {
             expires: 14, path: '/'
         });
     });
-
+/*
     $(".swipe-area").swipe({
         swipeStatus: function(event, phase, direction, distance, duration, fingers)
         {
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 return false;
             }
         }
-    });
+    });*/
 })
 function resizer() {
     var Wheight = $('body').prop('scrollHeight'), Wwidth = $('body').prop('scrollWidth');
