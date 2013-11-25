@@ -31,6 +31,7 @@ if (file_exists(INFUSIONS . "loa_rates/locale/" . $settings['locale'] . ".php"))
 }
 
 include INFUSIONS . "loa_rates/includes/rating.inc.php";
+add_to_head("<script src='" . INCLUDES . "jquery/jquery.easing.1.3'></script>");
 add_to_head("<script type='text/javascript'><!--
 function show(id) {
 var d = document.getElementById(id);
@@ -348,11 +349,14 @@ if ($rows != 0) {
             echo "<tr>\n<td colspan='2' class='tbl1 forum_thread_post_space' style='height:10px'></td>\n</tr>\n";
         }
         echo "<tr>\n<td valign='top'  rowspan='2' class='tbl2 forum_thread_user_info mobilehid' style='width:140px'>\n";
+        echo "<div class='thumb scroll'>
+                <div class='thumb-wrapper'>";
         if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
-            echo "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /><br /><br />\n";
+            echo "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' />";
         } else {
-            echo "<img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /><br /><br />\n";
+            echo "<img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' />";
         }
+        echo"<div class='thumb-detail'>";
         echo "<span class='small'>";
         if ($data['user_level'] >= 102) {
             echo $settings['forum_ranks'] ? show_forum_rank($data['user_posts'], $data['user_level'], $data['user_groups']) : getuserlevel($data['user_level']);
@@ -369,17 +373,21 @@ if ($rows != 0) {
                 echo $is_mod ? $locale['userf1'] : getuserlevel($data['user_level']);
             }
         }
-        echo "</span><br /><br />\n";
+        echo "</span>\n";
         echo "<!--forum_thread_user_info--><span class='small'><strong>" . $locale['502'] . "</strong> " . $data['user_posts'] . "</span><br />\n";
-        echo "<span class='small'><strong>" . $locale['504'] . "</strong> " . showdate("shortdate", $data['user_joined']) . "</span><br />\n";
-        echo "<br /></td>\n";
+        echo "<span class='small'><strong>" . $locale['504'] . "<br />\n</strong> " . showdate("shortdate", $data['user_joined']) . "</span>";
+
+            echo"</div>
+                </div>
+            </div>";
+        echo "</td>\n";
         echo "<td class='tbl2 forum_thread_post_date'>\n";
         echo "<div style='float:right' class='small'>";
         echo "<a href='#top' alt='" . $locale['541'] . "' title='" . $locale['542'] . "'><span class='icon-arrow-up'></span></a>\n";
         echo "&nbsp;<a href='#post_" . $data['post_id'] . "' name='post_" . $data['post_id'] . "' id='post_" . $data['post_id'] . "'>#" . ($current_row + $_GET['rowstart']) . "</a>";
         //echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;post=" . $data['post_id'] . "&amp;nr=" . ($current_row + $_GET['rowstart']) . "'><img src='" . get_image("printer") . "' alt='" . $locale['519a'] . "' title='" . $locale['519a'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
         echo "</div>\n";
-        
+
         echo "<div><!--forum_thread_user_name-->" . profile_link($data['user_id'], $data['user_name'], $data['user_status']);
         //---ONLINE STATUS START---//
         $lseen = time() - $data['user_lastvisit'];
@@ -389,8 +397,8 @@ if ($rows != 0) {
             echo "&nbsp;<img src='" . BASEDIR . "images/offline.gif' alt='" . $data['user_name'] . " ist Offline' title='" . $data['user_name'] . " ist Offline'/> \n";
         }
         //---ONLINE STATUS END--//
-        echo "<span class='small'>" . $locale['505'] . showdate("forumdate", $data['post_datestamp']) . "</span>\n</div>\n";        
-        
+        echo "<span class='small'>" . $locale['505'] . showdate("forumdate", $data['post_datestamp']) . "</span>\n</div>\n";
+
         echo "</td>\n";
         echo "</tr>\n<tr>\n<td valign='top' class='tbl1 forum_thread_user_post'>\n";
         if (iMOD) {

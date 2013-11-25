@@ -29,41 +29,41 @@ $(document).ready(function() {
             expires: 14, path: '/'
         });
     });
-/*
-    $(".swipe-area").swipe({
-        swipeStatus: function(event, phase, direction, distance, duration, fingers)
-        {
-            var toggle_el = $(".swipe-toggle").data("toggle");
-            if (phase == "move" && direction == "right") {
-                $(toggle_el).addClass("open-sidebar");
-                $.cookie_ftw("CW_ToggleStatus", "1", {
-                    expires: 14, path: '/'
-                });
-                return false;
-            }
-        }
-    });
-    $(".swipe-area2").swipe({
-        swipeStatus: function(event, phase, direction, distance, duration, fingers)
-        {
-            var toggle_el = $(".swipe-toggle").data("toggle");
-
-            if (phase == "move" && direction == "left") {
-                $(toggle_el).removeClass("open-sidebar");
-                $.cookie_ftw("CW_ToggleStatus", "0", {
-                    expires: 14, path: '/'
-                });
-                return false;
-            }
-        }
-    });*/
+    /*
+     $(".swipe-area").swipe({
+     swipeStatus: function(event, phase, direction, distance, duration, fingers)
+     {
+     var toggle_el = $(".swipe-toggle").data("toggle");
+     if (phase == "move" && direction == "right") {
+     $(toggle_el).addClass("open-sidebar");
+     $.cookie_ftw("CW_ToggleStatus", "1", {
+     expires: 14, path: '/'
+     });
+     return false;
+     }
+     }
+     });
+     $(".swipe-area2").swipe({
+     swipeStatus: function(event, phase, direction, distance, duration, fingers)
+     {
+     var toggle_el = $(".swipe-toggle").data("toggle");
+     
+     if (phase == "move" && direction == "left") {
+     $(toggle_el).removeClass("open-sidebar");
+     $.cookie_ftw("CW_ToggleStatus", "0", {
+     expires: 14, path: '/'
+     });
+     return false;
+     }
+     }
+     });*/
 })
 function resizer() {
     var Wheight = $('body').prop('scrollHeight'), Wwidth = $('body').prop('scrollWidth');
     $('.swipe-area').css("height", Wheight + "px");
     $('.swipe-area2').css("height", Wheight + "px");
     if (Wwidth > '950') {
-        $('.swipe-sidebar').css("height", Wheight + "px");        
+        $('.swipe-sidebar').css("height", Wheight + "px");
     } else {
         $('.swipe-sidebar').css("height", "100%");
     }
@@ -79,6 +79,26 @@ $('#login').popover({
     html: true,
     placement: "left"
 });
-
-
-
+/// FLIP FORUM USER INFO
+$(function() {
+    if ($('html').hasClass('csstransforms3d')) {
+        $('.thumb').removeClass('scroll').addClass('flip');
+        $('.thumb.flip').hover(
+                function() {
+                    $(this).find('.thumb-wrapper').addClass('flipIt');
+                },
+                function() {
+                    $(this).find('.thumb-wrapper').removeClass('flipIt');
+                }
+        );
+    } else {
+        $('.thumb').hover(
+                function() {
+                    $(this).find('.thumb-detail').stop().animate({bottom: 0}, 500, 'easeOutCubic');
+                },
+                function() {
+                    $(this).find('.thumb-detail').stop().animate({bottom: ($(this).height() * -1)}, 500, 'easeOutCubic');
+                }
+        );
+    }
+});
