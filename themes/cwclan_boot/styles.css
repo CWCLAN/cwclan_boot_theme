@@ -191,15 +191,27 @@ input[type=text],input[type=password] {
     font-size: 16px;    
 }
 .logged_in_box .user_login_content .user_login_icons {
-    font-size: 13px;
+    line-height: 2;
+    font-size: 20px;
+    font-weight: 300;
     color: #fff;
-    font-family: 'Roboto', sans-serif;
+}
+.logged_in_box .user_login_content .user_login_icons .tp {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .logged_in_box .user_login_content .user_login_icons a:link {
     color: #fff;
 }
 .logged_in_box .user_login_content .user_login_icons a:visited {
     color: #fff;
+}
+.user_login_name {
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left; 
+    line-height: 2;
+    font-size: 18px;
 }
 .user_login_name, .user_login_icons{
     text-align: right;    
@@ -651,11 +663,14 @@ article .article_submenu .author {
     display:block;
     width:100%;
     height:100%;
-    position:absolute;			
-    background:#fff;
-    font-family:arial;
-    font-weight:bold;
-    font-size:16px;			
+    position:absolute;	
+    background: url('../cwclan_boot/img/design/agsquare.png');
+    font-weight: 400;
+    font-size:16px;		
+    font-family: 'Roboto Condensed',sans-serif;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 8px #bbb;
 }
 .thumb .thumb-detail a {
     display:block;
@@ -663,9 +678,7 @@ article .article_submenu .author {
     height:100%;
     text-transform:uppercase;
     font-weight:bold;	
-    color:#333;
     text-decoration:none;		
-    font-family: 'Open Sans', sans-serif;
     letter-spacing:-1px;
     padding:10px;	
     font-size:18px;

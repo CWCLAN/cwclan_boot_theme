@@ -25,15 +25,16 @@ if (iMEMBER) {
     echo '<div class="no-tabletbook no-mobile pull-right"> <!-- PC Resolution Login -->
                     <div class="logged_in_box">';
 
-    echo'<div class="user_login_content">
-    <div class="user_login_name"><a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '">' . $userdata['user_name'] . '</a>
+    echo'<div class="user_login_name">Hi <a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '">' . $userdata['user_name'] . '</a>!
     </div>
+    <div class="user_login_content">
+    
     <div class="user_login_icons">
         <a href="' . BASEDIR . 'edit_profile.php" class="tp" data-toggle="tooltip" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
-    echo '|<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
-    echo '|<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+    echo '<a href="' . BASEDIR . 'messages.php" class="tp" data-toggle="tooltip" title="' . $locale['global_121'] . '"><span class="icon-envelope"></span></a>';
+    echo '<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" data-toggle="tooltip" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
     if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
-        echo '|<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
+        echo '<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
     }
     echo'</div>
         </div>';
