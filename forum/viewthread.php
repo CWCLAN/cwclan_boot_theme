@@ -349,14 +349,15 @@ if ($rows != 0) {
             echo "<tr>\n<td colspan='2' class='tbl1 forum_thread_post_space' style='height:10px'></td>\n</tr>\n";
         }
         echo "<tr>\n<td valign='top'  rowspan='2' class='tbl2 forum_thread_user_info mobilehid' style='width:140px'>\n";
-        echo "<div class='thumb scroll'>
-                <div class='thumb-wrapper'>";
+        echo "<div class='userinfo scroll'>
+                <div class='userinfo-wrapper'>";
         if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
             echo "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' />";
         } else {
             echo "<img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' />";
         }
-        echo"<div class='thumb-detail'>";
+        echo"<div class='userinfo-detail'>";
+        echo profile_link($data['user_id'], $data['user_name'], $data['user_status']);
         echo "<span class='small'>";
         if ($data['user_level'] >= 102) {
             echo $settings['forum_ranks'] ? show_forum_rank($data['user_posts'], $data['user_level'], $data['user_groups']) : getuserlevel($data['user_level']);
@@ -377,7 +378,7 @@ if ($rows != 0) {
         echo "<!--forum_thread_user_info--><span class='small'><strong>" . $locale['502'] . "</strong> " . $data['user_posts'] . "</span><br />\n";
         echo "<span class='small'><strong>" . $locale['504'] . "<br />\n</strong> " . showdate("shortdate", $data['user_joined']) . "</span>";
 
-            echo"</div>
+        echo"</div>
                 </div>
             </div>";
         echo "</td>\n";
@@ -485,7 +486,7 @@ if ($rows != 0) {
 
         echo "<tr>\n<td class='tbl2 forum_thread_ip mobilehid' style='width:140px;white-space:nowrap'>";
         if (($settings['forum_ips'] && iMEMBER) || iMOD) {
-            echo "<strong>" . $locale['571'] . "</strong>: " . $data['post_ip'];
+            echo $data['post_ip'];
         } else {
             echo "&nbsp;";
         }

@@ -29,34 +29,6 @@ $(document).ready(function() {
             expires: 14, path: '/'
         });
     });
-    /*
-     $(".swipe-area").swipe({
-     swipeStatus: function(event, phase, direction, distance, duration, fingers)
-     {
-     var toggle_el = $(".swipe-toggle").data("toggle");
-     if (phase == "move" && direction == "right") {
-     $(toggle_el).addClass("open-sidebar");
-     $.cookie_ftw("CW_ToggleStatus", "1", {
-     expires: 14, path: '/'
-     });
-     return false;
-     }
-     }
-     });
-     $(".swipe-area2").swipe({
-     swipeStatus: function(event, phase, direction, distance, duration, fingers)
-     {
-     var toggle_el = $(".swipe-toggle").data("toggle");
-     
-     if (phase == "move" && direction == "left") {
-     $(toggle_el).removeClass("open-sidebar");
-     $.cookie_ftw("CW_ToggleStatus", "0", {
-     expires: 14, path: '/'
-     });
-     return false;
-     }
-     }
-     });*/
 })
 function resizer() {
     var Wheight = $('body').prop('scrollHeight'), Wwidth = $('body').prop('scrollWidth');
@@ -82,22 +54,22 @@ $('#login').popover({
 /// FLIP FORUM USER INFO
 $(function() {
     if ($('html').hasClass('csstransforms3d')) {
-        $('.thumb').removeClass('scroll').addClass('flip');
-        $('.thumb.flip').hover(
+        $('.userinfo').removeClass('scroll').addClass('flip');
+        $('.userinfo.flip').hover(
                 function() {
-                    $(this).find('.thumb-wrapper').addClass('flipIt');
+                    $(this).find('.userinfo-wrapper').addClass('flipIt');
                 },
                 function() {
-                    $(this).find('.thumb-wrapper').removeClass('flipIt');
+                    $(this).find('.userinfo-wrapper').removeClass('flipIt');
                 }
         );
     } else {
-        $('.thumb').hover(
+        $('.userinfo').hover(
                 function() {
-                    $(this).find('.thumb-detail').stop().animate({bottom: 0}, 500, 'easeOutCubic');
+                    $(this).find('.userinfo-detail').stop().animate({bottom: 0}, 500, 'easeOutCubic');
                 },
                 function() {
-                    $(this).find('.thumb-detail').stop().animate({bottom: ($(this).height() * -1)}, 500, 'easeOutCubic');
+                    $(this).find('.userinfo-detail').stop().animate({bottom: ($(this).height() * -1)}, 500, 'easeOutCubic');
                 }
         );
     }

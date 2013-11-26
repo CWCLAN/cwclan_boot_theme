@@ -642,24 +642,27 @@ article .article_submenu .author {
     outline-style: none; -moz-outline-style:none;
 }
 /*PHP-FUSION Forum*/
-.thumb-wrapper {
+.userinfo {
+    margin: 0 auto;
+}
+.userinfo-wrapper {
     display:block;
     width:150px;
     height:150px;
+    border-radius: 3px;    
 }
-.thumb img {
+.userinfo img {
     width:100%;
     height:100%;
     position:absolute;
     display:block;
+    border-radius: 3px;
 }
-.thumb span img {
+.userinfo span img {
     width: auto;
     height: auto;
-    position:absolute;
-    display:block;
 }
-.thumb .thumb-detail {
+.userinfo .userinfo-detail {
     display:block;
     width:100%;
     height:100%;
@@ -668,41 +671,46 @@ article .article_submenu .author {
     font-weight: 400;
     font-size:16px;		
     font-family: 'Roboto Condensed',sans-serif;
-    padding: 15px;
+    padding: 30px 10px 10px 10px;
     border-radius: 3px;
     box-shadow: inset 0 0 8px #bbb;
 }
-.thumb .thumb-detail a {
-    display:block;
+.userinfo .userinfo-detail a {    
     width:100%;
-    height:100%;
-    text-transform:uppercase;
     font-weight:bold;	
     text-decoration:none;		
-    letter-spacing:-1px;
-    padding:10px;	
+    letter-spacing:-1px;    	
     font-size:18px;
+    display:block;
+    padding: 0;
+    padding-left: 5px;    
+    height: auto;
+    position: absolute;
+    background-color: #444;
+    background-image: repeating-linear-gradient(315deg, transparent, transparent 10px, rgba(255,255,255,.1) 2px, rgba(255,255,255,.1) 12px);    
+    left: 0;
+    top: 5px;    
 }
 /*
 * Without CSS3
 */
-.thumb.scroll {
+.userinfo.scroll {
     overflow: hidden;
 }
-.thumb.scroll .thumb-detail {
+.userinfo.scroll .userinfo-detail {
     bottom:-280px;
 }
 /*
 * CSS3 Flip
 */	
-.thumb.flip {
+.userinfo.flip {
     -webkit-perspective:800px;		
     -moz-perspective:800px;
     -ms-perspective:800px;		   		
     -o-perspective:800px;
     perspective:800px;
 }
-.thumb.flip .thumb-wrapper {
+.userinfo.flip .userinfo-wrapper {
     -webkit-transition: -webkit-transform 1s;
     -moz-transition: -moz-transform 1s;
     -ms-transition: -moz-transform 1s;
@@ -714,22 +722,22 @@ article .article_submenu .author {
     -o-transform-style: preserve-3d;			
     transform-style: preserve-3d;			
 }
-.thumb.flip .thumb-detail {
+.userinfo.flip .userinfo-detail {
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
     -ms-transform: rotateY(-180deg);
     -o-transform: rotateY(-180deg);
     transform: rotateY(-180deg);			   			
 }
-.thumb.flip img,
-.thumb.flip .thumb-detail {
+.userinfo.flip img,
+.userinfo.flip .userinfo-detail {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
 }
-.thumb.flip .flipIt {
+.userinfo.flip .flipIt {
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);			
     -ms-transform: rotateY(-180deg);			
