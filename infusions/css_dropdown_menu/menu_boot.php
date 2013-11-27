@@ -44,8 +44,8 @@ if (dbrows($msql) != 0) {
                         $link_target_m2 = ($mdata2['menu_window'] == "1" ? " target='_blank'" : "");
                         $msql3 = dbquery("SELECT * FROM " . DB_MENUS . " WHERE menu_cat='" . $mdata2['menu_id'] . "' ORDER BY menu_order");
                         if (dbrows($msql3) != 0) {
-                            echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $mdata2['menu_name'] . "<b class='caret'></b></a>";
-                            echo "<ul class='dropdown-menu'>";
+                            echo "<li class='dropdown'><a class='trigger right-caret'>" . $mdata2['menu_name'] . "</a>";
+                            echo "<ul class='dropdown-menu sub-menu'>";
                             if (strstr($mdata2['menu_link'], "http://") || strstr($mdata2['menu_link'], "https://")) {
                                 echo "<li><a href='" . $mdata2['menu_link'] . "'" . $link_target_m2 . ">" . $mdata2['menu_name'] . "</a></li>";
                             } else {
