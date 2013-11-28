@@ -754,7 +754,21 @@ table th, table td {
     border: none;
     padding: 5px;
 }
+.profile {
+    width:650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.profile:nth-child(2) {
+    margin-top: 15px;
+}
 .tbl-border {
+    background: #fff;
+    border: solid thin #ddd;
+    box-shadow: 0 2px 1px #eee;
+}
+.tbl-border .textbox {
+    background: #fbfbfb;   
     border: solid thin #ddd;
 }
 .tbl-border2 {
