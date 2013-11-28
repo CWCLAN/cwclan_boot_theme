@@ -870,15 +870,57 @@ span .panelbutton {
     top: -21px;
     right: 10px;
 }
-.shoutboxname{
-    font-weight:bold;
+
+/* Shoutbox Styles */
+
+.shout {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-top: thin dashed #aaa;
+}
+.shout:nth-child(odd) .shoutbody
+{  
     float: left;
 }
-.shoutbox{    
+.shout:nth-child(odd) .shoutboxname 
+{
+    float: right;
+    padding-left: 7px;
+}
+.shout:nth-child(even) .shoutbody
+{  
+    float: right;
+}
+.shout:nth-child(even) .shoutboxname 
+{
+    float: left;   
+}
+.shout img {
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.shoutbody {
+    width: 80%;
+}
+.shoutboxname{
+    font-weight:bold;
+    width: 20%;
+}
+.shoutbox{
+    background: #fff;
+    border: solid thin #ddd;
+    box-shadow: 0 1px 1px #eee;
+    padding: 5px;
+    
+}
+
+.shoutheader {
+    font-weight: 700;
 }
 .shoutboxdate{
-    text-align: right;
-    border-bottom: solid thin #ddd;
+    color: #ccc;
 }
 .small{    
 }

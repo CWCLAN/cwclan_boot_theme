@@ -170,7 +170,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
 }
 $numrows = dbcount("(shout_id)", DB_SHOUTBOX, "shout_hidden='0'");
 $result = dbquery(
-	"SELECT ts.shout_id, ts.shout_name, ts.shout_message, ts.shout_datestamp, tu.user_id, tu.user_name, tu.user_status
+	"SELECT ts.shout_id, ts.shout_name, ts.shout_message, ts.shout_datestamp, tu.user_id, tu.user_name, tu.user_status, tu.user_avatar
 	FROM ".DB_SHOUTBOX." ts
 	LEFT JOIN ".DB_USERS." tu ON ts.shout_name=tu.user_id
 	WHERE shout_hidden='0'
@@ -179,21 +179,43 @@ $result = dbquery(
 if (dbrows($result)) {
 	$i = 0;
 	while ($data = dbarray($result)) {
-		echo "<div class='shoutboxname'>";
-		if ($data['user_name']) {
+		echo "<div class='shout clearfix'>";
+		echo "<div class='shoutboxname clearfix'>";
+        
+        /* Username */
+		/*
+        if ($data['user_name']) {
 			echo "<span class='side'>".profile_link($data['shout_name'], $data['user_name'], $data['user_status'])."</span>\n";
 		} else {
 			echo $data['shout_name']."\n";
 		}
+        */
+        
+        /* UserAvatar */
+        if ($data['user_avatar'] && file_exists(IMAGES."avatars/".$data['user_avatar']) && $data['user_status']!=6 && $data['user_status']!=5) {
+            echo "<img title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' />\n";
+        } else {
+            echo "<img src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' />\n";
+        }
+        
 		echo "</div>\n";
-		echo "<div class='shoutboxdate'>".showdate("forumdate", $data['shout_datestamp'])."</div>";
-		echo "<div class='shoutbox'>".sbwrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"))."</div>\n";
+        echo "<div class='shoutbody'>";
+        
+        /* Date */
+		echo "<div class='shoutboxdate clearfix'><span class='icon-clock'></span> ".showdate("forumdate", $data['shout_datestamp'])."</div>";
+        
+        /* Content */
+		echo "<div class='shoutbox clearfix'>
+        <div class='shoutheader'>".$data['user_name']." schrieb:</div>
+        <div>".sbwrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"))."</div></div>\n";
+        
+        /* Edit and Delete */
 		if ((iADMIN && checkrights("S")) || (iMEMBER && $data['shout_name'] == $userdata['user_id'] && isset($data['user_name']))) {
 			echo "[<a href='".$link.$sep."s_action=edit&amp;shout_id=".$data['shout_id']."#edit_shout"."' class='side'>".$locale['SB_edit']."</a>]\n";
 			echo "[<a href='".$link.$sep."s_action=delete&amp;shout_id=".$data['shout_id']."' onclick=\"return confirm('".$locale['SB_warning_shout']."');\" class='side'>".$locale['SB_delete']."</a>]<br />\n";
 		}
 		$i++;
-		if ($i != $numrows) { echo "<br />\n"; }
+		if ($i != $numrows) { echo "</div></div>\n"; }
 	}
 	if ($numrows > $shout_settings['visible_shouts']) {
 		echo "<div style='text-align:center'>\n<a href='".INFUSIONS."shoutbox_panel/shoutbox_archive.php' class='side'>".$locale['SB_archive']."</a>\n</div>\n";
