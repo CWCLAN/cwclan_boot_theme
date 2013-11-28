@@ -754,7 +754,7 @@ table th, table td {
     border: none;
     padding: 5px;
 }
-.profile {
+.profile, .profile_category {
     width:650px;
     margin-left: auto;
     margin-right: auto;
@@ -766,10 +766,17 @@ table th, table td {
     background: #fff;
     border: solid thin #ddd;
     box-shadow: 0 2px 1px #eee;
+    width:650px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .tbl-border .textbox {
     background: #fbfbfb;   
     border: solid thin #ddd;
+}
+.profile_category {
+    width: 650px;
+    margin: 0 auto;
 }
 .tbl-border2 {
     border: solid thin #ddd;
