@@ -764,9 +764,6 @@ table th, table td {
 .profile:nth-child(2) {
     margin-top: 15px;
 }
-.tbl-border.forum_thread_table {
-    width: 100%;   
-}
 .tbl-border {
     padding: 15px;
     background: #fff;
@@ -774,28 +771,21 @@ table th, table td {
     box-shadow: 0 2px 1px #eee;    
     margin-left: auto;
     margin-right: auto;
-}
-.content article .tbl-border {
     width: 80%;
 }
-.tbl-border.profile, .tbl-border.profile_category, #forum_panel_posts {
-    width: 80%;
+.tbl-border.forum_idx_table, .tbl-border.forum_thread_table {
+   width: 100%;   
 }
 .tbl-border .textbox {
     background: #fbfbfb;   
     border: solid thin #ddd;
 }
-.profile_category {
-    width: 650px;
-    margin: 0 auto;
-}
 .tbl-border2 {
     border: solid thin #ddd;
-}.tbl1 {
-
+}
+.tbl1 {
 }
 .tbl2{
-
 }
 .forum_thread_table tbody .tbl1{
     background-color: rgb(224, 224, 224);
@@ -857,12 +847,6 @@ table th, table td {
 td img {
     max-width: none;
 }
-/*
-tbody td:hover {
-    background-color: rgb(204, 204, 204);
-    background-color: rgba(204, 204, 204, 0.5);
-}
-*/
 .forum-caption{
     font-weight:bold;
 }
