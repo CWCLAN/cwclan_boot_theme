@@ -1,9 +1,19 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
 body { 
     background: url(http://lorempixel.com/1920/1920/city/9/) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;        
+    min-height: 100%;
+}
+.container {
+    height: 100%;
 }
 a {
     color:#ef9849;
@@ -45,8 +55,7 @@ input[type=text],input[type=password] {
     border: solid thin #999;
     padding: 3px 5px;
 }
-.panel-default {
-    opacity: 0.9;
+.panel-default {    
     margin-top:30px;
     box-shadow: 0 0 5px #555;
     background: url('../img/design/agsquare.png');
