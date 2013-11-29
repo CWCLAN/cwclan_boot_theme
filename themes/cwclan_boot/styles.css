@@ -764,6 +764,9 @@ table th, table td {
 .profile:nth-child(2) {
     margin-top: 15px;
 }
+.tbl-border.forum_thread_table {
+    width: 100%;   
+}
 .tbl-border {
     padding: 15px;
     background: #fff;
@@ -771,10 +774,9 @@ table th, table td {
     box-shadow: 0 2px 1px #eee;    
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
 }
-.tbl-border.forum_thread_table {
-    width: 100%;   
+.content article .tbl-border {
+    width: 80%;
 }
 .tbl-border.profile, .tbl-border.profile_category, #forum_panel_posts {
     width: 80%;
