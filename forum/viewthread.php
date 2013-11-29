@@ -96,21 +96,6 @@ if ($settings['forum_edit_lock'] == 1) {
     $lock_edit = false;
 }
 
-//locale dependent forum buttons
-if (is_array($fusion_images)) {
-    if ($settings['locale'] != "English") {
-        $newpath = "";
-        $oldpath = explode("/", $fusion_images['newthread']);
-        $c_path = count($oldpath);
-        for ($i = 0; $i < $c_path - 1; $i++) {
-            $newpath .= $oldpath[$i] . "/";
-        }
-        if (is_dir($newpath . $settings['locale'])) {
-            redirect_img_dir($newpath, $newpath . $settings['locale'] . "/");
-        }
-    }
-}
-
 //javascript to footer
 $highlight_js = "";
 $colorbox_js = "";
@@ -232,12 +217,12 @@ if (($rows > $posts_per_page) || ($can_post || $can_reply)) {
     if (iMEMBER && $can_post) {
         echo "<td align='right' style='padding:0px 0px 4px 0px'>\n<!--pre_forum_buttons-->\n";
         if ($can_post) {
-            echo "<a href='post.php?action=newthread&amp;forum_id=" . $fdata['forum_id'] . "'>";
-            echo "<img src='" . get_image("newthread") . "' alt='" . $locale['566'] . "' style='border:0px' /></a>\n";
+            echo "<a href='post.php?action=newthread&amp;forum_id=" . $fdata['forum_id'] . "' class='btn'>";
+            echo $locale['566'] . "</a>\n";
         }
         if (!$fdata['thread_locked'] && $can_reply) {
-            echo "<a href='post.php?action=reply&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>";
-            echo "<img src='" . get_image("reply") . "' alt='" . $locale['565'] . "' style='border:0px' /></a>\n";
+            echo "<a href='post.php?action=reply&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "' class='btn'>";
+            echo $locale['565'] . "</a>\n";
         }
         echo "</td>\n";
     }
@@ -492,20 +477,20 @@ if ($rows != 0) {
         }
         echo "</td>\n<td class='tbl2 forum_thread_userbar'>\n<div style='float:left;white-space:nowrap' class='small'><!--forum_thread_userbar-->\n";
         if (isset($data['user_web']) && $data['user_web'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . $data['user_web'] . "' target='_blank'><img src='" . get_image("web") . "' alt='" . $data['user_web'] . "' style='border:0;vertical-align:middle' /></a>";
+            echo "<a href='" . $data['user_web'] . "' target='_blank' class='btn btn-forum' title='" . $data['user_web'] . "'>Web</a>";
         }
         if (iMEMBER && $data['user_id'] != $userdata['user_id'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "'><img src='" . get_image("pm") . "' alt='" . $locale['572'] . "' style='border:0;vertical-align:middle' /></a>\n";
+            echo "<a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='". $locale['572'] . "'>PM</a>\n";
         }
         echo "</div>\n<div style='float:right' class='small'>\n";
         if (iMEMBER && ($can_post || $can_reply)) {
             if (!$fdata['thread_locked']) {
-                echo "<a href='post.php?action=reply&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "&amp;quote=" . $data['post_id'] . "'><img src='" . get_image("quote") . "' alt='" . $locale['569'] . "' style='border:0px;vertical-align:middle' /></a>\n";
+                echo "<a href='post.php?action=reply&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "&amp;quote=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['569'] . "</a>\n";
                 if (iMOD || (($lock_edit && $last_post['post_id'] == $data['post_id'] || !$lock_edit)) && ($userdata['user_id'] == $data['post_author']) && ($settings['forum_edit_timelimit'] <= 0 || time() - $settings['forum_edit_timelimit'] * 60 < $data['post_datestamp'])) {
-                    echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "'><img src='" . get_image("forum_edit") . "' alt='" . $locale['568'] . "' style='border:0px;vertical-align:middle' /></a>\n";
+                    echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['568'] . "</a>\n";
                 }
             } elseif (iMOD) {
-                echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "'><img src='" . get_image("forum_edit") . "' alt='" . $locale['568'] . "' style='border:0px;vertical-align:middle' /></a>\n";
+                echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['568'] . "</a>\n";
             }
         }
         echo "</div>\n</td>\n</tr>\n";
@@ -636,12 +621,12 @@ if ($can_post || $can_reply) {
     echo "<table cellpadding='0' cellspacing='0' width='100%'>\n<tr>\n";
     echo "<td align='right' style='padding-top:10px'>\n<!--post_forum_buttons-->\n";
     if ($can_post) {
-        echo "<a href='post.php?action=newthread&amp;forum_id=" . $fdata['forum_id'] . "'>";
-        echo "<img src='" . get_image("newthread") . "' alt='" . $locale['566'] . "' style='border:0px' /></a>\n";
+        echo "<a href='post.php?action=newthread&amp;forum_id=" . $fdata['forum_id'] . "' class='btn'>";
+        echo $locale['566'] . "</a>\n";
     }
     if (!$fdata['thread_locked'] && $can_reply) {
-        echo "<a href='post.php?action=reply&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>";
-        echo "<img src='" . get_image("reply") . "' alt='" . $locale['565'] . "' style='border:0px' /></a>\n";
+        echo "<a href='post.php?action=reply&amp;forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "' class='btn'>";
+        echo $locale['565'] . "</a>\n";
     }
     echo "</td>\n</tr>\n</table>\n";
 }

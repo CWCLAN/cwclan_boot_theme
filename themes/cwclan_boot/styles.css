@@ -90,7 +90,8 @@ textarea {
     outline-style: none; -moz-outline-style:none;
 }
 .button:hover, button:hover, input[type=submit]:hover, input[type=button]:hover, .pagenav a:hover {
-    border-color: #c47850; 
+    border-color: #c47850;
+    color: ivory;
 }
 .huge {
     font-size: 60px;

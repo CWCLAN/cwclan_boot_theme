@@ -107,21 +107,6 @@ if ($fdata['forum_post']) {
 	$can_post = false;
 }
 
-//locale dependent forum buttons
-if (is_array($fusion_images)) {
-	if ($settings['locale'] != "English") {
-		$newpath = "";
-		$oldpath = explode("/", $fusion_images['newthread']);
-		for ($i = 0; $i < count($oldpath) - 1; $i++) {
-			$newpath .= $oldpath[$i]."/";
-		}
-		if (is_dir($newpath.$settings['locale'])) {
-			redirect_img_dir($newpath, $newpath.$settings['locale']."/");
-		}
-	}
-}
-//locale dependent forum buttons
-
 if (iSUPERADMIN) { define("iMOD", true); }
 
 if (!defined("iMOD") && iMEMBER && $fdata['forum_moderators']) {
@@ -210,8 +195,8 @@ if ($rows > $threads_per_page || (iMEMBER && $can_post)) {
 	}
 	if (iMEMBER && $can_post) {
 		$post_info .= "<td align='right' style='padding:4px 0px 4px 0px'>";
-		$post_info .= "<a href='post.php?action=newthread&amp;forum_id=".$_GET['forum_id']."'>";
-		$post_info .= "<img src='".get_image("newthread")."' alt='".$locale['566']."' style='border:0px;' /></a></td>\n";
+		$post_info .= "<a href='post.php?action=newthread&amp;forum_id=".$_GET['forum_id']."' class='btn'>";
+		$post_info .= $locale['566']."</a></td>\n";
 	}
 	$post_info .= "</tr>\n</table>\n";
 }

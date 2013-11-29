@@ -17,7 +17,7 @@
 .cwclear .navbar-form button:hover, .navbar-form a:hover {
 }
 .btn {
-     text-decoration: none;
+    text-decoration: none;
     font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 300;
@@ -39,9 +39,12 @@
     outline-style: none; -moz-outline-style:none;
 }
 .btn:hover {
-    color: inherit;
+    color: ivory;
 }
-
+.btn-forum {
+    padding: 2px 5px;
+    margin: 2px;
+}
 .navbar .cw-form-control {
     width: 49%;   
 }
