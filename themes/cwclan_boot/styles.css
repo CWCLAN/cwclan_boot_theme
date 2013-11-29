@@ -756,7 +756,8 @@ table th, table td {
     padding: 5px;
 }
 .profile, .profile_category {
-    width:650px;
+    width: 80%;
+    padding: 15px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -764,13 +765,18 @@ table th, table td {
     margin-top: 15px;
 }
 .tbl-border {
+    padding: 15px;
     background: #fff;
     border: solid thin #ddd;
     box-shadow: 0 2px 1px #eee;    
     margin-left: auto;
     margin-right: auto;
+    width: 80%;
 }
-.tbl-border.profile, .tbl-border.profile_category{
+.tbl-border.forum_thread_table {
+    width: 100%;   
+}
+.tbl-border.profile, .tbl-border.profile_category, #forum_panel_posts {
     width: 80%;
 }
 .tbl-border .textbox {
@@ -796,6 +802,12 @@ table th, table td {
 .forum_thread_table tbody .tbl1:hover{
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
+}
+.forum_thread_table tbody .tbl1 {
+    background: inherit;   
+}
+.forum_thread_table tbody .tbl1:hover {
+    background: inherit;   
 }
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,
