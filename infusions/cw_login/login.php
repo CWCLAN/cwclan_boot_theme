@@ -73,28 +73,7 @@ if (iMEMBER) {
     </div>
     </div>
     </div>';
-} else {
-    if (isset($_POST['Regh'])) {
-        redirect('register.php');
-    }
-    echo "<a href='#' id='login' style='float:right;padding-top:3px;padding-bottom:3px;' class='btn cwclear' data-toggle='popover' data-content='";
-        echo '<form class = "navbar-form navbar-right" role = "login" method="post" action="' . FUSION_SELF . '">
-                <div class = "form-group">
-                
-                    <input type = "text" class = "form-control cw-form-control" name = "user_name" placeholder = "' . $locale['global_101'] . '">
-                    <input type = "password" class = "form-control cw-form-control" name = "user_pass" placeholder = "' . $locale['global_102'] . '">
-                    <br>
-                    <div style="color: #999;
-text-align: center;margin-top:5px">Remember me: <input type = "checkbox" name = "remember_me" value = "y" title = "' . $locale['global_103'] . '" style = "vertical-align:middle;" /></div>
-                    
-                </div>
-                <button type = "submit" class = "button" style = "display:block;margin: 10px auto;" name = "login">
-                ' . $locale['global_104'] . '</button><hr><div style="text-align:center">'; #
-             if ($settings['enable_registration']) {
-                echo '<a href="register.php">Registrieren</a>';
-            }
-            echo' | <a href="lostpassword.php">Passwort vergessen</a></div>
-            </form>';    
-    echo "' >click me hard</a>";
+} else {   
+    echo "<a href='".BASEDIR."cwclan_login.php' id='login' style='float:right;padding-top:3px;padding-bottom:3px;' class='btn cwclear'>Login</a>";
 }
 ?>	
