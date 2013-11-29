@@ -37,8 +37,8 @@ if (iMEMBER) {
     echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.min.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
