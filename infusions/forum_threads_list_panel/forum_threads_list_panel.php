@@ -73,8 +73,8 @@ $result = dbquery(
     tt.thread_id,tt.thread_locked,tt.thread_subject,tt.thread_author,tt.thread_views,
     tt.thread_lastpost,tt.thread_lastuser, tt.thread_postcount, tt.thread_lastpostid as last_id,
     if(tt.thread_lastpost>$lastvisited,1,0) as new_post,
-    tu.user_id, tu.user_name as user_name, tu.user_tf2icon,
-    tau.user_name as author, tau.user_tf2icon AS author_tf2icon,
+    tu.user_id, tu.user_name as user_name,
+    tau.user_name as author,
 
     tp.post_message, tp.post_smileys
 
