@@ -119,7 +119,7 @@ textarea {
     height: auto;
 }
 input[type=text],input[type=password] {
-    border: solid thin #999;
+    border: solid thin #ddd;
     padding: 3px 5px;
 }
 /***/
@@ -192,8 +192,8 @@ input[type=text],input[type=password] {
     font-size: 16px;    
 }
 .logged_in_box .user_login_content .user_login_icons {
-    line-height: 2;
-    font-size: 20px;
+    padding-top: 10px;
+    font-size: 15px;
     font-weight: 300;
     color: #fff;
 }
@@ -776,9 +776,10 @@ table th, table td {
 .tbl-border.forum_idx_table, .tbl-border.forum_thread_table {
    width: 100%;   
 }
-.tbl-border .textbox {
+.textbox {
     background: #fbfbfb;   
     border: solid thin #ddd;
+    box-shadow: 0 1px 2px #eee;
 }
 .tbl-border2 {
     border: solid thin #ddd;
@@ -896,7 +897,30 @@ span .panelbutton {
 }
 
 /* Shoutbox Styles */
-
+.shout_form {
+    margin-top: 20px;
+}
+.shout_form input[type="text"] {
+    display: inline-block;
+    width: 75%;
+    padding: 5px;
+}
+.shout_form input[type="submit"] {
+    display: inline-block;
+    width: 25%;
+    border-radius:0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top:1px;
+    padding-bottom: 2px;
+}
+.shout_form div {
+}
+.shout_form div input[type="image"] {
+    padding-top: 15px;
+}
 .shout {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -919,7 +943,7 @@ span .panelbutton {
 {
     float: left;   
 }
-.shout img {
+.shout .shoutbox_user_avatar {
     margin-top: 5px;
     width: 40px;
     height: 40px;
@@ -942,6 +966,10 @@ span .panelbutton {
 
 .shoutheader {
     font-weight: 700;
+}
+.shoutheader a {
+    color: inherit;
+    text-decoration: none;
 }
 .shoutboxdate{
     color: #ccc;

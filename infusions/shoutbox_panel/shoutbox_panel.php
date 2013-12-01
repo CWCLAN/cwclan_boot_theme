@@ -163,7 +163,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
 		echo "<a href='#' onclick=\"document.getElementById('sb_captcha').src = '".INCLUDES."captchas/securimage/securimage_show.php?sid=' + Math.random(); return false\"><img src='".INCLUDES."captchas/securimage/images/refresh.gif' alt='' class='tbl-border' /></a><br />\n";
 		echo $locale['SB_enter_validation_code']."<br />\n<input type='text' name='sb_captcha_code' class='textbox' style='width:100px' /><br />\n";
 	}
-	echo "<br /><input type='submit' name='post_shout' value='".$locale['SB_shout']."' class='button' />\n";
+	echo "<input type='submit' name='post_shout' value='".$locale['SB_shout']."' class='button' />\n";
 	echo "</form>\n<br />\n";
 } else {
 	echo "<div style='text-align:center'>".$locale['SB_login_req']."</div><br />\n";
@@ -193,9 +193,9 @@ if (dbrows($result)) {
         
         /* UserAvatar */
         if ($data['user_avatar'] && file_exists(IMAGES."avatars/".$data['user_avatar']) && $data['user_status']!=6 && $data['user_status']!=5) {
-            echo "<img title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' />\n";
+            echo "<a href='profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' /></a>\n";
         } else {
-            echo "<img src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' />\n";
+            echo "<a href='profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' /></a>\n";
         }
         
 		echo "</div>\n";
@@ -206,7 +206,7 @@ if (dbrows($result)) {
         
         /* Content */
 		echo "<div class='shoutbox clearfix'>
-        <div class='shoutheader'>".$data['user_name']." schrieb:</div>
+        <div class='shoutheader'><a href='profile.php?lookup=".$data['user_id']."'>".$data['user_name']."</a> schrieb:</div>
         <div>".sbwrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"))."</div></div>\n";
         
         /* Edit and Delete */
