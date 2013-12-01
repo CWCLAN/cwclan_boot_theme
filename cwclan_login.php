@@ -38,10 +38,10 @@ if (iMEMBER) {
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.min.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
+    //echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
+    //echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.min.css'>";
+    //echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/cwclan_login.css' media='screen' />\n";
     echo "<script src='" . INCLUDES . "jquery/jquery.js'></script>\n";
@@ -52,7 +52,7 @@ if (iMEMBER) {
         <div class="col-md-4 col-md-offset-7">
             <div class="panel panel-default">
                 <div class="panel-head">
-                    <span class="icon-home"></span> Login</div>
+                    <span class="icon-lock2"></span> Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="login" role = "login" method="post" action="' . FUSION_SELF . '">
                     <div class="form-group">

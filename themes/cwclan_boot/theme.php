@@ -13,9 +13,9 @@ function get_head_tags() {
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.min.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
+    //echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.min.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
 }
@@ -83,7 +83,7 @@ function render_page($license = false) {
                     <li>
                         <a href="https://plus.google.com/share?url=www.cwclan.de" 
                         onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
-                        <span class="icon-google-plus"></span>
+                        <span class="icon-google-plus3"></span>
                         </a>
                     </li>
                     <li>
@@ -103,7 +103,7 @@ function render_page($license = false) {
                     </li>
                     <li>
                         <a href="' . BASEDIR . 'infusions/comy_rss_panel/rss.php?type=1" target="_blank" title="Trete unserer Steam Community bei!">
-                        <span class="icon-feed"></span>
+                        <span class="icon-feed3"></span>
                         </a>
                     </li>
                 </ul>
