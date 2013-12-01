@@ -226,7 +226,7 @@ input[type=text],input[type=password] {
     margin-right: auto;
     margin-bottom: 20px;
     box-shadow: 0 0 10px #777;
-    background:url('../cwclan_boot/img/design/bg_content.png');
+    background:url('../cwclan_boot/img/design/bg_content.jpg');
     border-radius: 3px;
 }
 .welcome {}
