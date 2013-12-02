@@ -37,15 +37,9 @@ if (iMEMBER) {
     echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.min.css'>";
-    //echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap-theme.min.css'>";
-    //echo "<link rel='stylesheet' href='" . THEME . "css/responsive.css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.min.css'>";
-    //echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.css'>";
-    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/cwclan_login.css' media='screen' />\n";
-    echo "<script src='" . INCLUDES . "jquery/jquery.js'></script>\n";
-    echo "<script src='" . INCLUDES . "jscript.js'></script>\n";
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.css'>";    
+    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.login.min.css'>";    
+    echo "<link rel='stylesheet' href='" . THEME . "css/cwclan_login.min.css' media='screen' />\n";
     echo "</head>\n<body>\n";
     echo '<div class="container">
     <div class="row">
@@ -74,7 +68,7 @@ if (iMEMBER) {
                             <div class="checkbox">
                                 <label>
                                     <input type = "checkbox" name = "remember_me" value = "y" title = "' . $locale['global_103'] . '">
-                                    Remember me
+                                    '.$locale['global_103'].'
                                 </label>
                             </div>
                         </div>
@@ -89,9 +83,9 @@ if (iMEMBER) {
                 </div>
                 <div class="panel-foot">';
     if ($settings['enable_registration']) {
-        echo '<a href="register.php">Registrieren</a>';
+        echo '<a href="register.php"><span class="icon-pencil"></span> Registrieren</a>';
     }
-    echo' | <a href="lostpassword.php">Passwort vergessen</a>';
+    echo' | <a href="lostpassword.php"><span class="icon-key"></span> Passwort vergessen</a>';
     echo '</div>
         </div>
     </div>

@@ -8,7 +8,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 [class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomoon';
 	speak: none;
@@ -22,7 +21,6 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 .icon-home:before {
 	content: "\e600";
 }
