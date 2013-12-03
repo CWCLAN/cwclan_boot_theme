@@ -60,7 +60,7 @@ input[type=text],input[type=password]{
     box-shadow: 0 0 5px #555;
     background: url('../img/design/agsquare.png');
 }
-.panel{ border: none;}
+.panel{ border: none;opacity: 0.9;}
 .panel-head{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 18px;
