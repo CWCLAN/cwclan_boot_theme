@@ -772,7 +772,7 @@ table th, table td {
     margin-right: auto;
     width: 80%;
 }
-.tbl-border.forum_idx_table, .tbl-border.forum_thread_table {
+.tbl-border.forum_idx_table, .tbl-border.forum_thread_table, .tbl-border.forum_table {
    width: 100%;   
 }
 .textbox {
@@ -787,19 +787,13 @@ table th, table td {
 }
 .tbl2{
 }
-.forum_thread_table tbody .tbl1{
-    background-color: rgb(224, 224, 224);
-    background-color: rgba(224, 224, 224, 0.5);
-}
 .forum_thread_table tbody .tbl1:hover{
     background-color: rgb(204, 204, 204);
-    background-color: rgba(204, 204, 204, 0.5);
+    background-color: rgba(204, 204, 204, 0.5);    
 }
-.forum_thread_table tbody .tbl1 {
-    background: inherit;   
-}
-.forum_thread_table tbody .tbl1:hover {
-    background: inherit;   
+.forum_thread_table tbody .tbl1{
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);    
 }
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,

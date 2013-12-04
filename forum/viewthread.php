@@ -327,7 +327,7 @@ if ($rows != 0) {
             //echo "&nbsp;<a href='" . BASEDIR . "print.php?type=F&amp;thread=" . $_GET['thread_id'] . "&amp;rowstart=" . $_GET['rowstart'] . "'><img src='" . get_image("printer") . "' alt='" . $locale['519'] . "' title='" . $locale['519'] . "' style='border:0;vertical-align:middle' /></a></div>\n";
             echo "</div>\n";
             add_to_title($locale['global_201'] . $fdata['thread_subject']);
-            echo "<div style='position:absolute' class='forum_thread_title'><!--forum_thread_title--><strong>" . $fdata['thread_subject'] . "</strong></div>\n</td>\n</tr>\n";
+            echo "<div class='forum_thread_title'><!--forum_thread_title--><strong>" . $fdata['thread_subject'] . "</strong></div>\n</td>\n</tr>\n";
         }
         echo "<!--forum_thread_prepost_" . $current_row . "-->\n";
         if ($current_row > 1) {
