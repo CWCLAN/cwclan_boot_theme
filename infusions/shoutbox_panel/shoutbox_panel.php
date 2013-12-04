@@ -86,7 +86,7 @@ if (!function_exists("sbwrap")) {
 	}
 }
 
-openside($locale['SB_title']);
+openside("<span class='icon-bubble2 iconpaddr'></span>" .$locale['SB_title']);
 if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
 	include_once INCLUDES."bbcode_include.php";
 	if (isset($_POST['post_shout'])) {

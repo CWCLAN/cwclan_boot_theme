@@ -63,6 +63,9 @@ textarea {
 .small{
     font-size: 12px;
 }
+.large{
+    font-size: 36px;
+}
 .c_orange {
     color: #ef9849;
 }
@@ -120,6 +123,9 @@ textarea {
 input[type=text],input[type=password] {
     border: solid thin #ddd;
     padding: 3px 5px;
+}
+[class^="icon-"], [class*=" icon-"] {    
+    padding-right: 5px;
 }
 /***/
 /*** Layout ***/
@@ -381,6 +387,9 @@ footer {
     cursor: pointer;
     vertical-align:middle;
 }
+.icons-vmid{
+    vertical-align: middle;
+}
 .icons:hover {
     color: #888;
 }
@@ -417,6 +426,10 @@ article .article_submenu .comments {
 }
 article .article_submenu .author {    
     float: left;
+}
+.iconpaddr {
+    padding-right: 5px;
+    color: #ccc;
 }
 .pagination .menu, ol, ul {
     padding: 0;

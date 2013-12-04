@@ -116,7 +116,7 @@ function render_page($license = false) {
           </div>';
 
     // Footer
-    echo'<footer class="clearfix"><span style="float:left;padding-top:10px">(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
+    echo'<footer class="clearfix"><span style="float:left"><span class="icon-html5 large icons-vmid"></span><span class="icon-css3 large icons-vmid"></span>(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer></div>';
 
     // Scripts and co.
