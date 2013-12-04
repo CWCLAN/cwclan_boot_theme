@@ -153,43 +153,41 @@ echo "<div class='pane'>\n";
     $i = 0;
     echo "<table style='width:100%; empty-cells:hide; border-spacing:1px;' class='tbl-border2 forum_table'>\n
 <tr>\n
-<td align='center' class='$class' height='24'>&nbsp;</td>\n
-<td align='center' class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
-<td align='center' class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
-<td align='center' class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
-<td align='center' class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
-<td align='center' class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
+<td class='$class'>&nbsp;</td>\n
+<td class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
+<td class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
+<td class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
+<td class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
+<td class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
 </tr>\n";
 
     while ($data = dbarray($result)) {
         if ($i == $min) {
             echo "</table><br />\n
-<div align='left'>\n
+<div>\n
 <img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;<a href=\"javascript:void(0)\" onclick=\"toggle_smt();\"><span id='show_more_threads_text'><b>" . $locale['ftl113'] . "</b></span></a>
 </div>\n
 <div id='show_more_threads' style='display: none;'><br />\n
 <table style='width:100%; empty-cells:hide; border-spacing:1px;' class='tbl-border2 forum_table'>\n
 <tr>\n
-<td align='center' class='tbl1' height='24'>&nbsp;</td>\n
-<td align='center' class='tbl1'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
-<td align='center' class='tbl1'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
-<td align='center' class='tbl1'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
-<td align='center' class='tbl1'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
-<td align='center' class='tbl1'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
+<td class='tbl1'>&nbsp;</td>\n
+<td class='tbl1'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
+<td class='tbl1'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
+<td class='tbl1'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
+<td class='tbl1'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
+<td class='tbl1'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
 </tr>\n";
         }
         if ($i % 2 == 0) {
             $row_color = "tbl1";
         } else {
             $row_color = "tbl2";
-        }
-        //$post_message = preg_replace("\[spoiler](.*)[spolier]]", " ", $post_message);
+        }        
         $post_message = trimlink($data['post_message'], 250);
         if ($data['post_smileys']
             )$post_message = parsesmileys($post_message);
         $post_message = phpentities(nl2br(parseubb($post_message)));
-
-        //.93|1234180289|8   - thread_id | time | forum_id
+        
         if ($data['new_post']) {
             $thread_match = $data['thread_id'] . "|" . $data['thread_lastpost'] . "|" . $data['forum_id'];
             if (iMEMBER && strpos($userdata['user_threads'], $thread_match) !== FALSE) {//preg_match("(^\.{$thread_match}$|\.{$thread_match}\.|\.{$thread_match}$)", $userdata['user_threads'])) {
@@ -197,34 +195,19 @@ echo "<div class='pane'>\n";
             }else
                 $folder_image = $imagenew;
         }else
-            $folder_image = $imageold;
-        /* MOD Post Bewertung fangree.co.uk */
-        /*$bewertung = "";
-        $result_bewertung = dbquery("SELECT r.*, t.*, count(t.type_name) as total
-										 FROM fusion_loa_rates_rate r
-										 LEFT JOIN fusion_loa_rates_rate_type t on r.rate_type=t.type_id , fusion_posts AS p
-										 WHERE p.thread_id=" . $data['thread_id'] . "
-										 AND p.post_id=r.rate_post
-										 AND r.rate_post=p.post_id
-										 GROUP by r.rate_type");
-        if (dbrows($result_bewertung)) {
-            while ($data_bewertung = dbarray($result_bewertung)) {
-                $bewertung .= "&nbsp;<img src='" . INFUSIONS . "loa_rates/images/forum_icons/" . $data_bewertung['type_icon'] . "' height='16' width='16'/> x " . $data_bewertung['total'];
-            }
-        } */
-        /* MOD */
+            $folder_image = $imageold;       
 
         echo "<tr>
-<td align='center' class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
+<td class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
 <td class='$row_color'>
-<span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' align='right' alt='" . $locale['ftl130'] . "' border='0' /></a></span><br />
+<span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
 <span class='small forum_thread_title'>
 <a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "' title=\"header=[" . str_replace("]", "]]", str_replace("[", "[[", trimlink($data['thread_subject'], 30))) . "] body=[" . str_replace("]", "]]", str_replace("[", "[[", $post_message)) . "] delay=[0] fade=[on]\">" . trimlink($data['thread_subject'], 30) . "</a></span>
 </td>
-<td align='center' class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
-<td align='center' class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
-<td align='center' class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
-<td align='center' class='$row_color'>
+<td class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
+<td class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
+<td class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
+<td class='$row_color'>
 <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
 <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
 </td>
@@ -286,12 +269,12 @@ if (iUSER){
 
     echo "<table style='width:100%; empty-cells:hide; border-spacing:1px;' class='tbl-border2 forum_table'>\n
   <tr>\n
-  <td align='center' class='$class' height='24'>&nbsp;</td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
+  <td class='$class'>&nbsp;</td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
   </tr>\n";
 
     while ($data = dbarray($result)) {
@@ -317,15 +300,15 @@ if (iUSER){
         }else
             $folder_image = $imageold;  
         echo "<tr>
-  <td align='center' class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
+  <td class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
   <td class='$row_color'>
-  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' align='right' alt='" . $locale['ftl130'] . "' border='0' /></a></span><br />
+  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
   <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "' title=\"header=[" . str_replace("]", "]]", str_replace("[", "[[", trimlink($data['thread_subject'], 30))) . "] body=[" . str_replace("]", "]]", str_replace("[", "[[", $post_message)) . "] delay=[0] fade=[on]\">" . trimlink($data['thread_subject'], 30) . "</a></span>
   </td>
-  <td align='center' class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
-  <td align='center' class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
-  <td align='center' class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
-  <td align='center' class='$row_color'>
+  <td class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
+  <td class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
+  <td class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
+  <td class='$row_color'>
   <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
   <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name']."</a>&nbsp;</span>
   </td>
@@ -368,12 +351,12 @@ $result = dbquery(
 
     echo "<table style='width:100%; empty-cells:hide; border-spacing:1px;' class='tbl-border2 forum_table'>\n
   <tr>\n
-  <td align='center' class='$class' height='24'>&nbsp;</td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
-  <td align='center' class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
+  <td class='$class'>&nbsp;</td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
+  <td class='$class'><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
   </tr>\n";
 
     while ($data = dbarray($result)) {
@@ -399,15 +382,15 @@ $result = dbquery(
         }else
             $folder_image = $imageold; 
         echo "<tr>
-  <td align='center' class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
+  <td class='$row_color' style='padding-left:2px; padding-right:2px;'>$folder_image</td>
   <td class='$row_color'>
-  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' align='right' alt='" . $locale['ftl130'] . "' border='0' /></a></span><br />
+  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
   <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "' title=\"header=[" . str_replace("]", "]]", str_replace("[", "[[", trimlink($data['thread_subject'], 30))) . "] body=[" . str_replace("]", "]]", str_replace("[", "[[", $post_message)) . "] delay=[0] fade=[on]\">" . trimlink($data['thread_subject'], 30) . "</a></span>
   </td>
-  <td align='center' class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
-  <td align='center' class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
-  <td align='center' class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
-  <td align='center' class='$row_color'>
+  <td class='$row_color'><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
+  <td class='$row_color'><span class='small'>" . $data['thread_views'] . "</span></td>
+  <td class='$row_color'><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
+  <td class='$row_color'>
   <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
   <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
   </td>
@@ -428,10 +411,10 @@ echo "<!-- tab 'wrap' END-->\n";
 
 if (iMEMBER) {
     echo "<hr /><p style='text-align:center; vertical-align:middle; margin-top: 6px;'>
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' height='16' width='16' alt='' border='0' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_threads.php'>" . $locale['ftl110'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' border='0' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_posts.php'>" . $locale['ftl111'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' border='0' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/newposts.php'>" . $locale['ftl112'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' border='0' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_tracked_threads.php'>" . $locale['ftl115'] . "</a></span></p>";
+<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' height='16' width='16' alt='' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_threads.php'>" . $locale['ftl110'] . "</a></span>&nbsp;&nbsp;
+<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_posts.php'>" . $locale['ftl111'] . "</a></span>&nbsp;&nbsp;
+<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/newposts.php'>" . $locale['ftl112'] . "</a></span>&nbsp;&nbsp;
+<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_tracked_threads.php'>" . $locale['ftl115'] . "</a></span></p>";
 }
 
 closetable();

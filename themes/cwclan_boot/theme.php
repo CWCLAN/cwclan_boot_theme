@@ -114,7 +114,7 @@ function render_page($license = false) {
                 PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                 </div></div>
           </div>';
-
+    
     // Footer
     echo'<footer class="clearfix"><span style="float:left"><span class="icon-html5 large icons-vmid"></span><span class="icon-css3 large icons-vmid"></span>(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer></div>';
@@ -138,7 +138,7 @@ function render_comments($c_data, $c_info) {    global $locale, $settings;
             echo $c_makepagenav = "<div style='text-align:center;margin-bottom:5px;'>" . $c_info['c_makepagenav'] . "</div>";
         }
         foreach ($c_data as $data) {
-            $comm_count = "<a href='" . FUSION_REQUEST . "#c" . $data['comment_id'] . "' id='c" . $data['comment_id'] . "' name='c" . $data['comment_id'] . "'>#" . $data['i'] . "</a>";
+            $comm_count = "<a href='" . FUSION_REQUEST . "#c" . $data['comment_id'] . "' id='c" . $data['comment_id'] . "'>#" . $data['i'] . "</a>";
             echo "<div class='tbl2 clearfix floatfix'>";
             if ($settings['comments_avatar'] == "1") {
                 echo "<span class='comment-avatar'>" . $data['user_avatar'] . "</span>";
@@ -192,7 +192,7 @@ function render_news($subject, $news, $info) {
     global $locale;
 
     if (!isset($_GET['readmore']) && $info['news_ext'] == 'y') {
-        $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" name="news_' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+        $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
     } else {
         $linked_subject = '<h3> ' . $info['news_subject'] . '</h3>';
     }
@@ -204,7 +204,7 @@ function render_news($subject, $news, $info) {
                                 ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
                             </span>
                             <span class="comments">
-                                <a href="#">' . newsopts2($info, ' &middot; ') . '</a>                                
+                                ' . newsopts2($info, ' &middot; ') . '                                
                             </span>                                                        
                         </div>
                         <p class="article">
