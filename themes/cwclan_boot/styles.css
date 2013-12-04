@@ -786,7 +786,7 @@ table th, table td {
     width: 80%;
 }
 .tbl-border.forum_idx_table, .tbl-border.forum_thread_table, .tbl-border.forum_table {
-   width: 100%;   
+    width: 100%;   
 }
 .textbox {
     background: #fbfbfb;   
@@ -967,7 +967,7 @@ span .panelbutton {
     border: solid thin #ddd;
     box-shadow: 0 1px 1px #eee;
     padding: 5px;
-    
+
 }
 
 .shoutheader {
@@ -1174,18 +1174,61 @@ fieldset[disabled] .btn-dark.active {
     box-shadow:none;
 }
 .right-caret:after,.left-caret:after
- {  content:"";
-    border-bottom: 5px solid transparent;
-    border-top: 5px solid transparent;
-    display: inline-block;
-    height: 0;
-    vertical-align: middle;
-    width: 0;
-    margin-left:5px;
+{  content:"";
+   border-bottom: 5px solid transparent;
+   border-top: 5px solid transparent;
+   display: inline-block;
+   height: 0;
+   vertical-align: middle;
+   width: 0;
+   margin-left:5px;
 }
 .right-caret:after
 {   border-left: 5px solid #ffaf46;
 }
 .left-caret:after
 {   border-right: 5px solid #ffaf46;
+}
+/** AW CALENDAR **/
+table.awec_calendar th {
+    font-weight : normal;
+}
+table.awec_calendar td.current {
+    border : 1px solid #97660a;
+}
+table.awec_calendar td.content {
+    background-color : #424242;
+}
+table.awec_calendar td.empty {
+}
+table.awec_calendar td.weekend {
+    background-color : #424242;
+}
+table.awec_list tr.odd {
+    background-color : #424242;
+}
+table.awec_list tr.even {
+    background-color : #3b3b3b;
+}
+table.awec_list tr.current {
+    background-color : #97660a;
+}
+.awec_bo_head {
+    color : #282828;
+    background-color : #b0b0b0;
+    padding : 2px;
+    font-size : 10px;
+}
+.awec_bo_body {
+    color : #282828;
+    background-color : #e1e1e1;
+    padding : 2px;
+    font-size : 10px;
+}
+.awec_bo_body ul {
+    margin : 2px 2px 2px 5px;
+    padding-left : 10px;
+} 
+ul.next_days {
+    -moz-padding-start: 15px;
 }
