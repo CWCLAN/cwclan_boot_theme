@@ -127,6 +127,10 @@ input[type=text],input[type=password] {
 [class^="icon-"], [class*=" icon-"] {    
     padding-right: 5px;
 }
+form[name=userform] table tr td div a img, form[name=inputform] table tr td div a img {
+    width: initial;
+    padding: initial;
+}
 /***/
 /*** Layout ***/
 /***/
