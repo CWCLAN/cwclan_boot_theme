@@ -34,11 +34,12 @@ if (dbrows($msql) != 0) {
             if (dbrows($msql2) != 0) {
                 echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $mdata['menu_name'] . "<b class='caret'></b></a>";
                 echo "<ul class='dropdown-menu'>";
+                /**
                 if (strstr($mdata['menu_link'], "http://") || strstr($mdata['menu_link'], "https://")) {
                     echo "<li><a href='" . $mdata['menu_link'] . "'" . $link_target_m . ">" . $mdata['menu_name'] . "</a></li>";
                 } else {
                     echo "<li><a href='" . BASEDIR . $mdata['menu_link'] . "'" . $link_target_m . ">" . $mdata['menu_name'] . "</a></li>";
-                }
+                } **/
                 while ($mdata2 = dbarray($msql2)) {
                     if (checkgroup($mdata2['menu_access'])) {
                         $link_target_m2 = ($mdata2['menu_window'] == "1" ? " target='_blank'" : "");
