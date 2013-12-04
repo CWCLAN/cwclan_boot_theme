@@ -48,7 +48,7 @@ if (iMEMBER) {
                 <div class="panel-head">
                     <span class="icon-lock2"></span> Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="login" role = "login" method="post" action="' . FUSION_SELF . '">
+                    <form class="form-horizontal" role="login" role = "login" method="post" action="' . BASEDIR . 'news.php">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-4 control-label">
                             ' . $locale['global_101'] . '</label>
