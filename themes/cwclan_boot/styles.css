@@ -210,11 +210,12 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     padding-left: 5px;
     padding-right: 5px;
 }
-.logged_in_box .user_login_content .user_login_icons a:link {
+.logged_in_box .user_login_content .user_login_icons a:link, .logged_in_box .user_login_content .user_login_icons a:visited {
     color: #fff;
 }
-.logged_in_box .user_login_content .user_login_icons a:visited {
-    color: #fff;
+.logged_in_box .user_login_content .user_login_icons a:focus,.logged_in_box .user_login_content .user_login_icons a:hover, .icon-download2:hover, .icon-download2:focus {
+    color: #ef9849;
+    text-decoration: none;
 }
 .user_login_name {
     margin-left: 10px;
