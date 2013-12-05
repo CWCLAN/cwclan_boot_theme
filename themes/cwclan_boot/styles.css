@@ -63,6 +63,9 @@ textarea {
 .small{
     font-size: 12px;
 }
+.mid{
+    font-size: 20px;
+}
 .large{
     font-size: 36px;
 }
@@ -124,9 +127,6 @@ input[type=text],input[type=password] {
     border: solid thin #ddd;
     padding: 3px 5px;
 }
-[class^="icon-"], [class*=" icon-"] {    
-    padding-right: 5px;
-}
 form[name=userform] table tr td div a img, form[name=inputform] table tr td div a img {
     width: initial;
     padding: initial;
@@ -187,7 +187,7 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     margin:0 auto;
 }
 .logged_in_box .user_avatar {
-    float: left;    
+    float: right;
     font-family: 'Roboto', sans-serif;
     margin: 4px 4px 4px 10px;
 }
@@ -197,7 +197,7 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     border:solid thin #666;
 }
 .logged_in_box .user_login_content {
-    float: left;
+    float: right;
     font-size: 16px;    
 }
 .logged_in_box .user_login_content .user_login_icons {
@@ -219,15 +219,38 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
 .user_login_name {
     margin-left: 10px;
     margin-right: 10px;
-    float: left; 
+    text-align: right; 
     line-height: 2;
     font-size: 18px;
 }
 .user_login_name, .user_login_icons{
     text-align: right;    
 }
-.user_login_icons a {
+.user_login_icons>a {
     margin: 0 2px 0 2px;
+}
+.logged_in_box{
+    display: table;
+    width: 100%;
+}
+.icon-download2.dropdown-toggle.cwtooltip {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#dropSubmit .dropdown-menu {
+    top: 28px;
+    left: initial;
+    right: 0;
+    background-color: #444;    
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-top: none;
+    border-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    background-clip: padding-box;
 }
 .wrapper{
     margin-top:50px;
@@ -372,7 +395,7 @@ footer {
     font-family: 'Roboto Condensed', sans-serif;
     color: #efefef;
     background: #444;
-    padding: 7px 15px;
+    padding: 1px 15px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 0px;
@@ -532,11 +555,9 @@ article .article_submenu .author {
 .navbar-collapse{
     max-height: 450px;
 }
-.navbar-inverse .navbar-collapse .nav>li>a:hover, .navbar-inverse .navbar-collapse .nav>li>a:focus, .navbar-inverse .navbar-collapse .dropdown-menu a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:focus {
+#dropSubmit .dropdown-menu li a:hover,#dropSubmit .dropdown-menu li a:focus, .navbar-inverse .navbar-collapse .nav>li>a:hover, .navbar-inverse .navbar-collapse .nav>li>a:focus, .navbar-inverse .navbar-collapse .dropdown-menu a:hover, .navbar-inverse .navbar-collapse .dropdown-menu a:focus {
     background: #ef9849;
     color: #fff;
-}
-.navbar-collapse .nav>li>a, .navbar-collapse .dropdown-menu a {
 }
 .nav li ul li:first-child a {
     border-top-right-radius: 0;

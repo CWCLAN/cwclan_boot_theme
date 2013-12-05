@@ -29,7 +29,9 @@ function render_page($license = false) {
           </div>'; // Topbar End
     // Content Begin
     echo '<div class="wrapper clearfix">          
-          <div class="breadcrumb"><span class="icon-mug"></span> in development</div>
+          <div class="breadcrumb">';
+          include INFUSIONS . "cw_login/login.php";          
+     echo'</div>
           <div class="hero"></div>';
 
     // Navbar Begin
@@ -43,8 +45,7 @@ function render_page($license = false) {
                 </button>                
             </div>        
             <div class="collapse navbar-collapse" id="navbar-navi-collapse">';
-                include INFUSIONS . "css_dropdown_menu/menu_boot.php";
-                include INFUSIONS . "cw_login/login.php";
+                include INFUSIONS . "css_dropdown_menu/menu_boot.php";                
       echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin
