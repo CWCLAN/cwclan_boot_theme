@@ -234,6 +234,9 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     display: table;
     width: 100%;
 }
+.logged_in_box>.btn {
+    margin: 2px;
+}
 .icon-download2.dropdown-toggle.cwtooltip {
     padding-left: 5px;
     padding-right: 5px;
@@ -855,6 +858,10 @@ table th, table td {
 }
 .forum_table tr .tbl2:nth-child(1) img{
     max-width: none;
+}
+.forum_table tr td:nth-child(1){
+    width: 1%;
+    white-space: nowrap;
 }
 @media only screen and (max-width: 950px) {
     .mobilehid,

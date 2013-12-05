@@ -44,7 +44,7 @@ $min = 5;    // minimum visible posts in first level.
 $max = 15;    // maximum number of posts in second level (hidden).
 
 $imageold = "<span class='icon-folder-open mid'></span>";
-$imagenew = "<span class='icon-folder mid'></span>";
+$imagenew = "<span class='icon-folder mid c_orange'></span>";
 $imagelocked = "<span class='icon-lock mid'></span> ";
 //$imagehot = "<span class='icon-star3 mid'></span> ";
 
