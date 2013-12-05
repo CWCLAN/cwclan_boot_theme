@@ -435,9 +435,9 @@ article .article_submenu .author {
     padding-right: 5px;
     color: #ccc;
 }
-.pagination .menu, ol, ul {
+/*.pagination .menu, ol, ul {
     padding: 0;
-}
+}*/
 #left-panel, #right-panel{
     background: #555;
     padding: 0 5px 0 5px;
@@ -792,6 +792,16 @@ table th, table td {
 .tbl-border.forum_idx_table, .tbl-border.forum_thread_table, .tbl-border.forum_table {
     width: 100%;   
 }
+.forum_thread_user_post {
+    background: url('../cwclan_boot/img/design/agsquare.png');
+    border: solid thin #ddd;
+    box-shadow: 0 1px 1px #eee;
+    padding: 5px;
+}
+.forum_thread_post_space {
+    border-bottom: solid thin #ddd;
+    box-shadow: 0 1px 2px #eee;    
+}
 .textbox {
     background: #fbfbfb;   
     border: solid thin #ddd;
@@ -803,14 +813,6 @@ table th, table td {
 .tbl1 {
 }
 .tbl2{
-}
-.forum_thread_table tbody .tbl1:hover{
-    background-color: rgb(204, 204, 204);
-    background-color: rgba(204, 204, 204, 0.5);    
-}
-.forum_thread_table tbody .tbl1{
-    background-color: rgb(224, 224, 224);
-    background-color: rgba(224, 224, 224, 0.5);    
 }
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,
@@ -967,7 +969,7 @@ span .panelbutton {
     height: 40px;
     border-radius: 50%;
 }
-.shoutbody {
+.shoutbody{
     width: 80%;
 }
 .shoutboxname{
