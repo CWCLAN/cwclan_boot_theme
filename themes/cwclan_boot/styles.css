@@ -834,6 +834,10 @@ table th, table td {
 }
 @media only screen and (max-width: 950px) {
     .mobilehid,
+    #cw_groups th:nth-child(5),
+    #cw_groups th:nth-child(6),
+    #cw_groups tr td:nth-child(5),
+    #cw_groups tr td:nth-child(6),
     .wrap_forumpanel div .forum_table tr td:nth-child(3), 
     .wrap_forumpanel div .forum_table tr td:nth-child(4),
     .wrap_forumpanel div .forum_table tr td:nth-child(5),
@@ -864,6 +868,10 @@ td img {
 /***/
 /***PHP Fusion***/
 /***/
+#cw_groups tr:nth-child(even) {
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
+}
 .profile_category_name {
     font-size: 18px;
     text-decoration:underline;
@@ -953,7 +961,7 @@ span .panelbutton {
 {
     float: left;   
 }
-.shout .shoutbox_user_avatar {
+.shout .shoutbox_user_avatar,.round_user_avatar {
     margin-top: 5px;
     width: 40px;
     height: 40px;
@@ -1171,11 +1179,7 @@ fieldset[disabled] .btn-dark.active {
     position: absolute;
     top: 0;
     display:none;
-    margin-top: -1px;
-    border-top-left-radius:0;
-    border-bottom-left-radius:0;
-    border-left-color:#fff;
-    box-shadow:none;
+    margin-top: -1px;   
 }
 .right-caret:after,.left-caret:after
 {  content:"";
