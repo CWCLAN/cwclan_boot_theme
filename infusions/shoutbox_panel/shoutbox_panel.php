@@ -180,22 +180,13 @@ if (dbrows($result)) {
 	$i = 0;
 	while ($data = dbarray($result)) {
 		echo "<div class='shout clearfix'>";
-		echo "<div class='shoutboxname clearfix'>";
-        
-        /* Username */
-		/*
-        if ($data['user_name']) {
-			echo "<span class='side'>".profile_link($data['shout_name'], $data['user_name'], $data['user_status'])."</span>\n";
-		} else {
-			echo $data['shout_name']."\n";
-		}
-        */
+		echo "<div class='shoutboxname clearfix'>";      
         
         /* UserAvatar */
         if ($data['user_avatar'] && file_exists(IMAGES."avatars/".$data['user_avatar']) && $data['user_status']!=6 && $data['user_status']!=5) {
-            echo "<a href='profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' /></a>\n";
+            echo "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' /></a>\n";
         } else {
-            echo "<a href='profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' /></a>\n";
+            echo "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar' src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' /></a>\n";
         }
         
 		echo "</div>\n";
@@ -206,7 +197,7 @@ if (dbrows($result)) {
         
         /* Content */
 		echo "<div class='shoutbox clearfix'>
-        <div class='shoutheader'><a href='profile.php?lookup=".$data['user_id']."'>".$data['user_name']."</a> schrieb:</div>
+        <div class='shoutheader'><a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'>".$data['user_name']."</a> schrieb:</div>
         <div>".sbwrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"))."</div></div>\n";
         
         /* Edit and Delete */

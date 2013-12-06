@@ -493,6 +493,17 @@ article .article_submenu .author {
 .topbar .login input[type=submit] {
     margin-top: 0;
 }
+.navbar-toggle.icon-menu2{
+    padding: 5px 10px;
+    margin: 5px;
+    background: #ef9849;
+    border: none;
+    border-bottom: solid 3px #c67d55;
+    border-radius: 3px;
+}
+.navbar-toggle.icon-menu2:hover, .navbar-toggle.icon-menu2:focus {
+    background-color: #F5A65F;
+}
 .navbar {
     font-family: 'Roboto Condensed', sans-serif;
     font-size:  21px;
@@ -982,7 +993,7 @@ span .panelbutton {
 .shout:nth-child(odd) .shoutboxname 
 {
     float: right;
-    padding-left: 7px;
+    text-align: right;
 }
 .shout:nth-child(even) .shoutbody
 {  

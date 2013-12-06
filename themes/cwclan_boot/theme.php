@@ -37,11 +37,7 @@ function render_page($license = false) {
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-navi-collapse">                    
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>    
+                <button type="button" class="navbar-toggle icon-menu2 mid" data-toggle="collapse" data-target="#navbar-navi-collapse">                       
                 </button>                
             </div>        
             <div class="collapse navbar-collapse" id="navbar-navi-collapse">';
