@@ -110,7 +110,7 @@ textarea {
     margin-top: 6px;
     margin-bottom: 4px;
 }
-.ccw {
+/*.ccw {
     color: #eee;
     background: #ef9849;
     border-color: #c67d55;
@@ -118,7 +118,7 @@ textarea {
 }
 .ccw:hover {
     border-color: #c47850;   
-}
+}*/
 .form-control {
     width: 60px;
     height: auto;
@@ -163,7 +163,7 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     font-weight:400;
     text-shadow: 0 0 2px #ccc;
 }
-.login-info {
+/*.login-info {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     padding-left: 5px;
@@ -185,7 +185,7 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
 .responsive-login .login-box-r {
     width: 75%;
     margin:0 auto;
-}
+}*/
 .logged_in_box .user_avatar {
     float: right;
     font-family: 'Roboto', sans-serif;
@@ -265,20 +265,18 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     background:url('../cwclan_boot/img/design/bg_content.jpg');
     border-radius: 3px;
 }
-.welcome {}
+/*
 .welcome h3 {
     margin-bottom: 0;
     color: #ef9849;
     font-size: 32px;
     font-weight: 500;
     text-align: center;
-}
+}*/
 .sidebar, .sidepanel {
     min-height: 200px;
     border-top-left-radius: 4px;
 }
-.sidebar_left {}
-.sidebar_right {}
 .sidebar ul, .sidepanel ul {
     list-style:none;
 }
@@ -329,7 +327,7 @@ footer {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 }
-.flleft {float: left !important;}
+/*.flleft {float: left !important;}*/
 .upperfooter {     
     background: rgb(68, 68, 68);
     background: rgba(68, 68, 68, 0.8);
@@ -412,18 +410,18 @@ footer {
     width: 100%;
     background:url('../cwclan_boot/img/specials/hero_01.jpg') no-repeat #444;
 }
-.icons {
+/*.icons {
     color: #aaa;
     font-size: 14px;
     cursor: pointer;
     vertical-align:middle;
-}
+}*/
 .icons-vmid{
     vertical-align: middle;
 }
-.icons:hover {
+/*.icons:hover {
     color: #888;
-}
+}*/
 article {
     padding: 0 5px 10px 5px;
     border-radius: 2px;
@@ -465,7 +463,7 @@ article .article_submenu .author {
 /*.pagination .menu, ol, ul {
     padding: 0;
 }*/
-#left-panel, #right-panel{
+/*#left-panel, #right-panel{
     background: #555;
     padding: 0 5px 0 5px;
     width: 13%;
@@ -476,7 +474,7 @@ article .article_submenu .author {
     top:0;
     left:0;
     height:100%;
-    z-index:97; /*navbars haben 98*/    
+    z-index:97;   
     border-right: thin solid #777;
 }
 #right-panel {
@@ -486,7 +484,7 @@ article .article_submenu .author {
     height:100%;
     z-index:97;    
     border-left: thin solid #777;
-}
+}*/
 /***/
 /*** Bootstrap Custom Navbar & Topbar ***/
 /***/
@@ -511,15 +509,6 @@ article .article_submenu .author {
     z-index: 96;
     margin-bottom:0;
 }
-.navbar-footer  {
-    z-index: 98;
-}
-
-.navbar-fixed-bottom {
-    right:auto;
-    border-radius: 4px;
-    margin:0 0 2px 5px;
-}
 .navbar-form {
     margin: auto;
     padding: 5px 0 0 0;    
@@ -543,9 +532,6 @@ article .article_submenu .author {
     color: #efefef;
     border: none;
     border-radius: 0px;
-}
-.navbar-fixed-bottom {
-    position: fixed;
 }
 .navbar .nav>li>a {
     text-shadow: none;
@@ -620,6 +606,7 @@ article .article_submenu .author {
 }
 
 /* FORUM PANEL */
+/*
 .infusion_forum {
     margin-top: 15px;
 }
@@ -653,7 +640,7 @@ article .article_submenu .author {
 }
 .infusion_forum .table th:nth-child(2) {
     text-align: left;
-}
+}*/
 
 /***/
 /*** ***/
@@ -846,10 +833,6 @@ table th, table td {
 .tbl-border2 {
     border: solid thin #ddd;
 }
-.tbl1 {
-}
-.tbl2{
-}
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,
 .forum_table tbody > tr:nth-child(odd) > td,
@@ -1034,13 +1017,12 @@ span .panelbutton {
 .shoutboxdate{
     color: #ccc;
 }
-.small{    
+/*.small{    
 }
 .small2{    
 }
 .side-small{
-
-}    
+}   */ 
 .side-label{
     color:#444;
     padding:2px 2px 3px 2px;
@@ -1150,6 +1132,7 @@ ul.tabs a.xl.current{
 /***/
 /***Navigation***/
 /***/
+/*
 ul.next_days{-moz-padding-start:15px;}
 ul#menu2, ul#menu2 ul{list-style-type:none;margin:0;padding:0;width:100%;text-align:left;}
 ul#menu2 a{display:block;text-decoration:none;}
@@ -1157,7 +1140,7 @@ ul#menu2 li{margin-top:0px;display:inline;}
 ul#menu2 li a{background:#424242;color:#fff;padding:0.5em;margin-bottom:1px;}
 ul#menu2 li a:hover{background:#3B3B3B;color:#CA880C;}
 ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
-ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}
+ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}*/
 
 /* Bootstrap 3 Custom Button */
 .btn-dark {
