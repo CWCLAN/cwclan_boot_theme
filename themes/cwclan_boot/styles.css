@@ -1224,8 +1224,7 @@ fieldset[disabled] .btn-dark.active {
     margin-top: -1px;   
 }
 .right-caret:after,.left-caret:after
-{  content:"";
-   border-bottom: 5px solid transparent;
+{  border-bottom: 5px solid transparent;
    border-top: 5px solid transparent;
    display: inline-block;
    height: 0;
@@ -1240,28 +1239,42 @@ fieldset[disabled] .btn-dark.active {
 {   border-right: 5px solid #ffaf46;
 }
 /** AW CALENDAR **/
-table.awec_calendar th {
-    font-weight : normal;
+.awec_calendar{
+    border: solid thin #ddd;
+    border-collapse:collapse;
 }
-table.awec_calendar td.current {
-    border : 1px solid #97660a;
+.awec_calendar tr:nth-child(2n+1) td:nth-child(2n+1),.awec_calendar tr:nth-child(2n+2) td:nth-child(2n+2){
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);    
 }
-table.awec_calendar td.content {
-    background-color : #424242;
+.awec_calendar tr td {
+    border: solid thin #ddd;
 }
-table.awec_calendar td.empty {
+.awec_calendar tr td.content {
+    width: initial;
+    min-height: initial;
+    box-shadow: initial;
+    background: none;
+    border: solid thin #ddd;
+    padding: 0;
+    margin: 0;
+    float: none;
 }
-table.awec_calendar td.weekend {
-    background-color : #424242;
+.awec_calendar tr td.empty {
 }
-table.awec_list tr.odd {
-    background-color : #424242;
+.awec_calendar tr td.weekend {
+    background-color: rgb(224, 224, 224) ! important;
+    background-color: rgba(224, 224, 224, 0.7) ! important;
 }
-table.awec_list tr.even {
-    background-color : #3b3b3b;
+.awec_list tr.odd {
+    background-color: rgb(224, 224, 224);
+    background-color: rgba(224, 224, 224, 0.5);
 }
-table.awec_list tr.current {
-    background-color : #97660a;
+.awec_list tr.even {
+    
+}
+.awec_list tr.current, .awec_calendar tr td.current {
+    border: solid 2px #ef9849 !important;
 }
 .awec_bo_head {
     color : #282828;
