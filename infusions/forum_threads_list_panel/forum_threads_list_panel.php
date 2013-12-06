@@ -76,11 +76,11 @@ echo "<div class='wrap_forumpanel'>\n";
 echo "<!-- the tabs -->\n";
 echo "<ul class='tabs' style='height:25px;'>\n";
 // 1.Tab Link
-echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;neueste&nbsp;</a></b></li>\n";
+echo "<li><b><a href='#'><span class='icon-tag small'></span>&nbsp;neueste</a></b></li>\n";
 
 // 2.Tab Link
 if (iUSER) {
-    echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;gepinnte&nbsp;</a></b></li>\n";
+    echo "<li><b><a href='#'><span class='icon-pushpin small'></span>&nbsp;gepinnte</a></b></li>\n";
 }
 echo "</ul>\n";
 
@@ -104,7 +104,7 @@ while ($data = dbarray($result)) {
     if ($i == $min) {
         echo "</table><br />\n
 <div>\n
-<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;<a href=\"javascript:void(0)\" onclick=\"toggle_smt();\"><span id='show_more_threads_text'><b>" . $locale['ftl113'] . "</b></span></a>
+<span class='icon-menu'></span>&nbsp;<a href=\"javascript:void(0)\" onclick=\"toggle_smt();\"><span id='show_more_threads_text'><b>" . $locale['ftl113'] . "</b></span></a>
 </div>\n
 <div id='show_more_threads' style='display: none;'><br />\n
 <table style='width:100%; empty-cells:hide;' class='tbl-border2 forum_table'>\n
@@ -252,10 +252,10 @@ echo "<!-- tab 'wrap' END-->\n";
 
 if (iMEMBER) {
     echo "<hr /><p style='text-align:center; vertical-align:middle; margin-top: 6px;'>
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' height='16' width='16' alt='' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_threads.php'>" . $locale['ftl110'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_posts.php'>" . $locale['ftl111'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/newposts.php'>" . $locale['ftl112'] . "</a></span>&nbsp;&nbsp;
-<img src='" . BASEDIR . "infusions/forum_threads_list_panel/images/icon_threads.png' alt='' height='16' width='16' />&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_tracked_threads.php'>" . $locale['ftl115'] . "</a></span></p>";
+<span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_threads.php'>" . $locale['ftl110'] . "</a></span>&nbsp;&nbsp;
+<span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_posts.php'>" . $locale['ftl111'] . "</a></span>&nbsp;&nbsp;
+<span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/newposts.php'>" . $locale['ftl112'] . "</a></span>&nbsp;&nbsp;
+<span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_tracked_threads.php'>" . $locale['ftl115'] . "</a></span></p>";
 }
 
 closetable();

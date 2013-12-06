@@ -56,6 +56,7 @@ img {
 hr {
     margin-top: auto;
     margin-bottom: auto;
+    border-top: thin solid #ccc;
 }
 textarea {
     width: 100%;
