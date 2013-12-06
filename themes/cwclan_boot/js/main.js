@@ -4,6 +4,9 @@ $(".tp").tooltip({
 $(".tp2").tooltip({
     placement: "top"
 });
+$(".cwtooltip").tooltip({
+    placement: "top"
+});
 /// FLIP FORUM USER INFO
 $(function() {
     if ($('html').hasClass('csstransforms3d')) {

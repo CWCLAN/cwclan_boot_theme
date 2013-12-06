@@ -1243,6 +1243,12 @@ fieldset[disabled] .btn-dark.active {
     margin: 0;
     float: none;
 }
+.awec_calendar tr td.content ul{
+    list-style-type: none;
+    padding: 0;
+}
+.awec_calendar tr td.content li{    
+}
 .awec_calendar tr td.empty {
 }
 .awec_calendar tr td.weekend {
@@ -1254,7 +1260,7 @@ fieldset[disabled] .btn-dark.active {
     background-color: rgba(224, 224, 224, 0.5);
 }
 .awec_list tr.even {
-    
+
 }
 .awec_list tr.current, .awec_calendar tr td.current {
     border: solid 2px #ef9849 !important;
