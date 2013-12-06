@@ -62,8 +62,7 @@ $result = dbquery(
     INNER JOIN " . DB_POSTS . " tp USING(thread_id)
     INNER JOIN " . DB_USERS . " tu ON tt.thread_lastuser=tu.user_id
     INNER JOIN " . DB_USERS . " tau ON tt.thread_author=tau.user_id
-    WHERE " . groupaccess('forum_access') . "
-    AND tf.forum_id NOT LIKE 32
+    WHERE " . groupaccess('forum_access') . "    
     AND tt.thread_lastpostid = tp.post_id
     ORDER BY tt.thread_lastpost DESC LIMIT " . ($min + $max)
 );
@@ -82,45 +81,6 @@ echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_pan
 // 2.Tab Link
 if (iUSER) {
     echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;gepinnte&nbsp;</a></b></li>\n";
-}
-// 3.Tab Link
-if (iUSER) {
-    $result_new = dbquery(
-            "SELECT
-    tf.forum_id,
-    tt.thread_id,
-    tt.thread_lastpost,    
-    if(tt.thread_lastpost>$lastvisited,1,0) as new_post
-
-    FROM " . DB_THREADS . " tt
-    INNER JOIN " . DB_FORUMS . " tf USING(forum_id)
-    INNER JOIN " . DB_POSTS . " tp USING(thread_id)
-    INNER JOIN " . DB_USERS . " tu ON tt.thread_lastuser=tu.user_id
-    INNER JOIN " . DB_USERS . " tau ON tt.thread_author=tau.user_id
-    WHERE " . groupaccess('forum_access') . "
-    AND tf.forum_id = 32    
-    AND tt.thread_lastpostid = tp.post_id
-    AND if(tt.thread_lastpost>$lastvisited,1,0)
-    ORDER BY tt.thread_lastpost ASC LIMIT 5"
-    );
-
-    if (dbrows($result_new) != 0) {
-        while ($data_new = dbarray($result_new)) {
-            if ($data_new['new_post']) {
-                $thread_match = $data_new['thread_id'] . "|" . $data_new['thread_lastpost'] . "|" . $data_new['forum_id'];
-                if (iMEMBER && strpos($userdata['user_threads'], $thread_match) !== FALSE) {//preg_match("(^\.{$thread_match}$|\.{$thread_match}\.|\.{$thread_match}$)", $userdata['user_threads'])) {
-                    $folder_image = "icon_displaymore.png";
-                } else {
-                    $folder_image = "neu.gif";
-                }
-            } else {
-                $folder_image = "icon_displaymore.png";
-            }
-        }
-        echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/" . $folder_image . "' height='10' width='10' alt='' />&nbsp;TF2&nbsp;Trading&nbsp;</a></b></li>\n";
-    } else {
-        echo "<li><b><a href='#'>&nbsp;<img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_displaymore.png' height='10' width='10' alt='' />&nbsp;TF2&nbsp;Trading&nbsp;</a></b></li>\n";
-    }
 }
 echo "</ul>\n";
 
@@ -285,80 +245,6 @@ if (iUSER) {
     echo"</div>\n";
     echo"<!-- tab 'panes' END-->\n";
 }
-// 3.Tab
-if (iUSER) {
-    echo"<!-- tab 'panes' START -->\n";
-    echo"<div class='pane'>\n";
-    $result = dbquery(
-            "SELECT
-    tf.forum_name,tf.forum_id,
-
-    tt.thread_id,tt.thread_locked,tt.thread_subject,tt.thread_author,tt.thread_views,
-    tt.thread_lastpost,tt.thread_lastuser, tt.thread_postcount, tt.thread_lastpostid as last_id,
-    if(tt.thread_lastpost>$lastvisited,1,0) as new_post,
-    tu.user_id, tu.user_name as user_name, 
-    tau.user_name as author,
-
-    tp.post_message, tp.post_smileys
-
-	FROM " . DB_THREADS . " tt
-    INNER JOIN " . DB_FORUMS . " tf USING(forum_id)
-    INNER JOIN " . DB_POSTS . " tp USING(thread_id)
-    INNER JOIN " . DB_USERS . " tu ON tt.thread_lastuser=tu.user_id
-    INNER JOIN " . DB_USERS . " tau ON tt.thread_author=tau.user_id
-    WHERE " . groupaccess('forum_access') . "
-    AND tf.forum_id = 32
-    AND tt.thread_lastpostid = tp.post_id
-    ORDER BY tt.thread_lastpost DESC LIMIT 10"
-    );
-
-    $i = 0;
-
-    echo "<table style='width:100%; empty-cells:hide;' class='tbl-border2 forum_table'>\n
-  <tr>\n
-  <td>&nbsp;</td>\n
-  <td><span class='small'><b>" . $locale['ftl120'] . "</b></span></td>\n
-  <td><span class='small'><b>" . $locale['ftl124'] . "</b></span></td>\n
-  <td><span class='small'><b>" . $locale['ftl123'] . "</b></span></td>\n
-  <td><span class='small'><b>" . $locale['ftl107'] . "</b></span></td>\n
-  <td><span class='small'><b>" . $locale['ftl108'] . "</b></span></td>\n
-  </tr>\n";
-
-    while ($data = dbarray($result)) {
-        $locked = ($data['thread_locked'] ? $imagelocked : "");
-        if ($data['new_post']) {
-            $thread_match = $data['thread_id'] . "|" . $data['thread_lastpost'] . "|" . $data['forum_id'];
-            if (iMEMBER && strpos($userdata['user_threads'], $thread_match) !== FALSE) {//preg_match("(^\.{$thread_match}$|\.{$thread_match}\.|\.{$thread_match}$)", $userdata['user_threads'])) {
-                $folder_image = $imageold;
-            }
-            else
-                $folder_image = $imagenew;
-        }
-        else
-            $folder_image = $imageold;
-        echo "<tr>
-  <td>$locked$folder_image</td>
-  <td>
-  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
-  <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
-  </td>
-  <td><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
-  <td><span class='small'>" . $data['thread_views'] . "</span></td>
-  <td><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
-  <td>
-  <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
-  <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
-  </td>
-  </tr>\n";
-        $i++;
-    }
-    echo "</table><br />\n";
-
-    echo "</div>\n";
-    echo "<!-- tab 'panes' END-->\n";
-}
-//3.Tab END
-
 echo "</div>\n";
 echo "<!-- tab 'wrap' END-->\n";
 // jQuery Tabs ENDE
