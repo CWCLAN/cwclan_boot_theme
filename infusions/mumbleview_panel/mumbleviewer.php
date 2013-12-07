@@ -1,5 +1,4 @@
 <?php
-
 // Configuration Start
 // Set here your Server IP or DNS
 $url = 'mumble://mumble.cwclan.de:';
@@ -10,17 +9,15 @@ function printmainchannel($channelobject, $url, $servername, $players) {
     $channeldepth = 0;
     $menustatus = array("1", "1");
 
-    $channelobject->c->name = $servername;
-
-    $playercount = count($players);
+    $channelobject->c->name = $servername;  
 
     //var_dump ($channelobject);
 
     echo "<a class='channelname' href=\"" . $url . "?version=1.2.0\" title=\"Verbinden mit: " . $channelobject->c->name . " Mumble\"><img src=\"" . INFUSIONS . "mumbleview_panel/images/mumble-icon.png\" alt=\"Verbinden mit: " . $channelobject->c->name . " Mumble\" height='16' width='16'/> " . $channelobject->c->name . "</a><br />\n";
     if (count($channelobject->children) + count($channelobject->users) > 0) {
         echo "<div class='div_channel' id='div_channel_" . $channelobject->c->id . "'>\n";
-        foreach ($channelobject->children as $children) {            
-                printchannel($children, $channelobject->children[count($channelobject->children) - 1]->c->id, $channeldepth + 1, $menustatus, $url);            
+        foreach ($channelobject->children as $children) {
+            printchannel($children, $channelobject->children[count($channelobject->children) - 1]->c->id, $channeldepth + 1, $menustatus, $url);
         }
 
         foreach ($channelobject->users as $users) {
@@ -40,14 +37,14 @@ function printchannel($channelobject, $lastid, $channeldepth, $menustatus, $url)
 
     if (count($channelobject->users) > 0) {
 
-        /*         * while ($count < $channeldepth) {
-          if ($menustatus[$count] == 0) {
-          echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_space.gif' alt='Mumbleviewer' height='10' width='11'/>";
-          } else {
-          echo "<img border=0 src=" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif height='10' width='11' alt=Mumbleviewer>";
-          }
-          $count++;
-          }* */
+        while ($count < $channeldepth) {
+            if ($menustatus[$count] == 0) {
+                echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_space.gif' alt='Mumbleviewer' height='10' width='11'/>";
+            } else {
+                echo "<img border=0 src=" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif height='10' width='11' alt=Mumbleviewer>";
+            }
+            $count++;
+        }
 
 
         if (count($channelobject->children) + count($channelobject->users) > 0) {
@@ -104,22 +101,22 @@ function printplayers($playerobject, $lastid, $channeldepth, $menustatus) {
         $menustatus[$channeldepth] = 0;
     }
 
-    /*     * $count = 1;
-      while ($count < $channeldepth) {
-      if ($menustatus[$count] == 0) {
-      echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif' alt='Mumbleviewer' height='10' width='11'/>";
-      } else {
-      echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif' alt='Mumbleviewer' height='10' width='11'/>";
-      }
-      $count++;
-      }* */
+    $count = 1;
+    while ($count < $channeldepth) {
+        if ($menustatus[$count] == 0) {
+            echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif' alt='Mumbleviewer' height='10' width='11'/>";
+        } else {
+            echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif' alt='Mumbleviewer' height='10' width='11'/>";
+        }
+        $count++;
+    }
     if ($playerobject->userid == $lastid)
         echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_end.gif' alt='Mumbleviewer' height='10' width='11'/>";
     else
         echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_mid.gif' alt='Mumbleviewer' height='10' width='11'/>";
     echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_player.png' alt='Spieler' title='Spieler' height='10' width='16'/>";
 
-#### Kuerzt den Playernamen nach $cut Zeichen ###
+#### K�rzt den Playernamen nach $cut Zeichen ###
     $playernameorig = $playerobject->name;
     $uncut = strlen($playernameorig);
     $cut = "11";
