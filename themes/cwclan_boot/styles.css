@@ -132,6 +132,13 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     width: initial;
     padding: initial;
 }
+.quote {
+    font-size: 11px;
+    padding: 4px;
+    margin: 0 20px 0 20px;
+    border: 2px solid #ca880c;
+    border-radius: 5px;
+}
 /***/
 /*** Layout ***/
 /***/
