@@ -1248,7 +1248,8 @@ fieldset[disabled] .btn-dark.active {
     list-style-type: none;
     padding: 0;
 }
-.awec_calendar tr td.content li{    
+.awec_calendar tr td ul li a.cwtooltip{
+    float: left;
 }
 .awec_calendar tr td.empty {
 }
@@ -1284,4 +1285,6 @@ fieldset[disabled] .btn-dark.active {
 } 
 ul.next_days {
     -moz-padding-start: 15px;
+}
+.awec_panel_ul {
 }
