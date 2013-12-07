@@ -1240,11 +1240,11 @@ fieldset[disabled] .btn-dark.active {
     box-shadow: initial;
     background: none;
     border: solid thin #ddd;
-    padding: 0;
+    padding: 5px;
     margin: 0;
     float: none;
 }
-.awec_calendar tr td.content ul{
+.awec_calendar tr td ul{
     list-style-type: none;
     padding: 0;
 }
