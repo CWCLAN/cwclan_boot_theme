@@ -984,7 +984,7 @@ span .panelbutton {
 .shout:nth-child(odd) .shoutboxname 
 {
     float: right;
-    text-align: right;
+    text-align: center;
 }
 .shout:nth-child(even) .shoutbody
 {  
@@ -993,6 +993,7 @@ span .panelbutton {
 .shout:nth-child(even) .shoutboxname 
 {
     float: left;   
+    text-align: center;
 }
 .shout .shoutbox_user_avatar,.round_user_avatar {
     margin-top: 5px;
