@@ -1018,6 +1018,49 @@ span .panelbutton {
 .shoutboxdate{
     color: #ccc;
 }
+
+/**
+ *   
+ *   Messages Styles
+ *
+ *   messages.php
+ *
+ */
+ 
+ /* messages.php, message overview top layer */
+ .messages_overview {
+	 text-align: center;
+ }
+ .messages_overview a:hover {
+ 	 text-decoration:  none;
+ }
+ 
+ .messages_overview span {
+ }
+ 
+ /* messages.php, inbox and outbox count layer*/
+ .messages_overview .pico_message_info {
+	 background: #ef9849;
+	 color: #fff;
+	 border-top-right-radius: 10px;
+	 border-bottom-right-radius: 10px;
+	 font-size: 12px;
+	 position: relative;
+	 top: -4px;
+	 margin-left: -10px;
+ }
+ 
+ /* messages.php, "message navigation" Links */
+ .messages_overview .messages_nav_link {
+	 font-size: 22px;
+	 margin: 0 5px;
+ }
+ 
+ /* messages.php, styles for icons used here */
+ .messages_overview .icon {
+	 /***/
+ }
+ 
 /*.small{    
 }
 .small2{    
