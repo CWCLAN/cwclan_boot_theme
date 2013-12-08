@@ -20,7 +20,6 @@ $result = dbquery(
 	ORDER BY RAND() LIMIT 0,1"
 );
 
-
 if (dbrows($result) == 1) {
     echo "<div class='polaroid'>";
     $data = dbarray($result);
@@ -34,20 +33,6 @@ if (dbrows($result) == 1) {
     <a href = '" . INFUSIONS . "hsgallery_panel/neue_fotos.html'><strong>neue Fotos</strong></a>";
     echo "</div>";
 }
-
-/**
-if (dbrows($result) == 1) {
-    openside($locale['hsg103'], "on");
-    $data = dbarray($result);
-    $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type = 'P' AND comment_item_id = '" . $data['photo_id'] . "'");
-    $img_size = @getimagesize(PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1']);
-    echo "<div style = 'text-align:center'>\n<a href = '" . BASEDIR . "infusions/hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html' class = 'highslide'>\n";
-    echo "<img class = 'tipTip' width = '".$img_size[0]."' height = '".$img_size[1]."' src = '" . PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "' title = '" . $data['photo_title'] . "' alt = '" . $data['photo_title'] . "' /></a><br />\n";
-    echo ($photo_comments == 1 ? $locale['436b'] : $locale['436']) . $photo_comments . "<br />\n";
-    echo "<a href = '" . BASEDIR . "infusions/hsgallery_panel/foto_album_" . seostring($data['album_title']) . "_" . $data['album_id'] . ".html'>" . $data['album_title'] . "</a><br />\n";
-    echo "<a href = '" . INFUSIONS . "hsgallery_panel/neue_fotos.html'><strong>neue Fotos</strong></a></div>\n  ";
-    closeside();
-}**/
 ?>
 
 
