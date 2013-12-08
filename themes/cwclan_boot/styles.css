@@ -999,9 +999,12 @@ span .panelbutton {
     float: left;   
     text-align: center;
 }
+.messages_stream .shout .shoutbox_user_avatar, .messages_stream .round_user_avatar {
+    height: 80px;
+}
 .shout .shoutbox_user_avatar,.round_user_avatar {
     margin-top: 5px;
-    width: 40px;
+    /*width: 40px;*/
     height: 40px;
     border-radius: 50%;
 }
@@ -1359,6 +1362,11 @@ div.polaroid {
     /*-webkit-transform: rotate(-1deg);
     -webkit-transition: -webkit-transform .15s linear;
     -moz-transform: rotate(-1deg);*/
+	-moz-transform:rotate(3deg);
+	-webkit-transform:rotate(3deg);
+	-o-transform:rotate(3deg);
+	-ms-transform:rotate(3deg);
+	transform:rotate(3deg);
 }
 div.polaroid a.title { 
     vertical-align: top;    
