@@ -1034,41 +1034,41 @@ span .panelbutton {
  *   messages.php
  *
  */
- 
- /* messages.php, message overview top layer */
- .messages_overview {
-	 text-align: center;
- }
- .messages_overview a:hover {
- 	 text-decoration:  none;
- }
- 
- .messages_overview span {
- }
- 
- /* messages.php, inbox and outbox count layer*/
- .messages_overview .pico_message_info {
-	 background: #ef9849;
-	 color: #fff;
-	 border-top-right-radius: 10px;
-	 border-bottom-right-radius: 10px;
-	 font-size: 12px;
-	 position: relative;
-	 top: -4px;
-	 margin-left: -10px;
- }
- 
- /* messages.php, "message navigation" Links */
- .messages_overview .messages_nav_link {
-	 font-size: 22px;
-	 margin: 0 5px;
- }
- 
- /* messages.php, styles for icons used here */
- .messages_overview .icon {
-	 /***/
- }
- 
+
+/* messages.php, message overview top layer */
+.messages_overview {
+    text-align: center;
+}
+.messages_overview a:hover {
+    text-decoration:  none;
+}
+
+.messages_overview span {
+}
+
+/* messages.php, inbox and outbox count layer*/
+.messages_overview .pico_message_info {
+    background: #ef9849;
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 12px;
+    position: relative;
+    top: -4px;
+    margin-left: -10px;
+}
+
+/* messages.php, "message navigation" Links */
+.messages_overview .messages_nav_link {
+    font-size: 22px;
+    margin: 0 5px;
+}
+
+/* messages.php, styles for icons used here */
+.messages_overview .icon {
+    /***/
+}
+
 /*.small{    
 }
 .small2{    
@@ -1338,4 +1338,49 @@ ul.next_days {
     -moz-padding-start: 15px;
 }
 .awec_panel_ul {
+}
+/** Polaroid Image Panel **/
+div.polaroid {
+    background: #fff;
+    display: inline;
+    float: left;
+    margin: 20px 0 20px 0;
+    width: 100%;    
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 300;
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);    
+    /*-webkit-transform: rotate(-1deg);
+    -webkit-transition: -webkit-transform .15s linear;
+    -moz-transform: rotate(-1deg);*/
+}
+div.polaroid a.title { 
+    vertical-align: top;    
+    text-align: center;
+    text-decoration: none;
+    /*-webkit-transform: rotate(-1deg);
+    -webkit-transition: -webkit-transform .15s linear;
+    -moz-transform: rotate(-1deg);*/
+}
+/*
+div.polaroid:hover, div.polaroid a.title:hover {    
+    -webkit-transform: scale(0.95);
+    -moz-transform: scale(0.95);
+    position: relative;
+    z-index: 5;
+}*/
+div.polaroid {
+    -webkit-transition: -webkit-transform .15s linear;
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+div.polaroid {
+    -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+}
+div.polaroid a img {
+    width: 100%;
+    padding: 10px;
 }
