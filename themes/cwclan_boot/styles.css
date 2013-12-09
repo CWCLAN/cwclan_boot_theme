@@ -41,6 +41,10 @@ a:hover {
 .clearfix{
     *zoom:1;
 }
+.center {
+    text-align: center;
+    vertical-align: middle;
+}
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Oswald', sans-serif;
@@ -843,6 +847,12 @@ table th, table td {
 }
 .tbl-border2 {
     border: solid thin #ddd;
+}
+.tbl-poll {
+    margin-bottom: 20px;
+}
+.progress-bar.progress-bar-warning>span{
+    color: #444;
 }
 .forum_idx_table tbody > tr:nth-child(odd) > td,
 .forum_idx_table tbody > tr:nth-child(odd) > th,

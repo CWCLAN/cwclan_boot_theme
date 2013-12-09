@@ -48,11 +48,11 @@ $posts_per_page = 20;
 add_to_title($locale['global_200'] . $locale['400']);
 
 if (!isset($_GET['thread_id']) && isset($_GET['pid']) && isnum($_GET['pid'])) {
-        $result = dbquery("SELECT thread_id FROM ".DB_POSTS." WHERE post_id='".$_GET['pid']."' LIMIT 1");
-        if (dbrows($result)) {
-                $data = dbarray($result);
-                redirect("viewthread.php?thread_id=".$data['thread_id']."&amp;pid=".$_GET['pid']."#post_".$_GET['pid']);
-        }
+    $result = dbquery("SELECT thread_id FROM " . DB_POSTS . " WHERE post_id='" . $_GET['pid'] . "' LIMIT 1");
+    if (dbrows($result)) {
+        $data = dbarray($result);
+        redirect("viewthread.php?thread_id=" . $data['thread_id'] . "&amp;pid=" . $_GET['pid'] . "#post_" . $_GET['pid']);
+    }
 }
 
 if (!isset($_GET['thread_id']) || !isnum($_GET['thread_id'])) {
@@ -246,22 +246,29 @@ if ($rows != 0) {
         if ($can_vote) {
             echo "<form name='voteform' method='post' action='" . FUSION_SELF . "?forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>\n";
         }
-        echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border' style='margin-bottom:5px'>\n<tr>\n";
-        echo "<td align='center' class='tbl2'><strong>" . $pdata['forum_poll_title'] . "</strong></td>\n</tr>\n<tr>\n<td class='tbl1'>\n";
-        echo "<table align='center' cellpadding='0' cellspacing='0'>\n";
+        echo "<div class='tbl-border forum_thread_table tbl-poll'>";
+        echo "<h4 class='center'>" . $pdata['forum_poll_title'] . "</h4><hr>";
         while ($pvdata = dbarray($presult2)) {
             if (!$can_vote) {
                 $option_votes = ($pdata['forum_poll_votes'] ? number_format(100 / $pdata['forum_poll_votes'] * $pvdata['forum_poll_option_votes']) : 0);
-                echo "<tr>\n<td class='tbl1'>" . $pvdata['forum_poll_option_text'] . "</td>\n";
-                echo "<td class='tbl1'><img src='" . get_image("pollbar") . "' alt='" . $pvdata['forum_poll_option_text'] . "' height='12' width='" . (200 / 100 * $option_votes) . "' class='poll' /></td>\n";
-                echo "<td class='tbl1'>" . $option_votes . "%</td><td class='tbl1'>[" . $pvdata['forum_poll_option_votes'] . " " . ($pvdata['forum_poll_option_votes'] == 1 ? $locale['global_133'] : $locale['global_134']) . "]</td>\n</tr>\n";
+
+                echo "<div><span class='icon-tag'></span> " . $pvdata['forum_poll_option_text'] . " " . ($pvdata['forum_poll_option_votes'] > 0 ? "(".$pvdata['forum_poll_option_votes'].")" : "") . "</div>";                
+                echo '<div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="' . $option_votes . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $option_votes . '%">
+                            <span>' . $option_votes . '%</span>
+                        </div>
+                      </div>';
+
+                //echo "<tr>\n<td class='tbl1'>" . $pvdata['forum_poll_option_text'] . "</td>\n";
+                //echo "<td class='tbl1'><img src='" . get_image("pollbar") . "' alt='" . $pvdata['forum_poll_option_text'] . "' height='12' width='" . (200 / 100 * $option_votes) . "' class='poll' /></td>\n";
+                //echo "<td class='tbl1'>" . $option_votes . "%</td><td class='tbl1'>[" . $pvdata['forum_poll_option_votes'] . " " . ($pvdata['forum_poll_option_votes'] == 1 ? $locale['global_133'] : $locale['global_134']) . "]</td>\n</tr>\n";
             } else {
-                echo "<tr>\n<td class='tbl1'><label><input type='radio' name='poll_option' value='" . $i . "' style='vertical-align:middle' /> " . $pvdata['forum_poll_option_text'] . "</label></td>\n</tr>\n";
+                echo "<div class='center'><label><input type='radio' name='poll_option' value='" . $i . "' style='vertical-align:middle' /> " . $pvdata['forum_poll_option_text'] . "</label></div>";
                 $i++;
             }
         }
         if (!$can_vote) {
-            echo "<tr>\n<td align='center' colspan='4' class='tbl1'>" . $locale['480'] . " : " . $pdata['forum_poll_votes'] . "</td>\n</tr>\n";
+            echo "<div class='center'>" . $locale['480'] . " : " . $pdata['forum_poll_votes'] . "</div>";
             //// Wer hat abgestimmt START///
             if (iSUPERADMIN) {
                 $vresult = dbquery("SELECT u.user_name, u.user_id FROM fusion_users AS u, fusion_forum_poll_voters AS p
@@ -274,7 +281,7 @@ if ($rows != 0) {
                     $vcount = dbarray($vresultcount);
                     $count = $vcount['count'];
                     $i = 1;
-                    echo "<tr>\n<td align='center' colspan='4' class='tbl1'>Gevotet haben: ";
+                    echo "<div>Gevotet haben: ";
                     while ($vresultdata = dbarray($vresult)) {
                         if ($i != $count) {
                             echo "<a href='" . BASEDIR . "user_" . $vresultdata['user_id'] . "_" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>, ";
@@ -283,14 +290,14 @@ if ($rows != 0) {
                             echo "<a href='" . BASEDIR . "user_" . $vresultdata['user_id'] . "_" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>";
                         }
                     }
-                    echo "</td>\n</tr>\n";
+                    echo "</div>\n";
                 }
             }
             //// Wer hat abgestimmt ENDE///
         } else {
-            echo "<tr>\n<td class='tbl1'><input type='submit' name='cast_vote' value='" . $locale['481'] . "' class='button' /></td>\n</tr>\n";
+            echo "<div class='center'><input type='submit' name='cast_vote' value='" . $locale['481'] . "' class='button' /></div>";
         }
-        echo "</table>\n</td>\n</tr>\n</table>\n";
+        echo "</div>";
         if ($can_vote) {
             echo "</form>\n";
         }
@@ -488,7 +495,7 @@ if ($rows != 0) {
             echo "<a href='" . $data['user_web'] . "' target='_blank' class='btn btn-forum' title='" . $data['user_web'] . "'>Web</a>";
         }
         if (iMEMBER && $data['user_id'] != $userdata['user_id'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='". $locale['572'] . "'>PM</a>\n";
+            echo "<a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='" . $locale['572'] . "'>PM</a>\n";
         }
         echo "</div>\n<div style='float:right' class='small'>\n";
         if (iMEMBER && ($can_post || $can_reply)) {
