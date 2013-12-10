@@ -834,7 +834,7 @@ table th, table td {
     padding: 5px;
 }
 .forum_thread_user_post img {
-	max-width: 400px;
+    max-width: 400px;
 }
 .forum_thread_post_space {
     border-bottom: solid thin #ddd;
@@ -934,7 +934,7 @@ td img {
 }
 .comments .tbl2, .tbl1 {
     padding: 5px;
-	max-width: 400px;
+    max-width: 400px;
 }
 .comments .small {
     font-size:12px;
@@ -1368,31 +1368,24 @@ div.polaroid {
     color: #333;
     font-weight: 300;
     -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
-    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);    
-    /*-webkit-transform: rotate(-1deg);
-    -webkit-transition: -webkit-transform .15s linear;
-    -moz-transform: rotate(-1deg);*/
-	-moz-transform:rotate(3deg);
-	-webkit-transform:rotate(3deg);
-	-o-transform:rotate(3deg);
-	-ms-transform:rotate(3deg);
-	transform:rotate(3deg);
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.25); 
+    -moz-transform:rotate(3deg);
+    -webkit-transform:rotate(3deg);
+    -o-transform:rotate(3deg);
+    -ms-transform:rotate(3deg);
+    transform:rotate(3deg);
 }
 div.polaroid a.title { 
     vertical-align: top;    
     text-align: center;
-    text-decoration: none;
-    /*-webkit-transform: rotate(-1deg);
-    -webkit-transition: -webkit-transform .15s linear;
-    -moz-transform: rotate(-1deg);*/
+    text-decoration: none;    
 }
-/*
 div.polaroid:hover, div.polaroid a.title:hover {    
     -webkit-transform: scale(0.95);
     -moz-transform: scale(0.95);
     position: relative;
     z-index: 5;
-}*/
+}
 div.polaroid {
     -webkit-transition: -webkit-transform .15s linear;
     -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
@@ -1405,4 +1398,14 @@ div.polaroid {
 div.polaroid a img {
     width: 100%;
     padding: 10px;
+}
+/*HS Gallery*/
+.pic {
+    padding-bottom: 10px;
+}
+.thumbnail>a>.crop {
+    width: 100%;
+    height: 150px;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
