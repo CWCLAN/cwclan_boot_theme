@@ -115,15 +115,6 @@ textarea {
     margin-top: 6px;
     margin-bottom: 4px;
 }
-/*.ccw {
-    color: #eee;
-    background: #ef9849;
-    border-color: #c67d55;
-    text-shadow: 0px 1px 1px #eee;
-}
-.ccw:hover {
-    border-color: #c47850;   
-}*/
 .form-control {
     width: 60px;
     height: auto;
@@ -132,7 +123,7 @@ input[type=text],input[type=password] {
     border: solid thin #ddd;
     padding: 3px 5px;
 }
-form[name=userform] table tr td div a img, form[name=inputform] table tr td div a img {
+form[name=userform] div a img, form[name=inputform] div a img {
     width: initial;
     padding: initial;
 }
@@ -146,6 +137,9 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
 /***/
 /*** Layout ***/
 /***/
+.row{
+    margin: 0;
+}
 .topbar {
     left:0;
     top:0;
@@ -175,29 +169,6 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     font-weight:400;
     text-shadow: 0 0 2px #ccc;
 }
-/*.login-info {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    padding-left: 5px;
-    margin-top: -10px;
-    font-size: 12px;
-}
-.responsive-login {
-    z-index:98;
-    position:static;
-    top:50px;
-    left:0px;
-    background: #efebdf;
-    box-shadow: 0 0 8px #888;
-    font-family: 'Oswald', sans-serif;
-    text-shadow: 0 0 2px #ccc;
-    border-bottom: solid thin #ccc;
-    width: 100%;
-}
-.responsive-login .login-box-r {
-    width: 75%;
-    margin:0 auto;
-}*/
 .logged_in_box .user_avatar {
     float: right;
     font-family: 'Roboto', sans-serif;
@@ -294,14 +265,6 @@ form[name=userform] table tr td div a img, form[name=inputform] table tr td div 
     background:url('../cwclan_boot/img/design/bg_content.jpg');
     border-radius: 3px;
 }
-/*
-.welcome h3 {
-    margin-bottom: 0;
-    color: #ef9849;
-    font-size: 32px;
-    font-weight: 500;
-    text-align: center;
-}*/
 .sidebar, .sidepanel {
     min-height: 200px;
     border-top-left-radius: 4px;
@@ -356,7 +319,6 @@ footer {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 }
-/*.flleft {float: left !important;}*/
 .upperfooter {     
     background: rgb(68, 68, 68);
     background: rgba(68, 68, 68, 0.8);
@@ -439,18 +401,9 @@ footer {
     width: 100%;
     background:url('../cwclan_boot/img/specials/hero_01.jpg') no-repeat #444;
 }
-/*.icons {
-    color: #aaa;
-    font-size: 14px;
-    cursor: pointer;
-    vertical-align:middle;
-}*/
 .icons-vmid{
     vertical-align: middle;
 }
-/*.icons:hover {
-    color: #888;
-}*/
 article {
     padding: 0 5px 10px 5px;
     border-radius: 2px;
@@ -489,31 +442,6 @@ article .article_submenu .author {
     padding-right: 5px;
     color: #ccc;
 }
-/*.pagination .menu, ol, ul {
-    padding: 0;
-}*/
-/*#left-panel, #right-panel{
-    background: #555;
-    padding: 0 5px 0 5px;
-    width: 13%;
-    min-width: 200px;
-}
-#left-panel {    
-    position:absolute;
-    top:0;
-    left:0;
-    height:100%;
-    z-index:97;   
-    border-right: thin solid #777;
-}
-#right-panel {
-    position:absolute;
-    top:0;
-    right:0;
-    height:100%;
-    z-index:97;    
-    border-left: thin solid #777;
-}*/
 /***/
 /*** Bootstrap Custom Navbar & Topbar ***/
 /***/
@@ -617,64 +545,17 @@ article .article_submenu .author {
     padding: 7px 20px;
     font-weight: 300;
 }
-
 @media (min-width: 768px) {
     .navbar-nav > li > a {
         padding-top: 10px;
         padding-bottom: 10px;
     }
 }
-
-/***/
 /*** Potential Infusion Styles ***/
-/***/
-
 .sidebar .box .image_box {
     text-align: center;
     line-height: 1;    
 }
-
-/* FORUM PANEL */
-/*
-.infusion_forum {
-    margin-top: 15px;
-}
-.infusion_forum .table {
-    font-size: 13px;
-    border: solid thin #ccc;
-    box-shadow: 0 0 2px #ccc;
-}
-.infusion_forum .table .forum {
-    font-weight: 300;
-}
-.infusion_forum .table .topic {
-    color: #ef9849;
-}
-.infusion_forum .table th {
-    text-align: center;
-    color: #ef9849;
-    font-weight: 400;
-    font-size: 14px;
-    font-family: 'Oswald', sans-serif;
-}
-.infusion_forum .table td {
-    vertical-align: middle;
-    text-align: center;
-}
-.infusion_forum .table a {
-    color: #ef9849;
-}
-.infusion_forum .table td:nth-child(2) {
-    text-align: left;
-}
-.infusion_forum .table th:nth-child(2) {
-    text-align: left;
-}*/
-
-/***/
-/*** ***/
-/***/
-
 /* Admin Message */
 .admin-message {
     text-align:center;
@@ -684,9 +565,7 @@ article .article_submenu .author {
     color: #666;
     padding: 6px 8px;
 }
-/***/
 /***PHP Fusion pagination***/
-/***/
 .pagenav {
     padding-bottom: 0.6em;
     color: #444;
@@ -760,18 +639,12 @@ article .article_submenu .author {
     left: 0;
     top: 5px;    
 }
-/*
-* Without CSS3
-*/
 .userinfo.scroll {
     overflow: hidden;
 }
 .userinfo.scroll .userinfo-detail {
     bottom:-280px;
-}
-/*
-* CSS3 Flip
-*/	
+}	
 .userinfo.flip {
     -webkit-perspective:800px;		
     -moz-perspective:800px;
@@ -813,9 +686,7 @@ article .article_submenu .author {
     -o-transform: rotateY(-180deg);			
     transform: rotateY(-180deg);			
 }
-/***/
 /***PHP Fusion table***/
-/***/
 table {
     border-collapse:separate;
 }
@@ -930,9 +801,7 @@ td img {
     padding-top: 30px;
     border-bottom: thin solid #ccc;
 }
-/***/
 /***PHP Fusion***/
-/***/
 #cw_groups tr:nth-child(even) {
     background-color: rgb(224, 224, 224);
     background-color: rgba(224, 224, 224, 0.5);
@@ -979,7 +848,16 @@ span .panelbutton {
     top: -21px;
     right: 10px;
 }
-
+.panels.tbl-border {    
+    background: #fff;
+    padding: 0;    
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;    
+}
+.panels.tbl-border .tbl1,.panels.tbl-border .tbl2 { 
+    max-width: initial;
+}
 /* Shoutbox Styles */
 .shout_form {
     margin-top: 20px;
@@ -1051,7 +929,6 @@ span .panelbutton {
     padding: 5px;
 
 }
-
 .shoutheader {
     font-weight: 700;
 }
@@ -1062,7 +939,6 @@ span .panelbutton {
 .shoutboxdate{
     color: #ccc;
 }
-
 /**
  *   
  *   Messages Styles
@@ -1115,9 +991,7 @@ span .panelbutton {
     color:#444;
     padding:2px 2px 3px 2px;
 }
-/***/
 /***Forums Panel***/
-/***/
 div.wrap{
     width:100%;padding-top:4px;
 }
@@ -1217,19 +1091,6 @@ ul.tabs a.xl.current{
     background-color: rgb(204, 204, 204);
     background-color: rgba(204, 204, 204, 0.5);
 }
-/***/
-/***Navigation***/
-/***/
-/*
-ul.next_days{-moz-padding-start:15px;}
-ul#menu2, ul#menu2 ul{list-style-type:none;margin:0;padding:0;width:100%;text-align:left;}
-ul#menu2 a{display:block;text-decoration:none;}
-ul#menu2 li{margin-top:0px;display:inline;}
-ul#menu2 li a{background:#424242;color:#fff;padding:0.5em;margin-bottom:1px;}
-ul#menu2 li a:hover{background:#3B3B3B;color:#CA880C;}
-ul#menu2 li ul a{color:#CA880C;background:#2C2C2C;padding-left:15px;}
-ul#menu2 li ul a:hover{background:#3B3B3B;color:#97660A;}*/
-
 /* Bootstrap 3 Custom Button */
 .btn-dark {
     color: #fff;

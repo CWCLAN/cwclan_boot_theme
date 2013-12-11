@@ -26,19 +26,15 @@ if (file_exists(INFUSIONS . "mumbleview_panel/locale/" . $settings['locale'] . "
     include INFUSIONS . "mumbleview_panel/locale/English.php";
 }
 include INFUSIONS . "mumbleview_panel/mumbleviewer.php";
+
 try {
     Ice_loadProfile();
-    //$secret = array('secret'=>'cwclan.de');
     $base = $ICE->stringToProxy("Meta:tcp -h 127.0.0.1 -p 6503");
-    //$meta = $base->ice_checkedCast("::Murmur::Meta")->ice_context($secret);
     $meta = $base->ice_checkedCast("::Murmur::Meta");
-
     $servers = $meta->getBootedServers();
     $default = $meta->getDefaultConf();
     $version = $meta->getVersion($major, $minor, $patch, $text);
     $version = $text;
-
-    $servers = $meta->getBootedServers();
 
     foreach ($servers as $s) {
         $tmp_url = $url;
@@ -58,15 +54,14 @@ try {
         $players = $s->getUsers();
 
         $playercount = count($players);
-        openside("<span class='icon-headphones iconpaddr'></span>Mumble ".$version." (" . $playercount . ")", "off");
+        openside("<span class='icon-headphones iconpaddr'></span>Mumble " . $version . " (" . $playercount . ")", "off");
 
         echo "<div class='div_channel'>\n";
         printmainchannel($tree, $tmp_url, $name, $players);
         echo "</div>\n";
     }
 } catch (Ice_LocalException $ex) {
-    echo "Mumble ist zur Zeit nicht im Dienst!!";
-    return;
+    echo "Mumble ist zur Zeit nicht im Dienst!!";    
 }
 echo "<hr />";
 echo "<center>";
