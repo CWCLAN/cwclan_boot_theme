@@ -31,8 +31,8 @@ function render_page($license = false) {
     echo '<div class="wrapper clearfix">          
           <div class="breadcrumb">';
           include INFUSIONS . "cw_login/login.php";          
-     echo'</div>
-          <div class="hero"></div>';
+     echo"</div>
+          <a href='".BASEDIR."index.php'><div class='hero'></div></a>";
 
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        

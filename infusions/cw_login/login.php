@@ -30,21 +30,30 @@ if (iMEMBER) {
         echo '<a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '"><img src="' . IMAGES . 'avatars/noavatar100.png" alt="no Avatar" width="32"></a';
     }
     echo '</div>';
-    echo'<div class="user_login_content">    
-            <div class="user_login_icons">
-                <a href="' . BASEDIR . 'edit_profile.php" class="tp" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
+    echo'<div class="user_login_content">';
+    echo'<div class="user_login_icons">';
+    // Profil Link
+    echo'<a href="' . BASEDIR . 'edit_profile.php" class="tp" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
+    // Messages
     echo '<a href="' . BASEDIR . 'messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span></a>';
+    // Einsendung
     echo '<span class="dropdown" id="dropSubmit">';
     echo '<span class="icon-download2 dropdown-toggle cwtooltip" data-toggle="dropdown" title="Einsendungen"></span>';
-
     echo'<ul class="dropdown-menu" role="menu" aria-labelledby="dropSubmit" id="SubmitMenu">';
     echo'<li><a href="' . BASEDIR . 'submit.php?stype=n">News einsenden <span class="icon-newspaper mid"></span></a></li>';
     echo'<li><a href="' . BASEDIR . 'submit.php?stype=p">Foto einsenden <span class="icon-image2 mid"></span></a></li>';
     echo'<li><a tabindex="-1" href="' . BASEDIR . 'infusions/uploader_panel/uploader.php">CW Cloud <span class="icon-cloud mid"></span></a></li>';
     echo'</ul></span>';
+    // Logout
     echo '<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';
+    // Admin Link + Status Einsendungen
     if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
         echo '<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
+        $sub_count = dbcount("(submit_id)", DB_SUBMISSIONS,"");
+        if ($sub_count > 0){
+            echo '<a href="' . ADMIN . 'submissions.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="neue Einsendungen!"><span class="badge pulse">'.$sub_count.'</span></a>';             
+        }
+        
     }
     echo'</div>
         </div>';
