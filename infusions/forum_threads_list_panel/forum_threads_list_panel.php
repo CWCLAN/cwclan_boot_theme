@@ -43,15 +43,15 @@ if (!isset($lastvisited) || !isnum($lastvisited))
 $min = 5;    // minimum visible posts in first level.
 $max = 15;    // maximum number of posts in second level (hidden).
 
-$imageold = "<span class='icon-folder-open mid'></span>";
-$imagenew = "<span class='icon-folder mid c_orange'></span>";
-$imagelocked = "<span class='icon-lock mid'></span> ";
-//$imagehot = "<span class='icon-star3 mid'></span> ";
+$imageold = "<span class='icon-folder-open mid cwtooltip' title='" . $locale['561'] . "'></span>";
+$imagenew = "<span class='icon-folder mid c_orange cwtooltip' title='" . $locale['560'] . "'></span>";
+$imagelocked = "<span class='icon-lock mid cwtooltip' title='" . $locale['564'] . "'></span> ";
+$imagehot = "<span class='icon-star3 mid cwtooltip' title='" . $locale['563'] . "'></span> ";
 
 $result = dbquery(
         "SELECT
     tf.forum_name,tf.forum_id,
-    tt.thread_id,tt.thread_locked,tt.thread_subject,tt.thread_author,tt.thread_views,
+    tt.thread_id,tt.thread_locked,tt.thread_sticky,tt.thread_subject,tt.thread_author,tt.thread_views,
     tt.thread_lastpost,tt.thread_lastuser, tt.thread_postcount, tt.thread_lastpostid as last_id,
     if(tt.thread_lastpost>$lastvisited,1,0) as new_post,
     tu.user_id, tu.user_name as user_name,
@@ -118,7 +118,7 @@ while ($data = dbarray($result)) {
 </tr>\n";
     }
     $locked = ($data['thread_locked'] ? $imagelocked : "");
-
+    $sticky = ($data['thread_sticky'] ? $imagehot : "");
     if ($data['new_post']) {
         $thread_match = $data['thread_id'] . "|" . $data['thread_lastpost'] . "|" . $data['forum_id'];
         if (iMEMBER && strpos($userdata['user_threads'], $thread_match) !== FALSE) {//preg_match("(^\.{$thread_match}$|\.{$thread_match}\.|\.{$thread_match}$)", $userdata['user_threads'])) {
@@ -132,7 +132,7 @@ while ($data = dbarray($result)) {
 
 
     echo "<tr>
-<td>$locked$folder_image</td>
+<td>$sticky$locked$folder_image</td>
 <td>
 <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
 <span class='small forum_thread_title'>
@@ -179,8 +179,7 @@ if (iUSER) {
     $result = dbquery(
             "SELECT
     tf.forum_name,tf.forum_id,
-
-    tt.thread_id,tt.thread_locked,tt.thread_subject,tt.thread_author,tt.thread_views,
+    tt.thread_id,tt.thread_locked,tt.thread_sticky,tt.thread_subject,tt.thread_author,tt.thread_views,
     tt.thread_lastpost,tt.thread_lastuser, tt.thread_postcount, tt.thread_lastpostid as last_id,
     if(tt.thread_lastpost>$lastvisited,1,0) as new_post,
     tu.user_id, tu.user_name as user_name,
@@ -213,6 +212,7 @@ if (iUSER) {
 
     while ($data = dbarray($result)) {
         $locked = ($data['thread_locked'] ? $imagelocked : "");
+        $sticky = ($data['thread_sticky'] ? $imagehot : "");
         if ($data['new_post']) {
             $thread_match = $data['thread_id'] . "|" . $data['thread_lastpost'] . "|" . $data['forum_id'];
             if (iMEMBER && strpos($userdata['user_threads'], $thread_match) !== FALSE) {//preg_match("(^\.{$thread_match}$|\.{$thread_match}\.|\.{$thread_match}$)", $userdata['user_threads'])) {
@@ -225,7 +225,7 @@ if (iUSER) {
             $folder_image = $imageold;
         }
         echo "<tr>
-  <td>$locked$folder_image</td>
+  <td>$sticky$locked$folder_image</td>
   <td>
   <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
   <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
