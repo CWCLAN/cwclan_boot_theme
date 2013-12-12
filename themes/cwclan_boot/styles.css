@@ -223,6 +223,7 @@ form[name=userform] div a img, form[name=inputform] div a img {
 .icon-download2.dropdown-toggle.cwtooltip {
     padding-left: 5px;
     padding-right: 5px;
+    margin: 0 2px 0 2px;
 }
 #dropSubmit .dropdown-menu {
     top: 28px;

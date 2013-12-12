@@ -34,8 +34,9 @@ if (iMEMBER) {
     echo'<div class="user_login_icons">';
     // Profil Link
     echo'<a href="' . BASEDIR . 'edit_profile.php" class="tp" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
-    // Messages
-    echo '<a href="' . BASEDIR . 'messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span></a>';
+    // Messages    
+    $pm_count = dbcount("(message_id)",DB_MESSAGES,"message_to='".$userdata['user_id']."' AND message_read='0' AND message_folder=0");
+    echo '<a href="' . BASEDIR . 'messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span>'.($pm_count > 0 ? " <span class='badge'>$pm_count</span>" : "").'</a>';
     // Einsendung
     echo '<span class="dropdown" id="dropSubmit">';
     echo '<span class="icon-download2 dropdown-toggle cwtooltip" data-toggle="dropdown" title="Einsendungen"></span>';
