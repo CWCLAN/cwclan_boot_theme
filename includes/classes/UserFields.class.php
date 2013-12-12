@@ -192,26 +192,30 @@ class UserFields {
         $passRequired = $this->skipCurrentPass ? $locale['u136'] : "";
         $passRequired = $this->isAdminPanel ? "" : $passRequired;
         $this->html .= "<h4>" . $locale['u132'] . "</h4>\n<hr>\n";
+        $this->html .= "<div class='profile'>\n";
         if (!$this->skipCurrentPass) {
             $this->html .= $this->basicInputField("user_password", $locale['u133'], "64", "", "password", false, "user_password");
         }
         $this->html .= $this->basicInputField("user_new_password", ($this->registration == TRUE ? $locale['u133'] : $locale['u134']), "64", $passRequired, "password", false, "user_password");
-        $this->html .= "<br><span class='small2'>" . $locale['u147'] . "</span>\n";
+        $this->html .= "<br>\n<span class='small2'>" . $locale['u147'] . "</span>\n";
         $this->html .= $this->basicInputField("user_new_password2", $locale['u135'], "64", $passRequired, "password", false, "user_password");
-
+        $this->html .= "</div>\n";
         // Admin Password
         if ($this->showAdminPass && iADMIN) {
             $this->html .= "<h4>" . $locale['u132'] . "</h4>\n<hr>\n";
+            $this->html .= "<div class='profile'>\n";
             if ($this->userData['user_admin_password']) {
                 $this->html .= $this->basicInputField("user_admin_password", $locale['u131'], "64", "", "password", false, "user_admin_password");
             }
             $this->html .= $this->basicInputField("user_new_admin_password", ($this->userData['user_admin_password'] ? $locale['u144'] : $locale['u131']), "64", "", "password", false, "user_admin_password");
-            $this->html .= "<span class='small2'>" . $locale['u147'] . "</span>\n";
+            $this->html .= "<br>\n<span class='small2'>" . $locale['u147'] . "</span>\n";
             $this->html .= $this->basicInputField("user_new_admin_password2", $locale['u145'], "64", "", "password", false, "user_admin_password");
+            $this->html .= "</div>\n";
         }
 
         // Hide email
         $this->html .= "<h4>" . $locale['u129'] . "</h4>\n<hr>\n";
+        $this->html .= "<div class='profile'>\n";
         $this->html .= (iADMIN || $this->_userNameChange ? $this->basicInputField("user_name", $locale['u127'], "30", $locale['u122']) : "");
         $this->html .= $this->basicInputField("user_email", $locale['u128'], "100", $locale['u126']);
         $hide = isset($this->userData['user_hide_email']) ? $this->userData['user_hide_email'] : 1;
@@ -220,7 +224,7 @@ class UserFields {
         $this->html .= "<h5>" . $locale['u051'] . "</h5>";
         $this->html .= "<label><input type='radio' name='user_hide_email' value='1'" . ($hide == 1 ? " checked='checked'" : "") . " />" . $locale['u052'] . "</label>\n";
         $this->html .= "<label><input type='radio' name='user_hide_email' value='0'" . ($hide == 0 ? " checked='checked'" : "") . " />" . $locale['u053'] . "</label>";
-
+        $this->html .= "</div>\n";
 
         // User Avatar
         if ($this->showAvatarInput) {
@@ -246,6 +250,7 @@ class UserFields {
 
         $rowspan = 4;
 
+        $this->html .= "<hr>\n<div class='profile'>\n";
         $returnFields = $this->basicOutputField($locale['u063'], getuserlevel($this->userData['user_level']), "profile_user_level");
         if (iADMIN || $this->userData['user_hide_email'] == 0) {
             $rowspan = $rowspan + 1;
@@ -271,27 +276,27 @@ class UserFields {
             $this->html .= "<!--user_profile_opts-->";
             $this->html .= "</div>\n";
         }
+        $this->html .= "</div>\n";
 
         if (iADMIN && $this->userData['user_status'] > 0) {
             $this->html .= "<div style='margin:5px'></div>\n";
-            $this->html .= "<h5><strong>" . $locale['u055'] . "</strong> " . getuserstatus($this->userData['user_status']) . "</h5>\n";
+            $this->html .= "<h5>" . $locale['u055'] . " " . getuserstatus($this->userData['user_status']) . "</h5>\n";
             $this->html .= $this->basicOutputField($locale['u056'], $this->userData['suspend_reason'], "profile_user_reason");
         }
     }
 
     private function renderIPOutput() {
-        global $locale;
-
-        $this->html .= "<div style='margin:5px'></div>\n";
-        $this->html .= "<h5><strong>" . $locale['u048'] . "</strong></h5>\n";
+        global $locale;             
+        $this->html .= "<h4>" . $locale['u048'] . "</h4>\n<hr>\n";
+        $this->html .= "<div class='profile'>\n";   
         $this->html .= $this->basicOutputField($locale['u049'], $this->userData['user_ip'], "profile_user_ip");
+        $this->html .= "</div>\n";
     }
 
     private function renderUserGroups() {
-        global $locale;
-
-        $this->html .= "<div style='margin:5px'></div>\n";
-        $this->html .= "<h5><strong>" . $locale['u057'] . "</strong></h5>\n";
+        global $locale;        
+        $this->html .= "<h4>" . $locale['u057'] . "</h4>\n<hr>\n";
+        $this->html .= "<div class='profile'>\n";
         $user_groups = strpos($this->userData['user_groups'], ".") == 0 ? substr($this->userData['user_groups'], 1) : $this->userData['user_groups'];
         $user_groups = explode(".", $user_groups);
         for ($i = 0; $i < count($user_groups); $i++) {
@@ -299,6 +304,7 @@ class UserFields {
             $this->html .= "<div style='float:right'>" . getgroupname($user_groups[$i], true) . "</div>\n";
             $this->html .= "<div style='float:none;clear:both'></div>\n";
         }
+        $this->html .= "</div>\n";
     }
 
     private function renderAdminOptions() {
@@ -339,9 +345,9 @@ class UserFields {
     private function renderAvatarInput() {
         global $locale, $settings;
 
-        $this->html .= "<div class='tbl" . $this->getErrorClass("user_avatar") . "'>";
-        $this->html .= "<label for='user_avatar_upload'>" . $locale['u185'] . "</label>\n";
-        $this->html .= "<div class='tbl" . $this->getErrorClass("user_avatar") . "'>";
+        
+        $this->html .= "<h4>" . $locale['u185'] . "</h4>\n<hr>\n";
+        $this->html .= "<div class='profile " . $this->getErrorClass("user_avatar") . "'>";
 
         if (isset($this->userData['user_avatar']) && $this->userData['user_avatar'] != "") {
             $this->html .= "<label for='user_avatar_upload'><img src='" . IMAGES . "avatars/" . $this->userData['user_avatar'] . "' alt='" . $locale['u185'] . "' />";
@@ -413,19 +419,19 @@ class UserFields {
         foreach ($cats as $cat) {
             if (array_key_exists($cat['field_cat'], $fields) && $fields[$cat['field_cat']]) {
                 $this->html .= "<!--userfield_precat_" . $i . "-->\n";
-                /*if ($this->method == "display") {
-                    $this->html .= "<div style='margin:5px'></div>\n";
-                    $this->html .= "<table cellpadding='0' cellspacing='1' width='400' class='profile_category tbl-border center'>\n";
-                }*/
+                /* if ($this->method == "display") {
+                  $this->html .= "<div style='margin:5px'></div>\n";
+                  $this->html .= "<table cellpadding='0' cellspacing='1' width='400' class='profile_category tbl-border center'>\n";
+                  } */
                 $this->html .= "<div style='margin:5px'></div>\n";
                 $this->html .= "<h4 class='profile_category_name tbl2'>" . $cat['field_cat_name'] . "</h4><hr>\n";
                 $this->html .= "<table cellpadding='0' cellspacing='1' class='profile_category'>\n";
-                $this->html .= $fields[$cat['field_cat']];                
+                $this->html .= $fields[$cat['field_cat']];
                 $this->html .= "</table>\n";
                 $i++;
-                /*if ($this->method == "display") {
-                    $this->html .= "</table>\n";
-                }*/
+                /* if ($this->method == "display") {
+                  $this->html .= "</table>\n";
+                  } */
             }
         }
         if (count($fields > 0)) {

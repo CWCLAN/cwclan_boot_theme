@@ -699,10 +699,19 @@ table th, table td {
     padding: 15px;
     margin-left: auto;
     margin-right: auto;
+    background: #fff;
+    border-left: solid thin #ddd;
+    border-right: solid thin #ddd;
+    border-bottom: solid thin #ddd;
+    box-shadow: 0 2px 1px #eee;
 }
-.profile:nth-child(2) {
-    margin-top: 15px;
+.profile .avatar {
+    float: right;
 }
+/*.profile_category_name {
+    font-size: 18px;
+    text-decoration:underline;
+}*/
 .tbl-border {
     padding: 15px;
     background: #fff;
@@ -714,6 +723,11 @@ table th, table td {
 }
 .tbl-border.forum_idx_table, .tbl-border.forum_thread_table, .tbl-border.forum_table {
     width: 100%;   
+}
+@media only screen and (max-width: 950px) {
+    .profile, .profile_category, .tbl-border {
+        width: 100%;
+    }    
 }
 .forum_thread_user_post {
     background: url('../cwclan_boot/img/design/agsquare.png');
@@ -805,10 +819,6 @@ td img {
 #cw_groups tr:nth-child(even) {
     background-color: rgb(224, 224, 224);
     background-color: rgba(224, 224, 224, 0.5);
-}
-.profile_category_name {
-    font-size: 18px;
-    text-decoration:underline;
 }
 .bbcode-popup{
     background:#444;
