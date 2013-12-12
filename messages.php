@@ -327,7 +327,7 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 			$message_subject = $data['message_subject'];
 			if (!$data['message_read']) { $message_subject = "<strong>".$message_subject."</strong>"; }
 			echo "<tr>\n<td class='tbl1'><input type='checkbox' name='check_mark[]' value='".$data['message_id']."' />\n";
-			echo "<a href='".FUSION_SELF."?folder=".$_GET['folder']."&amp;msg_read=".$data['message_id']."&amp;msg_from=".$data['user_id']."'>".$message_subject."</a></td>\n";
+			echo "<a href='".FUSION_SELF."?folder=".$_GET['folder']."&amp;msg_read=".$data['message_id']."'>".$message_subject."</a></td>\n";
 			echo "<td width='1%' class='tbl1' style='white-space:nowrap'>".profile_link($data['user_id'], $data['user_name'], $data['user_status'])."</td>\n";
 			echo "<td width='1%' class='tbl1' style='white-space:nowrap'>".showdate("shortdate", $data['message_datestamp'])."</td>\n</tr>\n";
 		}
@@ -433,88 +433,40 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 	echo "<input type='submit' name='save_options' value='".$locale['623']."' class='button' /></td>\n</tr>\n";
 	echo "</table></form>\n";
 	closetable();
-} elseif ((isset($_GET['msg_from']) && isnum($_GET['msg_from'])) && ($_GET['folder'] == "inbox" || $_GET['folder'] == "archive" || $_GET['folder'] == "outbox")) {
+} elseif ((isset($_GET['msg_read']) && isnum($_GET['msg_read'])) && ($_GET['folder'] == "inbox" || $_GET['folder'] == "archive" || $_GET['folder'] == "outbox")) {
 	$result = dbquery(
-		"SELECT m.message_message, m.message_id, m.message_subject, m.message_smileys, m.message_datestamp, m.message_folder, u.user_id, u.user_avatar, u.user_name, u.user_status
-FROM fusion_messages m
-LEFT JOIN fusion_users u ON m.message_from = u.user_id
-WHERE (
-(
-message_to = '".$_GET['msg_from']."'
-AND message_from = '".$userdata['user_id']."'
-)
-OR (
-message_from = '".$_GET['msg_from']."'
-AND message_to = '".$userdata['user_id']."'
-)
-)
-AND message_folder =0
-ORDER BY m.message_id DESC 
-LIMIT 0 , 30 ");
-	
+		"SELECT m.message_id, m.message_subject, m.message_message, m.message_smileys,
+		m.message_datestamp, m.message_folder, u.user_id, u.user_name, u.user_status
+		FROM ".DB_MESSAGES." m
+		LEFT JOIN ".DB_USERS." u ON m.message_from=u.user_id
+		WHERE message_to='".$userdata['user_id']."' AND message_id='".$_GET['msg_read']."'"
+	);
 	if (dbrows($result)) {
-	$data = dbarray($result);
-		$result3 = dbquery("UPDATE ".DB_MESSAGES." SET message_read='1' WHERE message_id='".$data['message_id']."'");
+		$data = dbarray($result);
+		$result = dbquery("UPDATE ".DB_MESSAGES." SET message_read='1' WHERE message_id='".$data['message_id']."'");
 		$message_message = $data['message_message'];
 		if ($data['message_smileys'] == "y") $message_message = parsesmileys($message_message);
 		add_to_title($locale['global_201'].$locale['431']);
 		opentable($locale['431']);
-				echo "<form name='pm_form' method='post' action='".FUSION_SELF."?folder=".$_GET['folder']."&amp;msg_send=".$data['user_id']."&amp;msg_id=".$data['message_id']."'>\n";
-				
-				echo "<div class='messages_stream'>";
-				
-				if ($_GET['folder'] == "inbox" && $data['message_folder'] == 0) { echo "<input type='submit' name='reply' value='".$locale['439']."' class='button' />\n"; }
-				
-				
-				while($data = dbarray($result)) {
-					
-					echo "<div class='shout clearfix'>";
-					
-						echo "<div class='shoutboxname clearfix'>";
-						
-						/* UserAvatar */
-					        if ($data['user_avatar'] && file_exists(IMAGES."avatars/".$data['user_avatar']) && $data['user_status']!=6 && $data['user_status']!=5) {
-					            echo "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar cwtooltip' title='".$data['user_name']."' src='".IMAGES."avatars/".$data['user_avatar']."' alt='".$locale['567']."' /></a>\n";
-					        } else {
-					            echo "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'><img class='shoutbox_user_avatar cwtooltip' src='".IMAGES."avatars/noavatar100.png' alt='".$locale['567']."' /></a>\n";
-					        }
-						echo "</div>"; // shoutboxname ends
-						
-						echo "<div class='shoutbody'>";
-        
-							echo "<div class='shoutboxdate clearfix'><span class='icon-clock'></span> ".showdate("longdate", $data['message_datestamp'])."</div>";
-							echo "<div class='shoutbox clearfix'>
-        <div class='shoutheader'><a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'>".$data['user_name']."</a> schrieb:</div>";
-        					echo "<div>";
-        					echo nl2br(parseubb($data['message_message']));
-        					echo "</div>";
-        				
-        				echo "</div>";
-        			echo "</div>";
-        			echo "</div>";
-        
-				}
-				
-				echo "</div>";
-				echo "</form>";
-				/**
-				echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr>\n";
-				echo "<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".($_GET['folder'] != "outbox" ? $locale['406'] : $locale['421'])."</td>\n";
-				echo "<td class='tbl1'>".profile_link($data['user_id'], $data['user_name'], $data['user_status'])."</td>\n</tr>\n";
-				echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".$locale['407']."</td>\n";
-				echo "<td class='tbl1'>".showdate("longdate", $data['message_datestamp'])."</td>\n</tr>\n";
-				echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".$locale['405']."</td>\n";
-				echo "<td class='tbl1'>".$data['message_subject']."</td>\n</tr>\n";
-				echo "<tr>\n<td colspan='2' class='tbl1'>".nl2br(parseubb($message_message))."</td>\n</tr>\n";
-				echo "</table>\n";
-				echo "<table cellpadding='0' cellspacing='0' width='100%'>\n";
-				echo "<tr>\n<td colspan='2' class='tbl'><a href='".FUSION_SELF."?folder=".$_GET['folder']."'>".$locale['432']."</a></td>\n";
-				
-				**/
-				
-				
+		echo "<form name='pm_form' method='post' action='".FUSION_SELF."?folder=".$_GET['folder']."&amp;msg_send=".$data['user_id']."&amp;msg_id=".$data['message_id']."'>\n";
+		echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr>\n";
+		echo "<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".($_GET['folder'] != "outbox" ? $locale['406'] : $locale['421'])."</td>\n";
+		echo "<td class='tbl1'>".profile_link($data['user_id'], $data['user_name'], $data['user_status'])."</td>\n</tr>\n";
+		echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".$locale['407']."</td>\n";
+		echo "<td class='tbl1'>".showdate("longdate", $data['message_datestamp'])."</td>\n</tr>\n";
+		echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>".$locale['405']."</td>\n";
+		echo "<td class='tbl1'>".$data['message_subject']."</td>\n</tr>\n";
+		echo "<tr>\n<td colspan='2' class='tbl1'>".nl2br(parseubb($message_message))."</td>\n</tr>\n";
+		echo "</table>\n";
+		echo "<table cellpadding='0' cellspacing='0' width='100%'>\n";
+		echo "<tr>\n<td colspan='2' class='tbl'><a href='".FUSION_SELF."?folder=".$_GET['folder']."'>".$locale['432']."</a></td>\n";
+		echo "<td align='right' class='tbl'>\n";
+		if ($_GET['folder'] == "inbox" && $data['message_folder'] == 0) { echo "<input type='submit' name='reply' value='".$locale['439']."' class='button' />\n"; }
+		if ($_GET['folder'] == "inbox" && $data['message_folder'] == 0) { echo "<input type='submit' name='save' value='".$locale['412']."' class='button' />\n"; }
+		if ($_GET['folder'] == "archive" && $data['message_folder'] == 2) { echo "<input type='submit' name='unsave' value='".$locale['413']."' class='button' />\n"; }
+		echo "<input type='submit' name='delete' value='".$locale['416']."' class='button' />\n";
+		echo "</td>\n</tr>\n</table>\n</form>\n";
 		closetable();
-		
 	} else {
 		redirect(FUSION_SELF);
 	}
