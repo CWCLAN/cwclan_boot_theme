@@ -17,6 +17,6 @@ beinhaltet:
   - [INFUSION] Shoutbox Panel by Digitanium
 
 
-Die Infusionen und der BBCode und Mod wurden für die eingenen Bedürfnisse angepasst.
+Die Infusionen, der BBCode und der Mod wurden für die eingenen Bedürfnisse angepasst.
 
 Desweiteren wurden diverse PHP-Fusion Dateien angepasst umbenannt und im Theme und den nötigen Dateien neu verlinkt!
