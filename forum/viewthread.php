@@ -495,7 +495,7 @@ if ($rows != 0) {
             echo "<a href='" . $data['user_web'] . "' target='_blank' class='btn btn-forum' title='" . $data['user_web'] . "'>Web</a>";
         }
         if (iMEMBER && $data['user_id'] != $userdata['user_id'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='" . $locale['572'] . "'>PM</a>\n";
+            echo "<a href='" . BASEDIR . "cw_messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='" . $locale['572'] . "'>PM</a>\n";
         }
         echo "</div>\n<div style='float:right' class='small'>\n";
         if (iMEMBER && ($can_post || $can_reply)) {

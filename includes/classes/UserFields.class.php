@@ -268,10 +268,10 @@ class UserFields {
         $this->html .= $returnFields;
 
         if (iMEMBER && $userdata['user_id'] != $this->userData['user_id']) {
-            $this->html .= "<div class='user_profile_opts center tbl2'>";
-            $this->html .= "<a href='" . BASEDIR . "messages.php?msg_send=" . $this->userData['user_id'] . "' title='" . $locale['u043'] . "'>" . $locale['u043'] . "</a>\n";
+            $this->html .= "<div class='user_profile_opts center'>";
+            $this->html .= "<a href='" . BASEDIR . "cw_messages.php?msg_send=" . $this->userData['user_id'] . "' class='btn cwtooltip' title='" . $locale['u043'] . "'>" . $locale['u043'] . "</a>\n";
             if (iADMIN && checkrights("M") && $this->userData['user_level'] != "103" && $this->userData['user_id'] != "1") {
-                $this->html .= " - <a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=log&amp;user_id=" . $this->userData['user_id'] . "'>" . $locale['u054'] . "</a>";
+                $this->html .= " - <a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=log&amp;user_id=" . $this->userData['user_id'] . "' class='btn'>" . $locale['u054'] . "</a>";
             }
             $this->html .= "<!--user_profile_opts-->";
             $this->html .= "</div>\n";
@@ -321,10 +321,10 @@ class UserFields {
         $this->html .= "<h5><strong>" . $locale['u058'] . "</strong></h5>\n";
 
         $this->html .= "<!--profile_admin_options-->\n";
-        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=edit&amp;user_id=" . $this->userData['user_id'] . "'>" . $locale['u069'] . "</a> ::\n";
-        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;action=1&amp;user_id=" . $this->userData['user_id'] . "'>" . $locale['u070'] . "</a> ::\n";
-        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;action=3&amp;user_id=" . $this->userData['user_id'] . "'>" . $locale['u071'] . "</a> ::\n";
-        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=delete&amp;status=0&amp;user_id=" . $this->userData['user_id'] . "' onclick=\"return confirm('" . $locale['u073'] . "');\">" . $locale['u072'] . "</a>\n";
+        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=edit&amp;user_id=" . $this->userData['user_id'] . "' class='btn'>" . $locale['u069'] . "</a> ::\n";
+        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;action=1&amp;user_id=" . $this->userData['user_id'] . "' class='btn'>" . $locale['u070'] . "</a> ::\n";
+        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;action=3&amp;user_id=" . $this->userData['user_id'] . "' class='btn'>" . $locale['u071'] . "</a> ::\n";
+        $this->html .= "<a href='" . ADMIN . "members.php" . $aidlink . "&amp;step=delete&amp;status=0&amp;user_id=" . $this->userData['user_id'] . "' onclick=\"return confirm('" . $locale['u073'] . "');\" class='btn'>" . $locale['u072'] . "</a>\n";
 
         if (count($groups_cache) > 0) {
             foreach ($groups_cache as $group) {

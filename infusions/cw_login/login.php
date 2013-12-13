@@ -36,13 +36,13 @@ if (iMEMBER) {
     echo'<a href="' . BASEDIR . 'edit_profile.php" class="tp" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
     // Messages    
     $pm_count = dbcount("(message_id)",DB_MESSAGES,"message_to='".$userdata['user_id']."' AND message_read='0' AND message_folder=0");
-    echo '<a href="' . BASEDIR . 'messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span>'.($pm_count > 0 ? " <span class='badge'>$pm_count</span>" : "").'</a>';
+    echo '<a href="' . BASEDIR . 'cw_messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span>'.($pm_count > 0 ? " <span class='badge'>$pm_count</span>" : "").'</a>';
     // Einsendung
     echo '<span class="dropdown" id="dropSubmit">';
     echo '<span class="icon-download2 dropdown-toggle cwtooltip" data-toggle="dropdown" title="Einsendungen"></span>';
     echo'<ul class="dropdown-menu" role="menu" aria-labelledby="dropSubmit" id="SubmitMenu">';
-    echo'<li><a href="' . BASEDIR . 'submit.php?stype=n">News einsenden <span class="icon-newspaper mid"></span></a></li>';
-    echo'<li><a href="' . BASEDIR . 'submit.php?stype=p">Foto einsenden <span class="icon-image2 mid"></span></a></li>';
+    echo'<li><a href="' . BASEDIR . 'cw_submit.php?stype=n">News einsenden <span class="icon-newspaper mid"></span></a></li>';
+    echo'<li><a href="' . BASEDIR . 'cw_submit.php?stype=p">Foto einsenden <span class="icon-image2 mid"></span></a></li>';
     echo'<li><a tabindex="-1" href="' . BASEDIR . 'infusions/uploader_panel/uploader.php">CW Cloud <span class="icon-cloud mid"></span></a></li>';
     echo'</ul></span>';
     // Logout
@@ -62,7 +62,7 @@ if (iMEMBER) {
     echo'</div><!-- /Login -->';
 } else {
     echo '<!-- Login --><div class="logged_in_box" style="text-align:right">';
-    echo "<a href='" . BASEDIR . "cwclan_login.php' id='login' class='btn cwclear'><span class='icon-lock2'></span>Login</a>";
+    echo "<a href='" . BASEDIR . "cw_login.php' id='login' class='btn cwclear'><span class='icon-lock2'></span>Login</a>";
     echo '<!-- Login --></div>';
 }
 ?>	
