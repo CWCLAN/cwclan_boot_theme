@@ -24,21 +24,12 @@
   | HighSlide JavaScript by Torstein H�ns
   | Copyrighted under the Creative Commons 2.5 license.
   +------------------------------------------------------- */
-require_once "../../maincore.php";
+require_once "maincore.php";
 require_once THEMES . "templates/header.php";
 include LOCALE . LOCALESET . "photogallery.php";
 
-if (file_exists(INFUSIONS . "hsgallery_panel/locale/" . $settings['locale'] . ".php")) {
-    include INFUSIONS . "hsgallery_panel/locale/" . $settings['locale'] . ".php";
-} else {
-    include INFUSIONS . "hsgallery_panel/locale/English.php";
-}
-//add_to_head("<script type='text/javascript' src='" . INFUSIONS . "hsgallery_panel/highslide/highslide-with-gallery.js'></script>");
-//add_to_head("<link rel='stylesheet' href='" . INFUSIONS . "hsgallery_panel/highslide/highslide.css' type='text/css' />");
-
 define("SAFEMODE", @ini_get("safe_mode") ? true : false);
 define("PHOTODIR", PHOTOS);
-
 /////////                            
 if (isset($_GET['sort']) && $_GET['sort'] == "user") {
     if (isset($_POST['user']) && isnum($_POST['user'])) {
@@ -153,109 +144,28 @@ echo "</form>\n";
 echo "<br><hr />";
 /// GUI ENDE ///
 
-
-echo "<div class='row'>";
-$counter = 0;
-$count3 = 0;
+echo "<div class='row gallery'>";
 while ($data = dbarray($result)) {
-
-    //Foto Album Ansicht (vor und zurück & slideshow aktiv)//
-    //Anzeige im JAVASCRIPT POPUP von Bild Info & Kommentar link//
     $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type='P' AND comment_item_id='" . $data['photo_id'] . "'");
-
-    /*     * $highslides = "<div class='highslide-caption' id='caption" . $data['photo_id'] . "' style='text-align:left'>" . ($data['photo_description'] != '' ? nl2br(parseubb($data['photo_description'])) . "<br/>\n" : "") . "<a href='" . INFUSIONS . "hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html'>" . $locale['hsg117'] . "(" . $photo_comments . ")</a>
-      &nbsp;&nbsp;<a href='" . INFUSIONS . "hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html'>" . $locale['hsg122'] . "</a>
-      </div>
-      <div id='controlbar' class='highslide-overlay controlbar' style='display:block;'>
-      <a href='#' class='previous' onclick='return hs.previous(this)' title='" . $locale['hsg113'] . "'></a>
-      <a href='#' class='next' onclick='return hs.next(this)' title='" . $locale['hsg114'] . "'></a>
-      <a href='#' class='highslide-move' onclick='return false' title='" . $locale['hsg115'] . "'></a>
-      <a href='#' class='close' onclick='return hs.close(this)' title='" . $locale['hsg116'] . "'></a>
-      </div>\n";* */
-
-    if ($counter != 0 && ($counter % $settings['thumbs_per_row'] == 0)) {
-        //    echo "<hr>";
-    }
-
-    echo "<div class='pic col-xs-6 col-sm-4'>";
+    $title = ($data['photo_title'] ? "<span class='photo_title'>" . $data['photo_title'] . "</span>\n" : "");
+    echo "<div class='pic col-xs-6'>";
     echo "<div class='thumbnail'>";
-    //echo "<a href='" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_filename'] . "' onclick=\"return hs.expand(this, { captionId: 'caption" . $data['photo_id'] . "' });\" rel='highslide' title='" . $data['photo_description'] . "' class='highslide'>";
-    if ($data['photo_thumb1'] && file_exists(PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'])) {
-        echo "<a href='" . INFUSIONS . "hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html' class='cwtooltip' title='".$data['photo_title']."'>";
-        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "\")'></div>";  
-        echo "</a>";
-//echo "<a href='" . INFUSIONS . "hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html'><img src='" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "' alt='" . $data['photo_thumb1'] . "' title='" . $locale['431'] . "' class='img-responsive'></a>"; //old class='photogallery_album_photo'
+    echo "<a href='" . BASEDIR . "cw_photogallery.php?photo_id=" . $data['photo_id'] . "' class='cwtooltip' title='" . $data['photo_title'] . "'>";
+    if ($data['photo_thumb2'] && file_exists(PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'])) {
+        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'] . "\")'>$title</div>";
+    } elseif ($data['photo_thumb1'] && file_exists(PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'])) {
+        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "\")'>$title</div>";
     } else {
         echo $locale['432'];
     }
-    /**
-      echo "<div class='caption'>";
-      echo "<h4>" . trimlink($data['photo_title'], 30) . "</h4>";
-      echo "<div>";
-      echo "Datum:&nbsp;" . showdate("shortdate", $data['photo_datestamp']) . "<br />\n";
-      echo "Album:&nbsp;" . $data['album_title'] . "<br />";
-      echo $locale['434'] . "<a href='" . BASEDIR . "user_" . $data['user_id'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a><br />";
-      echo ($photo_comments == 1 ? $locale['436b'] : $locale['436']) . $photo_comments . "<br />";
-      //echo $locale['437'] . ($data['count_votes'] > 0 ? str_repeat("<img src='" . IMAGES . "star.gif' alt='*' style='vertical-align:middle' />", ceil($data['sum_rating'] / $data['count_votes'])) : $locale['438']) . "<br />\n";
-      echo $locale['435'] . $data['photo_views'] . "</span><br />\n";
-      echo "<a href='" . INFUSIONS . "hsgallery_panel/foto_" . seostring($data['photo_title']) . "_" . $data['photo_id'] . ".html' title='" . $locale['408'] . "'>" . $locale['407'] . "</a>";
-      echo "</div>";
-      echo "</div>"; */
-    echo "</div>";
-    echo "</div>";
-    $counter++;
-    /* $count3++;
-
-      if ($count3 === 3) {
-      $count3 = 0;
-      echo "</div><div class='row'>";
-      } */
-    //echo $highslides;
+    echo "</a>\n<!--photogallery_album_photo_info-->\n";    
+    echo "<span class='pull-right'>" . showdate("shortdate", $data['photo_datestamp']) . "</span>";    
+    echo ($data['photo_allow_comments'] ? ($photo_comments == 1 ? "<span>" . $locale['436b'] : "<span>" . $locale['436']) . $photo_comments . "</span>\n<br>\n" : "");
+    echo "<span>" . $locale['435'] . $data['photo_views'] . "</span>\n<br>\n";
+    echo "</div>\n";
+    echo "</div>\n";
 }
 echo "</div>";
-
-
-//Config Script für die HSGALLERY.JS//
-echo "<script type='text/javascript'>
-				
-				hs.fullExpandTitle = '" . $locale['hsg110'] . "';
-				hs.restoreTitle = '" . $locale['hsg112'] . "';
-				hs.focusTitle = '" . $locale['hsg121'] . "';
-				hs.loadingText = '" . $locale['hsg111'] . "';
-				hs.loadingTitle = '" . $locale['hsg120'] . "';
-				hs.creditsText = '" . $locale['hsg118'] . "';
-				hs.creditsTitle = '" . $locale['hsg119'] . "';				
-				hs.showCredits = 0;
-				//hs.dimmingOpacity = 0.75;
-
-				hs.graphicsDir = 'highslide/graphics/';
-				hs.align = 'center';
-				hs.transitions = ['expand', 'crossfade'];
-				hs.outlineType = 'rounded-white';
-				hs.fadeInOut = true;
-				hs.dimmingOpacity = 0.75;
-
-				// define the restraining box
-				hs.useBox = true;
-				hs.width = 800;
-				hs.height = 600;
-
-				// Add the controlbar
-				hs.addSlideshow({
-				//slideshowGroup: 'group1',
-				interval: 3000,
-				repeat: true,
-				useControls: true,
-				fixedControls: 'fit',
-				overlayOptions: {
-				opacity: 1,
-				position: 'bottom center',
-				hideOnMouseOut: true
-				}
-				});
-				</script>\n";
-
 closetable();
-
 require_once THEMES . "templates/footer.php";
 ?>

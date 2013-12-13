@@ -46,7 +46,7 @@ a:hover {
     vertical-align: middle;
 }
 
-h1,h2,h3,h4,h5,h6,.forum-caption {
+h1,h2,h3,h4,h5,h6,.forum-caption, .photo_title {
     font-family: 'Oswald', sans-serif;
     text-shadow: 0 0 2px #ccc;
 }
@@ -1282,15 +1282,41 @@ div.polaroid a img {
     width: 100%;
     padding: 10px;
 }
-/*HS Gallery*/
-.pic {
-    padding-bottom: 10px;
+/*Gallery*/
+.row.gallery .thumbnail,.row.album .thumbnail {
+    height: 200px!important;
+    max-height: 200px!important;
 }
-.thumbnail>a>.crop {
+.pic {
+    padding-bottom: 10px;    
+}
+.thumbnail>a>.crop{
     width: 100%;
     height: 150px;
     background-position: center center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;    
+}
+.crop .photo_title{
+    font-size: 1.2em;
+    position: absolute;
+    top: 122px;
+    padding: 0 5px;
+    overflow: hidden;
+    background: #fff;
+    margin: 2px 2px 2px 0;
+    border: thin solid #ccc;
+    border-left: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+@media only screen and (max-width: 950px) {
+    .pic {
+        width: 100%;        
+    }    
 }
 /*Video BB-Code*/
 .video-container {
@@ -1299,7 +1325,7 @@ div.polaroid a img {
     padding-top: 30px; height: 0; overflow: hidden;
     margin: 10px 20px;
 }
- 
+
 .video-container iframe,
 .video-container object,
 .video-container embed {
