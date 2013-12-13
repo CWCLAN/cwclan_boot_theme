@@ -8,13 +8,13 @@ beinhaltet:
 - Bootstrap 3
 - IcoMoon Icons
 - modifizierte Infusions/Mods/BBCode:
--- [INFUSION] CSS DropDown by Smokeman
--- [INFUSION] Advanced Forum Threads List Panel by Shedrock / Xandra & Smokeman
--- [INFUSION] latest_comments_panel.php by gh0st2k
--- [INFUSION] awEventCalendar + Panel by Artur Wiebe
--- [BBCODE] Multi Video BBCode by Fraev
--- [MOD] Members List by slaughter
--- [INFUSION] Shoutbox Panel by Digitanium
+..- [INFUSION] CSS DropDown by Smokeman
+..- [INFUSION] Advanced Forum Threads List Panel by Shedrock / Xandra & Smokeman
+..- [INFUSION] latest_comments_panel.php by gh0st2k
+..- [INFUSION] awEventCalendar + Panel by Artur Wiebe
+..- [BBCODE] Multi Video BBCode by Fraev
+..- [MOD] Members List by slaughter
+..- [INFUSION] Shoutbox Panel by Digitanium
 
 
 Die Infusionen und der BBCode und Mod wurden für die eingenen Bedürfnisse angepasst.
