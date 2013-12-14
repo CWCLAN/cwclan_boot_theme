@@ -262,11 +262,7 @@ if ($rows != 0) {
                             <span>' . $option_votes . '%</span>
                         </div>
                       </div>';
-
-                //echo "<tr>\n<td class='tbl1'>" . $pvdata['forum_poll_option_text'] . "</td>\n";
-                //echo "<td class='tbl1'><img src='" . get_image("pollbar") . "' alt='" . $pvdata['forum_poll_option_text'] . "' height='12' width='" . (200 / 100 * $option_votes) . "' class='poll' /></td>\n";
-                //echo "<td class='tbl1'>" . $option_votes . "%</td><td class='tbl1'>[" . $pvdata['forum_poll_option_votes'] . " " . ($pvdata['forum_poll_option_votes'] == 1 ? $locale['global_133'] : $locale['global_134']) . "]</td>\n</tr>\n";
-            } else {
+                } else {
                 echo "<div class='center'><label><input type='radio' name='poll_option' value='" . $i . "' style='vertical-align:middle' /> " . $pvdata['forum_poll_option_text'] . "</label></div>";
                 $i++;
             }
