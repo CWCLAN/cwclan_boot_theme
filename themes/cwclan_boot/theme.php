@@ -30,9 +30,9 @@ function render_page($license = false) {
     // Content Begin
     echo '<div class="wrapper clearfix">          
           <div class="breadcrumb">';
-          include INFUSIONS . "cw_login/login.php";          
-     echo"</div>
-          <a href='".BASEDIR."index.php'><div class='hero'></div></a>";
+    include INFUSIONS . "cw_login/login.php";
+    echo"</div>
+          <a href='" . BASEDIR . "index.php'><div class='hero'></div></a>";
 
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        
@@ -41,8 +41,8 @@ function render_page($license = false) {
                 </button>                
             </div>        
             <div class="collapse navbar-collapse" id="navbar-navi-collapse">';
-                include INFUSIONS . "css_dropdown_menu/menu_boot.php";                
-      echo '</div><!-- /.navbar-collapse -->
+    include INFUSIONS . "css_dropdown_menu/menu_boot.php";
+    echo '</div><!-- /.navbar-collapse -->
         </nav>';
     // Main / Content Begin
     echo '<div class="main clearfix">
@@ -111,7 +111,7 @@ function render_page($license = false) {
                 PHP-Fusion Version:<b> ' . $settings['version'] . '</b><br>' . showrendertime() . '
                 </div></div>
           </div>';
-    
+
     // Footer
     echo'<footer class="clearfix"><span style="float:left"><span class="icon-html5 large icons-vmid"></span><span class="icon-css3 large icons-vmid"></span>(c) 2013 <span class="c_orange">cwclan</span> - clan & community</span>
             <span style="float:right">' . showcopyright() . '</span></footer></div>';
@@ -126,7 +126,8 @@ function render_page($license = false) {
 
 /* New in v7.02 - render comments */
 
-function render_comments($c_data, $c_info) {    global $locale, $settings;
+function render_comments($c_data, $c_info) {
+    global $locale, $settings;
     opentable($locale['c100']);
     if (!empty($c_data)) {
         echo "<div class='comments floatfix'>";

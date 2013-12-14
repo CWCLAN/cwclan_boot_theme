@@ -15,6 +15,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "maincore.php";
 include THEME . "theme.php";
@@ -37,8 +41,8 @@ if (iMEMBER) {
     echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
-    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.login.min.css'>";    
-    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.login.min.css'>";    
+    echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.login.min.css'>";
+    echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.login.min.css'>";
     echo "<link rel='stylesheet' href='" . THEME . "css/cwclan_login.min.css' media='screen' />\n";
     echo "</head>\n<body>\n";
     echo '<div class="container">
@@ -68,7 +72,7 @@ if (iMEMBER) {
                             <div class="checkbox">
                                 <label>
                                     <input type = "checkbox" name = "remember_me" value = "y" title = "' . $locale['global_103'] . '">
-                                    '.$locale['global_103'].'
+                                    ' . $locale['global_103'] . '
                                 </label>
                             </div>
                         </div>

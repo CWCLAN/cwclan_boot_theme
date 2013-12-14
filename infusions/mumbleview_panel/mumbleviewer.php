@@ -1,4 +1,5 @@
 <?php
+
 // Configuration Start
 // Set here your Server IP or DNS
 $url = 'mumble://mumble.cwclan.de:';
@@ -9,7 +10,7 @@ function printmainchannel($channelobject, $url, $servername, $players) {
     $channeldepth = 0;
     $menustatus = array("1", "1");
 
-    $channelobject->c->name = $servername;  
+    $channelobject->c->name = $servername;
 
     //var_dump ($channelobject);
 
@@ -150,4 +151,5 @@ function printplayers($playerobject, $lastid, $channeldepth, $menustatus) {
     echo "<br /></div>\n";
     return $menustatus;
 }
+
 ?>

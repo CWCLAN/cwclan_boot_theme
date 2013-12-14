@@ -15,6 +15,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 if (!defined("IN_FUSION")) {
     die("Access Denied");
@@ -61,7 +65,7 @@ try {
         echo "</div>\n";
     }
 } catch (Ice_LocalException $ex) {
-    echo "Mumble ist zur Zeit nicht im Dienst!!";    
+    echo "Mumble ist zur Zeit nicht im Dienst!!";
 }
 echo "<hr />";
 echo "<center>";

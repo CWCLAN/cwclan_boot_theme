@@ -4,5 +4,5 @@ Adminbereich -> System Admin -> Banners
 Banner1:
 
 <?php
-include INFUSIONS."cw_login/login.php";
+include INFUSIONS . "cw_login/login.php";
 ?>

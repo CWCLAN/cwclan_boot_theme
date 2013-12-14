@@ -286,15 +286,15 @@ class UserFields {
     }
 
     private function renderIPOutput() {
-        global $locale;             
+        global $locale;
         $this->html .= "<h4>" . $locale['u048'] . "</h4>\n<hr>\n";
-        $this->html .= "<div class='profile'>\n";   
+        $this->html .= "<div class='profile'>\n";
         $this->html .= $this->basicOutputField($locale['u049'], $this->userData['user_ip'], "profile_user_ip");
         $this->html .= "</div>\n";
     }
 
     private function renderUserGroups() {
-        global $locale;        
+        global $locale;
         $this->html .= "<h4>" . $locale['u057'] . "</h4>\n<hr>\n";
         $this->html .= "<div class='profile'>\n";
         $user_groups = strpos($this->userData['user_groups'], ".") == 0 ? substr($this->userData['user_groups'], 1) : $this->userData['user_groups'];
@@ -345,7 +345,7 @@ class UserFields {
     private function renderAvatarInput() {
         global $locale, $settings;
 
-        
+
         $this->html .= "<h4>" . $locale['u185'] . "</h4>\n<hr>\n";
         $this->html .= "<div class='profile " . $this->getErrorClass("user_avatar") . "'>";
 

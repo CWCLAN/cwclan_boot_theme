@@ -26,7 +26,11 @@
   | cwclan.de
   | Website: http://www.cwclan.de
   | Modified for own Theme cwclan_boot
-  +---------------------------------------------------- */
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
+  +-------------------------------------------------------- */
 if (!defined("IN_FUSION")) {
     die("Access Denied");
 }

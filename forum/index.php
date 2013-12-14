@@ -15,6 +15,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "../maincore.php";
 require_once THEMES . "templates/header.php";
@@ -75,8 +79,6 @@ if (dbrows($result) != 0) {
         } else {
             $fim = $imageold;
         }
-        $locked = ($data['thread_locked'] ? $imagelocked : "");
-        $sticky = ($data['thread_sticky'] ? $imagehot : "");
         echo "<tr>\n";
         echo "<td width='1%' class='tbl2' style='white-space:nowrap'>$fim</td>\n";
         echo "<td class='tbl1 forum_name'><!--forum_name--><a href='viewforum.php?forum_id=" . $data['forum_id'] . "'>" . $data['forum_name'] . "</a><br />\n";

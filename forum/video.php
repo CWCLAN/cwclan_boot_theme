@@ -17,6 +17,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 
 
@@ -39,9 +43,9 @@ function get_video($link) {
     $height = "315";
     $values = array(
 //http://www.youtube.com/watch?v=OygxkgewEhU
-        array('/youtube\.com.*v=([^&]*)/i', '<div class="video-container"><iframe src="http://www.youtube.com/embed/{ID_VIDEO}" frameborder="0" width="'.$width.'" height="'.$height.'"></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
+        array('/youtube\.com.*v=([^&]*)/i', '<div class="video-container"><iframe src="http://www.youtube.com/embed/{ID_VIDEO}" frameborder="0" width="' . $width . '" height="' . $height . '"></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://www.youtube.com/watch?v=OygxkgewEhU
-       // array('/youtube\.com.*v=([^&]*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/{ID_VIDEO}"></param><embed src="http://www.youtube.com/v/{ID_VIDEO}" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
+        // array('/youtube\.com.*v=([^&]*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/{ID_VIDEO}"></param><embed src="http://www.youtube.com/v/{ID_VIDEO}" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://www.youtu.be/OygxkgewEhU
         array('/youtu\.be\/([^&]*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/{ID_VIDEO}"></param><embed src="http://www.youtube.com/v/{ID_VIDEO}" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://vids.myspace.com/index.cfm?fuseaction=vids.individual&videoID=1590276358

@@ -15,6 +15,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "../maincore.php";
 require_once INCLUDES . "forum_include.php";
@@ -252,7 +256,7 @@ if ($rows != 0) {
             if (!$can_vote) {
                 $option_votes = ($pdata['forum_poll_votes'] ? number_format(100 / $pdata['forum_poll_votes'] * $pvdata['forum_poll_option_votes']) : 0);
 
-                echo "<div><span class='icon-tag'></span> " . $pvdata['forum_poll_option_text'] . " " . ($pvdata['forum_poll_option_votes'] > 0 ? "(".$pvdata['forum_poll_option_votes'].")" : "") . "</div>";                
+                echo "<div><span class='icon-tag'></span> " . $pvdata['forum_poll_option_text'] . " " . ($pvdata['forum_poll_option_votes'] > 0 ? "(" . $pvdata['forum_poll_option_votes'] . ")" : "") . "</div>";
                 echo '<div class="progress progress-striped active">
                         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="' . $option_votes . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $option_votes . '%">
                             <span>' . $option_votes . '%</span>
@@ -307,7 +311,7 @@ if ($rows != 0) {
     $result = dbquery(
             "SELECT p.forum_id, p.thread_id, p.post_id, p.post_message, p.post_showsig, p.post_smileys, p.post_author,
 		p.post_datestamp, p.post_ip, p.post_ip_type, p.post_edituser, p.post_edittime, p.post_editreason,
-		u.user_id, u.user_name, u.user_status, u.user_avatar, u.user_level, u.user_posts, u.user_groups, u.user_joined,
+		u.user_id, u.user_name, u.user_status, u.user_avatar, u.user_level, u.user_posts, u.user_groups, u.user_joined, u.user_lastvisit,
 		" . ($user_field['user_sig'] ? " u.user_sig," : "") . ($user_field['user_web'] ? " u.user_web," : "") . "
 		u2.user_name AS edit_name, u2.user_status AS edit_status
 		FROM " . DB_POSTS . " p

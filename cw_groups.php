@@ -17,6 +17,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "maincore.php";
 require_once THEMES . "templates/header.php";
@@ -44,7 +48,7 @@ if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
             "SELECT *
 			FROM " . DB_USERS . "			
                         " . $orderby . "
-			ORDER BY user_level DESC, user_name LIMIT ".$_GET['rowstart'].",20");
+			ORDER BY user_level DESC, user_name LIMIT " . $_GET['rowstart'] . ",20");
 } else {
     $group_id = (isset($_GET['group_id']) && isnum($_GET['group_id']) ? $_GET['group_id'] : "1");
 
@@ -58,7 +62,7 @@ if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
 			FROM " . DB_USERS . "
 			WHERE user_groups REGEXP('^\\\.{$group_id}$|\\\.{$group_id}\\\.|\\\.{$group_id}$')
                         " . $orderby . "
-			ORDER BY user_level DESC, user_name LIMIT ".$_GET['rowstart'].",20");
+			ORDER BY user_level DESC, user_name LIMIT " . $_GET['rowstart'] . ",20");
     }
 }
 $rows = dbrows($result);
@@ -78,7 +82,7 @@ if ($rows) {
     echo "<th>" . $locale['ml_109'] . "</th>\n";
     echo "<th>" . $locale['ml_102'] . "</th>\n";
     echo "</tr>\n";
-    while ($data = dbarray($result)) {        
+    while ($data = dbarray($result)) {
         $i++;
         echo "<tr>\n";
         //Avatar

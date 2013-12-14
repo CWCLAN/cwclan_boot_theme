@@ -16,10 +16,17 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "maincore.php";
 require_once THEMES . "templates/header.php";
 include LOCALE . LOCALESET . "photogallery.php";
+
+/// locales
+$locale['sub_100'] = "Unteralbum";
 
 define("SAFEMODE", @ini_get("safe_mode") ? true : false);
 
@@ -97,7 +104,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
 			/* <![CDATA[ */\n
 				jQuery(document).ready(function(){
 					jQuery('a.photogallery_photo_link').colorbox({
-						width:'80%', height:'80%', photo:true
+						transition:'fade' , photo:true, scrolling:false, maxWidth:'95%', maxHeight:'95%'
 					});
 				});\n
 			/* ]]>*/\n
@@ -218,7 +225,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                     $title = ($data['photo_title'] ? "<span class='photo_title'>" . $data['photo_title'] . "</span>\n" : "");
                     echo "<div class='pic col-xs-6'>\n";
                     echo "<div class='thumbnail'>\n";
-                    echo "<a href='" . FUSION_SELF . "?photo_id=" . $data['photo_id'] . "' class='cwtooltip photogallery_album_photo' title='" . $data['photo_title'] . "'><!--photogallery_album_photo_" . $data['photo_id'] . "-->";
+                    echo "<a href='" . FUSION_SELF . "?photo_id=" . $data['photo_id'] . "' class='cwtooltip photogallery_photo_link' title='" . $data['photo_title'] . "'><!--photogallery_album_photo_" . $data['photo_id'] . "-->";
                     if ($data['photo_thumb2'] && file_exists(PHOTODIR . $data['photo_thumb2'])) {
                         echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . $data['photo_thumb2'] . "\")'>$title</div>";
                     } elseif ($data['photo_thumb1'] && file_exists(PHOTODIR . $data['photo_thumb1'])) {
@@ -226,12 +233,12 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                     } else {
                         echo $locale['432'];
                     }
-                    echo "</a>\n<!--photogallery_album_photo_info-->\n";                    
+                    echo "</a>\n<!--photogallery_album_photo_info-->\n";
                     echo "<span class='pull-right'>" . showdate("shortdate", $data['photo_datestamp']) . "</span>\n";
                     echo ($data['photo_allow_comments'] ? ($photo_comments == 1 ? "<span>" . $locale['436b'] : "<span>" . $locale['436']) . $photo_comments . "</span>\n<br>\n" : "");
                     echo "<span>" . $locale['435'] . $data['photo_views'] . "</span>\n</br>";
                     echo "</div>\n";
-                    echo "</div>\n";                    
+                    echo "</div>\n";
                 }
                 echo "</div>";
                 closetable();
@@ -248,8 +255,8 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
     $rows = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access'));
     if ($rows) {
         $result = dbquery(
-                "SELECT ta.*, tu.user_id,user_name FROM " . $db_prefix . "photo_albums ta
-			LEFT JOIN " . $db_prefix . "users tu ON ta.album_user=tu.user_id
+                "SELECT ta.*, tu.user_id,user_name,tu.user_status FROM " . DB_PHOTO_ALBUMS . " ta
+			LEFT JOIN " . DB_USERS . " tu ON ta.album_user=tu.user_id
 			WHERE " . groupaccess('album_access') . " AND album_sub = '" . $_GET['album_id'] . "'
 			ORDER BY album_order
 			LIMIT " . $_GET['rowstart'] . "," . $settings['thumbs_per_page']
@@ -264,7 +271,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                 if ($data['album_thumb'] && file_exists(PHOTOS . $data['album_thumb'])) {
                     echo "<img src='" . PHOTOS . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
                 } else {
-                    echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='".$locale['402']."'></span></span>";
+                    echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
                 }
                 echo "</a>\n<span class='small'>\n";
                 echo "Datum: " . showdate("shortdate", $data['album_datestamp']) . "<br />\n";
@@ -309,7 +316,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             if ($data['album_thumb'] && file_exists(PHOTOS . $data['album_thumb'])) {
                 echo "<img src='" . PHOTOS . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
             } else {
-                echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='".$locale['402']."'></span></span>";
+                echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
             }
             echo "</a>\n<span class='small'>\n";
             echo "Datum: " . showdate("shortdate", $data['album_datestamp']) . "<br />\n";

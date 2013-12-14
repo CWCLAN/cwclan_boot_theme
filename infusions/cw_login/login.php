@@ -16,6 +16,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 include LOCALE . LOCALESET . "global.php";
 
@@ -35,8 +39,8 @@ if (iMEMBER) {
     // Profil Link
     echo'<a href="' . BASEDIR . 'edit_profile.php" class="tp" title="' . $locale['global_120'] . '"><span class="icon-cog"></span></a>';
     // Messages    
-    $pm_count = dbcount("(message_id)",DB_MESSAGES,"message_to='".$userdata['user_id']."' AND message_read='0' AND message_folder=0");
-    echo '<a href="' . BASEDIR . 'cw_messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span>'.($pm_count > 0 ? " <span class='badge'>$pm_count</span>" : "").'</a>';
+    $pm_count = dbcount("(message_id)", DB_MESSAGES, "message_to='" . $userdata['user_id'] . "' AND message_read='0' AND message_folder=0");
+    echo '<a href="' . BASEDIR . 'cw_messages.php" class="tp" title="' . $locale['global_121'] . '"><span class="icon-envelop"></span>' . ($pm_count > 0 ? " <span class='badge'>$pm_count</span>" : "") . '</a>';
     // Einsendung
     echo '<span class="dropdown" id="dropSubmit">';
     echo '<span class="icon-download2 dropdown-toggle cwtooltip" data-toggle="dropdown" title="Einsendungen"></span>';
@@ -50,11 +54,10 @@ if (iMEMBER) {
     // Admin Link + Status Einsendungen
     if (iADMIN && (iUSER_RIGHTS != "" || iUSER_RIGHTS != "C")) {
         echo '<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
-        $sub_count = dbcount("(submit_id)", DB_SUBMISSIONS,"");
-        if ($sub_count > 0){
-            echo '<a href="' . ADMIN . 'submissions.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="neue Einsendungen!"><span class="badge pulse">'.$sub_count.'</span></a>';             
+        $sub_count = dbcount("(submit_id)", DB_SUBMISSIONS, "");
+        if ($sub_count > 0) {
+            echo '<a href="' . ADMIN . 'submissions.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="neue Einsendungen!"><span class="badge pulse">' . $sub_count . '</span></a>';
         }
-        
     }
     echo'</div>
         </div>';

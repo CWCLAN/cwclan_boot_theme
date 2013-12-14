@@ -16,14 +16,10 @@
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
   +--------------------------------------------------------+
-  | HighSlide Infusion by FlyingDuck.Dk
-  +--------------------------------------------------------+
-  | Photogallery based on the work of Nick Jones & Wooya
-  | Modified and improved by | FlyingDuck.Dk.
-  | Infusionized by FlyingDuck.Dk
-  | HighSlide JavaScript by Torstein H�ns
-  | Copyrighted under the Creative Commons 2.5 license.
-  +------------------------------------------------------- */
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
+  +-------------------------------------------------------- */
 require_once "maincore.php";
 require_once THEMES . "templates/header.php";
 include LOCALE . LOCALESET . "photogallery.php";
@@ -113,7 +109,7 @@ echo "<form name='sort' method='post' action='" . FUSION_SELF . "?sort=user'>\n"
 echo "<select name='user' size='1' onchange=\"javascript:this.form.submit()\">\n";
 echo "<option value='u'>zur&uuml;cksetzen</option>\n";
 while ($datauser = dbarray($resultuser)) {
-    if ($datauser['user_id'] == $_POST['user']) {
+    if (isset($_POST['album']) && $datauser['user_id'] == $_POST['user']) {
         echo "<option value='" . $datauser['user_id'] . "' selected>" . $datauser['user_name'] . "</option>\n";
     } else {
         echo "<option value='" . $datauser['user_id'] . "'>" . $datauser['user_name'] . "</option>\n";
@@ -133,7 +129,7 @@ echo "<form name='sort' method='post' action='" . FUSION_SELF . "?sort=album'>\n
 echo "<select name='album' size='1' onchange=\"javascript:this.form.submit()\">\n";
 echo "<option value='a'>zur&uuml;cksetzen</option>\n";
 while ($dataalbum = dbarray($resultalbum)) {
-    if ($dataalbum['album_id'] == $_POST['album']) {
+    if (isset($_POST['album']) && $dataalbum['album_id'] == $_POST['album']) {
         echo "<option value='" . $dataalbum['album_id'] . "' selected>" . $dataalbum['album_title'] . "</option>\n";
     } else {
         echo "<option value='" . $dataalbum['album_id'] . "'>" . $dataalbum['album_title'] . "</option>\n";
@@ -158,8 +154,8 @@ while ($data = dbarray($result)) {
     } else {
         echo $locale['432'];
     }
-    echo "</a>\n<!--photogallery_album_photo_info-->\n";    
-    echo "<span class='pull-right'>" . showdate("shortdate", $data['photo_datestamp']) . "</span>";    
+    echo "</a>\n<!--photogallery_album_photo_info-->\n";
+    echo "<span class='pull-right'>" . showdate("shortdate", $data['photo_datestamp']) . "</span>";
     echo ($data['photo_allow_comments'] ? ($photo_comments == 1 ? "<span>" . $locale['436b'] : "<span>" . $locale['436']) . $photo_comments . "</span>\n<br>\n" : "");
     echo "<span>" . $locale['435'] . $data['photo_views'] . "</span>\n<br>\n";
     echo "</div>\n";

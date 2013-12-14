@@ -10,7 +10,11 @@
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
- * ************************************************************************* */
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
+  +-------------------------------------------------------- */
 if (!defined('IN_FUSION')) {
     die;
 }
@@ -105,9 +109,9 @@ if (!function_exists('awec_post_process_events')) {
                             $body[0] = parseubb($body[0]);
                         }
                         if ($ev['is_birthday']) {
-                        $ev['ev_title'] = preg_replace("/Geburtstag von/", "<span class='icon-gift'></span>", $ev['ev_title']);    
+                            $ev['ev_title'] = preg_replace("/Geburtstag von/", "<span class='icon-gift'></span>", $ev['ev_title']);
                         } else {
-                        $ev['ev_title'] = "<span class='icon-calendar2'></span>&nbsp;". $ev['ev_title'];
+                            $ev['ev_title'] = "<span class='icon-calendar2'></span>&nbsp;" . $ev['ev_title'];
                         }
                         $link = '<a href="' . $path . '" class="cwtooltip" title="' . $body[0] . '">' . $ev['ev_title'] . '</a>';
 
@@ -130,9 +134,9 @@ if (!function_exists('awec_post_process_events')) {
 
                         $item .= $link;
                         /*
-                        if ($ev['is_birthday']) {
-                            $item .= ' <img src="' . INFUSIONS . 'aw_ecal_panel/icons/birthday.gif" alt="' . $locale['EC712'] . '" title="' . $locale['EC712'] . '" />';
-                        }*/
+                          if ($ev['is_birthday']) {
+                          $item .= ' <img src="' . INFUSIONS . 'aw_ecal_panel/icons/birthday.gif" alt="' . $locale['EC712'] . '" title="' . $locale['EC712'] . '" />';
+                          } */
 
                         if ($show_details && $current == 'today') {
                             $body = explode(stripinput(AWEC_BREAK), $ev['ev_body']);
