@@ -22,7 +22,7 @@ function printmainchannel($channelobject, $url, $servername, $players) {
         }
 
         foreach ($channelobject->users as $users) {
-            printplayers($users, $channelobject->users[count($channelobject->users) - 1]->userid, $channeldepth + 1, $menustatus, $url);
+            printplayers($users, $channelobject->users[count($channelobject->users) - 1]->userid, $channeldepth + 1, $menustatus, $url, $channelobject->c->id);
         }
         echo "</div>\n";
     }
@@ -87,18 +87,18 @@ function printchannel($channelobject, $lastid, $channeldepth, $menustatus, $url)
         }
 
         foreach ($channelobject->users as $users) {
-            printplayers($users, $channelobject->users[count($channelobject->users) - 1]->userid, $channeldepth + 1, $menustatus, $url);
+            printplayers($users, $channelobject->users[count($channelobject->users) - 1]->userid, $channeldepth + 1, $menustatus, $url, $channelobject->c->id);
         }
         echo "</div>\n";
     }
     return $menustatus;
 }
 
-function printplayers($playerobject, $lastid, $channeldepth, $menustatus) {
+function printplayers($playerobject, $lastid, $channeldepth, $menustatus, $last) {
     echo "<div class='div_player'>\n";
 
     $menustatus[$channeldepth] = 1;
-    if ($channelobject->c->id == $lastid) {
+    if ($last == $lastid) {
         $menustatus[$channeldepth] = 0;
     }
 
@@ -139,9 +139,9 @@ function printplayers($playerobject, $lastid, $channeldepth, $menustatus) {
     if ($playerobject->deaf) {
         echo "<img src='" . INFUSIONS . "mumbleview_panel/images/player_taub.png' alt='tauber Spieler(Server)' title='tauber Spieler(Server)' height='10' width='16'/>";
     }
-    if ($playerobject->suppressed) {
+    /*if ($playerobject->suppressed) {
         echo "<img src='" . INFUSIONS . "mumbleview_panel/images/player_suppressed.png' alt='unterdr�ckter Spieler' title='unterdr�ckter Spieler' height='10' width='16'/>";
-    }
+    }*/
     if ($playerobject->selfMute) {
         echo "<img src='" . INFUSIONS . "mumbleview_panel/images/player_selfmute.png' alt='stummer Spieler' title='stummer Spieler' height='10' width='16'/>";
     }
