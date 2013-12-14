@@ -60,20 +60,9 @@ function render_page($license = false) {
     echo '</div></div>';
     // Upper Footer
     echo '<div class="row upperfooter">
-            <div class="col-md-4">
-                <h4>Server</h4>                    
-                    <ul class="horizontal">
-                        <li>
-                            <a href="#" title="" target="_blank">TF2</a>
-                        </li>
-                        <li>
-                            <a href="#" title="" target="_blank">Minecraft</a>
-                        </li>
-                        <li>
-                            <a href="#" title="" target="_blank">Mumble - Voice Server</a>
-                        </li>
-                    </ul>
-            </div>
+            <div class="col-md-4">';
+     include INFUSIONS . "cw_login/site_info.php";           
+       echo'</div>
             <div class="col-md-4 clearfix">
                 <h4>Social</h4>                    
                 <ul class="vertical">

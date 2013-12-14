@@ -56,11 +56,13 @@ if (iMEMBER) {
         echo '<a href="' . ADMIN . 'index.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="' . $locale['global_123'] . '"><span class="icon-wrench"></span></a>';
         $sub_count = dbcount("(submit_id)", DB_SUBMISSIONS, "");
         if ($sub_count > 0) {
-            echo '<a href="' . ADMIN . 'submissions.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="neue Einsendungen!"><span class="badge pulse">' . $sub_count . '</span></a>';
+            echo '<a href="' . ADMIN . 'submissions.php' . $aidlink . '" class="tp" data-toggle="tooltip" title="neue Einsendungen!"><span class="badge pulse"><span class="icon-plus">' . $sub_count . '</span></a>';
+        }        
+        if (iADMIN && checkrights("M") && $settings['admin_activation'] == "1" && $activation = dbcount("(user_id)", DB_USERS, "user_status='2'") > 0) {            
+            echo '<a href="' . ADMIN . 'members.php' . $aidlink . '&amp;status=2" class="tp" data-toggle="tooltip" title="' . $locale['global_015'] . '"><span class="badge pulse"><span class="icon-confused2"></span>' . $activation . '</span></a>';
         }
     }
-    echo'</div>
-        </div>';
+    echo'</div></div>';
     echo'<div class="user_login_name">Hi <a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '">' . $userdata['user_name'] . '</a>!</div>';
     echo'</div><!-- /Login -->';
 } else {

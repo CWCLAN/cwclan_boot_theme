@@ -15,6 +15,10 @@
   | at www.gnu.org/licenses/agpl.html. Removal of this
   | copyright header is strictly prohibited without
   | written permission from the original author(s).
+  +--------------------------------------------------------+
+  | Modded for full responsive PHP-Fusion Theme
+  | Repo : https://github.com/globeFrEak/CWCLAN-PHPF-Theme
+  | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 if (!defined("IN_FUSION")) {
     die("Access Denied");
@@ -177,8 +181,8 @@ class UserFields {
         } else {
             $required = "";
         }
-
-        $returnHTML .= "<h5>" . $text . $required . "</h5>\n";
+        
+        $returnHTML = "<h5>" . $text . $required . "</h5>\n";
         $returnHTML .= "<input type='" . $type . "' id='" . $name . "' name='" . $name . "' maxlength='" . $length . "' class='textbox' value='" . $value . "' style='width:200px;'" . ($type == "password" ? " autocomplete='off'" : "") . " />";
 
 
@@ -234,7 +238,7 @@ class UserFields {
 
     private function basicOutputField($name, $value, $class, $rowspan = 0) {
         global $locale;
-
+        $returnHTML = "";
         if ($rowspan > 0) {
             $returnHTML .= "<img src='" . IMAGES . "avatars/" . $this->userData['user_avatar'] . "' class='avatar' alt='" . $locale['u062'] . "' title='" . $locale['u062'] . "' />";
         }
