@@ -23,9 +23,9 @@
 if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
-
 include_once INFUSIONS . "shoutbox_panel/infusion_db.php";
 include_once INCLUDES . "infusions_include.php";
+include_once LOCALE . LOCALESET . "forum/main.php";
 
 // Check if locale file is available matching the current site locale setting.
 if (file_exists(INFUSIONS . "shoutbox_panel/locale/" . $settings['locale'] . ".php")) {
