@@ -31,9 +31,9 @@ function render_page($license = false) {
     echo '<div class="wrapper clearfix">          
           <div class="breadcrumb">';
     include INFUSIONS . "cw_login/login.php";
-    echo"</div>
-          <a href='" . BASEDIR . "index.php'><div class='hero'></div></a>";
-
+    echo"</div><a href='" . BASEDIR . "index.php'><div class='hero'>";
+    echo"<img src='" . THEME . "img/icon-200.png' id='cw_logo'>";
+    echo"</div></a>";
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        
             <div class="navbar-header">
@@ -61,8 +61,8 @@ function render_page($license = false) {
     // Upper Footer
     echo '<div class="row upperfooter">
             <div class="col-md-4">';
-     include INFUSIONS . "cw_login/site_info.php";           
-       echo'</div>
+    include INFUSIONS . "cw_login/site_info.php";
+    echo'</div>
             <div class="col-md-4 clearfix">
                 <h4>Social</h4>                    
                 <ul class="vertical">

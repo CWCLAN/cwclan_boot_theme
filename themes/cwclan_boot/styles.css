@@ -134,6 +134,9 @@ form[name=userform] div a img, form[name=inputform] div a img {
     border: 2px solid #ca880c;
     border-radius: 5px;
 }
+#cw_logo {
+    margin-left: 10%;
+}
 /***/
 /*** Layout ***/
 /***/
