@@ -803,7 +803,11 @@ table th, table td {
     .forum_table tr .tbl2:nth-child(4),
     .forum_table tr .tbl2:nth-child(5),
     #forum_panel_threads tr td:nth-child(2),
-    #forum_panel_threads tr th:nth-child(2){
+    #forum_panel_threads tr th:nth-child(2),
+    .forum_ext_thread tr td:nth-child(2),
+    .forum_ext_thread tr th:nth-child(2),
+    .forum_ext_thread tr td:nth-child(3),
+    .forum_ext_thread tr th:nth-child(3){
         display: none;
         visibility: hidden;
     }
