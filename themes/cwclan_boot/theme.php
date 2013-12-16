@@ -32,7 +32,7 @@ function render_page($license = false) {
           <div class="breadcrumb">';
     include INFUSIONS . "cw_login/login.php";
     echo"</div><a href='" . BASEDIR . "index.php'><div class='hero'>";
-    echo"<img src='" . THEME . "img/icon-200.png' id='cw_logo'>";
+    echo"<img src='" . THEME . "img/icon-200.png' id='cw_logo' class='cwtooltip' alt='Das Logo!' title='Das Logo!'>";
     echo"</div></a>";
     // Navbar Begin
     echo'<nav class="navbar navbar-inverse" role="navigation">        
@@ -194,9 +194,9 @@ function render_news($subject, $news, $info) {
                                 ' . newsopts2($info, ' &middot; ') . '                                
                             </span>                                                        
                         </div>
-                        <p class="article">
+                        <div class="article">
 						' . $news . '
-                        </p>                        
+                        </div>                        
                     </article>';
 }
 
@@ -216,9 +216,9 @@ function render_article($subject, $article, $info) {
                                 </span>
                             </div>
                         </div>
-                        <p class="article">
+                        <div class="article">
 						' . $article . '
-                        </p>
+                        </div>
                         <span class="comments">
                         <a href="#">' . articleopts($info, ' &middot; ') . '</a>
                         </span>

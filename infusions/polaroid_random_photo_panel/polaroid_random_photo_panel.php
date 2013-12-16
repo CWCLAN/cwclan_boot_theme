@@ -38,7 +38,7 @@ if (dbrows($result) == 1) {
     echo "<div class='polaroid'>";
     $data = dbarray($result);
     $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type='P' AND comment_item_id='" . $data['photo_id'] . "'");
-    $title = ($data['photo_title'] ? "class='cwtooltip' title='" . $data['photo_title'] . "' alt='" . $data['photo_title'] . "'" : "");
+    $title = ($data['photo_title'] ? "class='cwtooltip' title='" . $data['photo_title'] . "' alt='" . $data['photo_title'] . "'" : "alt='Polaroid Random Image'");
     echo "<a href='" . BASEDIR . "cw_photogallery.php?photo_id=" . $data['photo_id'] . "'>";
     echo "<img src='" . PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "' " . $title . " /></a><br>";
     echo ($photo_comments == 1 ? $locale['436b'] : $locale['436']) . $photo_comments . "<br>";
