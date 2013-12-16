@@ -46,11 +46,11 @@ while ($data = dbarray($result)) {
         $members[] = array($data['user_id'], $data['user_name'], $data['user_status']);
     }
 }
-echo "<li>" . $locale['global_011'] . ": " . $guests . "</li>\n";
-echo "<li>" . $locale['global_012'] . ": " . count($members) . "</li>\n";
-echo "<li>" . $locale['global_014'] . ": " . number_format(dbcount("(user_id)", DB_USERS, "user_status<='1'")) . "</li>\n";
+echo "<li>Gäste On: " . $guests . "</li>\n";
+echo "<li>User On: " . count($members) . "</li>\n";
+echo "<li>User gesamt: " . number_format(dbcount("(user_id)", DB_USERS, "user_status<='1'")) . "</li>\n";
 $result = dbquery("SELECT user_id, user_name, user_status FROM " . DB_USERS . " WHERE user_status='0' ORDER BY user_joined DESC LIMIT 0,5");
-echo "<li>neueste User:";
+echo "<li>neueste User: ";
 
 $i = 1;
 while ($data = dbarray($result)) {

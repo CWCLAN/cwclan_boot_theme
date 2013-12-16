@@ -342,8 +342,7 @@ footer {
     padding: 5px;    
     margin: 0 10px;    
 }
-.upperfooter div li, .upperfooter div ul {	
-    line-height: 26px;
+.upperfooter div li, .upperfooter div ul {	    
     list-style-type: none;
     padding: 0;	
     text-align:left;		
