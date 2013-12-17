@@ -71,7 +71,8 @@ $('.quote').each(function() {
 	//On load add expand link if quote is long enough
 	if (block.height() > quoteColHeight) {
 		quote.addClass(colCls);
-		quote.find('.citation').first().prepend('<a href=\"#\" class=\"toggle-quote ' + colCls + ' flright\">" . $locale['bb_quote_expand'] . "</a> - ');
+		quote.find('.blockquote').first().prepend('<div class=\"read_more\"><a href=\"#\" class=\"toggle-quote ' + colCls + ' flright btn\">" . $locale['bb_quote_expand'] . "</a></div>');
+                quote.find('.citation').first().prepend('<a href=\"#\" class=\"toggle-quote-cit ' + colCls + ' flright\">" . $locale['bb_quote_expand'] . "</a>  ');
 		block.css({'height': quoteColHeight, 'overflow': 'hidden'});
 	}
 });
@@ -80,14 +81,30 @@ $('.quote').each(function() {
 $('.toggle-quote').click(function(e) {
 	e.preventDefault();
 	var toggler		= $(this),
+		quote		= toggler.parent().parent().parent().parent(),
+		block		= quote.find('.blockquote').first();	
+		block.stop().animate({'height': block[0].scrollHeight + 'px'}, 200, function() {
+			$(this).css({'height': 'auto'});
+		});
+		toggler.html('" . $locale['bb_quote_collapse'] . "');
+		toggler.removeClass(colCls).addClass(expCls);
+		quote.removeClass(colCls).addClass(expCls);
+                toggler.parent().fadeOut();	
+});
+
+$('.toggle-quote-cit').click(function(e) {
+	e.preventDefault();
+	var toggler		= $(this),
 		quote		= toggler.parent().parent(),
 		block		= quote.find('.blockquote').first();
+                read_more       = quote.parent().find('.read_more').first();
 
 	if (block.height() > quoteColHeight) {
 		block.stop().animate({'height': quoteColHeight + 'px'}, 200);
 		toggler.html('" . $locale['bb_quote_expand'] . "');
 		toggler.removeClass(expCls).addClass(colCls);
 		quote.removeClass(expCls).addClass(colCls);
+                read_more.fadeIn();
 	} else {
 		block.stop().animate({'height': block[0].scrollHeight + 'px'}, 200, function() {
 			$(this).css({'height': 'auto'});
@@ -95,6 +112,7 @@ $('.toggle-quote').click(function(e) {
 		toggler.html('" . $locale['bb_quote_collapse'] . "');
 		toggler.removeClass(colCls).addClass(expCls);
 		quote.removeClass(colCls).addClass(expCls);
+                read_more.fadeOut();
 	}
 });
 

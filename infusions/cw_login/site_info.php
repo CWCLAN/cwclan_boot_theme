@@ -24,7 +24,7 @@
 echo "<h4>Seiten Info</h4>";
 echo "<ul class='horizontal'>";
 
-/*if (dbcount("(online_user)", DB_ONLINE, (iMEMBER ? "online_user='" . $userdata['user_id'] . "'" : "online_user='0' AND online_ip='" . USER_IP . "'")) == 1) {
+if (dbcount("(online_user)", DB_ONLINE, (iMEMBER ? "online_user='" . $userdata['user_id'] . "'" : "online_user='0' AND online_ip='" . USER_IP . "'")) == 1) {
     $result = dbquery(
             "UPDATE " . DB_ONLINE . " SET online_lastactive='" . time() . "', online_ip='" . USER_IP . "'
 		WHERE " . (iMEMBER ? "online_user='" . $userdata['user_id'] . "'" : "online_user='0' AND online_ip='" . USER_IP . "'"));
@@ -32,7 +32,7 @@ echo "<ul class='horizontal'>";
     $result = dbquery(
             "INSERT INTO " . DB_ONLINE . " (online_user, online_ip, online_ip_type, online_lastactive) 
 		VALUES ('" . (iMEMBER ? $userdata['user_id'] : 0) . "', '" . USER_IP . "', '" . USER_IP_TYPE . "', '" . time() . "')");
-}*/
+}
 $result = dbquery(
         "SELECT ton.online_user, tu.user_id, tu.user_name, tu.user_status FROM " . DB_ONLINE . " ton
 	LEFT JOIN " . DB_USERS . " tu ON ton.online_user=tu.user_id"
