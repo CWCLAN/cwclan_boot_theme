@@ -459,7 +459,7 @@ if ($rows != 0) {
             }
         }
         if ($data['post_showsig'] && isset($data['user_sig']) && $data['user_sig'] && $data['user_status'] != 6 && $data['user_status'] != 5) {
-            echo "\n<hr /><div class='forum_sig hidden-xs'>" . nl2br(parseubb(parsesmileys($data['user_sig']), "b|i|u||center|small|url|mail|img|color")) . "</div>\n";
+            echo "<div class='forum_sig hidden-xs'>\n<hr />" . nl2br(parseubb(parsesmileys($data['user_sig']), "b|i|u||center|small|url|mail|img|color")) . "</div>\n";
         }
         echo "<!--sub_forum_post--></td>\n</tr>\n";
 
