@@ -907,26 +907,11 @@ td img {
 #selectedMapColorshout_message {
     padding: auto
 }
-.comments .tbl2, .tbl1 {
-    padding: 5px;
-}
-.comments .small {
-    font-size:12px;
-}
-.comments>div:nth-child(4n+1),
-.comments>div:nth-child(4n+2) {
-    background-color: rgb(224, 224, 224);
-    background-color: rgba(224, 224, 224, 0.5);    
-}
-.comments>div:nth-child(2n+3){
-    padding-top: 5px;    
-}
-.comment_message {
-    padding-bottom: 5px;    
-    border-bottom: solid thin #ddd;
-}
-.comment-name {
-    margin: 5px;
+.comments_user_avatar img {
+    margin-top: 5px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 }
 span .panelbutton {
     position: relative;
@@ -969,25 +954,25 @@ span .panelbutton {
 .shout_form div input[type="image"] {
     padding-top: 15px;
 }
-.shout {
+.shout, .comment {
     padding-top: 7px;
     padding-bottom: 7px;
     border-top: thin dashed #aaa;
 }
-.shout:nth-child(odd) .shoutbody
+.shout:nth-child(odd) .shoutbody, .comment:nth-child(odd) .commentbody
 {  
     float: left;
 }
-.shout:nth-child(odd) .shoutboxname 
+.shout:nth-child(odd) .shoutboxname, .comment:nth-child(odd) .commentboxname
 {
     float: right;
     text-align: center;
 }
-.shout:nth-child(even) .shoutbody
+.shout:nth-child(even) .shoutbody, .comment:nth-child(even) .commentbody
 {  
     float: right;
 }
-.shout:nth-child(even) .shoutboxname 
+.shout:nth-child(even) .shoutboxname, .comment:nth-child(even) .commentboxname
 {
     float: left;   
     text-align: center;
@@ -1001,14 +986,14 @@ span .panelbutton {
     height: 40px;
     border-radius: 50%;
 }
-.shoutbody{
+.shoutbody, .commentbody{
     width: 80%;
 }
-.shoutboxname{
+.shoutboxname, .commentboxname{
     font-weight:bold;
     width: 20%;
 }
-.shoutbox{
+.shoutbox, .commentbox{
     background: #fff;
     border: solid thin #ddd;
     -webkit-box-shadow: 0 1px 1px #eee;
@@ -1019,14 +1004,14 @@ span .panelbutton {
     padding: 5px;
 
 }
-.shoutheader {
+.shoutheader, .commentheader {
     font-weight: 700;
 }
-.shoutheader a {
+.shoutheader a, .commentheader a {
     color: inherit;
     text-decoration: none;
 }
-.shoutboxdate{
+.shoutboxdate, .commentboxdate{
     color: #ccc;
 }
 /**

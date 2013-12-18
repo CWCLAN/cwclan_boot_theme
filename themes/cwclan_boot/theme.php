@@ -126,17 +126,33 @@ function render_comments($c_data, $c_info) {
         }
         foreach ($c_data as $data) {
             $comm_count = "<a href='" . FUSION_REQUEST . "#c" . $data['comment_id'] . "' id='c" . $data['comment_id'] . "'>#" . $data['i'] . "</a>\n";
-            echo "<div class='tbl2 clearfix floatfix'>";
-            if ($settings['comments_avatar'] == "1") {
-                echo "<span class='comment-avatar'>" . $data['user_avatar'] . "</span>\n";
+            echo "<div class='comment clearfix'>";
+            echo "<div class='commentboxname clearfix'>";
+            /* UserAvatar */
+            if ($settings['comments_avatar'] == 1) {                
+                echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['comment_author_id'] . "' class='comments_user_avatar'>" . $data['user_avatar'] . "</a>\n";
+            } else {
+                echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['comment_author_id'] . "' class='comments_user_avatar'><img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
             }
-            echo "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>\n";
-            echo "<span class='comment-name'>" . $data['comment_name'] . "</span>\n";
-            echo "<span class='small'>" . $data['comment_datestamp'] . "</span>\n";
+            echo "</div>\n";
+            echo "<div class='commentbody'>";
+
+
+            /* Date & Count */
+            echo "<div class='commentboxdate clearfix'><span class='icon-clock'></span>" . str_replace(',','',$data['comment_datestamp']) . "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>\n</div>";
+
+            /* Content */
+            echo "<div class='commentbox clearfix'>
+            <div class='commentheader'>" . $data['comment_name'] . " schrieb:</div>
+            <div>" . $data['comment_message'] . "</div></div>\n";
+
             if ($data['edit_dell'] !== false) {
-                echo "<br />\n<span class='comment_actions'>" . $data['edit_dell'] . "</span>\n";
+                echo "<span class='comment_actions'>" . $data['edit_dell'] . "</span>\n";
+            }            
+            $i++;
+            if ($i != $numrows) {
+                echo "</div></div>\n";
             }
-            echo "</div>\n<div class='tbl1 comment_message'>" . $data['comment_message'] . "</div>\n";
         }
         echo $c_makepagenav;
         if ($c_info['admin_link'] !== FALSE) {

@@ -161,6 +161,9 @@ function showcomments($ctype, $cdb, $ccol, $cid, $clink) {
                 }
 
                 //Add user avatar in comments new feature in v7.02.04
+                
+                $c_arr['c_con'][$i]['comment_author_id'] = $data['comment_name'];
+                
                 if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
                     $c_arr['c_con'][$i]['user_avatar'] = "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' width='50' height='50' alt='" . $data['comment_name'] . "' />";
                 } else {
