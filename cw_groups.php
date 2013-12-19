@@ -89,7 +89,7 @@ if ($rows) {
         if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar'])) {
             echo "<td><img class='round_user_avatar' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $data['user_name'] . "'/></td>\n";
         } else {
-            echo "<td><img class='round_user_avatar' src='" . IMAGES . "random_avatar/random.php' alt='" . $data['user_name'] . "'/></td>\n";
+            echo "<td><img class='round_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $data['user_name'] . "'/></td>\n";
         }
 
         // Name
@@ -104,7 +104,7 @@ if ($rows) {
         echo "<td>\n<a href='" . BASEDIR . "user_" . $data['user_id'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . $onstatus . "</a></td>\n";
         // PM	
         if (iMEMBER && $data['user_id'] != $userdata['user_id']) {
-            echo "<td><a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' title='send PM' class='button'>PM</a></td>\n";
+            echo "<td><a href='" . BASEDIR . "messages.php?msg_send=" . $data['user_id'] . "' title='" . $locale['572'] . "' class='btn cwtooltip'><span class='icon-envelop'></span></a></td>\n";
         } elseif (iMEMBER) {
             echo "<td>&nbsp;</td>";
         }
@@ -125,11 +125,11 @@ $search = array(
     "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
     "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
 );
-echo "<hr />\n<table cellpadding='0' cellspacing='1' class='tbl-border center'>\n<tr>\n";
-echo "<td rowspan='2'><a href='" . FUSION_SELF . "?sortby=all&group_id=" . $group_id . "'>" . $locale['ml_104'] . "</a></td>";
+echo "<hr />\n<table cellpadding='0' cellspacing='0' class='tbl-border center tbl-sort'>\n<tr>\n";
+echo "<td colspan='18'><a href='" . FUSION_SELF . "?sortby=all&group_id=" . $group_id . "'>" . $locale['ml_104'] . "</a></td></tr>\n<tr>\n";
 for ($i = 0; $i < 36 != ""; $i++) {
     echo "<td align='center'><div class='small'><a href='" . FUSION_SELF . "?sortby=" . $search[$i] . "&group_id=" . $group_id . "'>" . $search[$i] . "</a></div></td>";
-    echo ($i == 17 ? "<td rowspan='2'><a href='" . FUSION_SELF . "?sortby=all&group_id=" . $group_id . "'>" . $locale['ml_104'] . "</a></td>\n</tr>\n<tr>\n" : "\n");
+    echo ($i == 17 ? "</tr>\n<tr>\n" : "\n");
 }
 echo "</tr>\n</table>\n";
 

@@ -103,7 +103,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'cw_photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;

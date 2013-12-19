@@ -129,7 +129,7 @@ function render_comments($c_data, $c_info) {
             echo "<div class='comment clearfix'>";
             echo "<div class='commentboxname clearfix'>";
             /* UserAvatar */
-            if ($settings['comments_avatar'] == 1) {                
+            if ($settings['comments_avatar'] == 1) {
                 echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['comment_author_id'] . "' class='comments_user_avatar'>" . $data['user_avatar'] . "</a>\n";
             } else {
                 echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['comment_author_id'] . "' class='comments_user_avatar'><img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
@@ -137,9 +137,8 @@ function render_comments($c_data, $c_info) {
             echo "</div>\n";
             echo "<div class='commentbody'>";
 
-
             /* Date & Count */
-            echo "<div class='commentboxdate clearfix'><span class='icon-clock'></span>" . str_replace(',','',$data['comment_datestamp']) . "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>\n</div>";
+            echo "<div class='commentboxdate clearfix'><span class='icon-clock'></span>" . str_replace(',', '', $data['comment_datestamp']) . "<span style='float:right' class='comment_actions'>" . $comm_count . "</span>\n</div>";
 
             /* Content */
             echo "<div class='commentbox clearfix'>
@@ -148,11 +147,8 @@ function render_comments($c_data, $c_info) {
 
             if ($data['edit_dell'] !== false) {
                 echo "<span class='comment_actions'>" . $data['edit_dell'] . "</span>\n";
-            }            
-            $i++;
-            if ($i != $numrows) {
-                echo "</div></div>\n";
             }
+            echo "</div></div>\n";
         }
         echo $c_makepagenav;
         if ($c_info['admin_link'] !== FALSE) {

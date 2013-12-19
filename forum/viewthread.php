@@ -492,20 +492,20 @@ if ($rows != 0) {
         }
         echo "</td>\n<td class='tbl2 forum_thread_userbar'>\n<div style='float:left;white-space:nowrap' class='small'><!--forum_thread_userbar-->\n";
         if (isset($data['user_web']) && $data['user_web'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . $data['user_web'] . "' target='_blank' class='btn btn-forum' title='" . $data['user_web'] . "'>Web</a>";
+            echo "<a href='" . $data['user_web'] . "' target='_blank' class='btn cwtooltip' title='" . $data['user_web'] . "'><span class='icon-globe'></span></a>";
         }
         if (iMEMBER && $data['user_id'] != $userdata['user_id'] && (iADMIN || $data['user_status'] != 6 && $data['user_status'] != 5)) {
-            echo "<a href='" . BASEDIR . "cw_messages.php?msg_send=" . $data['user_id'] . "' class='btn btn-forum' title='" . $locale['572'] . "'>PM</a>\n";
+            echo "<a href='" . BASEDIR . "cw_messages.php?msg_send=" . $data['user_id'] . "' class='btn cwtooltip' title='" . $locale['572'] . "'><span class='icon-envelop'></span></a>\n";
         }
         echo "</div>\n<div style='float:right' class='small'>\n";
         if (iMEMBER && ($can_post || $can_reply)) {
             if (!$fdata['thread_locked']) {
-                echo "<a href='post.php?action=reply&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "&amp;quote=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['569'] . "</a>\n";
+                echo "<a href='post.php?action=reply&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "&amp;quote=" . $data['post_id'] . "' class='btn cwtooltip' title='" . $locale['569'] . "'><span class='icon-quotes-left'></span></a>\n";
                 if (iMOD || (($lock_edit && $last_post['post_id'] == $data['post_id'] || !$lock_edit)) && ($userdata['user_id'] == $data['post_author']) && ($settings['forum_edit_timelimit'] <= 0 || time() - $settings['forum_edit_timelimit'] * 60 < $data['post_datestamp'])) {
-                    echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['568'] . "</a>\n";
+                    echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn cwtooltip' title='" . $locale['568'] . "'><span class='icon-wrench'></span></a>\n";
                 }
             } elseif (iMOD) {
-                echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn btn-forum'>" . $locale['568'] . "</a>\n";
+                echo "<a href='post.php?action=edit&amp;forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;post_id=" . $data['post_id'] . "' class='btn cwtooltip' title='" . $locale['568'] . "'><span class='icon-wrench'></span></a>\n";
             }
         }
         echo "</div>\n</td>\n</tr>\n";

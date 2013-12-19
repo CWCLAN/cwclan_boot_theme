@@ -130,7 +130,7 @@ form[name=userform] div a img, form[name=inputform] div a img {
     width: initial;
     padding: initial;
 }
-.quote {
+.quote, .spoiler-main {
     background: #fff;
     border: solid thin #ccc;
     -webkit-box-shadow: 0 1px 1px #eee, inset 0 0 5px rgba(0, 0, 0, 0.125); 
@@ -790,6 +790,9 @@ table th, table td {
     margin-right: auto;
     width: 80%;
 }
+.tbl-sort {
+    padding: 5px;    
+}
 .tbl-border.forum_idx_table, .tbl-border.forum_thread_table, .tbl-border.forum_table {
     width: 100%;   
 }
@@ -982,7 +985,7 @@ span .panelbutton {
 }
 .shout .shoutbox_user_avatar,.round_user_avatar {
     margin-top: 5px;
-    /*width: 40px;*/
+    width: 40px;
     height: 40px;
     border-radius: 50%;
 }
