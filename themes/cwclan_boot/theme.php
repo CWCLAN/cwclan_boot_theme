@@ -66,28 +66,28 @@ function render_page($license = false) {
                 <h4>Social</h4>
                 <ul class="vertical">
                     <li>
-                        <a href="https://plus.google.com/share?url=www.cwclan.de"
+                        <a href="https://plus.google.com/share?url=www.cwclan.de" class="cwtooltip" title="Teile uns bei Google+!"
                         onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
                         <span class="icon-google-plus3"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.facebook.com/share.php?u=http://www.cwclan.de" target="_blank" title="Teile uns bei Facebook">
+                        <a href="http://www.facebook.com/share.php?u=http://www.cwclan.de" target="_blank" class="cwtooltip" title="Teile uns bei Facebook!">
                         <span class="icon-facebook2"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button" data-url="http://www.cwclan.de" data-text="CWCLAN - clan &amp; community" data-lang="de" data-count="none">
+                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button cwtooltip" title="Zwitscher über uns!" data-url="http://www.cwclan.de" data-text="CWCLAN - clan &amp; community" data-lang="de" data-count="none">
                         <span class="icon-twitter2"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="http://steamcommunity.com/groups/CW-CLAN" target="_blank" title="Trete unserer Steam Community bei!">
+                        <a href="http://steamcommunity.com/groups/CW-CLAN" target="_blank" class="cwtooltip" title="Tritt unserer Steam Community bei!">
                         <span class="icon-steam2"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="' . BASEDIR . 'infusions/comy_rss_panel/rss.php?type=1" target="_blank" title="Trete unserer Steam Community bei!">
+                        <a href="' . BASEDIR . 'infusions/comy_rss_panel/rss.php?type=1" target="_blank" class="cwtooltip" title="Nachrichten Feed zum Abonnieren!">
                         <span class="icon-feed3"></span>
                         </a>
                     </li>
@@ -186,13 +186,9 @@ function newsopts2($info, $sep, $class = "") {
 function render_news($subject, $news, $info) {
 
     global $locale;
-
-    if (!isset($_GET['readmore']) && $info['news_ext'] == 'y') {
-        $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
-    } else {
-        $linked_subject = '<h3> ' . $info['news_subject'] . '</h3>';
-    }
-
+    
+    $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+    
     echo "<article>        
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
     echo '<div class="article_submenu clearfix">
@@ -206,7 +202,7 @@ function render_news($subject, $news, $info) {
                         <div class="article clearfix">
 						' . $news . '
                         </div>';
-    echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='news.php?readmore=" . $info['news_id'] . "' class='cwtooltip' title='weiterlesen: ".$info['news_subject']."'>more <span class='icon-newspaper mid'></span></a></div>" : "");
+    echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='news.php?readmore=" . $info['news_id'] . "' class='cwtooltip' title='weiterlesen: " . $info['news_subject'] . "'>more <span class='icon-newspaper mid'></span></a></div>" : "");
     echo'</article>';
 }
 
