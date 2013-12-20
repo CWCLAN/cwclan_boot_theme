@@ -179,9 +179,7 @@ function newsopts2($info, $sep, $class = "") {
     }
     if ($info['news_ext'] == "y" || ($info['news_allow_comments'] && $settings['comments_enabled'] == "1")) {
         $res .= $info['news_reads'] . $locale['global_074'];
-        //$res .= $info['news_reads'] . $locale['global_074'] . $sep;
     }
-    //$res .= "<a href='print.php?type=N&amp;item_id=" . $info['news_id'] . "' title='" . $locale['global_075'] . "'><span class='icon-file2'></span></a>\n";
     return "<!--news_opts-->" . $res;
 }
 
@@ -205,10 +203,11 @@ function render_news($subject, $news, $info) {
                                 ' . newsopts2($info, ' &middot; ') . '
                             </span>
                         </div>
-                        <div class="article">
+                        <div class="article clearfix">
 						' . $news . '
-                        </div>
-                    </article>';
+                        </div>';
+    echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='news.php?readmore=" . $info['news_id'] . "' class='cwtooltip' title='weiterlesen: ".$info['news_subject']."'>more <span class='icon-newspaper mid'></span></a></div>" : "");
+    echo'</article>';
 }
 
 function render_article($subject, $article, $info) {
@@ -269,4 +268,5 @@ function closeside() {
     }
     echo "</div>\n</div>\n";
 }
+
 ?>

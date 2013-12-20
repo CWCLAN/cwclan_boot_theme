@@ -35,6 +35,7 @@ $result = dbquery(
 );
 
 if (dbrows($result) == 1) {
+    echo "<div class='clearfix'>";
     echo "<div class='polaroid'>";
     $data = dbarray($result);
     $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type='P' AND comment_item_id='" . $data['photo_id'] . "'");
@@ -44,6 +45,7 @@ if (dbrows($result) == 1) {
     echo ($photo_comments == 1 ? $locale['436b'] : $locale['436']) . $photo_comments . "<br>";
     echo "<a href = '" . BASEDIR . "cw_photogallery.php?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a>";
     echo "&nbsp;<a href = '" . BASEDIR . "cw_latestsphotos.php'><strong>neue Fotos</strong></a>";
+    echo "</div>";
     echo "</div>";
 }
 ?>

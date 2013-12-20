@@ -29,17 +29,10 @@ if (dbrows($msql) != 0) {
         if (checkgroup($mdata['menu_access'])) {
             $link_target_m = ($mdata['menu_window'] == "1" ? " target='_blank'" : "");
 
-
             $msql2 = dbquery("SELECT * FROM " . DB_MENUS . " WHERE menu_cat='" . $mdata['menu_id'] . "' ORDER BY menu_order");
             if (dbrows($msql2) != 0) {
                 echo "<li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $mdata['menu_name'] . "<b class='caret'></b></a>";
                 echo "<ul class='dropdown-menu'>";
-                /**
-                  if (strstr($mdata['menu_link'], "http://") || strstr($mdata['menu_link'], "https://")) {
-                  echo "<li><a href='" . $mdata['menu_link'] . "'" . $link_target_m . ">" . $mdata['menu_name'] . "</a></li>";
-                  } else {
-                  echo "<li><a href='" . BASEDIR . $mdata['menu_link'] . "'" . $link_target_m . ">" . $mdata['menu_name'] . "</a></li>";
-                  } * */
                 while ($mdata2 = dbarray($msql2)) {
                     if (checkgroup($mdata2['menu_access'])) {
                         $link_target_m2 = ($mdata2['menu_window'] == "1" ? " target='_blank'" : "");
@@ -50,19 +43,27 @@ if (dbrows($msql) != 0) {
                             while ($mdata3 = dbarray($msql3)) {
                                 if (checkgroup($mdata3['menu_access'])) {
                                     $link_target = ($mdata3['menu_window'] == "1" ? " target='_blank'" : "");
-                                    if (strstr($mdata3['menu_link'], "http://") || strstr($mdata3['menu_link'], "https://")) {
-                                        echo "<li><a href='" . $mdata3['menu_link'] . "'" . $link_target . ">" . $mdata3['menu_name'] . "</a></li>";
+                                    if ($mdata['menu_name'] == "###") {
+                                        echo "<li class='divider'></li>";
                                     } else {
-                                        echo "<li><a href='" . BASEDIR . $mdata3['menu_link'] . "'" . $link_target . ">" . $mdata3['menu_name'] . "</a></li>";
+                                        if (strstr($mdata3['menu_link'], "http://") || strstr($mdata3['menu_link'], "https://")) {
+                                            echo "<li><a href='" . $mdata3['menu_link'] . "'" . $link_target . "><span class='icon-exit'></span> " . $mdata3['menu_name'] . "</a></li>";
+                                        } else {
+                                            echo "<li><a href='" . BASEDIR . $mdata3['menu_link'] . "'" . $link_target . ">" . $mdata3['menu_name'] . "</a></li>";
+                                        }
                                     }
                                 }
                             }
                             echo "</ul>\n";
                         } else {
-                            if (strstr($mdata2['menu_link'], "http://") || strstr($mdata2['menu_link'], "https://")) {
-                                echo "<li><a href='" . $mdata2['menu_link'] . "'" . $link_target_m2 . ">" . $mdata2['menu_name'] . "</a>";
+                            if ($mdata2['menu_name'] == "###") {
+                                echo "<li class='divider'>";
                             } else {
-                                echo "<li><a href='" . BASEDIR . $mdata2['menu_link'] . "'" . $link_target_m2 . ">" . $mdata2['menu_name'] . "</a>";
+                                if (strstr($mdata2['menu_link'], "http://") || strstr($mdata2['menu_link'], "https://")) {
+                                    echo "<li><a href='" . $mdata2['menu_link'] . "'" . $link_target_m2 . "><span class='icon-exit'></span> " . $mdata2['menu_name'] . "</a>";
+                                } else {
+                                    echo "<li><a href='" . BASEDIR . $mdata2['menu_link'] . "'" . $link_target_m2 . ">" . $mdata2['menu_name'] . "</a>";
+                                }
                             }
                         }
                         echo "</li>";

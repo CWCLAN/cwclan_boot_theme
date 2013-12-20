@@ -43,7 +43,7 @@ require(LOCALE . LOCALESET . "forum/main.php");
 
 if (!isset($lastvisited) || !isnum($lastvisited))$lastvisited = time();
 
-$min = 5;    // minimum visible posts in first level.
+$min = 4;    // minimum visible posts in first level.
 $max = 15;    // maximum number of posts in second level (hidden).
 
 $imageold = "<span class='icon-folder-open mid cwtooltip' title='" . $locale['561'] . "'></span>";
@@ -73,7 +73,7 @@ $result = dbquery(
 opentable($locale['ftl100']);
 /////////////
 // jQuery Tabs
-add_to_head("<script type='text/javascript' src='" . BASEDIR . "includes/jquery.tools.min.js'></script>");
+add_to_head("<script type='text/javascript' src='" . BASEDIR . "includes/jquery/jquery.tools.min.js'></script>");
 
 echo "<div class='wrap_forumpanel'>\n";
 echo "<!-- the tabs -->\n";
@@ -137,7 +137,7 @@ while ($data = dbarray($result)) {
     echo "<tr>
 <td>$sticky$locked$folder_image</td>
 <td>
-<span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
+<span class='small'><strong>" . $data['forum_name'] . "</strong></span><br />
 <span class='small forum_thread_title'>
 <a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
 </td>
@@ -230,7 +230,7 @@ if (iUSER) {
         echo "<tr>
   <td>$sticky$locked$folder_image</td>
   <td>
-  <span class='small'><strong>" . $data['forum_name'] . "</strong> <a href='" . FORUM . "t_" . seostring($data['thread_id']) . "_" . seostring($data['thread_subject']) . ".html' title='" . $locale['ftl130'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_thread1.png' height='16' width='16' alt='" . $locale['ftl130'] . "'/></a></span><br />
+  <span class='small'><strong>" . $data['forum_name'] . "</strong></span><br />
   <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
   </td>
   <td><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>

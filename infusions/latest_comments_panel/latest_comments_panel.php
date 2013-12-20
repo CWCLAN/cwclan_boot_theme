@@ -27,7 +27,7 @@ if (!defined("IN_FUSION")) {
 
 $displayComments = 10;
 $comment_short = 23;
-$comment_long = 70;
+$comment_long = 150;
 
 openside("<span class='icon-bubbles iconpaddr'></span>" . $locale['global_025']);
 
@@ -62,7 +62,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-newspaper iconpaddr"></span><a href="' . BASEDIR . 'news.php?readmore=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .='<span class="icon-newspaper iconpaddr"></span><a href="' . BASEDIR . 'news.php?readmore=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -83,7 +83,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .= THEME_BULLET . ' <a href="' . BASEDIR . 'articles.php?article_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .= THEME_BULLET . ' <a href="' . BASEDIR . 'articles.php?article_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -103,7 +103,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'cw_photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'cw_photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -119,7 +119,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-file iconpaddr"></span><a href="' . BASEDIR . 'viewpage.php?page_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .='<span class="icon-file iconpaddr"></span><a href="' . BASEDIR . 'viewpage.php?page_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -139,14 +139,14 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-folder iconpaddr"></span><a href="' . BASEDIR . 'downloads.php?download_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                    $output .='<span class="icon-folder iconpaddr"></span><a href="' . BASEDIR . 'downloads.php?download_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
             case "T":
                 $comment = trimlink($data['comment_message'], $comment_short);
                 $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
-                $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments">' . $comment . '</a><br />';
+                $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                 continue;
         }
     }

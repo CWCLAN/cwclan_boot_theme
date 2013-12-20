@@ -63,7 +63,7 @@ if($in_forum){
 		
 		opentable($locale['forum_ext_title_forum']);
 		echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border forum_ext_forum'>\n\t<tr>
-			<th class='forum-caption' width='1%' style='white-space: no-wrap;' rowspan='4'><img alt='".$locale['forum_ext_stats']."' src='".$dir."/images/forum_stats.png' /></th></tr>";
+			<th class='' width='1%' style='white-space: no-wrap;' rowspan='4'><img style='max-width:initial' alt='".$locale['forum_ext_stats']."' src='".$dir."images/forum_stats.png' /></th></tr>";
 		if($options['forum_stats'])	{
 			echo "
 			<tr>

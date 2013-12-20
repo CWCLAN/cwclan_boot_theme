@@ -62,7 +62,7 @@ function get_video($link) {
 //http://www.megavideo.com/?v=QZ4O9C8P
         array('/(megavideo\.com)/i', '{DOWNLOAD%/<input type="text" value=\'(.*?)\'/%}'),
 //http://www.vimeo.com/173714
-        array('/vimeo\.com\/([^&]*)/i', '<object class="swf_holder" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '" data="http://www.vimeo.com/moogaloop_local.swf?clip_id={ID_VIDEO}&amp;server=www.vimeo.com&amp;autoplay=0&amp;fullscreen=1&amp;show_portrait=0&amp;show_title=0&amp;show_byline=0&amp;md5=&amp;color="><param name="quality" value="high" /><param name="allowfullscreen" value="true" /><param name="scale" value="showAll" /><param name="movie" value="http://www.vimeo.com/moogaloop_local.swf?clip_id={ID_VIDEO}&amp;server=www.vimeo.com&amp;autoplay=0&amp;fullscreen=1&amp;show_portrait=0&amp;show_title=0&amp;show_byline=0&amp;md5=&amp;color=" /></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
+        array('/vimeo\.com\/([^&]*)/i', '<div class="video-container"><iframe src="//player.vimeo.com/video/{ID_VIDEO}" width="' . $width . '" height="' . $height . '" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://www.gamevideos.com/video/id/17281
         array('/(gamevideos\.com)/i', '{DOWNLOAD%/Embed: <input.*value="(.*?)"/%html_entity_decode}'),
 //http://www.myvideo.de/watch/4276644/Handys_boese
@@ -74,7 +74,7 @@ function get_video($link) {
 //http://video.golem.de/games/4931/battlefield-3-live-demo-von-der-e3-2011.html?q=medium
         array('/video\.golem\.de\/[^&]*\/([^&]*)\//i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://video.golem.de/player/videoplayer.swf?id={ID_VIDEO}&autoPl=false"></param><param name="wmode" value="transparent"><embed src="http://video.golem.de/player/videoplayer.swf?id={ID_VIDEO}&autoPl=false" type="application/x-shockwave-flash" wmode="transparent" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://www.dailymotion.com/video/xnvyw4_sahara-momentos_creation
-        array('/dailymotion\.com\/video\/(.*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.dailymotion.com/swf/{ID_VIDEO}&related=0"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.dailymotion.com/swf/{ID_VIDEO}&related=0" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '" allowFullScreen="true" allowScriptAccess="always"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>')
+        array('/dailymotion\.com\/video\/(.*)/i', '<div class="video-container"><iframe src="http://www.dailymotion.com/embed/video/{ID_VIDEO}" width="' . $width . '" height="' . $height . '" frameborder="0"></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>')
     );
 
     if (strlen($link) > 45) {
