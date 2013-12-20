@@ -22,7 +22,7 @@
   | Modders : globeFrEak, nevo & xero - www.cwclan.de
   +-------------------------------------------------------- */
 require_once "maincore.php";
-require_once THEMES . "templates/header.php";
+require_once THEMES . "templates/header_mce.php";
 include_once INCLUDES . "bbcode_include.php";
 include LOCALE . LOCALESET . "submit.php";
 
@@ -88,8 +88,8 @@ if ($_GET['stype'] == "l") {
         if ($_POST['news_subject'] != "" && $_POST['news_body'] != "") {
             $submit_info['news_subject'] = stripinput($_POST['news_subject']);
             $submit_info['news_cat'] = isnum($_POST['news_cat']) ? $_POST['news_cat'] : "0";
-            $submit_info['news_snippet'] = nl2br(parseubb(stripinput($_POST['news_snippet'])));
-            $submit_info['news_body'] = nl2br(parseubb(stripinput($_POST['news_body'])));
+            $submit_info['news_snippet'] = addslash($_POST['news_snippet']);
+            $submit_info['news_body'] = addslash($_POST['news_body']);
             $result = dbquery("INSERT INTO " . DB_SUBMISSIONS . " (submit_type, submit_user, submit_datestamp, submit_criteria) VALUES('n', '" . $userdata['user_id'] . "', '" . time() . "', '" . addslashes(serialize($submit_info)) . "')");
             add_to_title($locale['global_200'] . $locale['450']);
             opentable($locale['450']);
@@ -138,12 +138,12 @@ if ($_GET['stype'] == "l") {
         echo "<select name='news_cat' class='textbox'>\n<option value='0'>" . $locale['477'] . "</option>\n" . $cat_list . "</select>";
 
         echo "<h5>" . $locale['478'] . "</h5>";
-        echo "<textarea name='news_snippet' rows='8' class='textbox dummy_classname'>$news_snippet</textarea>";
-        echo display_bbcodes("100%", "news_snippet", "submit_form", "b|i|u|center|small|url|mail|img|color");
+        echo "<textarea name='news_snippet' rows='8' class='textbox submit'>$news_snippet</textarea>";
+        //echo display_bbcodes("100%", "news_snippet", "submit_form", "b|i|u|center|small|url|mail|img|color");
 
         echo "<h5>" . $locale['472'] . "<span style='color:#ff0000'>*</span></h5>";
-        echo "<textarea name='news_body' rows='8' class='textbox dummy_classname'>$news_body</textarea>";
-        echo display_bbcodes("100%", "news_body", "submit_form", "b|i|u|center|small|url|mail|img|color");
+        echo "<textarea name='news_body' rows='8' class='textbox submit'>$news_body</textarea>";
+        //echo display_bbcodes("100%", "news_body", "submit_form", "b|i|u|center|small|url|mail|img|color");
 
         echo "<input type='submit' name='preview_news' value='" . $locale['474'] . "' class='button'/>";
         echo "<input type='submit' name='submit_news' value='" . $locale['475'] . "' class='button'/>";
