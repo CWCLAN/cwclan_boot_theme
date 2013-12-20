@@ -111,7 +111,7 @@ if (dbrows($result)) {
                 $access = dbcount("(page_id)", DB_CUSTOM_PAGES, "page_id='" . $data['comment_item_id'] . "' AND " . groupaccess('page_access'));
                 if ($access > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_tall));
+                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='C' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
