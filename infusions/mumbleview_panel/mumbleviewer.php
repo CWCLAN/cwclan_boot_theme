@@ -42,7 +42,7 @@ function printchannel($channelobject, $lastid, $channeldepth, $menustatus, $url)
             if ($menustatus[$count] == 0) {
                 echo "<img src='" . INFUSIONS . "mumbleview_panel/images/list_tree_space.gif' alt='Mumbleviewer' height='10' width='11'/>";
             } else {
-                echo "<img border=0 src=" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif height='10' width='11' alt=Mumbleviewer>";
+                echo "<img src=" . INFUSIONS . "mumbleview_panel/images/list_tree_line.gif height='10' width='11' alt=Mumbleviewer>";
             }
             $count++;
         }
@@ -51,9 +51,9 @@ function printchannel($channelobject, $lastid, $channeldepth, $menustatus, $url)
         if (count($channelobject->children) + count($channelobject->users) > 0) {
             //if (count($channelobject->users) > 0)
             if ($channelobject->c->id != $lastid) {
-                echo "<a href=\"javascript:set_Layer('div_channel_" . $channelobject->c->id . "')\"><img name='div_channel_" . $channelobject->c->id . "' src='" . INFUSIONS . "mumbleview_panel/images/list_tree_open.png' alt='Mumbleviewer' height='10' width='11'/></a>";
+                echo "<a href=\"javascript:set_Layer('div_channel_" . $channelobject->c->id . "')\"><img title='div_channel_" . $channelobject->c->id . "' src='" . INFUSIONS . "mumbleview_panel/images/list_tree_open.png' alt='Mumbleviewer' height='10' width='11'/></a>";
             } else {
-                echo "<a href=\"javascript:set_Layer('div_channel_" . $channelobject->c->id . "')\"><img name='div_channel_" . $channelobject->c->id . "' src='" . INFUSIONS . "mumbleview_panel/images/list_tree_open.png' alt='Mumbleviewer' height='10' width='11'/></a>";
+                echo "<a href=\"javascript:set_Layer('div_channel_" . $channelobject->c->id . "')\"><img title='div_channel_" . $channelobject->c->id . "' src='" . INFUSIONS . "mumbleview_panel/images/list_tree_open.png' alt='Mumbleviewer' height='10' width='11'/></a>";
             }
         } else {
             if ($channelobject->c->id != $lastid) {

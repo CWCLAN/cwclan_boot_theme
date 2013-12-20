@@ -72,12 +72,12 @@ function render_page($license = false) {
                         </a>
                     </li>
                     <li>
-                        <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=cwclan.de&p[title]=CWCLAN%20%5BCW%5D%20-%20clan%20&%20community" target="_blank" title="Teile uns bei Facebook">
+                        <a href="http://www.facebook.com/share.php?u=http://www.cwclan.de" target="_blank" title="Teile uns bei Facebook">
                         <span class="icon-facebook2"></span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button" data-url="http://www.cwclan.de" data-text="CWCLAN [CW] - clan & community" data-lang="de" data-count="none">
+                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button" data-url="http://www.cwclan.de" data-text="CWCLAN - clan &amp; community" data-lang="de" data-count="none">
                         <span class="icon-twitter2"></span>
                         </a>
                     </li>
