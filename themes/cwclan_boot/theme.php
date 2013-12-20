@@ -15,7 +15,7 @@ function get_head_tags() {
     //echo "<link rel='stylesheet' href='" . THEME . "css/bootstrap.min.css'>";    
     //echo "<link rel='stylesheet' href='" . THEME . "css/responsive.min.css'>";
     //echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.min.css'>";
-    //echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.min.css'>";
+    //echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.min.css'>";    
     echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
 }
 
@@ -63,10 +63,10 @@ function render_page($license = false) {
     include INFUSIONS . "cw_login/site_info.php";
     echo'</div>
             <div class="col-md-4 clearfix">
-                <h4>Social</h4>                    
+                <h4>Social</h4>
                 <ul class="vertical">
                     <li>
-                        <a href="https://plus.google.com/share?url=www.cwclan.de" 
+                        <a href="https://plus.google.com/share?url=www.cwclan.de"
                         onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
                         <span class="icon-google-plus3"></span>
                         </a>
@@ -107,7 +107,7 @@ function render_page($license = false) {
     // Scripts and co.
     add_to_footer('<!-- Scripts -->
         <script src="' . THEME . 'js/vendor/bootstrap.min.js"></script>
-        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>        
+        <script src="' . THEME . 'js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="' . THEME . 'js/plugins.js"></script>
         <script src="' . THEME . 'js/main.js"></script>');
 }
@@ -202,12 +202,12 @@ function render_news($subject, $news, $info) {
                                 ' . newsposter2($info, '') . itemoptions('N', $info['news_id']) . '
                             </span>
                             <span class="comments">
-                                ' . newsopts2($info, ' &middot; ') . '                                
-                            </span>                                                        
+                                ' . newsopts2($info, ' &middot; ') . '
+                            </span>
                         </div>
                         <div class="article">
 						' . $news . '
-                        </div>                       
+                        </div>
                     </article>';
 }
 
@@ -269,5 +269,4 @@ function closeside() {
     }
     echo "</div>\n</div>\n";
 }
-
 ?>

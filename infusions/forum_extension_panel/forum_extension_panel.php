@@ -1,7 +1,7 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright © 2002 - 2008 Nick Jones
+| Copyright (C) 2002 - 2008 Nick Jones
 | http://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: forum_extension_panel.php

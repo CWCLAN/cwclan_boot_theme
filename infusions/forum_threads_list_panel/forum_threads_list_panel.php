@@ -41,8 +41,7 @@ if (file_exists(INFUSIONS . "forum_threads_list_panel/locale/" . $settings['loca
 }
 require(LOCALE . LOCALESET . "forum/main.php");
 
-if (!isset($lastvisited) || !isnum($lastvisited))
-    $lastvisited = time();
+if (!isset($lastvisited) || !isnum($lastvisited))$lastvisited = time();
 
 $min = 5;    // minimum visible posts in first level.
 $max = 15;    // maximum number of posts in second level (hidden).
@@ -66,12 +65,12 @@ $result = dbquery(
     INNER JOIN " . DB_POSTS . " tp USING(thread_id)
     INNER JOIN " . DB_USERS . " tu ON tt.thread_lastuser=tu.user_id
     INNER JOIN " . DB_USERS . " tau ON tt.thread_author=tau.user_id
-    WHERE " . groupaccess('forum_access') . "    
+    WHERE " . groupaccess('forum_access') . "
     AND tt.thread_lastpostid = tp.post_id
     ORDER BY tt.thread_lastpost DESC LIMIT " . ($min + $max)
 );
 
-opentable($locale['ftl100'], TRUE, "on");
+opentable($locale['ftl100']);
 /////////////
 // jQuery Tabs
 add_to_head("<script type='text/javascript' src='" . BASEDIR . "includes/jquery.tools.min.js'></script>");
@@ -150,7 +149,7 @@ while ($data = dbarray($result)) {
 <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
 </td>
 </tr>\n";
-    $i++;
+$i++;
 }
 if ($i > $min) {
     echo "</table><br /><script type='text/javascript'>
@@ -198,7 +197,7 @@ if (iUSER) {
     INNER JOIN " . DB_USERS . " tau ON tt.thread_author=tau.user_id
     WHERE " . groupaccess('forum_access') . "
     AND tt.thread_sticky = 1
-    AND tt.thread_lastpostid = tp.post_id    
+    AND tt.thread_lastpostid = tp.post_id
     ORDER BY tt.thread_lastpost DESC"
     );
 
@@ -255,14 +254,12 @@ echo "<!-- tab 'wrap' END-->\n";
 /////////////
 
 if (iMEMBER) {
-    echo "<hr /><p style='text-align:center; vertical-align:middle; margin-top: 6px;'>
+    echo "<hr><p style='text-align:center; vertical-align:middle; margin-top: 6px;'>
 <span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_threads.php'>" . $locale['ftl110'] . "</a></span>&nbsp;&nbsp;
 <span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_posts.php'>" . $locale['ftl111'] . "</a></span>&nbsp;&nbsp;
 <span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/newposts.php'>" . $locale['ftl112'] . "</a></span>&nbsp;&nbsp;
 <span class='icon-file'></span>&nbsp;<span class='small'><a href='" . INFUSIONS . "forum_threads_list_panel/my_tracked_threads.php'>" . $locale['ftl115'] . "</a></span></p>";
 }
-
-closetable();
 //
 //jQuery tabs LOAD
 echo '<script>
@@ -270,4 +267,5 @@ $(function() {
 $("ul.tabs").tabs("> .pane");
 });
 </script>';
+closetable();
 ?>
