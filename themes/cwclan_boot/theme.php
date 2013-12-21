@@ -1,5 +1,12 @@
 <?php
 
+function detect_mobile() {
+    if (preg_match('/(alcatel|amoi|android|avantgo|blackberry|benq|cell|cricket|docomo|elaine|htc|iemobile|iphone|ipad|ipaq|ipod|j2me|java|midp|mini|mmp|mobi|motorola|nec-|nokia|palm|panasonic|philips|phone|playbook|sagem|sharp|sie-|silk|smartphone|sony|symbian|t-mobile|telus|up\.browser|up\.link|vodafone|wap|webos|wireless|xda|xoom|zte)/i', $_SERVER['HTTP_USER_AGENT']))
+        return true;
+    else
+        return false;
+}
+
 define("THEME_BULLET", "<span class='bullet'>&middot;</span>");
 
 if (!defined("IN_FUSION")) {
@@ -8,7 +15,14 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+    if (detect_mobile() === true){
+        echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+        echo "<script>if (navigator.userAgent.match(/IEMobile\/10\.0/)) {var msViewportStyle = document.createElement(\"style\");
+                    msViewportStyle.appendChild(document.createTextNode(\"@-ms-viewport{width:auto!important}\")
+                );document.getElementsByTagName(\"head\")[0].appendChild(msViewportStyle);}</script>";
+    } else {
+        echo "<meta name='viewport' content='width=951, initial-scale=1.0'>"; 
+    }    
     echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
@@ -186,9 +200,9 @@ function newsopts2($info, $sep, $class = "") {
 function render_news($subject, $news, $info) {
 
     global $locale;
-    
+
     $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
-    
+
     echo "<article>        
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
     echo '<div class="article_submenu clearfix">
