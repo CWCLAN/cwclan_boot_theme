@@ -55,9 +55,16 @@ if ($settings['tinymce_enabled'] == 1) {
     echo "<script language='javascript' type='text/javascript' src='" . INCLUDES . "jscripts/ckeditor/ckeditor.js'></script>\n";
     echo"<script src='" . INCLUDES . "jscripts/ckeditor/adapters/jquery.js'></script>
    <script type='text/javascript'>
-   $( document ).ready( function() {
-   $( 'textarea' ).ckeditor();
-} );</script>";
+   var ckenable = 0;
+   function advanced() {
+    ckenable = 1;              	
+   }
+   $(document).ready(function() {
+    if (ckenable == 1){
+        $( 'textarea' ).ckeditor();
+    } 
+    });       
+</script>";
 }
 
 echo "</head>\n<body>\n";
