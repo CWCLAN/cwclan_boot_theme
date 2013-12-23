@@ -66,8 +66,9 @@ if (iMEMBER) {
     echo'<div class="user_login_name">Hi <a href="' . BASEDIR . 'profile.php?lookup=' . $userdata['user_id'] . '">' . $userdata['user_name'] . '</a>!</div>';
     echo'</div><!-- /Login -->';
 } else {
-    echo '<!-- Login --><div class="logged_in_box" style="text-align:right">';
+    echo '<!-- Login --><div class="logged_in_box" style="text-align:right">';    
     echo "<a href='" . BASEDIR . "cw_login.php' id='login' class='btn cwclear'><span class='icon-lock2'></span>Login</a>";
+    echo "<a href='" . BASEDIR . "register.php' id='login' class='btn cwclear'><span class='icon-pencil'></span> Registrieren</a>";
     echo '<!-- Login --></div>';
 }
 ?>	

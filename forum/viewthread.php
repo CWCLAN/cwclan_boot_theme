@@ -359,6 +359,8 @@ if ($rows != 0) {
         echo"<div class='userinfo-detail'>";
         echo profile_link($data['user_id'], $data['user_name'], $data['user_status']);
         echo "<span class='small'>";
+        
+        /// Forum Rank or Admin/Mod Status        
         if ($data['user_level'] >= 102) {
             echo $settings['forum_ranks'] ? show_forum_rank($data['user_posts'], $data['user_level'], $data['user_groups']) : getuserlevel($data['user_level']);
         } else {
@@ -374,6 +376,8 @@ if ($rows != 0) {
                 echo $is_mod ? $locale['userf1'] : getuserlevel($data['user_level']);
             }
         }
+        
+        
         echo "</span>\n";
         echo "<!--forum_thread_user_info--><span class='small'><strong>" . $locale['502'] . "</strong> " . $data['user_posts'] . "</span><br />\n";
         echo "<span class='small'><strong>" . $locale['504'] . "<br />\n</strong> " . showdate("shortdate", $data['user_joined']) . "</span>";
