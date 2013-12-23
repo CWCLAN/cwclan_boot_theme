@@ -351,7 +351,7 @@ if ($rows != 0) {
         echo "<tr>\n<td valign='top'  rowspan='2' class='tbl2 forum_thread_user_info mobilehid' style='width:140px'>\n";
         echo "<div class='userinfo scroll'>
                 <div class='userinfo-wrapper'>";
-        if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
+        if ($data['user_avatar'] && file_exists(BASEDIR . "images/avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
             echo "<img src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' />";
         } else {
             echo "<img src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' />";

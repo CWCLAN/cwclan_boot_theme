@@ -86,7 +86,7 @@ if ($rows) {
         $i++;
         echo "<tr>\n";
         //Avatar
-        if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar'])) {
+        if ($data['user_avatar'] && file_exists(BASEDIR . "images/avatars/" . $data['user_avatar'])) {
             echo "<td><img class='round_user_avatar' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $data['user_name'] . "'/></td>\n";
         } else {
             echo "<td><img class='round_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $data['user_name'] . "'/></td>\n";

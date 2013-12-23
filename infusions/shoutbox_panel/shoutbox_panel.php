@@ -200,7 +200,7 @@ if (dbrows($result)) {
         echo "<div class='shoutboxname clearfix'>";
 
         /* UserAvatar */
-        if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
+        if ($data['user_avatar'] && file_exists(BASEDIR . "images/avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
             echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
         } else {
             echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";

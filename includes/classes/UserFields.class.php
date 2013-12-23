@@ -264,7 +264,7 @@ class UserFields {
         $returnFields .= $this->basicOutputField($locale['u066'], showdate("longdate", $this->userData['user_joined']), "profile_user_joined");
         $returnFields .= $this->basicOutputField($locale['u067'], $lastVisit, "profile_user_visit");
 
-        if ($this->userData['user_avatar'] == "" || !file_exists(IMAGES . "avatars/" . $this->userData['user_avatar'])) {
+        if ($this->userData['user_avatar'] == "" || !file_exists(BASEDIR . "images/avatars/" . $this->userData['user_avatar'])) {
             $this->userData['user_avatar'] = "noavatar100.png";
         }
 
