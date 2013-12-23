@@ -47,7 +47,7 @@ if (iMEMBER) {
     echo'<ul class="dropdown-menu" role="menu" aria-labelledby="dropSubmit" id="SubmitMenu">';
     echo'<li><a href="' . BASEDIR . 'cw_submit.php?stype=n">News einsenden <span class="icon-newspaper mid"></span></a></li>';
     echo'<li><a href="' . BASEDIR . 'cw_submit.php?stype=p">Foto einsenden <span class="icon-image2 mid"></span></a></li>';
-    echo'<li><a tabindex="-1" href="' . BASEDIR . 'infusions/uploader_panel/uploader.php">CW Cloud <span class="icon-cloud mid"></span></a></li>';
+    //echo'<li><a tabindex="-1" href="' . BASEDIR . 'infusions/uploader_panel/uploader.php">CW Cloud <span class="icon-cloud mid"></span></a></li>';
     echo'</ul></span>';
     // Logout
     echo '<a href="' . BASEDIR . 'index.php?logout=yes" class="tp" title="' . $locale['global_124'] . '"><span class="icon-switch"></span></a>';

@@ -40,15 +40,9 @@ while (!file_exists($folder_level."config.php")) {
 }
 define("BASEDIR", $folder_level);
 
-require_once BASEDIR."config.php";
+define("BASEIMG", "http://img1.cwclan.de/");
 
-// Parallele Downloads f?r Seiten Optimierung
-define("BASEDIRW1", "http://www1.cwclan.de/");
-define("BASEDIRW2", "http://www2.cwclan.de/");
-define("BASEDIRW3", "http://www3.cwclan.de/");
-define("BASEDIRW4", "http://www4.cwclan.de/");
-define("BASEDIRW5", "http://www5.cwclan.de/");
-define("BASEDIRW6", "http://www6.cwclan.de/");
+require_once BASEDIR."config.php";
 
 // If config.php is empty, activate setup.php script
 if (!isset($db_name)) { redirect("setup.php"); }
@@ -134,7 +128,7 @@ define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
 define("ADMIN", BASEDIR."administration/");
 define("CLASSES", BASEDIR."includes/classes/");
 define("DOWNLOADS", BASEDIR."downloads/");
-define("IMAGES", BASEDIR."images/");
+define("IMAGES", BASEIMG);
 define("IMAGES_A", IMAGES."articles/");
 define("IMAGES_N", IMAGES."news/");
 define("IMAGES_N_T", IMAGES."news/thumbs/");
