@@ -77,8 +77,8 @@ function get_video($link) {
         array('/dailymotion\.com\/video\/(.*)/i', '<div class="video-container"><iframe src="http://www.dailymotion.com/embed/video/{ID_VIDEO}" width="' . $width . '" height="' . $height . '" frameborder="0"></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>')
     );
 
-    if (strlen($link) > 45) {
-        $kurzlink = substr($link, 0, 45) . "...";
+    if (strlen($link) > 20) {
+        $kurzlink = substr($link, 0, 20) . "...";
     } else {
         $kurzlink = $link;
     }
