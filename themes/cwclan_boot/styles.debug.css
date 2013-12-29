@@ -441,7 +441,8 @@ footer {
     text-decoration: none;
     -webkit-transition: all 0.5s ease-in-out;
 }
-.upperfooter div ul {	
+.upperfooter div ul {
+    min-height: 80px;
     margin: 0;   	
 }
 .breadcrumb {
