@@ -158,7 +158,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
     }
 } elseif (isset($_GET['album_id']) && isnum($_GET['album_id'])) {
     define("PHOTODIR", PHOTOS . (!SAFEMODE ? "album_" . $_GET['album_id'] . "/" : ""));
-    define("PHOTODIR_FILE", BASEDIR . (!SAFEMODE ? "images/photoalbum/album_" . $data['album_id'] . "/" : "images/photoalbum/"));
+    define("PHOTODIR_FILE", BASEDIR . (!SAFEMODE ? "images/photoalbum/album_" . $_GET['album_id'] . "/" : "images/photoalbum/"));
     $result = dbquery(
             "SELECT album_title, album_description, album_thumb, album_access FROM " . DB_PHOTO_ALBUMS . " WHERE album_id='" . $_GET['album_id'] . "'"
     );
@@ -270,7 +270,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                 echo "<div class='pic col-xs-6'>\n";
                 echo "<div class='thumbnail'>\n";
                 echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
-                if ($data['album_thumb'] && file_exists(PHOTODIR_FILE . $data['album_thumb'])) {
+                if ($data['album_thumb'] && file_exists(BASEDIR . "images/photoalbum/" . $data['album_thumb'])) {
                     echo "<img src='" . PHOTOS . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
                 } else {
                     echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
@@ -292,7 +292,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
     }
     //sub-albums slut
 } else {
-    // Album Ausgabe
+    // Album Ausgabe    
     opentable($locale['400']);
     $rows = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access'));
     if (!isset($_GET['rowstart']) || !isnum($_GET['rowstart'])) {
@@ -315,7 +315,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo "<div class='pic col-xs-6'>\n";
             echo "<div class='thumbnail'>\n";
             echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
-            if ($data['album_thumb'] && file_exists(PHOTODIR_FILE . $data['album_thumb'])) {
+            if ($data['album_thumb'] && file_exists(BASEDIR . "images/photoalbum/" . $data['album_thumb'])) {
                 echo "<img src='" . PHOTOS . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
             } else {
                 echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
