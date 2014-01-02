@@ -182,7 +182,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
 		echo $locale['SB_enter_validation_code']."<br />\n<input type='text' name='captcha_code' class='textbox' style='width:100px' /><br />\n";
 	}
 	echo "<br /><input type='submit' name='post_archive_shout' value='".$locale['SB_shout']."' class='button' />\n";
-	echo "</div>\n</form>\n<br />\n";
+	echo "</div>\n</form>\n<br />\n"; // SUBMIT NEW POST ENDS
 } else {
 	echo "<div style='text-align:center'>".$locale['SB_login_req']."</div>\n";
 }
@@ -190,14 +190,14 @@ $rows = dbcount("(shout_id)", DB_SHOUTBOX,"shout_hidden='0'");
 if (!isset($_GET['rowstart']) || !isnum($_GET['rowstart'])) { $_GET['rowstart'] = 0; }
 if ($rows != 0) {
 	$result = dbquery(
-		"SELECT s.shout_id, s.shout_name, s.shout_message, s.shout_datestamp, u.user_id, u.user_name, u.user_status, u.user_lastvisit
+		"SELECT s.shout_id, s.shout_name, s.shout_message, s.shout_datestamp, u.user_id, u.user_name, u.user_avatar, u.user_status, u.user_lastvisit
 		FROM ".DB_SHOUTBOX." s
 		LEFT JOIN ".DB_USERS." u ON s.shout_name=u.user_id
 		WHERE s.shout_hidden='0'
 		ORDER BY s.shout_datestamp DESC LIMIT ".$_GET['rowstart'].",20"
 	);
 	while ($data = dbarray($result)) {
-		echo "<div class='tbl2'>\n";
+		echo "<div class='shout clearfix'><div class='shoutbody clearfix'><div class='shoutboxdate clearfix'>\n";
 		if ((iADMIN && checkrights("S")) || (iMEMBER && $data['shout_name'] == $userdata['user_id'] && isset($data['user_name']))) {
 			echo "<div style='float:right'>\n<a href='".FUSION_SELF."?action=edit&amp;shout_id=".$data['shout_id']."'><img src='".INFUSIONS."shoutbox_panel/images/edit.png' alt='".$locale['SB_edit']."' title='".$locale['SB_edit']."' /></a> \n";
 			echo "<a href='".FUSION_SELF."?action=delete&amp;shout_id=".$data['shout_id']."'><img src='".INFUSIONS."shoutbox_panel/images/delete.png' alt='".$locale['SB_delete']."' title='".$locale['SB_delete']."' /></a>\n</div>\n";
@@ -216,7 +216,23 @@ if ($rows != 0) {
 			echo "<span class='comment-name'>".$data['shout_name']."</span>\n";
 		}
 		echo "<span class='small'>".showdate("longdate", $data['shout_datestamp'])."</span>";
-		echo "</div>\n<div class='tbl1'>\n".sbawrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"))."</div>\n";
+		echo "</div>\n<div class='shoutbox'>\n";
+		echo "<div class='shoutboxname clearfix'>";
+		
+
+		echo "</div><div>";
+		echo sbawrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"));
+		echo "</div></div></div>";
+		echo "<div class='shoutboxname'>";
+		/* UserAvatar */
+        if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
+            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
+        } else {
+            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
+        }
+
+		echo "";
+		echo "</div></div>\n";
 	}
 } else {
 	echo "<div style='text-align:center'><br />\n".$locale['SB_no_msgs']."<br /><br />\n</div>\n";
