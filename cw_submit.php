@@ -258,7 +258,7 @@ if ($_GET['stype'] == "l") {
             $photo_pic = $_FILES['photo_pic_file'];
             $photo_name = stripfilename(strtolower(substr($photo_pic['name'], 0, strrpos($photo_pic['name'], "."))));
             $photo_ext = strtolower(strrchr($photo_pic['name'], "."));
-            $photo_dest = BASEDIR . "images/photoalbum/submissions/";
+            $photo_dest = PHOTOS . "submissions/";
             if (!preg_match("/^[-0-9A-Z_\[\]]+$/i", $photo_name)) {
                 $error = 1;
             } elseif ($photo_pic['size'] > $settings['photo_max_b']) {

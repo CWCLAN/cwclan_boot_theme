@@ -218,7 +218,7 @@ if (function_exists('gd_info')) {
                     $album_order = dbresult(dbquery("SELECT MAX(album_order) FROM " . DB_PHOTO_ALBUMS . ""), 0) + 1;
                 }
                 $result = dbquery("UPDATE " . DB_PHOTO_ALBUMS . " SET album_order=(album_order+1) WHERE album_order>='$album_order'");
-                $result = dbquery("INSERT INTO " . DB_PHOTO_ALBUMS . " (album_title, album_description, album_thumb, album_user, album_access, album_order, album_datestamp, album_sub) VALUES ('$album_title', '$album_description', '" . (isset($album_thumb) ? $album_thumb : "") . "', '" . $userdata['user_id'] . "', '$album_access', '$album_order', '" . time() . "', '$album_sub',)");
+                $result = dbquery("INSERT INTO " . DB_PHOTO_ALBUMS . " (album_title, album_description, album_thumb, album_user, album_access, album_order, album_datestamp, album_sub) VALUES ('$album_title', '$album_description', '" . (isset($album_thumb) ? $album_thumb : "") . "', '" . $userdata['user_id'] . "', '$album_access', '$album_order', '" . time() . "', '$album_sub')");
                 $rowstart = $album_order > $settings['thumbs_per_page'] ? ((ceil($album_order / $settings['thumbs_per_page']) - 1) * $settings['thumbs_per_page']) : "0";
                 redirect(FUSION_SELF . $aidlink . "&status=sn&rowstart=$rowstart");
             }
