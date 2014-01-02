@@ -451,14 +451,14 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
     echo "</div>\n";
     echo "<div style='margin:4px;'></div>\n";
     echo "<form name='options_form' method='post' action='" . FUSION_SELF . "?folder=options'>\n";
-    echo "<table cellpadding='0' cellspacing='1' width='500' class='center'>\n";
-    echo "<tr><td class='tbl1' width='60%'>" . $locale['621'] . "</td>\n";
-    echo "<td class='tbl1' width='40%'><select name='pm_email_notify' class='textbox'>\n";
+    echo "<table cellpadding='0' cellspacing='1' width='100%' class='center'>\n";
+    echo "<tr><td class='tbl1'>" . $locale['621'] . "</td>\n";
+    echo "<td class='tbl1'><select name='pm_email_notify' class='textbox'>\n";
     echo "<option value='1'" . ($my_settings['pm_email_notify'] ? " selected='selected'" : "") . ">" . $locale['631'] . "</option>\n";
     echo "<option value='0'" . (!$my_settings['pm_email_notify'] ? " selected='selected'" : "") . ">" . $locale['632'] . "</option>\n";
     echo "</select></td></tr>\n";
-    echo "<tr><td class='tbl1' width='60%'>" . $locale['622'] . "</td>\n";
-    echo "<td class='tbl1' width='40%'><select name='pm_save_sent' class='textbox'>\n";
+    echo "<tr><td class='tbl1'>" . $locale['622'] . "</td>\n";
+    echo "<td class='tbl1'><select name='pm_save_sent' class='textbox'>\n";
     echo "<option value='1'" . ($my_settings['pm_save_sent'] ? " selected='selected'" : "") . ">" . $locale['631'] . "</option>\n";
     echo "<option value='0'" . (!$my_settings['pm_save_sent'] ? " selected='selected'" : "") . ">" . $locale['632'] . "</option>\n";
     echo "</select></td></tr>\n";
@@ -590,8 +590,8 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
     add_to_title($locale['global_201'] . $locale['420']);
     opentable($locale['420']);
     echo "<form name='inputform' method='post' action='" . FUSION_SELF . "?msg_send=0' onsubmit=\"return ValidateForm(this)\">\n";
-    echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n";
-    echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>" . $locale['421'] . ":</td>\n<td class='tbl1'>\n";
+
+    echo "<h5 style='white-space:nowrap'>" . $locale['421'] . ":</h5>\n<div>";
     if ($_GET['msg_send'] == "0") {
         echo "<select name='msg_send' class='textbox'>\n" . $user_list . "</select>\n";
     } else {
@@ -599,25 +599,25 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
         echo "<input type='hidden' name='msg_send' value='" . $udata['user_id'] . "' />\n";
         echo profile_link($udata['user_id'], $udata['user_name'], $udata['user_status']) . "\n";
     }
-    echo "</td>\n<td class='tbl1' align='right'>\n";
+    echo "</div><div>\n";
     if (iADMIN && !isset($_GET['msg_id'])) {
-        echo "<label><input name='chk_sendtoall' type='checkbox' " . $sendtoall_chk . " />\n";
-        echo "" . $locale['434'] . ":</label> <select name='msg_to_group' class='textbox'>\n" . $user_types . "</select>\n";
+        echo "<h5 style='white-space:nowrap'>" . $locale['434'] . ":</h5>\n";
+        echo "<div><label><input name='chk_sendtoall' type='checkbox' " . $sendtoall_chk . " />\n";
+        echo "</label> <select name='msg_to_group' class='textbox'>\n" . $user_types . "</select>\n</div>\n";        
     }
-    echo "</td>\n</tr>\n";
-    echo "<tr>\n<td align='right' class='tbl2' style='white-space:nowrap'>" . $locale['405'] . ":</td>\n";
-    echo "<td class='tbl1' colspan='2'><input type='text' name='subject' value='" . $subject . "' maxlength='32' class='textbox' style='width:250px;' /></td>\n</tr>\n";
+    echo "</div>\n";
+    echo "<h5 style='white-space:nowrap'>" . $locale['405'] . ":</h5>\n";
+    echo "<div><input type='text' name='subject' value='" . $subject . "' maxlength='32' class='textbox'/></div>\n";
     if ($reply_message) {
-        echo "<tr>\n<td align='right' class='tbl2' valign='top' style='white-space:nowrap'>" . $locale['422'] . ":</td>\n";
-        echo "<td class='tbl1' colspan='2'>" . nl2br(parseubb($reply_message)) . "</td>\n</tr>\n";
+        echo "<h5 style='white-space:nowrap'>" . $locale['422'] . ":</h5>\n";
+        echo "<div>" . nl2br(parseubb($reply_message)) . "</div>\n";
     }
-    echo "<tr>\n<td align='right' class='tbl2' valign='top' style='white-space:nowrap'>" . ($reply_message ? $locale['433'] : $locale['422']) . ":</td>\n";
-    echo "<td class='tbl1' colspan='2'><textarea name='message' cols='75' rows='15' class='textbox' style='width:98%'>" . $message . "</textarea></td>\n</tr>\n";
-    echo "<tr>\n<td align='right' class='tbl2' valign='top'></td>\n<td class='tbl1' colspan='2'>\n";
-    echo display_bbcodes("98%", "message") . "</td>\n</tr>\n";
-    echo "<tr>\n<td align='right' class='tbl2' valign='top' style='white-space:nowrap'>" . $locale['425'] . ":</td>\n";
-    echo "<td class='tbl1' colspan='2'>\n<label><input type='checkbox' name='chk_disablesmileys' value='y'" . $disablesmileys_chk . " />" . $locale['427'] . "</label></td>\n</tr>\n";
-    echo "</table>\n";
+    echo "<h5 style='white-space:nowrap'>" . ($reply_message ? $locale['433'] : $locale['422']) . ":</h5>\n";
+    echo "<div><textarea name='message' rows='15' class='textbox'>" . $message . "</textarea>\n";
+    echo display_bbcodes("100%", "message") . "</div>\n";
+    echo "<h5 style='white-space:nowrap'>" . $locale['425'] . ":</h5>\n";
+    echo "<div>\n<label><input type='checkbox' name='chk_disablesmileys' value='y'" . $disablesmileys_chk . " />" . $locale['427'] . "</label></div>\n";
+
     echo "<table border='0' cellpadding='0' cellspacing='0' width='100%'>\n";
     echo "<tr>\n<td class='tbl'><a href='" . FUSION_SELF . "?folder=inbox'>" . $locale['435'] . "</a></td>\n";
     echo "<td align='right' class='tbl'>\n<input type='submit' name='send_preview' value='" . $locale['429'] . "' class='button' />\n";
