@@ -26,6 +26,23 @@ require_once THEMES . "templates/header.php";
 include_once INCLUDES . "bbcode_include.php";
 include LOCALE . LOCALESET . "submit.php";
 
+function byte_umrechner($bytes) {
+    if ($bytes > pow(2, 10)) {
+        if ($bytes > pow(2, 20)) {
+            $size = number_format(($bytes / pow(2, 20)), 2);
+            $size .= " MB";
+            return $size;
+        } else {
+            $size = number_format(($bytes / pow(2, 10)), 2);
+            $size .= " KB";
+            return $size;
+        }
+    } else {
+        $size = (string) $bytes . " Bytes";
+        return $size;
+    }
+}
+
 if (!iMEMBER) {
     redirect("index.php");
 }
@@ -89,7 +106,7 @@ if ($_GET['stype'] == "l") {
             $submit_info['news_subject'] = stripinput($_POST['news_subject']);
             $submit_info['news_cat'] = isnum($_POST['news_cat']) ? $_POST['news_cat'] : "0";
             $submit_info['news_snippet'] = nl2br(parseubb(stripinput($_POST['news_snippet'])));
-			$submit_info['news_body'] = nl2br(parseubb(stripinput($_POST['news_body'])));
+            $submit_info['news_body'] = nl2br(parseubb(stripinput($_POST['news_body'])));
             $result = dbquery("INSERT INTO " . DB_SUBMISSIONS . " (submit_type, submit_user, submit_datestamp, submit_criteria) VALUES('n', '" . $userdata['user_id'] . "', '" . time() . "', '" . addslashes(serialize($submit_info)) . "')");
             add_to_title($locale['global_200'] . $locale['450']);
             opentable($locale['450']);
@@ -109,7 +126,7 @@ if ($_GET['stype'] == "l") {
             echo '<span class="author">Kurznews</span></div>';
             echo '<div class="article">' . $news_snippet . '</div><hr>';
             echo '<span class="author">News</span>';
-            echo '<div class="article">' . $news_body . '</div>';            
+            echo '<div class="article">' . $news_body . '</div>';
             closetable();
         }
         if (!isset($_POST['preview_news'])) {
@@ -241,7 +258,7 @@ if ($_GET['stype'] == "l") {
             $photo_pic = $_FILES['photo_pic_file'];
             $photo_name = stripfilename(strtolower(substr($photo_pic['name'], 0, strrpos($photo_pic['name'], "."))));
             $photo_ext = strtolower(strrchr($photo_pic['name'], "."));
-            $photo_dest = PHOTOS . "submissions/";
+            $photo_dest = BASEDIR . "images/photoalbum/submissions/";
             if (!preg_match("/^[-0-9A-Z_\[\]]+$/i", $photo_name)) {
                 $error = 1;
             } elseif ($photo_pic['size'] > $settings['photo_max_b']) {
@@ -276,7 +293,7 @@ if ($_GET['stype'] == "l") {
             if ($error == 1) {
                 echo $locale['601'];
             } elseif ($error == 2) {
-                echo sprintf($locale['602'], $settings['photo_max_b']);
+                echo sprintf($locale['602'], byte_umrechner($settings['photo_max_b']));
             } elseif ($error == 3) {
                 echo $locale['603'];
             } elseif ($error == 4) {

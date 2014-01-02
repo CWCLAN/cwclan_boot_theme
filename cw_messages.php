@@ -278,7 +278,7 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 			FROM " . DB_MESSAGES . " m
 			LEFT JOIN " . DB_USERS . " u ON m.message_from=u.user_id
 			WHERE message_to='" . $userdata['user_id'] . "' AND message_folder='0'
-			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",20"
+			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",10"
         );
     } elseif ($_GET['folder'] == "outbox") {
         $total_rows = $bdata['outbox_total'];
@@ -288,7 +288,7 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 			FROM " . DB_MESSAGES . " m
 			LEFT JOIN " . DB_USERS . " u ON m.message_from=u.user_id
 			WHERE message_to='" . $userdata['user_id'] . "' AND message_folder='1'
-			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",20"
+			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",10"
         );
     } elseif ($_GET['folder'] == "archive") {
         $total_rows = $bdata['archive_total'];
@@ -298,7 +298,7 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 			FROM " . DB_MESSAGES . " m
 			LEFT JOIN " . DB_USERS . " u ON m.message_from=u.user_id
 			WHERE message_to='" . $userdata['user_id'] . "' AND message_folder='2'
-			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",20"
+			ORDER BY message_datestamp DESC LIMIT " . $_GET['rowstart'] . ",10"
         );
     }
 
@@ -347,21 +347,20 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
 
     echo "</div>\n";
     if ($total_rows) {
-        echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n";
-        echo "<tr>\n<td class='tbl2'>" . $locale['405'] . "</td>\n";
-        echo "<td width='1%' class='tbl2' style='white-space:nowrap'>" . ($_GET['folder'] != "outbox" ? $locale['406'] : $locale['421']) . "</td>\n";
-        echo "<td width='1%' class='tbl2' style='white-space:nowrap'>" . $locale['407'] . "</td>\n</tr>\n";
         while ($data = dbarray($result)) {
             $message_subject = $data['message_subject'];
             if (!$data['message_read']) {
                 $message_subject = "<strong>" . $message_subject . "</strong>";
             }
-            echo "<tr>\n<td class='tbl1'><input type='checkbox' name='check_mark[]' value='" . $data['message_id'] . "' />\n";
-            echo "<a href='" . FUSION_SELF . "?folder=" . $_GET['folder'] . "&amp;msg_read=" . $data['message_id'] . "'>" . $message_subject . "</a></td>\n";
-            echo "<td width='1%' class='tbl1' style='white-space:nowrap'>" . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "</td>\n";
-            echo "<td width='1%' class='tbl1' style='white-space:nowrap'>" . showdate("shortdate", $data['message_datestamp']) . "</td>\n</tr>\n";
+            echo "<div class='panel " . (!$data['message_read'] ? "panel-warning" : "panel-default" ) . "'>\n";
+            echo "<div class='panel-heading'>\n";
+            echo "<h5 class='panel-title'><input type='checkbox' name='check_mark[]' value='" . $data['message_id'] . "' />\n"
+            . "<a href='" . FUSION_SELF . "?folder=" . $_GET['folder'] . "&amp;msg_read=" . $data['message_id'] . "'>" . $message_subject . "</a></h5>\n";
+            echo "</div>\n";
+            echo "<div class='panel-body'>von: " . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "\n";
+            echo "<span class='pull-right'>" . showdate("shortdate", $data['message_datestamp']) . "</span>";
+            echo "</div>\n</div>\n";
         }
-        echo "</table>\n";
 
         echo "<table cellpadding='0' cellspacing='0' width='100%'>\n";
         echo "<tr>\n<td class='tbl'><a href='#' onclick=\"javascript:setChecked('pm_form','check_mark[]',1);return false;\">" . $locale['410'] . "</a> |\n";
@@ -390,7 +389,7 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
     echo "</script>\n";
     closetable();
     if ($total_rows > 20)
-        echo "<div align='center' style='margin-top:5px;'>\n" . makepagenav($_GET['rowstart'], 20, $total_rows, 3, FUSION_SELF . "?folder=" . $_GET['folder'] . "&amp;") . "\n</div>\n";
+        echo "<div align='center' style='margin-top:5px;'>\n" . makepagenav($_GET['rowstart'], 10, $total_rows, 3, FUSION_SELF . "?folder=" . $_GET['folder'] . "&amp;") . "\n</div>\n";
 } elseif ($_GET['folder'] == "options") {
     $result = dbquery("SELECT * FROM " . DB_MESSAGES_OPTIONS . " WHERE user_id='" . $userdata['user_id'] . "'");
     if (dbrows($result)) {
@@ -485,15 +484,16 @@ if (!isset($_GET['msg_send']) && !isset($_GET['msg_read']) && $_GET['folder'] !=
         add_to_title($locale['global_201'] . $locale['431']);
         opentable($locale['431']);
         echo "<form name='pm_form' method='post' action='" . FUSION_SELF . "?folder=" . $_GET['folder'] . "&amp;msg_send=" . $data['user_id'] . "&amp;msg_id=" . $data['message_id'] . "'>\n";
-        echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border'>\n<tr>\n";
-        echo "<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>" . ($_GET['folder'] != "outbox" ? $locale['406'] : $locale['421']) . "</td>\n";
-        echo "<td class='tbl1'>" . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "</td>\n</tr>\n";
-        echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>" . $locale['407'] . "</td>\n";
-        echo "<td class='tbl1'>" . showdate("longdate", $data['message_datestamp']) . "</td>\n</tr>\n";
-        echo "<tr>\n<td align='right' width='1%' class='tbl2' style='white-space:nowrap'>" . $locale['405'] . "</td>\n";
-        echo "<td class='tbl1'>" . $data['message_subject'] . "</td>\n</tr>\n";
-        echo "<tr>\n<td colspan='2' class='tbl1'>" . nl2br(parseubb($message_message)) . "</td>\n</tr>\n";
-        echo "</table>\n";
+
+        echo "<div class='panel panel-default'>\n";
+        echo "<div class='panel-heading'>\n";
+        echo "<h5 class='panel-title'><div><input type='checkbox' name='check_mark[]' value='" . $data['message_id'] . "' />\n" . $data['message_subject'];
+        echo "<span class='pull-right'>von: " . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "</span></div>"
+        . "<div class='text-right'>" . showdate("longdate", $data['message_datestamp']) . "</div></h5>\n";
+        echo "</div>\n";
+        echo "<div class='panel-body'>" . nl2br(parseubb($message_message)) . "\n";
+        echo "</div>\n</div>\n";
+
         echo "<table cellpadding='0' cellspacing='0' width='100%'>\n";
         echo "<tr>\n<td colspan='2' class='tbl'><a href='" . FUSION_SELF . "?folder=" . $_GET['folder'] . "'>" . $locale['432'] . "</a></td>\n";
         echo "<td align='right' class='tbl'>\n";

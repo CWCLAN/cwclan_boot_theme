@@ -128,7 +128,7 @@ define("QUOTES_GPC", (ini_get('magic_quotes_gpc') ? TRUE : FALSE));
 define("ADMIN", BASEDIR."administration/");
 define("CLASSES", BASEDIR."includes/classes/");
 define("DOWNLOADS", BASEDIR."downloads/");
-define("IMAGES", BASEIMG);
+define("IMAGES", BASEDIR."images/");
 define("IMAGES_A", IMAGES."articles/");
 define("IMAGES_N", IMAGES."news/");
 define("IMAGES_N_T", IMAGES."news/thumbs/");
