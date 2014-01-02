@@ -54,7 +54,7 @@ if (dbrows($result)) {
 									");
                 if ($access > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                    $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='N' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -75,7 +75,7 @@ if (dbrows($result)) {
 									");
                 if (dbrows($access) > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                    $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='A' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -95,7 +95,7 @@ if (dbrows($result)) {
                 );
                 if (dbrows($access) > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                    $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='P' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -111,7 +111,7 @@ if (dbrows($result)) {
                 $access = dbcount("(page_id)", DB_CUSTOM_PAGES, "page_id='" . $data['comment_item_id'] . "' AND " . groupaccess('page_access'));
                 if ($access > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                    $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='C' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -131,7 +131,7 @@ if (dbrows($result)) {
                 );
                 if (dbrows($access) > 0) {
                     $comment = trimlink($data['comment_message'], $comment_short);
-                    $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                    $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='D' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -145,7 +145,7 @@ if (dbrows($result)) {
                 continue;
             case "T":
                 $comment = trimlink($data['comment_message'], $comment_short);
-                $commentext = parsesmileys(trimlink($data['comment_message'], $comment_long));
+                $commentext = trimlink($data['comment_message'], $comment_long);
                 $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                 continue;
         }
