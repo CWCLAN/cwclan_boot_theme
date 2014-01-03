@@ -26,11 +26,11 @@ if (!defined("IN_FUSION")) {
 }
 
 $displayComments = 10;
-$comment_short = 23;
-$comment_long = 150;
+$comment_short = 40;
+$comment_long = 100;
 
 openside("<span class='icon-bubbles iconpaddr'></span>" . $locale['global_025']);
-
+echo "<div id='latestcomm' style='overflow:hidden;white-space:nowrap;'>";
 $result = dbquery("(SELECT comment_id, comment_item_id, 
                     comment_type, comment_message, comment_datestamp
                     FROM fusion_comments WHERE comment_hidden='0')
@@ -53,7 +53,7 @@ if (dbrows($result)) {
 									news_draft='0'
 									");
                 if ($access > 0) {
-                    $comment = trimlink($data['comment_message'], $comment_short);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                     $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='N' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
@@ -74,7 +74,7 @@ if (dbrows($result)) {
 									a.article_draft='0'
 									");
                 if (dbrows($access) > 0) {
-                    $comment = trimlink($data['comment_message'], $comment_short);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                     $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='A' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
@@ -94,7 +94,7 @@ if (dbrows($result)) {
 									" . groupaccess('a.album_access')
                 );
                 if (dbrows($access) > 0) {
-                    $comment = trimlink($data['comment_message'], $comment_short);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                     $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='P' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
@@ -110,7 +110,7 @@ if (dbrows($result)) {
             case "C":
                 $access = dbcount("(page_id)", DB_CUSTOM_PAGES, "page_id='" . $data['comment_item_id'] . "' AND " . groupaccess('page_access'));
                 if ($access > 0) {
-                    $comment = trimlink($data['comment_message'], $comment_short);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                     $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='C' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
@@ -130,7 +130,7 @@ if (dbrows($result)) {
 									" . groupaccess('c.download_cat_access')
                 );
                 if (dbrows($access) > 0) {
-                    $comment = trimlink($data['comment_message'], $comment_short);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                     $commentext = trimlink($data['comment_message'], $comment_long);
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='D' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
@@ -144,7 +144,7 @@ if (dbrows($result)) {
                 }
                 continue;
             case "T":
-                $comment = trimlink($data['comment_message'], $comment_short);
+                $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
                 $commentext = trimlink($data['comment_message'], $comment_long);
                 $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
                 continue;
@@ -154,5 +154,6 @@ if (dbrows($result)) {
 } else {
     echo "<div style='text-align:center'>" . $locale['global_026'] . "</div>\n";
 }
+echo "</div>";
 closeside();
 ?>

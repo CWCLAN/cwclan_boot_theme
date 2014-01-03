@@ -26,7 +26,7 @@ include LOCALE . LOCALESET . "photogallery.php";
 
 define("SAFEMODE", @ini_get("safe_mode") ? true : false);
 define("PHOTODIR", PHOTOS);
-define("PHOTODIR_FILE", BASEDIR . "images/photoalbum/");
+define("PHOTODIR_CW", BASEIMG . "photoalbum/");
 /////////                            
 if (isset($_GET['sort']) && $_GET['sort'] == "user") {
     if (isset($_POST['user']) && isnum($_POST['user'])) {
@@ -148,10 +148,10 @@ while ($data = dbarray($result)) {
     echo "<div class='pic col-xs-6'>";
     echo "<div class='thumbnail'>";
     echo "<a href='" . BASEDIR . "cw_photogallery.php?photo_id=" . $data['photo_id'] . "' class='cwtooltip' title='" . $data['photo_title'] . "'>";
-    if ($data['photo_thumb2'] && file_exists(PHOTODIR_FILE . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'])) {
-        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'] . "\")'>$title</div>";
-    } elseif ($data['photo_thumb1'] && file_exists(PHOTODIR_FILE . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'])) {
-        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "\")'>$title</div>";
+    if ($data['photo_thumb2'] && file_exists(PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'])) {
+        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR_CW . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'] . "\")'>$title</div>";
+    } elseif ($data['photo_thumb1'] && file_exists(PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'])) {
+        echo "<div class='crop' style='background-image: url(\"" . PHOTODIR_CW . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "\")'>$title</div>";
     } else {
         echo $locale['432'];
     }

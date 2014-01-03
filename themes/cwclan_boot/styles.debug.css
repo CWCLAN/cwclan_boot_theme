@@ -1049,6 +1049,14 @@ span .panelbutton {
 .shoutboxdate, .commentboxdate{
     color: #ccc;
 }
+#latestcomm {
+    overflow:hidden;
+    white-space: nowrap;
+}
+#latestcomm .tooltip {
+    word-wrap: break-word;
+    white-space: normal;
+}
 /**Messages Styles**/
 .messages_overview {
     text-align: center;
