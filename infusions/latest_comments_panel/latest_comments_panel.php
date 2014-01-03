@@ -26,8 +26,7 @@ if (!defined("IN_FUSION")) {
 }
 
 $displayComments = 10;
-$comment_short = 40;
-$comment_long = 100;
+$comment_short = 200;
 
 openside("<span class='icon-bubbles iconpaddr'></span>" . $locale['global_025']);
 echo "<div id='latestcomm' style='overflow:hidden;white-space:nowrap;'>";
@@ -53,8 +52,7 @@ if (dbrows($result)) {
 									news_draft='0'
 									");
                 if ($access > 0) {
-                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                    $commentext = trimlink($data['comment_message'], $comment_long);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                    
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='N' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -62,7 +60,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-newspaper iconpaddr"></span><a href="' . BASEDIR . 'news.php?readmore=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                    $output .='<span class="icon-newspaper iconpaddr"></span><a href="' . BASEDIR . 'news.php?readmore=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -74,8 +72,7 @@ if (dbrows($result)) {
 									a.article_draft='0'
 									");
                 if (dbrows($access) > 0) {
-                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                    $commentext = trimlink($data['comment_message'], $comment_long);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                    
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='A' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -83,7 +80,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .= THEME_BULLET . ' <a href="' . BASEDIR . 'articles.php?article_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                    $output .= THEME_BULLET . ' <a href="' . BASEDIR . 'articles.php?article_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -94,8 +91,7 @@ if (dbrows($result)) {
 									" . groupaccess('a.album_access')
                 );
                 if (dbrows($access) > 0) {
-                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                    $commentext = trimlink($data['comment_message'], $comment_long);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                    
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='P' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -103,15 +99,14 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'cw_photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                    $output .='<span class="icon-image iconpaddr"></span><a href="' . BASEDIR . 'cw_photogallery.php?photo_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
             case "C":
                 $access = dbcount("(page_id)", DB_CUSTOM_PAGES, "page_id='" . $data['comment_item_id'] . "' AND " . groupaccess('page_access'));
                 if ($access > 0) {
-                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                    $commentext = trimlink($data['comment_message'], $comment_long);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                    
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='C' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -119,7 +114,7 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-file iconpaddr"></span><a href="' . BASEDIR . 'viewpage.php?page_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                    $output .='<span class="icon-file iconpaddr"></span><a href="' . BASEDIR . 'viewpage.php?page_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
@@ -130,8 +125,7 @@ if (dbrows($result)) {
 									" . groupaccess('c.download_cat_access')
                 );
                 if (dbrows($access) > 0) {
-                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                    $commentext = trimlink($data['comment_message'], $comment_long);
+                    $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                    
                     $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='D' AND comment_id<=" . $data['comment_id']);
                     $commentStart = $commentStart - 1;
                     if ($commentStart > $settings['comments_per_page']) {
@@ -139,14 +133,13 @@ if (dbrows($result)) {
                     } else {
                         $commentStart = "";
                     }
-                    $output .='<span class="icon-folder iconpaddr"></span><a href="' . BASEDIR . 'downloads.php?download_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                    $output .='<span class="icon-folder iconpaddr"></span><a href="' . BASEDIR . 'downloads.php?download_id=' . $data["comment_item_id"] . $commentStart . '#c' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                     $i++;
                 }
                 continue;
             case "T":
-                $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));
-                $commentext = trimlink($data['comment_message'], $comment_long);
-                $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '"title="' . $commentext . '" class="side latestcomments cwtooltip">' . $comment . '</a><br />';
+                $comment = parsesmileys(trimlink($data['comment_message'],$comment_short));                
+                $output .='<span class="icon-tag iconpaddr"></span><a href="' . BASEDIR . 'infusions/aw_todo/task.php?id=' . $data["comment_item_id"] . '#comm' . $data["comment_id"] . '" class="side latestcomments">' . $comment . '</a><br />';
                 continue;
         }
     }

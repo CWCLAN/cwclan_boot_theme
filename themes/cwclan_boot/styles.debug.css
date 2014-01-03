@@ -1053,10 +1053,6 @@ span .panelbutton {
     overflow:hidden;
     white-space: nowrap;
 }
-#latestcomm .tooltip {
-    word-wrap: break-word;
-    white-space: normal;
-}
 /**Messages Styles**/
 .messages_overview {
     text-align: center;
