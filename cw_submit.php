@@ -5,7 +5,7 @@
   | Copyright (C) 2002 - 2011 Nick Jones
   | http://www.php-fusion.co.uk/
   +--------------------------------------------------------+
-  | Filename: submit.php
+  | Filename: cw_submit.php
   | Author: Nick Jones (Digitanium)
   | Co-Author: Daywalker
   +--------------------------------------------------------+
@@ -64,7 +64,7 @@ if ($_GET['stype'] == "l") {
             add_to_title($locale['global_200'] . $locale['400']);
             opentable($locale['400']);
             echo "<div style='text-align:center'><br />\n" . $locale['410'] . "<br /><br />\n";
-            echo "<a href='submit.php?stype=l'>" . $locale['411'] . "</a><br /><br />\n";
+            echo "<a href='cw_submit.php?stype=l'>" . $locale['411'] . "</a><br /><br />\n";
             echo "<a href='index.php'>" . $locale['412'] . "</a><br /><br />\n</div>\n";
             closetable();
         }
@@ -111,7 +111,7 @@ if ($_GET['stype'] == "l") {
             add_to_title($locale['global_200'] . $locale['450']);
             opentable($locale['450']);
             echo "<div style='text-align:center'><br />\n" . $locale['460'] . "<br /><br />\n";
-            echo "<a href='submit.php?stype=n'>" . $locale['461'] . "</a><br /><br />\n";
+            echo "<a href='cw_submit.php?stype=n'>" . $locale['461'] . "</a><br /><br />\n";
             echo "<a href='index.php'>" . $locale['412'] . "</a><br /><br />\n</div>\n";
             closetable();
         }
@@ -181,7 +181,7 @@ if ($_GET['stype'] == "l") {
             add_to_title($locale['global_200'] . $locale['500']);
             opentable($locale['500']);
             echo "<div style='text-align:center'><br />\n" . $locale['510'] . "<br /><br />\n";
-            echo "<a href='submit.php?stype=a'>" . $locale['511'] . "</a><br /><br />\n";
+            echo "<a href='cw_submit.php?stype=a'>" . $locale['511'] . "</a><br /><br />\n";
             echo "<a href='index.php'>" . $locale['412'] . "</a><br /><br />\n</div>\n";
             closetable();
         }
@@ -286,7 +286,7 @@ if ($_GET['stype'] == "l") {
         if (!$error) {
             $result = dbquery("INSERT INTO " . DB_SUBMISSIONS . " (submit_type, submit_user, submit_datestamp, submit_criteria) VALUES ('p', '" . $userdata['user_id'] . "', '" . time() . "', '" . addslashes(serialize($submit_info)) . "')");
             echo "<div style='text-align:center'><br />\n" . $locale['580'] . "<br /><br />\n";
-            echo "<a href='submit.php?stype=p'>" . $locale['581'] . "</a><br /><br />\n";
+            echo "<a href='cw_submit.php?stype=p'>" . $locale['581'] . "</a><br /><br />\n";
             echo "<a href='index.php'>" . $locale['412'] . "</a><br /><br />\n</div>\n";
         } else {
             echo "<div style='text-align:center'><br />\n" . $locale['600'] . "<br /><br />\n";
@@ -299,7 +299,7 @@ if ($_GET['stype'] == "l") {
             } elseif ($error == 4) {
                 echo sprintf($locale['604'], $settings['photo_max_w'], $settings['photo_max_h']);
             }
-            echo "<br /><br />\n<a href='submit.php?stype=p'>" . $locale['581'] . "</a><br /><br />\n</div>\n";
+            echo "<br /><br />\n<a href='cw_submit.php?stype=p'>" . $locale['581'] . "</a><br /><br />\n</div>\n";
         }
         closetable();
     } else {
@@ -425,7 +425,7 @@ if ($_GET['stype'] == "l") {
         if (!$error) {
             $result = dbquery("INSERT INTO " . DB_SUBMISSIONS . " (submit_type, submit_user, submit_datestamp, submit_criteria) VALUES ('d', '" . $userdata['user_id'] . "', '" . time() . "', '" . addslashes(serialize($submit_info)) . "')");
             echo "<div style='text-align:center'><br />\n" . $locale['660'] . "<br /><br />\n";
-            echo "<a href='submit.php?stype=d'>" . $locale['661'] . "</a><br /><br />\n";
+            echo "<a href='cw_submit.php?stype=d'>" . $locale['661'] . "</a><br /><br />\n";
             echo "<a href='index.php'>" . $locale['412'] . "</a><br /><br />\n</div>\n";
         } else {
             echo "<div style='text-align:center'><br />\n" . $locale['670'] . "<br /><br />\n";
@@ -453,7 +453,7 @@ if ($_GET['stype'] == "l") {
                 default: echo $locale['676a'];
                     break;
             }
-            echo "<br /><br />\n<a href='submit.php?stype=d'>" . $locale['661'] . "</a><br /><br />\n</div>\n";
+            echo "<br /><br />\n<a href='cw_submit.php?stype=d'>" . $locale['661'] . "</a><br /><br />\n</div>\n";
         }
         closetable();
     } else {
