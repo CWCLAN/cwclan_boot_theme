@@ -232,7 +232,7 @@ function render_article($subject, $article, $info) {
                             <div class="article_submenu_right">
 						      <h3>' . $subject . '</h3>
                                 <span class="author">
-                                ' . articleposter($info, '') . itemoptions('N', $info['news_id']) . '
+                                ' . articleposter($info, '') . itemoptions('A', $info['news_id']) . '
                                 </span>
                             </div>
                         </div>
