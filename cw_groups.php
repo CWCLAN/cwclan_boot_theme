@@ -44,6 +44,7 @@ if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
     $group_id = $_GET['group_id'];
     $group_name = "Community Mitglieder";
     $orderby = ($_GET['sortby'] == "all" ? "" : "WHERE user_name LIKE '" . stripinput($_GET['sortby']) . "%' ");
+    $rows = dbcount("(user_id)", DB_USERS, $orderby);
     $result = dbquery(
             "SELECT *
 			FROM " . DB_USERS . "			
@@ -57,6 +58,7 @@ if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
         $data_group = dbarray($result);
         $group_name = $data_group['group_name'];
         $orderby = ($_GET['sortby'] == "all" ? "" : "AND user_name LIKE '" . stripinput($_GET['sortby']) . "%' ");
+        $rows = dbcount("(user_id)", DB_USERS, "user_groups REGEXP('^\\\.{$group_id}$|\\\.{$group_id}\\\.|\\\.{$group_id}$')" . $orderby);
         $result = dbquery(
                 "SELECT *
 			FROM " . DB_USERS . "
@@ -65,7 +67,6 @@ if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
 			ORDER BY user_level DESC, user_name LIMIT " . $_GET['rowstart'] . ",20");
     }
 }
-$rows = dbrows($result);
 opentable($locale['ml_100'] . " - " . $group_name);
 if ($rows) {
     $i = 0;
@@ -132,10 +133,9 @@ for ($i = 0; $i < 36 != ""; $i++) {
     echo ($i == 17 ? "</tr>\n<tr>\n" : "\n");
 }
 echo "</tr>\n</table>\n";
-
-closetable();
 if ($rows > 20) {
-    echo "<div style='margin-top:5px;text-align:center'>" . makepagenav($_GET['rowstart'], 20, $rows, 3, FUSION_SELF . "?sortby=" . $_GET['sortby'] . "&group_id=" . $group_id) . "</div>\n";
+    echo "<div style='margin-top:5px;text-align:center'>" . makepagenav($_GET['rowstart'], 20, $rows, 3, FUSION_SELF . "?sortby=" . $_GET['sortby'] . "&group_id=" . $group_id."&") . "</div>\n";
 }
+closetable();
 require_once THEMES . "templates/footer.php";
 ?>
