@@ -110,7 +110,7 @@ echo "<form name='sort' method='post' action='" . FUSION_SELF . "?sort=user'>\n"
 echo "<select name='user' size='1' onchange=\"javascript:this.form.submit()\">\n";
 echo "<option value='u'>zur&uuml;cksetzen</option>\n";
 while ($datauser = dbarray($resultuser)) {
-    if (isset($_POST['album']) && $datauser['user_id'] == $_POST['user']) {
+    if (isset($_POST['user']) && $datauser['user_id'] == $_POST['user']) {
         echo "<option value='" . $datauser['user_id'] . "' selected>" . $datauser['user_name'] . "</option>\n";
     } else {
         echo "<option value='" . $datauser['user_id'] . "'>" . $datauser['user_name'] . "</option>\n";
