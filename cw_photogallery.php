@@ -208,7 +208,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
 					FROM " . DB_PHOTOS . " tp
 					LEFT JOIN " . DB_USERS . " tu ON tp.photo_user=tu.user_id
 					LEFT JOIN " . DB_RATINGS . " tr ON tr.rating_item_id = tp.photo_id AND tr.rating_type='P'
-					WHERE album_id='" . $_GET['album_id'] . "' GROUP BY photo_id ORDER BY photo_order LIMIT " . $_GET['rowstart'] . "," . $settings['thumbs_per_page']
+					WHERE album_id='" . $_GET['album_id'] . "' GROUP BY photo_id ORDER BY photo_order DESC LIMIT " . $_GET['rowstart'] . "," . $settings['thumbs_per_page']
                 );
                 $counter = 0;
                 echo "<table cellpadding='0' cellspacing='1' width='100%'>\n<tr>\n<td class='tbl2'>\n";
@@ -258,7 +258,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                 "SELECT ta.*, tu.user_id,user_name,tu.user_status FROM " . DB_PHOTO_ALBUMS . " ta
 			LEFT JOIN " . DB_USERS . " tu ON ta.album_user=tu.user_id
 			WHERE " . groupaccess('album_access') . " AND album_sub = '" . $_GET['album_id'] . "'
-			ORDER BY album_order
+			ORDER BY album_order DESC
 			LIMIT " . $_GET['rowstart'] . "," . $settings['thumbs_per_page']
         );
         if (dbrows($result)) {
