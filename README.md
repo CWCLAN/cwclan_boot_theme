@@ -1,22 +1,23 @@
-CWCLAN-PHPF-Theme
-=================
-CWCLAN - PHP Fusion HTML5 Theme
+## CWCLAN_BOOT_THEME
 
-Bootstrap 3 basierendes Theme für PHP-Fusion 7.02.07
+HTML5 and Bootstrap based Theme for PHP-Fusion 7.02.07
 
-beinhaltet:
-- Bootstrap 3
-- IcoMoon Icons
-- modifizierte Infusions/Mods/BBCode:
-  - [INFUSION] CSS DropDown by Smokeman
-  - [INFUSION] Advanced Forum Threads List Panel by Shedrock / Xandra & Smokeman
-  - [INFUSION] latest_comments_panel.php by gh0st2k
-  - [INFUSION] awEventCalendar + Panel by Artur Wiebe
-  - [BBCODE] Multi Video BBCode by Fraev
+### Authors
+- [globeFrEak](https://github.com/globeFrEak)
+- [ununseptium](https://github.com/ununseptium)
+
+### Third Party 
+- [Bootstrap 3](http://getbootstrap.com/)
+- [IcoMoon Icons](http://icomoon.io/)
+- modified Infusions/Mods/BBCode:
+  - [INFUSION] [CSS DropDown](http://www.php-fusion.co.uk/forum/viewthread.php?thread_id=27451) by [Smokeman](http://www.php-fusion.co.uk/profile.php?lookup=8674)
+  - [INFUSION] [Advanced Forum Threads List Panel](http://www.phpfusion-tips.dk/infusions/pro_download_panel/download.php?did=7) by Shedrock / Xandra & [Smokeman](http://www.php-fusion.co.uk/profile.php?lookup=8674)
+  - [INFUSION] [latest_comments_panel.php](https://github.com/gionn/pagodabox-phpfusion-quickstart/blob/master/infusions/latest_comments_panel/latest_comments_panel.php) by gh0st2k
+  - [INFUSION] [awEventCalendar](http://www.php-fusion.co.uk/infusions/addondb/view.php?addon_id=85) + Panel by [Artur Wiebe](http://wibix.de/index.php)
+  - [BBCODE] [Multi Video BBCode](https://www.phpbb.com/community/viewtopic.php?f=70&t=2109502) by [Fraev](https://www.phpbb.com/community/viewtopic.php?f=70&t=2109502)
   - [MOD] Members List by slaughter
   - [INFUSION] Shoutbox Panel by Digitanium
 
 
-Die Infusionen, der BBCode und der Mod wurden für die eingenen Bedürfnisse angepasst.
-
-Desweiteren wurden diverse PHP-Fusion Dateien angepasst umbenannt und im Theme und den nötigen Dateien neu verlinkt!
+### Important Note
+This PHP-Fusion theme is highly customized and may not work properly in your environment without editing some files.
