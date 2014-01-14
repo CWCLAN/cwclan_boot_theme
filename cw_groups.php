@@ -43,8 +43,9 @@ if (!isset($_GET['sortby']) || !preg_match("/^[0-9A-Z]$/", $_GET['sortby'])) {
 if (isset($_GET['group_id']) && $_GET['group_id'] === "all") {
     $group_id = $_GET['group_id'];
     $group_name = "Community Mitglieder";
-    $orderby = ($_GET['sortby'] == "all" ? "" : "WHERE user_name LIKE '" . stripinput($_GET['sortby']) . "%' ");
+    $orderby = ($_GET['sortby'] == "all" ? "" : "user_name LIKE '" . stripinput($_GET['sortby']) . "%' ");
     $rows = dbcount("(user_id)", DB_USERS, $orderby);
+    $orderby = ($orderby == "" ? "" : "WHERE " . $orderby);
     $result = dbquery(
             "SELECT *
 			FROM " . DB_USERS . "			
@@ -134,7 +135,7 @@ for ($i = 0; $i < 36 != ""; $i++) {
 }
 echo "</tr>\n</table>\n";
 if ($rows > 20) {
-    echo "<div style='margin-top:5px;text-align:center'>" . makepagenav($_GET['rowstart'], 20, $rows, 3, FUSION_SELF . "?sortby=" . $_GET['sortby'] . "&group_id=" . $group_id."&") . "</div>\n";
+    echo "<div style='margin-top:5px;text-align:center'>" . makepagenav($_GET['rowstart'], 20, $rows, 3, FUSION_SELF . "?sortby=" . $_GET['sortby'] . "&group_id=" . $group_id . "&") . "</div>\n";
 }
 closetable();
 require_once THEMES . "templates/footer.php";
