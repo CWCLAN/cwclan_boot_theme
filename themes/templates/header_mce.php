@@ -42,6 +42,7 @@ if (iMEMBER) {
 }
 
 echo "<!DOCTYPE html>\n";
+echo "<html>\n";
 echo "<head>\n<title>" . $settings['sitename'] . "</title>\n";
 echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />\n";
 echo "<meta name='description' content='" . $settings['description'] . "' />\n";
