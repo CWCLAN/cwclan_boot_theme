@@ -32,7 +32,7 @@ foreach ($_GET as $key => $item) {
 }
 If ($_GET['link']) {
     If ($_GET['debug'])
-        echo '<script>';
+        echo '<script type="text/javascript">';
     echo "window.document.write('" . preg_replace('/<\/script>/', '</scr\'+\'ipt>', addslashes(get_video($_GET['link']))) . "');";
     If ($_GET['debug'])
         echo '</script>';
@@ -44,8 +44,6 @@ function get_video($link) {
     $values = array(
 //http://www.youtube.com/watch?v=OygxkgewEhU
         array('/youtube\.com.*v=([^&]*)/i', '<div class="video-container"><iframe src="http://www.youtube.com/embed/{ID_VIDEO}" frameborder="0" width="' . $width . '" height="' . $height . '"></iframe></div></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
-//http://www.youtube.com/watch?v=OygxkgewEhU
-        // array('/youtube\.com.*v=([^&]*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/{ID_VIDEO}"></param><embed src="http://www.youtube.com/v/{ID_VIDEO}" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://www.youtu.be/OygxkgewEhU
         array('/youtu\.be\/([^&]*)/i', '<object width="' . $width . '" height="' . $height . '"><param name="movie" value="http://www.youtube.com/v/{ID_VIDEO}"></param><embed src="http://www.youtube.com/v/{ID_VIDEO}" type="application/x-shockwave-flash" width="' . $width . '" height="' . $height . '"></embed></object></br><a href="{LINK}" target="_blank"><i>Link:{KURZLINK}</i></a>'),
 //http://vids.myspace.com/index.cfm?fuseaction=vids.individual&videoID=1590276358

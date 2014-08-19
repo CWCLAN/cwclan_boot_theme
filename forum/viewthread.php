@@ -49,6 +49,10 @@ if (d.style.display=='none') { d.style.display='block'; } else { d.style.display
 
 $posts_per_page = 20;
 
+if ($_GET['thread_id'] == 210){
+    $posts_per_page = 10;
+}
+
 add_to_title($locale['global_200'] . $locale['400']);
 
 if (!isset($_GET['thread_id']) && isset($_GET['pid']) && isnum($_GET['pid'])) {
