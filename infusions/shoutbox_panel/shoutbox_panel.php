@@ -27,6 +27,16 @@ include_once INFUSIONS . "shoutbox_panel/infusion_db.php";
 include_once INCLUDES . "infusions_include.php";
 include_once LOCALE . LOCALESET . "forum/main.php";
 
+add_to_head("<script type='text/javascript'>
+function textCounter(textarea, counterID, maxLen) {
+    cnt = document.getElementById(counterID);
+    if (textarea.value.length > maxLen){
+        textarea.value = textarea.value.substring(0,maxLen);
+    }
+    cnt.innerHTML = maxLen - textarea.value.length;
+}
+</script>");
+
 // Check if locale file is available matching the current site locale setting.
 if (file_exists(INFUSIONS . "shoutbox_panel/locale/" . $settings['locale'] . ".php")) {
     // Load the locale file matching the current site locale setting.
@@ -119,7 +129,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
             }
         }
         $shout_message = str_replace("\n", " ", $_POST['shout_message']);
-        $shout_message = preg_replace("/^(.{255}).*$/", "$1", $shout_message);
+        $shout_message = preg_replace("/^(.{300}).*$/", "$1", $shout_message);
         $shout_message = trim(stripinput(censorwords($shout_message)));
         if (iMEMBER && (isset($_GET['s_action']) && $_GET['s_action'] == "edit") && (isset($_GET['shout_id']) && isnum($_GET['shout_id']))) {
             $comment_updated = false;
@@ -170,8 +180,9 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
         echo $locale['SB_name'] . "<br />\n";
         echo "<input type='text' name='shout_name' value='' class='textbox' maxlength='30' style='width:100%' /><br />\n";
         echo $locale['SB_message'] . "<br />\n";
-    }
-    echo "<textarea name='shout_message' rows='4' cols='20' class='textbox' style='width:100%'>" . $shout_message . "</textarea><br />\n";
+    }    
+    echo "<textarea name='shout_message' rows='4' cols='20' class='textbox' style='width:100%' onKeyDown='textCounter(this,\"count_display\",300);' onKeyUp='textCounter(this,\"count_display\",300);'>" . $shout_message . "</textarea><br />\n";
+    echo "<span id='count_display' style='float: right;padding : 1px 3px 1px 3px; solid;'><strong>300</strong></span>";
     echo display_bbcodes("100%;", "shout_message", "shout_form", "smiley|b|u|url|color") . "\n";
     if (iGUEST) {
         echo $locale['SB_validation_code'] . "<br />\n";
