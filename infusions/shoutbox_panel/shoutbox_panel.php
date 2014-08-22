@@ -182,7 +182,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
         echo $locale['SB_message'] . "<br />\n";
     }    
     echo "<textarea name='shout_message' rows='4' cols='20' class='textbox' style='width:100%' onKeyDown='textCounter(this,\"count_display\",300);' onKeyUp='textCounter(this,\"count_display\",300);'>" . $shout_message . "</textarea><br />\n";
-    echo "<span id='count_display' style='float: right;padding : 1px 3px 1px 3px; solid;'><strong>300</strong></span>";
+    echo "<span id='count_display' style='float: right;padding : 1px 3px 1px 3px;'><strong>300</strong></span>";
     echo display_bbcodes("100%;", "shout_message", "shout_form", "smiley|b|u|url|color") . "\n";
     if (iGUEST) {
         echo $locale['SB_validation_code'] . "<br />\n";
