@@ -50,7 +50,6 @@ if (!isset($db_name)) { redirect("setup.php"); }
 require_once BASEDIR."includes/multisite_include.php";
 
 // Checking file types of the uploaded file with known mime types list to prevent uploading unwanted files
-/*
 if(isset($_FILES) && count($_FILES)) {
 	require_once BASEDIR.'includes/mimetypes_include.php';
 	$mime_types = mimeTypes();
@@ -80,16 +79,15 @@ if(isset($_FILES) && count($_FILES)) {
 						die('Prevented an unwanted file upload attempt!');
 					}
 				}
-			} /*else { //Let's disable this for now
+			} else { //Let's disable this for now
 				//almost impossible with provided array, but we throw an error anyways
 				die('Unknown file type');
-			}*/ /*
+			}
 			unset($file_info,$extension);
 		}
 	}
 	unset($mime_types);
 }
-*/
 
 // Establish mySQL database connection
 $link = dbconnect($db_host, $db_user, $db_pass, $db_name);
@@ -683,7 +681,7 @@ function descript($text, $striptags = true) {
 function verify_image($file) {
 	$txt = file_get_contents($file);
 	$image_safe = true;
-	if (preg_match('#<?php#i', $txt)) { $image_safe = false; } //edit
+	if (preg_match('#\<\?php#i', $txt)) { $image_safe = false; } //edit
 	elseif (preg_match('#&(quot|lt|gt|nbsp|<?php);#i', $txt)) { $image_safe = false; }
 	elseif (preg_match("#&\#x([0-9a-f]+);#i", $txt)) { $image_safe = false; }
 	elseif (preg_match('#&\#([0-9]+);#i', $txt)) { $image_safe = false; }
