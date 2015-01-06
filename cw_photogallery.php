@@ -26,7 +26,7 @@ require_once THEMES . "templates/header.php";
 include LOCALE . LOCALESET . "photogallery.php";
 
 /// locales
-$locale['sub_100'] = "Unteralbum";
+$locale['sub_100'] = "<a name='subalbum'>Unteralbum</a>";
 
 define("SAFEMODE", @ini_get("safe_mode") ? true : false);
 
@@ -190,9 +190,14 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
 					WHERE album_id='" . $_GET['album_id'] . "' ORDER BY photo_datestamp DESC LIMIT 1"
                 ));
                 echo $locale['422'] . "$rows<br />\n";
-                echo $locale['423'] . profile_link($pdata['user_id'], $pdata['user_name'], $pdata['user_status']) . "" . $locale['424'] . showdate("longdate", $pdata['photo_datestamp']) . "\n";
+                echo $locale['423'] . profile_link($pdata['user_id'], $pdata['user_name'], $pdata['user_status']) . "" . $locale['424'] . showdate("longdate", $pdata['photo_datestamp']) . "\n";                
             } else {
                 echo $locale['425'] . "\n";
+            }
+            
+            $subalbums = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access') . " AND album_sub = '" . $_GET['album_id'] . "'");
+            if ($subalbums > 0) {
+            echo "<a href='#subalbum'>Unteralben: " . $subalbums . "</a>\n";  
             }
             echo "</div>\n</td>\n</tr>\n</table>";
             echo "<!--sub_album_info-->";
@@ -309,7 +314,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo "<div align='center' style='margin-top:5px;'>\n" . makepagenav($_GET['rowstart'], $settings['thumbs_per_page'], $rows, 3) . "\n</div>\n";
         }
         echo "<div class='row album'>\n";
-        while ($data = dbarray($result)) {
+        while ($data = dbarray($result)) {            
             echo "<div class='pic col-xs-6'>\n";
             echo "<div class='thumbnail'>\n";
             echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
@@ -321,7 +326,11 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo "</a>\n<span class='small'>\n";
             echo "Datum: " . showdate("shortdate", $data['album_datestamp']) . "<br />\n";
             echo $locale['404'] . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "<br />\n";
-            echo $locale['405'] . dbcount("(photo_id)", DB_PHOTOS, "album_id='" . $data['album_id'] . "'") . "</span><br />\n";
+            $subalbums = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access') . " AND album_sub = '" . $data['album_id'] . "'");
+            if ($subalbums > 0) {
+            echo "Unteralben: " . $subalbums . "<br />\n";  
+            }
+            echo $locale['405'] . dbcount("(photo_id)", DB_PHOTOS, "album_id='" . $data['album_id'] . "'") . "</span>\n";           
             echo "</div>\n";
             echo "</div>\n";
         }
