@@ -174,7 +174,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo "<!--pre_album_info-->";
             echo "<table cellpadding='0' cellspacing='0' width='80%' class='center'>\n<tr>\n";
             echo "<td rowspan='2' align='center' class='tbl1 photogallery_album_thumb'><!--photogallery_album_thumb-->";
-            if ($data['album_thumb'] && file_exists(PHOTODIR . $data['album_thumb'])) {
+            if ($data['album_thumb'] && file_exists(PHOTOS . $data['album_thumb'])) {
                 echo "<img src='" . PHOTOS . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' />";
             } else {
                 echo $locale['432'];
