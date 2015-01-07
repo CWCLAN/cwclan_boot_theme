@@ -1024,7 +1024,8 @@ span .panelbutton {
 
 .shout .comment_img{
     margin-top: 5px;
-    max-width: 80%;   
+    max-width: 80%;
+    font-size: 3em;
 }
 
 .shoutbody, .commentbody{
