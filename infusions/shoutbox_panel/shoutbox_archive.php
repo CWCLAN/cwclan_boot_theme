@@ -221,7 +221,7 @@ if ($rows != 0) {
 		
 
 		echo "</div><div>";
-		echo sbawrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color"));
+		echo parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color");
 		echo "</div></div></div>";
 		echo "<div class='shoutboxname'>";
 		/* UserAvatar */

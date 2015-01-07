@@ -1021,6 +1021,12 @@ span .panelbutton {
     height: 40px;
     border-radius: 50%;
 }
+
+.shout .comment_img{
+    margin-top: 5px;
+    max-width: 80%;   
+}
+
 .shoutbody, .commentbody{
     width: 80%;
 }

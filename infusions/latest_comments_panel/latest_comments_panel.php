@@ -148,5 +148,7 @@ if (dbrows($result)) {
     echo "<div style='text-align:center'>" . $locale['global_026'] . "</div>\n";
 }
 echo "</div>";
+echo "<hr/>";
+echo "<div class='center'><a href='".BASEDIR."cw_comments_archive.php' title='Die neuesten Kommentare in der Übersicht'>zur Übersicht</a></div>";
 closeside();
 ?>
