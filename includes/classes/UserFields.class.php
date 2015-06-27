@@ -136,16 +136,19 @@ class UserFields {
 
         $_CAPTCHA_HIDE_INPUT = false;
 
-        $this->html .= "<h5>" . $locale['u190'];
-        $this->html .= "<span style='color:#ff0000'>*</span></h5>\n";
+        $this->html .= "<h4>" . $locale['u190'];
+        $this->html .= "<span style='color:#ff0000'>*</span></h4>\n<hr>\n";
+        $this->html .= "<div class='profile'>\n";
         ob_start();
         include INCLUDES . "captchas/" . $settings['captcha'] . "/captcha_display.php";
         $this->html .= ob_get_contents();
         ob_end_clean();
+        
         if (!$_CAPTCHA_HIDE_INPUT) {
             $this->html .= "<h5>" . $locale['u191'] . "</h5>\n";
             $this->html .= "<input type='text' id='captcha_code' name='captcha_code' class='textbox' autocomplete='off' style='width:100px' />";
         }
+        $this->html .= "</div>\n";
     }
 
     private function renderTerms() {
