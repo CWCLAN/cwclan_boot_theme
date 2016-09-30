@@ -30,7 +30,7 @@
       *
       * 26.06.06 added seonewsopts function
       */
-       
+
       function seoname($seoit) {
       // $seoit = strip_tags($seoit);
       $seoit = str_replace('=',' ',$seoit);
@@ -39,7 +39,7 @@
       $seoit = str_replace('@',' ',$seoit);
       $seoit = str_replace('~',' ',$seoit);
       $seoit = str_replace('!',' ',$seoit);
-      $seoit = str_replace('£',' ',$seoit);
+      $seoit = str_replace('ï¿½',' ',$seoit);
       $seoit = str_replace('?',' ',$seoit);
       $seoit = str_replace('!',' ',$seoit);
       $seoit = str_replace('$',' ',$seoit);
@@ -69,7 +69,7 @@
       $seoit = strtolower($seoit);
       return $seoit;
       }
-       
+
       /*
       * modified newsopts function from
       * php fusion 6.01.2 by Nick Jones
@@ -83,4 +83,4 @@
       $res .= $sep." <a href='print.php?type=N&amp;item_id=".$info['news_id']."'><img src='".THEME."images/printer.gif' alt='".$locale['045']."' style='vertical-align:middle;border:0px;'></a>\n";
       return $res;
       }
-      ?> 
+      ?>

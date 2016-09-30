@@ -30,7 +30,7 @@ function get_head_tags() {
     //echo "<link rel='stylesheet' href='" . THEME . "css/responsive.min.css'>";
     //echo "<link rel='stylesheet' href='" . THEME . "css/icomoon.min.css'>";
     //echo "<link rel='stylesheet' href='" . THEME . "css/phpf-fu.min.css'>";    
-    echo "<link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
+    echo "<link href='https://fonts.googleapis.com/css?family=Oswald:400,300|Roboto:400,500|Roboto+Condensed:400,300,700|Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>";
 }
 
 function render_page($license = false) {

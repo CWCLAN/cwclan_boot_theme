@@ -40,8 +40,6 @@ while (!file_exists($folder_level."config.php")) {
 }
 define("BASEDIR", $folder_level);
 
-define("BASEIMG", "http://img1.cwclan.de/");
-
 require_once BASEDIR."config.php";
 
 // If config.php is empty, activate setup.php script
