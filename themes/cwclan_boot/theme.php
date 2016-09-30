@@ -80,7 +80,7 @@ function render_page($license = false) {
                 <h4>Social</h4>
                 <ul class="vertical">
                     <li>
-                        <a href="https://plus.google.com/share?url=www.cwclan.de" class="cwtooltip" title="Teile uns bei Google+!"
+                        <a href="https://plus.google.com/share?url=www.cwclan.de&hl=de" class="cwtooltip" title="Teile uns bei Google+!"
                         onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
                         <span class="icon-google-plus3"></span>
                         </a>
@@ -91,7 +91,14 @@ function render_page($license = false) {
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button cwtooltip" title="Zwitscher über uns!" data-url="http://www.cwclan.de" data-text="CWCLAN - clan &amp; community" data-lang="de" data-count="none">
+                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button cwtooltip" 
+				title="Zwitscher über uns!" 
+				data-url="http://www.cwclan.de" 
+				data-text="CWCLAN - community" 
+				data-lang="de" 				
+				data-via="cwclande"
+				data-related="twitterapi,twitter"
+  				data-hashtags="cwclan">
                         <span class="icon-twitter2"></span>
                         </a>
                     </li>
