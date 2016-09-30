@@ -91,14 +91,10 @@ function render_page($license = false) {
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/share" target="_blank" class="twitter-share-button cwtooltip" 
-				title="Zwitscher über uns!" 
-				data-url="http://www.cwclan.de" 
-				data-text="CWCLAN - community" 
-				data-lang="de" 				
-				data-via="cwclande"
-				data-related="twitterapi,twitter"
-  				data-hashtags="cwclan">
+                        <a class="twitter-share-button cwtooltip"
+                            href="https://twitter.com/share?url=https%3A%2F%2Fwww.cwclan.de&via=cwclande&related=cwclande&hashtags=cwclan&text=CWCLAN%20-%20Community,%20Zwitscher%20über%20uns!"
+                            target="_blank" 
+                            title="Zwitscher über uns!" >
                         <span class="icon-twitter2"></span>
                         </a>
                     </li>
