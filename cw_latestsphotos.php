@@ -26,7 +26,7 @@ include LOCALE . LOCALESET . "photogallery.php";
 
 define("SAFEMODE", @ini_get("safe_mode") ? true : false);
 define("PHOTODIR", PHOTOS);
-define("PHOTODIR_CW", BASEIMG . "photoalbum/");
+define("PHOTODIR_CW", IMAGES . "photoalbum/");
 /////////                            
 if (isset($_GET['sort']) && $_GET['sort'] == "user") {
     if (isset($_POST['user']) && isnum($_POST['user'])) {
