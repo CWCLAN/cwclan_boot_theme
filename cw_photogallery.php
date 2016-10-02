@@ -157,7 +157,7 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
     }
 } elseif (isset($_GET['album_id']) && isnum($_GET['album_id'])) {
     define("PHOTODIR", PHOTOS . (!SAFEMODE ? "album_" . $_GET['album_id'] . "/" : ""));
-    define("PHOTODIR_CW", BASEIMG . (!SAFEMODE ? "photoalbum/album_" . $_GET['album_id'] . "/" : ""));
+    define("PHOTODIR_CW", IMAGES . (!SAFEMODE ? "photoalbum/album_" . $_GET['album_id'] . "/" : ""));
     $result = dbquery(
             "SELECT album_title, album_description, album_thumb, album_access FROM " . DB_PHOTO_ALBUMS . " WHERE album_id='" . $_GET['album_id'] . "'"
     );
@@ -190,14 +190,14 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
 					WHERE album_id='" . $_GET['album_id'] . "' ORDER BY photo_datestamp DESC LIMIT 1"
                 ));
                 echo $locale['422'] . "$rows<br />\n";
-                echo $locale['423'] . profile_link($pdata['user_id'], $pdata['user_name'], $pdata['user_status']) . "" . $locale['424'] . showdate("longdate", $pdata['photo_datestamp']) . "\n";                
+                echo $locale['423'] . profile_link($pdata['user_id'], $pdata['user_name'], $pdata['user_status']) . "" . $locale['424'] . showdate("longdate", $pdata['photo_datestamp']) . "\n";
             } else {
                 echo $locale['425'] . "\n";
             }
-            
+
             $subalbums = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access') . " AND album_sub = '" . $_GET['album_id'] . "'");
             if ($subalbums > 0) {
-            echo "<a href='#subalbum'>Unteralben: " . $subalbums . "</a>\n";  
+                echo "<a href='#subalbum'>Unteralben: " . $subalbums . "</a>\n";
             }
             echo "</div>\n</td>\n</tr>\n</table>";
             echo "<!--sub_album_info-->";
@@ -217,8 +217,10 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                 );
                 $counter = 0;
                 echo "<table cellpadding='0' cellspacing='1' width='100%'>\n<tr>\n<td class='tbl2'>\n";
-                echo "<a href='" . FUSION_SELF . "'>" . $locale['400'] . "</a> &gt;\n";
-                echo "<a href='" . FUSION_SELF . "?album_id=" . $_GET['album_id'] . "'>" . $data['album_title'] . "</a>\n";
+                echo "<a href='" . BASEDIR . "fotogalerie.html'>" . $locale['400'] . "</a> &gt;\n";
+                //echo "<a href='" . FUSION_SELF . "?album_id=" . $_GET['album_id'] . "'>" . $data['album_title'] . "</a>\n";
+                //"^/foto-album-(.*)-([0-9]+)\.html$" => "/cw_photogallery.php?album_id=$2",
+                echo "<a href='" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $_GET['album_id'] . ".html'>" . $data['album_title'] . "</a>\n";
                 echo "</td>\n</tr>\n</table>\n";
                 if ($rows > $settings['thumbs_per_page']) {
                     echo "<div align='center' style='margin-top:5px;'>\n" . makepagenav($_GET['rowstart'], $settings['thumbs_per_page'], $rows, 3, FUSION_SELF . "?album_id=" . $_GET['album_id'] . "&amp;") . "\n</div>\n";
@@ -230,7 +232,9 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
                     $title = ($data['photo_title'] ? "<span class='photo_title'>" . $data['photo_title'] . "</span>\n" : "");
                     echo "<div class='pic col-xs-6'>\n";
                     echo "<div class='thumbnail'>\n";
-                    echo "<a href='" . FUSION_SELF . "?photo_id=" . $data['photo_id'] . "' class='cwtooltip photogallery_photo_link' title='" . $data['photo_title'] . "'><!--photogallery_album_photo_" . $data['photo_id'] . "-->";
+                    //echo "<a href='" . FUSION_SELF . "?photo_id=" . $data['photo_id'] . "' class='cwtooltip photogallery_photo_link' title='" . $data['photo_title'] . "'><!--photogallery_album_photo_" . $data['photo_id'] . "-->";
+                    //"^/foto-(.*)-([0-9]+).html?(.*)$" => "/cw_photogallery.php?photo_id=$2$3",
+                    echo "<a href='" . BASEDIR . "foto-" . seostring($data['photo_title']) . "-" . $data['photo_id'] . ".html' class='cwtooltip photogallery_photo_link' title='" . $data['photo_title'] . "'><!--photogallery_album_photo_" . $data['photo_id'] . "-->";
                     if ($data['photo_thumb2'] && file_exists(PHOTODIR . $data['photo_thumb2'])) {
                         echo "<div class='crop' style='background-image: url(\"" . PHOTODIR_CW . $data['photo_thumb2'] . "\")'>$title</div>";
                     } elseif ($data['photo_thumb1'] && file_exists(PHOTODIR . $data['photo_thumb1'])) {
@@ -272,9 +276,11 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             while ($data = dbarray($result)) {
                 echo "<div class='pic col-xs-6'>\n";
                 echo "<div class='thumbnail'>\n";
-                echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
+                //echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
+                //"^/foto-album-(.*)-([0-9]+)\.html$" => "/cw_photogallery.php?album_id=$2",
+                echo "<h4><a href='" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $data['album_id'] . ".html'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $data['album_id'] . ".html'>";
                 if ($data['album_thumb'] && file_exists(PHOTOS . $data['album_thumb'])) {
-                    echo "<img src='" . BASEIMG . "photoalbum/" . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
+                    echo "<img src='" . IMAGES . "photoalbum/" . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
                 } else {
                     echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
                 }
@@ -314,12 +320,14 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo "<div align='center' style='margin-top:5px;'>\n" . makepagenav($_GET['rowstart'], $settings['thumbs_per_page'], $rows, 3) . "\n</div>\n";
         }
         echo "<div class='row album'>\n";
-        while ($data = dbarray($result)) {            
+        while ($data = dbarray($result)) {
             echo "<div class='pic col-xs-6'>\n";
             echo "<div class='thumbnail'>\n";
-            echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
+            //echo "<h4><a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . FUSION_SELF . "?album_id=" . $data['album_id'] . "'>";
+            //"^/foto-album-(.*)-([0-9]+)\.html$" => "/cw_photogallery.php?album_id=$2",
+            echo "<h4><a href='" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $data['album_id'] . ".html'>" . $data['album_title'] . "</a></h4>\n<hr>\n<a href='" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $data['album_id'] . ".html'>";
             if ($data['album_thumb'] && file_exists(PHOTOS . $data['album_thumb'])) {
-                echo "<img src='" . BASEIMG . "photoalbum/" . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
+                echo "<img src='" . IMAGES . "photoalbum/" . $data['album_thumb'] . "' alt='" . $data['album_thumb'] . "' title='" . $locale['401'] . "' class='pull-right img-responsive'/>";
             } else {
                 echo "<span class='pull-right'><span class='icon-image2 large cwtooltip' title='" . $locale['402'] . "'></span></span>";
             }
@@ -328,9 +336,9 @@ if (isset($_GET['photo_id']) && isnum($_GET['photo_id'])) {
             echo $locale['404'] . profile_link($data['user_id'], $data['user_name'], $data['user_status']) . "<br />\n";
             $subalbums = dbcount("(album_id)", DB_PHOTO_ALBUMS, groupaccess('album_access') . " AND album_sub = '" . $data['album_id'] . "'");
             if ($subalbums > 0) {
-            echo "Unteralben: " . $subalbums . "<br />\n";  
+                echo "Unteralben: " . $subalbums . "<br />\n";
             }
-            echo $locale['405'] . dbcount("(photo_id)", DB_PHOTOS, "album_id='" . $data['album_id'] . "'") . "</span>\n";           
+            echo $locale['405'] . dbcount("(photo_id)", DB_PHOTOS, "album_id='" . $data['album_id'] . "'") . "</span>\n";
             echo "</div>\n";
             echo "</div>\n";
         }

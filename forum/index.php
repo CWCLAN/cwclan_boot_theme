@@ -65,7 +65,9 @@ if (dbrows($result) != 0) {
             foreach ($mod_groups as $mod_group) {
                 if ($moderators)
                     $moderators .= ", ";
-                $moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "profile.php?group_id=" . $mod_group . "'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
+                //$moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "profile.php?group_id=" . $mod_group . "'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
+                //"^/gruppe-([0-9]+)-(.*)\.html$" => "/profile.php?group_id=$1",
+                $moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "gruppe-" . seostring(getgroupname($mod_group)) . "-" . $mod_group . ".html'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
             }
         }
         $last_data = dbarray(dbquery("SELECT forum_id, forum_lastpost FROM " . DB_FORUMS . " WHERE forum_id = '" . $data['forum_id'] . "' OR forum_parent='" . $data['forum_id'] . "' AND (" . groupaccess('forum_access') . " OR " . groupaccess('forum_moderators') . ") GROUP BY forum_lastpost DESC"));
@@ -81,7 +83,9 @@ if (dbrows($result) != 0) {
         }
         echo "<tr>\n";
         echo "<td width='1%' class='tbl2' style='white-space:nowrap'>$fim</td>\n";
-        echo "<td class='tbl1 forum_name'><!--forum_name--><a href='viewforum.php?forum_id=" . $data['forum_id'] . "'>" . $data['forum_name'] . "</a><br />\n";
+        //echo "<td class='tbl1 forum_name'><!--forum_name--><a href='viewforum.php?forum_id=" . $data['forum_id'] . "'>" . $data['forum_name'] . "</a><br />\n";
+        //"^/forum/f-([0-9]+)-(.*).html$" => "/forum/viewforum.php?forum_id=$1",
+        echo "<td class='tbl1 forum_name'><!--forum_name--><a href='" . FORUM . "f-" . $data['forum_id'] . "-" . seostring($data['forum_name']) . ".html'>" . $data['forum_name'] . "</a><br />\n";
         $parent_result = dbquery("SELECT forum_id, forum_name, forum_parent, forum_lastpost FROM " . DB_FORUMS . " WHERE " . groupaccess('forum_access') . " AND forum_parent='" . $data['forum_id'] . "'  ORDER BY forum_order");
         if ($data['forum_description'] || $moderators) {
             //echo "<span class='small'>".$data['forum_description'].($data['forum_description'] && $moderators ? "<br />\n" : "");
@@ -103,7 +107,9 @@ if (dbrows($result) != 0) {
                     } else {
                         $imgsub = $imageold;
                     }
-                    echo "<li>" . $imgsub . "&nbsp;<a href='" . FORUM . "viewforum.php?forum_id=" . $parent_data['forum_id'] . "'>" . $parent_data['forum_name'] . "</a></li>\n";
+                    //echo "<li>" . $imgsub . "&nbsp;<a href='" . FORUM . "viewforum.php?forum_id=" . $parent_data['forum_id'] . "'>" . $parent_data['forum_name'] . "</a></li>\n";
+                    //"^/forum/f-([0-9]+)-(.*).html$" => "/forum/viewforum.php?forum_id=$1",
+                    echo "<li>" . $imgsub . "&nbsp;<a href='" . FORUM . "f-" . $parent_data['forum_id'] . "-" . seostring($parent_data['forum_name']) . ".html'>" . $parent_data['forum_name'] . "</a></li>\n";
                 }
             }
             echo $subforumsout;

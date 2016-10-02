@@ -69,7 +69,9 @@ function subcats($forum_id) {
                 foreach ($mod_groups as $mod_group) {
                     if ($moderators)
                         $moderators .= ", ";
-                    $moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "profile.php?group_id=" . $mod_group . "'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
+                    //$moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "profile.php?group_id=" . $mod_group . "'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
+                    //"^/gruppe-([0-9]+)-(.*)\.html$" => "/profile.php?group_id=$1",
+                    $moderators .= $mod_group < 101 ? "<a href='" . BASEDIR . "gruppe-" . $mod_group . "-" . seostring(getgroupname($mod_group)) . ".html'>" . getgroupname($mod_group) . "</a>" : getgroupname($mod_group);
                 }
             }
             if ($a_data['forum_lastpost'] > $lastvisited) {
@@ -84,7 +86,9 @@ function subcats($forum_id) {
             }
 
             echo "<td width='1%'>" . $fim . "</td>\n";
-            echo "<td class='tbl1 forum_name'><!--forum_name--><a href='viewforum.php?forum_id=" . $a_data['forum_id'] . "'>" . $a_data['forum_name'] . "</a><br />\n";
+            //echo "<td class='tbl1 forum_name'><!--forum_name--><a href='viewforum.php?forum_id=" . $a_data['forum_id'] . "'>" . $a_data['forum_name'] . "</a><br />\n";
+            //"^/forum/f-([0-9]+)-(.*).html$" => "/forum/viewforum.php?forum_id=$1",
+            echo "<td class='tbl1 forum_name'><!--forum_name--><a href='" . FORUM . "f-" . $a_data['forum_id'] . "-" . seostring($a_data['forum_name']) . ".html'>" . $a_data['forum_name'] . "</a><br />\n";
             if ($a_data['forum_description'] || $moderators) {
                 echo "<span class='small'>" . $a_data['forum_description'] . "</span>\n";
                 //echo "<span class='small'>" . $a_data['forum_description'] . ($a_data['forum_description'] && $moderators ? "<br />\n" : "");
@@ -150,7 +154,9 @@ if (!defined("iMOD")) {
 // Subforums begin
 if ($fdata['forum_parent'] != 0) {
     $sub_data = dbarray(dbquery("SELECT forum_id, forum_name FROM " . DB_FORUMS . " WHERE forum_id='" . $fdata['forum_parent'] . "'"));
-    $caption = $fdata['forum_cat_name'] . " &raquo; <a href='" . FORUM . "viewforum.php?forum_id=" . $sub_data['forum_id'] . "'>" . $sub_data['forum_name'] . "</a> &raquo; " . $fdata['forum_name'];
+    //$caption = $fdata['forum_cat_name'] . " &raquo; <a href='" . FORUM . "viewforum.php?forum_id=" . $sub_data['forum_id'] . "'>" . $sub_data['forum_name'] . "</a> &raquo; " . $fdata['forum_name'];
+    //"^/forum/f-([0-9]+)-(.*).html$" => "/forum/viewforum.php?forum_id=$1",
+    $caption = $fdata['forum_cat_name'] . " &raquo; <a href='" . FORUM . "f-" . $sub_data['forum_id'] . "-" . seostring($sub_data['forum_name']) . ".html'>" . $sub_data['forum_name'] . "</a> &raquo; " . $fdata['forum_name'];
 } else {
     $caption = $fdata['forum_cat_name'] . " &raquo; " . $fdata['forum_name'];
 }
@@ -209,7 +215,7 @@ if (isset($_POST['delete_threads']) && iMOD) {
 }
 
 opentable($locale['450']);
-echo "<div class='tbl2 forum_breadcrumbs'><a href='index.php'>" . $settings['sitename'] . "</a> &raquo; " . $caption . "</div>\n";
+echo "<div class='tbl2 forum_breadcrumbs'><a href='" . FORUM . "index.php'>" . $settings['sitename'] . "</a> &raquo; " . $caption . "</div>\n";
 echo "<br />";
 subcats($_GET['forum_id']); //subcategories
 echo"<!--pre_forum-->";
@@ -274,7 +280,9 @@ if ($rows) {
             echo "<td align='center' width='1%' class='tbl2' style='white-space:nowrap'>$folder</td>";
         }
         $reps = ceil($tdata['thread_postcount'] / $threads_per_page);
-        $threadsubject = "<a href='viewthread.php?thread_id=" . $tdata['thread_id'] . "'>" . $tdata['thread_subject'] . "</a>";
+        //$threadsubject = "<a href='viewthread.php?thread_id=" . $tdata['thread_id'] . "'>" . $tdata['thread_subject'] . "</a>";
+        //"^/forum/thread-([0-9]+)-(.*).html$" => "/forum/viewthread.php?thread_id=$1",
+        $threadsubject = "<a href='" . FORUM . "thread-" . $tdata['thread_id'] . "-" . seostring($tdata['thread_subject']) . ".html'>" . $tdata['thread_subject'] . "</a>";
         if ($reps > 1) {
             $ctr = 0;
             $ctr2 = 1;
@@ -282,7 +290,9 @@ if ($rows) {
             $middle = false;
             while ($ctr2 <= $reps) {
                 if ($reps < 5 || ($reps > 4 && ($ctr2 == 1 || $ctr2 > ($reps - 3)))) {
-                    $pnum = "<a href='viewthread.php?thread_id=" . $tdata['thread_id'] . "&amp;rowstart=$ctr'>$ctr2</a> ";
+                    //$pnum = "<a href='viewthread.php?thread_id=" . $tdata['thread_id'] . "&amp;rowstart=$ctr'>$ctr2</a> ";
+                    //"^/forum/thread-([0-9]+)-([0-9]+)-(.*).html$" => "/forum/viewthread.php?thread_id=$1&rowstart=$2",
+                    $pnum = "<a href='" . FORUM . "thread-" . $tdata['thread_id'] . "-" . $ctr . "-" . seostring($tdata['thread_subject']) . "'>$ctr2</a> ";
                 } else {
                     if ($middle == false) {
                         $middle = true;

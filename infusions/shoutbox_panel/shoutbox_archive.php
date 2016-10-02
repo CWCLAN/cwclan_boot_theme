@@ -226,9 +226,9 @@ if ($rows != 0) {
 		echo "<div class='shoutboxname'>";
 		/* UserAvatar */
         if ($data['user_avatar'] && file_exists(IMAGES . "avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
-            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
+            echo "<a href='" . BASEDIR . "user-" . $data['user_id'] . "-" . seostring($data['user_name']) . ".html'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
         } else {
-            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
+            echo "<a href='" . BASEDIR . "user-" . $data['user_id'] . "-" . seostring($data['user_name']) . ".html'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
         }
 
 		echo "";

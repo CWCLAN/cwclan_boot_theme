@@ -15,14 +15,14 @@ if (!defined("IN_FUSION")) {
 require_once INCLUDES . "theme_functions_include.php";
 
 function get_head_tags() {
-    if (detect_mobile() === true){
+    if (detect_mobile() === true) {
         echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
         echo "<script>if (navigator.userAgent.match(/IEMobile\/10\.0/)) {var msViewportStyle = document.createElement(\"style\");
                     msViewportStyle.appendChild(document.createTextNode(\"@-ms-viewport{width:auto!important}\")
                 );document.getElementsByTagName(\"head\")[0].appendChild(msViewportStyle);}</script>";
     } else {
-        echo "<meta name='viewport' content='width=951, initial-scale=1.0'>"; 
-    }    
+        echo "<meta name='viewport' content='width=951, initial-scale=1.0'>";
+    }
     echo "<link rel='icon' href='" . THEME . "img/favicon.png' type='image/png'>";
     echo "<link rel='apple-touch-icon' href='" . THEME . "img/icon-200.png' />";
     echo "<link rel='image_src' href='" . THEME . "img/icon-200.png'>";
@@ -44,7 +44,7 @@ function render_page($license = false) {
     echo '<div class="wrapper clearfix">          
           <div class="breadcrumb">';
     include INFUSIONS . "cw_login/login.php";
-    echo"</div><a href='" . BASEDIR . "index.php'><div class='hero'>";
+    echo"</div><a href='" . BASEDIR . "index.html'><div class='hero'>";
     echo"<img src='" . THEME . "img/icon-200.png' id='cw_logo' class='cwtooltip' alt='Das Logo!' title='Das Logo!'>";
     echo"</div></a>";
     // Navbar Begin
@@ -192,7 +192,9 @@ function newsopts2($info, $sep, $class = "") {
     $res = "";
     $link_class = $class ? " class='$class' " : "";
     if ($info['news_allow_comments'] && $settings['comments_enabled'] == "1") {
-        $res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icon-bubbles'></span></a> " . $sep . " ";
+        //$res = "<a href='news.php?readmore=" . $info['news_id'] . "#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icon-bubbles'></span></a> " . $sep . " ";
+        //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
+        $res = "<a href='" . BASEDIR . "news-" . $info['news_id'] . "-" . seostring($info['news_subject']) . ".html#comments'" . $link_class . ">" . $info['news_comments'] . "&nbsp;<span class='icon-bubbles'></span></a> " . $sep . " ";
     }
     if ($info['news_ext'] == "y" || ($info['news_allow_comments'] && $settings['comments_enabled'] == "1")) {
         $res .= $info['news_reads'] . $locale['global_074'];
@@ -204,7 +206,9 @@ function render_news($subject, $news, $info) {
 
     global $locale;
 
-    $linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+    //$linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+    //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
+    $linked_subject = '<h3><a href="' . BASEDIR . 'news-' . $info['news_id'] . '-' . seostring($info['news_subject']) . '.html" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
 
     echo "<article>        
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
@@ -219,7 +223,9 @@ function render_news($subject, $news, $info) {
                         <div class="article clearfix">
 						' . $news . '
                         </div>';
-    echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='news.php?readmore=" . $info['news_id'] . "' class='cwtooltip' title='weiterlesen: " . $info['news_subject'] . "'>more <span class='icon-newspaper mid'></span></a></div>" : "");
+    //echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='news.php?readmore=" . $info['news_id'] . "' class='cwtooltip' title='weiterlesen: " . $info['news_subject'] . "'>more <span class='icon-newspaper mid'></span></a></div>" : "");
+    //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",  
+    echo (!isset($_GET['readmore']) && $info['news_ext'] == 'y' ? "<div class='pull-right'><a href='" . BASEDIR . "news-" . $info['news_id'] . "-".  seostring($info['news_subject']).".html' class='cwtooltip' title='weiterlesen: " . $info['news_subject'] . "'>more <span class='icon-newspaper mid'></span></a></div>" : "");
     echo'</article>';
 }
 

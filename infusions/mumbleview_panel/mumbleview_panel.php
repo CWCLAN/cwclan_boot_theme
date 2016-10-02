@@ -68,6 +68,6 @@ try {
     echo "Mumble ist zur Zeit nicht im Dienst!!";
 }
 echo "<hr />";
-echo "<div class='channelname'><a href='mumble://mumble.cwclan.de:64738/?version=1.2.0' target='_blank'>Verbinden</a><a href='" . BASEDIR . "seite_mumble_13.html' class='pull-right'>Hilfe</a></div>";
+echo "<div class='channelname'><a href='mumble://mumble.cwclan.de:64738/?version=1.2.0' target='_blank'>Verbinden</a><a href='" . BASEDIR . "seite-mumble-13.html' class='pull-right'>Hilfe</a></div>";
 closeside();
 ?>

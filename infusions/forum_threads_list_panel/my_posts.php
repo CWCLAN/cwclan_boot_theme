@@ -70,7 +70,7 @@ if ($rows['rows']) {
     while ($data = dbarray($result)) {        
         echo "<tr>\n";
         echo "<td class='tbl1' style='white-space:nowrap'>" . trimlink($data['forum_name'], 30) . "</td>\n";
-        echo "<td class='tbl1' ><a href='" . FORUM . "viewthread.php?thread_id=" . $data['thread_id'] . "&amp;pid=" . $data['post_id'] . "#post_" . $data['post_id'] . "' title='" . $data['thread_subject'] . "'>" . trimlink($data['thread_subject'], 40) . "</a></td>\n";
+        echo "<td class='tbl1' ><a href='" . FORUM . "post-" . seostring($data['thread_subject']) . "-" . seostring($data['thread_id']) . "-" . seostring($data['post_id']) . ".html#post_" . $data['post_id'] . "' title='" . $data['thread_subject'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></td>\n";
         echo "<td class='tbl1' align='center' style='white-space:nowrap'>" . showdate("forumdate", $data['post_datestamp']) . "</td>\n";
         echo "</tr>\n";
         $i++;

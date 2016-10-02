@@ -307,7 +307,8 @@ class UserFields {
         $user_groups = strpos($this->userData['user_groups'], ".") == 0 ? substr($this->userData['user_groups'], 1) : $this->userData['user_groups'];
         $user_groups = explode(".", $user_groups);
         for ($i = 0; $i < count($user_groups); $i++) {
-            $this->html .= "<div style='float:left'><a href='" . FUSION_SELF . "?group_id=" . $user_groups[$i] . "'>" . getgroupname($user_groups[$i]) . "</a></div>\n";
+            //$this->html .= "<div style='float:left'><a href='" . FUSION_SELF . "?group_id=" . $user_groups[$i] . "'>" . getgroupname($user_groups[$i]) .
+            $this->html .= "<div style='float:left'><a href='" . BASEDIR . "gruppe-".$user_groups[$i]."-".seostring(getgroupname($user_groups[$i])).".html'>" . getgroupname($user_groups[$i]) ."</a></div>\n";
             $this->html .= "<div style='float:right'>" . getgroupname($user_groups[$i], true) . "</div>\n";
             $this->html .= "<div style='float:none;clear:both'></div>\n";
         }

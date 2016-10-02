@@ -1,6 +1,6 @@
 <?php
 
-/* ---------------------------------------------------+ 
+/* ---------------------------------------------------+
   | PHP-Fusion 6 Content Management System
   +----------------------------------------------------+
   | Copyright � 2002 - 2007 Nick Jones
@@ -85,7 +85,7 @@ if ($rows) {
     echo "<td width='1%' class='tbl2' style='text-align:center;white-space:nowrap'><strong>" . $locale['global_046'] . "</strong></td>\n";
     echo "<td width='1%' class='tbl2' style='text-align:center;white-space:nowrap'><strong>" . $locale['global_047'] . "</strong></td>\n";
     echo "</tr>\n";
-    while ($data = dbarray($result)) {        
+    while ($data = dbarray($result)) {
         $locked = ($data['thread_locked'] ? $imagelocked : "");
         $sticky = ($data['thread_sticky'] ? $imagehot : "");
         echo "<tr>\n";
@@ -101,11 +101,13 @@ if ($rows) {
             echo $imageold;
         }
         echo "</td>\n";
-        echo "<td class='tbl1' ><a href='" . FORUM . "viewthread.php?thread_id=" . $data['thread_id'] . "' title='" . $data['thread_subject'] . "'>" . trimlink($data['thread_subject'], 30) . "</a><br />\n" . $data['forum_name'] . "</td>\n";
+        echo "<td class='tbl1' ><a href='" . FORUM . "thread-" . seostring($data['thread_id']) . "-" . seostring($data['thread_subject']) . ".html' title='" . $data['thread_subject'] . "'>" . trimlink($data['thread_subject'], 30) . "</a><br />\n" . $data['forum_name'] . "</td>\n";
         echo "<td class='tbl1' style='text-align:center;white-space:nowrap'>" . $data['thread_views'] . "</td>\n";
         echo "<td class='tbl1' style='text-align:center;white-space:nowrap'>" . ($data['thread_postcount'] - 1) . "</td>\n";
-        echo "<td class='tbl1' style='text-align:center;white-space:nowrap'><a href='" . BASEDIR . "profile.php?lookup=" . $data['thread_lastuser'] . "'>" . $data['user_name'] . "</a>&nbsp;
-		<a href='" . FORUM . "viewthread.php?forum_id=" . $data['forum_id'] . "&amp;thread_id=" . $data['thread_id'] . "&amp;pid=" . $data['last_id'] . "#post_" . $data['last_id'] . "'        title='" . $locale['ftl125'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_minipost_new.gif' alt='" . $locale['ftl125'] . "' border='0' /></a>
+        echo "<td class='tbl1' style='text-align:center;white-space:nowrap'>&nbsp;"
+        . profile_link($data['thread_lastuser'], seostring($data['user_name']))
+        . "<a href='" . FORUM . "post-" . seostring($data['thread_subject']) . "-" . $data['thread_id'] . "-" . $data['last_id'] . ".html#post_" . $data['last_id'] . "' "
+        . "title='" . $locale['ftl125'] . "'><img src='" . INFUSIONS . "forum_threads_list_panel/images/icon_minipost_new.gif' alt='" . $locale['ftl125'] . "' border='0' /></a>
 		<br />\n" . showdate("forumdate", $data['thread_lastpost']) . "</td>\n";
         echo "</tr>\n";
         $i++;

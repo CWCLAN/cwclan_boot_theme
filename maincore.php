@@ -939,7 +939,7 @@ function profile_link($user_id, $user_name, $user_status, $class = "profile-link
 
 	if ((in_array($user_status, array(0, 3, 7)) || checkrights("M")) && (iMEMBER || $settings['hide_userprofiles'] == "0")) {
 	//$link = "<a href='".BASEDIR."profile.php?lookup=$user_id'$class>$user_name</a>";
-                $link = "<a href='".BASEDIR."user_".$user_id."_".seostring($user_name).".html'>".$user_name."</a>";
+                $link = "<a href='".BASEDIR."user-".$user_id."-".seostring($user_name).".html'>".$user_name."</a>";
                 //<a href='".BASEDIR."user_".$data['thread_lastuser']."_".seostring($data['user_name']).".html'>".$data['user_name'].$tf2icon."</a>
 		} elseif ($user_status == "5" || $user_status == "6") {
 		$link = $locale['user_anonymous'];
@@ -954,7 +954,7 @@ include INCLUDES."system_images.php";
 // Relpace SEO-Strings
 function seostring($url) {
   $url = strtolower($url);
-	$search = array("&amp;", "?", "?", "?", "?", "?", "RE:-");
+	$search = array("&", "ä", "ü", "ö", "ß", "€", "RE:-");
 	$replace = array("und", "ae", "ue", "oe", "ss", "euro", "" );
 	$url = str_replace($search, $replace, $url);
 	$url = preg_replace("/[^\d\w]+/", "_", $url);

@@ -44,7 +44,9 @@ if (isset($_GET['cat_id']) && isnum($_GET['cat_id'])) {
                 echo "<div class='row news_cats'>";
                 while ($data2 = dbarray($result2)) {
                     echo "<div class='pic col-xs-6'>";
-                    echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data2['news_id'] . "'>" . $data2['news_subject'] . "</a>\n";
+                    //echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data2['news_id'] . "'>" . $data2['news_subject'] . "</a>\n";
+                    //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
+                    echo "<span class='icon-newspaper mid'></span> <a href='".BASEDIR."news-".  seostring($data2['news_subject'])."-" . $data2['news_id'] . ".html'>" . $data2['news_subject'] . "</a>\n";
                     echo "</div>";
                 }
             }
@@ -70,7 +72,9 @@ if (isset($_GET['cat_id']) && isnum($_GET['cat_id'])) {
                 $result2 = dbquery("SELECT news_id, news_subject FROM " . DB_NEWS . " WHERE news_cat='" . $data['news_cat_id'] . "' AND " . groupaccess('news_visibility') . " AND (news_start='0'||news_start<=" . time() . ") AND (news_end='0'||news_end>=" . time() . ") AND news_draft='0' ORDER BY news_datestamp DESC LIMIT 10");
                 while ($data2 = dbarray($result2)) {
                     echo "<div class='pic col-xs-6'>";
-                    echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data2['news_id'] . "'>" . $data2['news_subject'] . "</a>\n";
+                    //echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data2['news_id'] . "'>" . $data2['news_subject'] . "</a>\n";
+                    //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
+                    echo "<span class='icon-newspaper mid'></span> <a href='".BASEDIR."news-".  seostring($data2['news_subject'])."-" . $data2['news_id'] . ".html'>" . $data2['news_subject'] . "</a>\n";
                     echo "</div>";
                 }
                 if ($rows > 10) {
@@ -95,17 +99,19 @@ if (isset($_GET['cat_id']) && isnum($_GET['cat_id'])) {
         echo "<div class='row news_cats'>";
         while ($data = dbarray($result)) {
             echo "<div class='pic col-xs-6'>";
-            echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data['news_id'] . "'>" . $data['news_subject'] . "</a>\n";
+            //echo "<span class='icon-newspaper mid'></span> <a href='news.php?readmore=" . $data['news_id'] . "'>" . $data['news_subject'] . "</a>\n";
+                    //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
+                    echo "<span class='icon-newspaper mid'></span> <a href='".BASEDIR."news-".  seostring($data['news_subject'])."-" . $data['news_id'] . ".html'>" . $data['news_subject'] . "</a>\n";
             echo "</div>";
         }
-        
+
         $res = 1;
         if ($nrows > 10) {
             echo "<div class='pic col-xs-6'>";
             echo "<span class='icon-plus mid'></span> <a href='" . FUSION_SELF . "?cat_id=0'>" . $locale['405'] . "</a>\n";
-            echo "</div>";           
+            echo "</div>";
         }
-        echo "</div>";        
+        echo "</div>";
     }
     if ($res == 1) {
         echo "<!--sub_news_cat_idx-->\n";

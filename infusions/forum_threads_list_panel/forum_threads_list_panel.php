@@ -139,14 +139,14 @@ while ($data = dbarray($result)) {
 <td>
 <span class='small'><strong>" . $data['forum_name'] . "</strong></span><br />
 <span class='small forum_thread_title'>
-<a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
+<a href='" . FORUM . "post-" . seostring($data['thread_subject']) . "-" . seostring($data['thread_id']) . "-" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
 </td>
-<td><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
+<td><span class='small'>" . profile_link($data['thread_author'],seostring($data['author'])). "</span></td>
 <td><span class='small'>" . $data['thread_views'] . "</span></td>
 <td><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
 <td>
 <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
-<span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
+<span class='small'>" . profile_link($data['thread_lastuser'],seostring($data['user_name'])). "&nbsp;</span>
 </td>
 </tr>\n";
 $i++;
@@ -231,14 +231,14 @@ if (iUSER) {
   <td>$sticky$locked$folder_image</td>
   <td>
   <span class='small'><strong>" . $data['forum_name'] . "</strong></span><br />
-  <span class='small forum_thread_title'><a href='" . FORUM . "tp_" . seostring($data['thread_subject']) . "_" . seostring($data['thread_id']) . "_" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
+  <span class='small forum_thread_title'><a href='" . FORUM . "post-" . seostring($data['thread_subject']) . "-" . seostring($data['thread_id']) . "-" . seostring($data['last_id']) . ".html#post_" . $data['last_id'] . "'>" . trimlink($data['thread_subject'], 30) . "</a></span>
   </td>
-  <td><span class='small'><a href='" . BASEDIR . "user_" . $data['thread_author'] . "_" . seostring($data['author']) . ".html'>" . $data['author'] . "</a></span></td>
+  <td><span class='small'>" . profile_link($data['thread_author'],seostring($data['author'])) . "</span></td>
   <td><span class='small'>" . $data['thread_views'] . "</span></td>
   <td><span class='small'>" . ($data['thread_postcount'] - 1) . "</span></td>
   <td>
   <span class='small'>" . showdate("forumdate", $data['thread_lastpost']) . "</span><br />
-  <span class='small'><a href='" . BASEDIR . "user_" . $data['thread_lastuser'] . "_" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a>&nbsp;</span>
+  <span class='small'>" . profile_link($data['thread_lastuser'],seostring($data['user_name'])) . "&nbsp;</span>
   </td>
   </tr>\n";
         $i++;

@@ -180,7 +180,7 @@ if (iMEMBER || $shout_settings['guest_shouts'] == "1") {
         echo $locale['SB_name'] . "<br />\n";
         echo "<input type='text' name='shout_name' value='' class='textbox' maxlength='30' style='width:100%' /><br />\n";
         echo $locale['SB_message'] . "<br />\n";
-    }    
+    }
     echo "<textarea name='shout_message' rows='4' cols='20' class='textbox' style='width:100%' onKeyDown='textCounter(this,\"count_display\",300);' onKeyUp='textCounter(this,\"count_display\",300);'>" . $shout_message . "</textarea><br />\n";
     echo "<span id='count_display' style='float: right;padding : 1px 3px 1px 3px;'><strong>300</strong></span>";
     echo display_bbcodes("100%;", "shout_message", "shout_form", "smiley|b|u|url|color") . "\n";
@@ -212,9 +212,9 @@ if (dbrows($result)) {
 
         /* UserAvatar */
         if ($data['user_avatar'] && file_exists(BASEDIR . "images/avatars/" . $data['user_avatar']) && $data['user_status'] != 6 && $data['user_status'] != 5) {
-            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
+            echo "<a href='" . BASEDIR . "user-" . $data['user_id'] . "-" . seostring($data['user_name']) . ".html'><img class='shoutbox_user_avatar' title='" . $data['user_name'] . "' src='" . IMAGES . "avatars/" . $data['user_avatar'] . "' alt='" . $locale['567'] . "' /></a>\n";
         } else {
-            echo "<a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
+            echo "<a href='" . BASEDIR . "user-" . $data['user_id'] . "-" . seostring($data['user_name']) . ".html'><img class='shoutbox_user_avatar' src='" . IMAGES . "avatars/noavatar100.png' alt='" . $locale['567'] . "' /></a>\n";
         }
 
         echo "</div>\n";
@@ -225,7 +225,7 @@ if (dbrows($result)) {
 
         /* Content */
         echo "<div class='shoutbox clearfix'>
-        <div class='shoutheader'><a href='" . BASEDIR . "profile.php?lookup=" . $data['user_id'] . "'>" . $data['user_name'] . "</a> schrieb:</div>
+        <div class='shoutheader'><a href='" . BASEDIR . "user-" . $data['user_id'] . "-" . seostring($data['user_name']) . ".html'>" . $data['user_name'] . "</a> schrieb:</div>
         <div>" . sbwrap(parseubb(parsesmileys($data['shout_message']), "b|i|u|url|color")) . "</div></div>\n";
 
         /* Edit and Delete */
