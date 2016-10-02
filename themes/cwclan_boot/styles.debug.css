@@ -495,12 +495,39 @@ article {
 article:last-child {
     margin-bottom: 30px;
 }
-article h3 {
+article h1 {
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     color: #ef9849;
     line-height: 48px;
     font-size: 26px;
+    margin:0 10px;
+}
+
+article h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #ef9849;
+    line-height: 48px;
+    font-size: 24px;
+    margin:0 10px;
+}
+
+article h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #ef9849;
+    line-height: 48px;
+    font-size: 22px;
+    margin:0 10px;
+}
+
+article h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    color: #ef9849;
+    line-height: 48px;
+    font-size: 22px;
     margin:0 10px;
 }
 article p {

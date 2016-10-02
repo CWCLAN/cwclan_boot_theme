@@ -208,7 +208,7 @@ function render_news($subject, $news, $info) {
 
     //$linked_subject = '<h3><a href="news.php?readmore=' . $info['news_id'] . '" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
     //"^/news-([0-9]+)-(.*)\.html(.*)$" => "/news.php?readmore=$1$3",
-    $linked_subject = '<h3><a href="' . BASEDIR . 'news-' . $info['news_id'] . '-' . seostring($info['news_subject']) . '.html" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h3>';
+    $linked_subject = '<h1><a href="' . BASEDIR . 'news-' . $info['news_id'] . '-' . seostring($info['news_subject']) . '.html" id="news_' . $info['news_id'] . '">' . $info['news_subject'] . '</a></h1>';
 
     echo "<article>        
 	" . (!empty($subject) ? "$linked_subject" : "$subject") . "\n";
@@ -233,7 +233,7 @@ function render_article($subject, $article, $info) {
     global $locale;
 
     echo "<article>
-	" . (!empty($title) ? "<h3>$title</h3>" : "") . "\n";
+	" . (!empty($title) ? "<h1>$title</h1>" : "") . "\n";
     echo '<div class="article_submenu clearfix">
                             <div class="article_submenu_left">
                                 ' . $info['cat_image'] . '
