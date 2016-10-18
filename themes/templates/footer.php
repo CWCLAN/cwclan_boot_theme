@@ -21,6 +21,7 @@ require_once INCLUDES."footer_includes.php";
 
 ?>
 <!-- Piwik -->
+<!--
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
@@ -34,7 +35,8 @@ require_once INCLUDES."footer_includes.php";
     var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
     g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
   })();
-</script>
+</script> 
+-->
 <!-- End Piwik Code -->
 <?php
 

@@ -261,8 +261,7 @@ if ($rows != 0) {
     if ($poll_on_first_page_only && $poll_there && $poll_data) {
         $i = 1;
         if ($can_vote) {
-            echo "<form name='voteform' method='post' action='" . FUSION_SELF . " ? forum_id = " . $fdata['forum_id'] . "&amp;
-thread_id = " . $_GET['thread_id'] . "'>\n";
+            echo "<form name='voteform' method='post' action='" . FUSION_SELF . "?forum_id=" . $fdata['forum_id'] . "&amp;thread_id=" . $_GET['thread_id'] . "'>\n";
         }
         echo "<div class='tbl-border forum_thread_table tbl-poll'>";
         echo "<h4 class='center'>" . $pdata['forum_poll_title'] . "</h4><hr>";
@@ -331,8 +330,7 @@ thread_id = " . $_GET['thread_id'] . "'>\n";
 		ORDER BY post_datestamp LIMIT " . $_GET['rowstart'] . ",$posts_per_page"
     );
     if (iMOD) {
-        echo "<form name='mod_form' method='post' action='" . FUSION_SELF . "  ? thread_id = " . $_GET['thread_id'] . "&amp;
-        rowstart = " . $_GET['rowstart'] . "'>\n";
+        echo "<form name='mod_form' method='post' action='" . FUSION_SELF . "?thread_id=" . $_GET['thread_id'] . "&amp;rowstart=" . $_GET['rowstart'] . "'>\n";
     }
     echo "<table cellpadding='0' cellspacing='1' width='100%' class='tbl-border forum_thread_table'>\n";
     $numrows = dbrows($result);
