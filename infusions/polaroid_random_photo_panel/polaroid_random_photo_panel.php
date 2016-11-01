@@ -40,13 +40,9 @@ if (dbrows($result) == 1) {
     $data = dbarray($result);
     $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type='P' AND comment_item_id='" . $data['photo_id'] . "'");
     $title = ($data['photo_title'] ? "class='cwtooltip' title='" . $data['photo_title'] . "' alt='" . $data['photo_title'] . "'" : "alt='Polaroid Random Image'");
-    //echo "<a href='" . BASEDIR . "cw_photogallery.php?photo_id=" . $data['photo_id'] . "'>";
-    //"^/foto-(.*)-([0-9]+).html?(.*)$" => "/cw_photogallery.php?photo_id=$2$3",
-    echo "<a href='" . BASEDIR . "foto-" . $data['photo_id'] . "-" . seostring($title) . ".html'>";
+    echo "<a href='" . BASEDIR . "foto-" . seostring($title) . "-" . $data['photo_id'] . ".html'>";
     echo "<img src='" . PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'] . "' " . $title . " /></a><br>";
     echo ($photo_comments == 1 ? $locale['436b'] : $locale['436']) . $photo_comments . "<br>";
-    //echo "<a href = '" . BASEDIR . "cw_photogallery.php?album_id=" . $data['album_id'] . "'>" . $data['album_title'] . "</a>";
-    //"^/foto-album-(.*)-([0-9]+)\.html$" => "/cw_photogallery.php?album_id=$2",
     echo "<a href = '" . BASEDIR . "foto-album-" . seostring($data['album_title']) . "-" . $data['album_id'] . ".html'>" . $data['album_title'] . "</a>";
     echo "&nbsp;<a href = '" . BASEDIR . "neue-fotos.html'><strong>neue Fotos</strong></a>";
     echo "</div>";
