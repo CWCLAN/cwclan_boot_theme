@@ -146,10 +146,8 @@ while ($data = dbarray($result)) {
     $photo_comments = dbcount("(comment_id)", DB_COMMENTS, "comment_type='P' AND comment_item_id='" . $data['photo_id'] . "'");
     $title = ($data['photo_title'] ? "<span class='photo_title'>" . $data['photo_title'] . "</span>\n" : "");
     echo "<div class='pic col-xs-6'>";
-    echo "<div class='thumbnail'>";
-    //echo "<a href='" . BASEDIR . "cw_photogallery.php?photo_id=" . $data['photo_id'] . "' class='cwtooltip' title='" . $data['photo_title'] . "'>";
-    //"^/foto-(.*)-([0-9]+).html?(.*)$" => "/cw_photogallery.php?photo_id=$2$3",
-    echo "<a href='" . BASEDIR . "foto-" . $data['photo_id'] . "-".  seostring($data['photo_title']).".html' class='cwtooltip' title='" . $data['photo_title'] . "'>";
+    echo "<div class='thumbnail'>"; 
+    echo "<a href='" . BASEDIR . "foto-" . seostring($data['photo_title']) . "-" . $data['photo_id'] . ".html' class='cwtooltip' title='" . $data['photo_title'] . "'>";
     if ($data['photo_thumb2'] && file_exists(PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'])) {
         echo "<div class='crop' style='background-image: url(\"" . PHOTODIR_CW . "album_" . $data['album_id'] . "/" . $data['photo_thumb2'] . "\")'>$title</div>";
     } elseif ($data['photo_thumb1'] && file_exists(PHOTOS . "album_" . $data['album_id'] . "/" . $data['photo_thumb1'])) {
