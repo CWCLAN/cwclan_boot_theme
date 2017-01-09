@@ -297,10 +297,10 @@ if ($rows != 0) {
                     echo "<div>Gevotet haben: ";
                     while ($vresultdata = dbarray($vresult)) {
                         if ($i != $count) {
-                            echo "<a href='" . BASEDIR . "user_" . $vresultdata['user_id'] . "_" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>, ";
+                            echo "<a href='" . BASEDIR . "user-" . $vresultdata['user_id'] . "-" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>, ";
                             $i++;
                         } else {
-                            echo "<a href='" . BASEDIR . "user_" . $vresultdata['user_id'] . "_" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>";
+                            echo "<a href='" . BASEDIR . "user-" . $vresultdata['user_id'] . "-" . seostring($vresultdata['user_name']) . ".html'>" . $vresultdata['user_name'] . "</a>";
                         }
                     }
                     echo "</div>\n";
